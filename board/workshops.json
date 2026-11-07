@@ -1,0 +1,3095 @@
+[
+ {
+  "title": "Continually Self-Improving Robots Workshop (CSIR-2026)",
+  "url": "https://csircorl.github.io/website/",
+  "slot": "am",
+  "venue": "JW Marriott",
+  "room": "Room 202",
+  "items": [
+   [
+    "08:30",
+    "08:40",
+    "Opening · Opening remarks by organizers"
+   ],
+   [
+    "08:40",
+    "09:05",
+    "Invited Talk · Abhishek Gupta"
+   ],
+   [
+    "09:05",
+    "09:30",
+    "Five talks · 5 minutes each"
+   ],
+   [
+    "09:05",
+    "09:10",
+    "Test-Time Gradient Guidance of Flow Policies in Reinforcement Learning"
+   ],
+   [
+    "09:05",
+    "09:30",
+    "Student Spotlight · View spotlight papers"
+   ],
+   [
+    "09:10",
+    "09:15",
+    "WEAVER, Better, Faster, Longer: An Effective World Model for Robotic Manipulation"
+   ],
+   [
+    "09:15",
+    "09:20",
+    "Autonomous Functional Play with Correspondence-Driven Trajectory Warping"
+   ],
+   [
+    "09:20",
+    "09:25",
+    "Language to Design (L2D): Towards Self-Evolving Robots"
+   ],
+   [
+    "09:25",
+    "09:30",
+    "EqC: Equilibrium Energy Control for Introspective Lifelong Robot Learning"
+   ],
+   [
+    "09:30",
+    "09:55",
+    "Invited Talk · Jason Ma"
+   ],
+   [
+    "09:55",
+    "10:35",
+    "Breakout Session"
+   ],
+   [
+    "10:35",
+    "11:05",
+    "Break & Poster Session · Griffin (Level 2), JW2-1-1 to JW2-10-1"
+   ],
+   [
+    "11:05",
+    "11:30",
+    "Invited Talk · Jeff Clune"
+   ],
+   [
+    "11:30",
+    "11:55",
+    "Invited Talk · Pete Florence"
+   ],
+   [
+    "11:55",
+    "12:20",
+    "Invited Talk · Kay Ke"
+   ],
+   [
+    "12:20",
+    "12:30",
+    "Closing · Awards & closing summary"
+   ]
+  ],
+  "speakers": [
+   [
+    "Abhishek Gupta",
+    "UW & Amazon FAR"
+   ],
+   [
+    "Kay Ke",
+    "Physical Intelligence"
+   ],
+   [
+    "Jeff Clune",
+    "UBC & Recursive"
+   ],
+   [
+    "Jason Ma",
+    "Dyna"
+   ],
+   [
+    "Pete Florence",
+    "Generalist"
+   ]
+  ],
+  "people": {
+   "Abhishek Gupta": "spk",
+   "Mengdi Xu": "org",
+   "Peter Stone": "org",
+   "Roberto Martín-Martín": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "Closing the Sim2Real Gap: GPU-Accelerated Simulation for Real-World Robot Policy Learning",
+  "url": "https://corl2026-realworld-robot-learning.github.io/",
+  "slot": "am",
+  "venue": "JW Marriott",
+  "room": "Room 212",
+  "items": [
+   [
+    "8:50",
+    "9:00",
+    "Opening · Opening Remarks"
+   ],
+   [
+    "9:00",
+    "9:30",
+    "Keynote · Yashraj Narang"
+   ],
+   [
+    "9:30",
+    "10:00",
+    "Keynote · Guannan Qu"
+   ],
+   [
+    "10:00",
+    "10:45",
+    "Awards · Track 1 & 2 Challenge Awards & Spotlight — BEHAVIOR & RoboEval"
+   ],
+   [
+    "10:45",
+    "11:15",
+    "Keynote · Yilun Du"
+   ],
+   [
+    "11:15",
+    "11:45",
+    "Keynote · Chen Tang"
+   ],
+   [
+    "11:45",
+    "12:15",
+    "Awards + Demo · Track 3 Challenge Awards & Spotlight & Live Demo — RoboChess"
+   ],
+   [
+    "12:15",
+    "13:00",
+    "Discussion · Group Discussion & Poster Marketplace"
+   ]
+  ],
+  "speakers": [
+   [
+    "Yashraj Narang",
+    "NVIDIA"
+   ],
+   [
+    "Guannan Qu",
+    "Carnegie Mellon University"
+   ],
+   [
+    "Yilun Du",
+    "Harvard University"
+   ],
+   [
+    "Chen Tang",
+    ""
+   ]
+  ],
+  "people": {
+   "Yashraj Narang": "spk",
+   "Yilun Du": "spk",
+   "Chen Tang": "spk",
+   "Ruohan Zhang": "org",
+   "Jiafei Duan": "org",
+   "Yi Ru Wang": "org",
+   "Jiajun Wu": "org",
+   "Huang Huang": "org",
+   "Josiah Wong": "org",
+   "Hang Yin": "org",
+   "Manling Li": "org",
+   "Ranjay Krishna": "org",
+   "Dieter Fox": "org",
+   "Wilbert Pumacay": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "RoboLetics 3.0: Benchmarks for Agile Physical Human-Robot Interaction",
+  "url": "https://roboletics.github.io/corl2026/",
+  "slot": "am",
+  "venue": "Hilton",
+  "room": "Salon D",
+  "items": [
+   [
+    "8:30",
+    "8:40 AM",
+    "Introduction · Matthew Gombolay"
+   ],
+   [
+    "8:40",
+    "9:00 AM",
+    "Talk 1"
+   ],
+   [
+    "9:00",
+    "9:20 AM",
+    "Talk 2"
+   ],
+   [
+    "9:20",
+    "9:30 AM",
+    "Moderated Audience Discussion"
+   ],
+   [
+    "9:30",
+    "9:50 AM",
+    "Talk 3"
+   ],
+   [
+    "9:50",
+    "10:30 AM",
+    "Student Paper Spotlights"
+   ],
+   [
+    "10:30",
+    "11:00 AM",
+    "Poster Session, Curated Demo Videos · Coffee Break"
+   ],
+   [
+    "11:00",
+    "11:20 AM",
+    "Talk 4"
+   ],
+   [
+    "11:20",
+    "11:30 AM",
+    "Moderated Audience Discussion"
+   ],
+   [
+    "11:30 AM",
+    "12:00 PM",
+    "Breakout Session"
+   ],
+   [
+    "12:00",
+    "12:30 PM",
+    "Panel Discussion"
+   ]
+  ],
+  "speakers": [
+   [
+    "Taeyoon Lee",
+    "Research Scientist, Robotics and AI Institute, USA"
+   ],
+   [
+    "Tapomayukh Bhattacharjee",
+    "Cornell University, USA"
+   ],
+   [
+    "Lujie Yang",
+    "Amazon Frontier AI & Robotics, USA"
+   ],
+   [
+    "Aaron D. Ames",
+    "California Institute of Technology, USA"
+   ]
+  ],
+  "people": {
+   "Tapomayukh Bhattacharjee": "spk",
+   "Lujie Yang": "spk"
+  },
+  "note": ""
+ },
+ {
+  "title": "Learning from Corrections and Interventions",
+  "url": "https://sites.google.com/view/lfcworkshopcorl2026/home",
+  "slot": "am",
+  "venue": "JW Marriott",
+  "room": "Room 305",
+  "items": [
+   [
+    "8:30",
+    "8:45",
+    "Invited Speaker #1"
+   ],
+   [
+    "8:45",
+    "9:15",
+    "Lightning Talks #1"
+   ],
+   [
+    "9:15",
+    "9:30",
+    "Invited Speaker #2"
+   ],
+   [
+    "9:30",
+    "10:00",
+    "Lightning Talks #2"
+   ],
+   [
+    "10:00",
+    "10:30",
+    "Poster Session #1"
+   ],
+   [
+    "10:30",
+    "",
+    "1 0 :45: Invited Speaker # 3"
+   ],
+   [
+    "10:45",
+    "11:00",
+    "Break"
+   ],
+   [
+    "11:00",
+    "11:30",
+    "Poster Session #2"
+   ],
+   [
+    "11:30",
+    "11:50",
+    "Breakout Session"
+   ],
+   [
+    "11:50",
+    "12:05",
+    "Breakout Presentations"
+   ],
+   [
+    "12:05",
+    "12:20",
+    "Invited Speaker #4"
+   ],
+   [
+    "12:20",
+    "12:30",
+    "Closing Remarks · Lightning Talk Session 1 · 8:45–9:15 AM"
+   ]
+  ],
+  "speakers": [
+   [
+    "Andreea Bobu",
+    "MIT"
+   ],
+   [
+    "Siddharth Karamcheti",
+    "Georgia Tech"
+   ],
+   [
+    "Dylan Losey",
+    "Virginia Tech"
+   ],
+   [
+    "Emmanuel Senft",
+    "Idiap"
+   ]
+  ],
+  "people": {
+   "Andreea Bobu": "spk",
+   "Siddharth Karamcheti": "spk",
+   "Erdem Biyik": "org",
+   "Yuchen Cui": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "1st Workshop on \"Structured Physical Intelligence\" (SPIN)",
+  "url": "https://sites.google.com/view/spin-1st-workshop/home",
+  "slot": "am",
+  "venue": "JW Marriott",
+  "room": "Room 208",
+  "items": [],
+  "speakers": [],
+  "people": {},
+  "note": "The workshop site needs a Google sign-in, so its agenda could not be read."
+ },
+ {
+  "title": "Grounded 4D Multimodal World Models for Autonomous Driving Decision Making",
+  "url": "https://arlo0o.github.io/Grounded-Driving-World-Models_Workshop/",
+  "slot": "am",
+  "venue": "Hilton",
+  "room": "Room 410",
+  "items": [
+   [
+    "8:30",
+    "",
+    "Opening and problem framing · Define decision-centric 4D multimodal world models and the working goals for the day."
+   ],
+   [
+    "8:45",
+    "",
+    "Two focused talks · Structured world modeling and decision-aware evaluation, each followed by guided questions."
+   ],
+   [
+    "9:35",
+    "",
+    "Evaluation clinic · Breakout groups design protocols for synthetic-data training, planning evaluation, and stress testing."
+   ],
+   [
+    "11:00",
+    "",
+    "Paper spotlights and posters · Short spotlights emphasize open problems, negative results, benchmark proposals, and new ideas."
+   ],
+   [
+    "11:35",
+    "",
+    "Scenario-design breakout · Participants specify challenging but solvable driving interactions and the metrics needed to evaluate them."
+   ],
+   [
+    "12:10",
+    "",
+    "Fishbowl discussion and awards · Converge on open problems in grounded 4D multimodal driving world models, then announce the Best Paper and Best Novel Idea awards."
+   ]
+  ],
+  "speakers": [
+   [
+    "Hao Zhao",
+    "Assistant Professor, Tsinghua University"
+   ],
+   [
+    "Hongyang Li",
+    "Assistant Professor, The University of Hong Kong"
+   ],
+   [
+    "Long Chen",
+    "Senior Research Director & Principal Scientist, Xiaomi"
+   ],
+   [
+    "Wenhao Ding",
+    "Senior Research Scientist, Autonomous Vehicle Group, NVIDIA Research"
+   ]
+  ],
+  "people": {
+   "Bangya Liu": "paper",
+   "Hao Wang": "paper",
+   "Zhangyang Wang": "paper",
+   "Ziyao Zeng": "paper",
+   "Marco Pavone": "paper",
+   "Yunhao Yang": "paper",
+   "Zhiwen Fan": "paper",
+   "Zihao Li": "paper",
+   "Hongyang Li": "spk",
+   "Xianda Guo": "paper",
+   "Chensheng Peng": "paper",
+   "Masayoshi Tomizuka": "paper",
+   "Peter Karkus": "paper",
+   "Ran Tian": "paper",
+   "Wenhao Ding": "spk",
+   "Zewei Zhou": "paper",
+   "Bolei Zhou": "paper",
+   "Henrik I Christensen": "paper",
+   "Hongwei Ruan": "paper",
+   "Luobin Wang": "paper",
+   "Rowan Thomas McAllister": "paper",
+   "Seth Z. Zhao": "paper",
+   "Yu Zeng": "paper",
+   "Yuxin Bao": "paper",
+   "Zihan Zhang": "paper",
+   "Ziyang Leng": "paper",
+   "Changliu Liu": "paper",
+   "Zhipeng Zhang": "paper",
+   "Jiaqi Wang": "paper",
+   "Long Chen": "spk",
+   "Danda Pani Paudel": "paper",
+   "Luc Van Gool": "paper",
+   "Runyi Yang": "paper",
+   "Xin Jin": "org",
+   "Wenjun Zeng": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "Compositional Generalization for Real-World Robot Learning",
+  "url": "https://compogen-robotics.github.io/corl2026/",
+  "slot": "am",
+  "venue": "JW Marriott",
+  "room": "Rooms 310–311",
+  "items": [
+   [
+    "8:30 AM",
+    "",
+    "Welcome & Framing"
+   ],
+   [
+    "8:45 AM",
+    "",
+    "Invited Speaker 1"
+   ],
+   [
+    "9:10 AM",
+    "",
+    "Invited Speaker 2"
+   ],
+   [
+    "9:35 AM",
+    "",
+    "Poster Session, Lightning Pitches & Coffee Break"
+   ],
+   [
+    "10:20 AM",
+    "",
+    "Invited Speaker 3"
+   ],
+   [
+    "10:45 AM",
+    "",
+    "Invited Speaker 4"
+   ],
+   [
+    "11:10 AM",
+    "",
+    "Panel Discussion (moderated by Chao Cao )"
+   ],
+   [
+    "11:50 AM",
+    "",
+    "Facilitated Breakout Groups"
+   ],
+   [
+    "12:20 PM",
+    "",
+    "Paper Award Announcement"
+   ],
+   [
+    "12:30 PM",
+    "",
+    "Workshop Ends"
+   ]
+  ],
+  "speakers": [
+   [
+    "Jiayuan Mao",
+    "University of Pennsylvania"
+   ],
+   [
+    "Marc Toussaint",
+    ""
+   ],
+   [
+    "Leslie Pack Kaelbling",
+    "MIT"
+   ],
+   [
+    "Danfei Xu",
+    "Georgia Tech / NVIDIA"
+   ],
+   [
+    "Yunzhe Pan",
+    "Wuji Technology"
+   ],
+   [
+    "Xiansheng Yang",
+    "RoboSense"
+   ],
+   [
+    "Chao Cao",
+    "Sancho Robotics"
+   ]
+  ],
+  "people": {
+   "Jiayuan Mao": "spk",
+   "Marc Toussaint": "spk",
+   "Leslie Pack Kaelbling": "spk",
+   "Danfei Xu": "spk",
+   "Haonan Chen": "org",
+   "Weirui Ye": "org",
+   "Yilun Du": "org",
+   "Jiajun Wu": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "The Science of Physical AI Safety Workshop (SPAIS)",
+  "url": "https://spais-ws.org",
+  "slot": "am",
+  "venue": "JW Marriott",
+  "room": "Rooms 203–204",
+  "items": [],
+  "speakers": [
+   [
+    "Marco Pavone",
+    "Stanford & NVIDIA"
+   ],
+   [
+    "Andrea Bajcsy",
+    ""
+   ],
+   [
+    "Vikas Sindhwani",
+    "Google DeepMind"
+   ],
+   [
+    "Thomas Fel",
+    "Goodfire & Harvard"
+   ]
+  ],
+  "people": {
+   "Marco Pavone": "spk",
+   "Andrea Bajcsy": "spk",
+   "Vikas Sindhwani": "spk",
+   "Hugo Buurmeijer": "org"
+  },
+  "note": "No timed agenda on the workshop site yet."
+ },
+ {
+  "title": "Learn@Deploy: Robot Learning at Deployment",
+  "url": "https://learn-at-deploy.github.io/",
+  "slot": "am",
+  "venue": "JW Marriott",
+  "room": "Room 205",
+  "items": [
+   [
+    "8:30",
+    "8:40",
+    "Intro"
+   ],
+   [
+    "8:40",
+    "9:00",
+    "Keynote - David Fan"
+   ],
+   [
+    "9:05",
+    "9:30",
+    "Keynote - Mengdi Xu"
+   ],
+   [
+    "9:30",
+    "10:00",
+    "Spotlight Talks / Best Paper Award"
+   ],
+   [
+    "10:00",
+    "10:30",
+    "Interactive thematic discussion"
+   ],
+   [
+    "10:30",
+    "11:00",
+    "Poster Session"
+   ],
+   [
+    "11:00",
+    "11:25",
+    "Keynote - Guanya Shi"
+   ],
+   [
+    "11:25",
+    "11:50",
+    "Keynote - Michelle Lee"
+   ],
+   [
+    "11:50",
+    "12:20",
+    "Panel - Masha Itkina (TRI), Victor Hwang (PI), Joshua Manela (Bedrock)"
+   ],
+   [
+    "12:20",
+    "12:30",
+    "Conclusion"
+   ]
+  ],
+  "speakers": [
+   [
+    "David Fan",
+    ""
+   ],
+   [
+    "Guanya Shi",
+    ""
+   ],
+   [
+    "Mengdi Xu",
+    ""
+   ],
+   [
+    "Michelle Lee",
+    ""
+   ],
+   [
+    "Masha Itkina",
+    "Research Lead and Manager"
+   ],
+   [
+    "Victor Hwang",
+    "Member of Technical Staff"
+   ],
+   [
+    "Joshua Manela",
+    ""
+   ]
+  ],
+  "people": {
+   "Guanya Shi": "spk",
+   "Mengdi Xu": "spk",
+   "Ding Zhao": "spk",
+   "Jiajun Wu": "spk",
+   "Masha Itkina": "spk",
+   "Victor Hwang": "spk",
+   "Li Fei-Fei": "paper",
+   "Mac Schwager": "paper",
+   "Manling Li": "paper",
+   "Wenlong Huang": "paper",
+   "Yuhan Wang": "paper",
+   "Andrea Bajcsy": "paper",
+   "Oliver Kroemer": "paper",
+   "Yilin Wu": "paper",
+   "Zeynep Temel": "paper",
+   "Zilin Si": "paper",
+   "Ruohan Zhang": "paper",
+   "Yunfan Jiang": "paper",
+   "Huang Huang": "paper",
+   "Marco Pavone": "paper",
+   "Abhishek Gupta": "paper",
+   "Dieter Fox": "paper",
+   "Zhanyi Sun": "paper",
+   "Chelsea Finn": "paper",
+   "Perry Dong": "paper",
+   "Shuran Song": "paper",
+   "Davide Scaramuzza": "paper",
+   "Jiaxu Xing": "paper",
+   "Yunfan Ren": "paper",
+   "Wenzhen Yuan": "paper",
+   "Yixuan Wang": "paper",
+   "Jinyun Liu": "paper",
+   "Shuang Li": "paper",
+   "Yihuai Gao": "paper",
+   "Cherie Ho": "org",
+   "Jonathan Francis": "org",
+   "George Konidaris": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "R2RL: Roadmap to Sample-Efficient Real-World Reinforcement Learning",
+  "url": "https://r2rl-workshop.github.io/",
+  "slot": "am",
+  "venue": "JW Marriott",
+  "room": "Room 213",
+  "items": [
+   [
+    "8:30",
+    "8:40",
+    "Opening, Central Question, and Problem-board Framing"
+   ],
+   [
+    "8:40",
+    "9:50",
+    "Keynote Talks"
+   ],
+   [
+    "9:50",
+    "10:00",
+    "Problem-board Voting"
+   ],
+   [
+    "10:00",
+    "10:30",
+    "Oral Spotlights of Key Contributed Papers"
+   ],
+   [
+    "10:30",
+    "11:00",
+    "Poster Session + Coffee Break"
+   ],
+   [
+    "11:00",
+    "11:50",
+    "Breakout Sessions on Top-voted Problems"
+   ],
+   [
+    "11:50",
+    "12:20",
+    "Panel Discussion with Speakers and Audience Volunteers"
+   ],
+   [
+    "12:20",
+    "12:30",
+    "Summary, Whitepaper Next Steps, (Tentative) Workshop Best Paper Prize"
+   ]
+  ],
+  "speakers": [
+   [
+    "Zhanyi Sun",
+    "Stanford University"
+   ],
+   [
+    "Kun Lei",
+    "Shanghai Jiao Tong University"
+   ],
+   [
+    "Kay Ke",
+    "Physical Intelligence (π"
+   ],
+   [
+    "Rickmer Krohn",
+    ""
+   ],
+   [
+    "Tobias Jülg",
+    "University of Technology Nuremberg"
+   ],
+   [
+    "Gautam Salhotra",
+    "Google DeepMind"
+   ]
+  ],
+  "people": {
+   "Zhanyi Sun": "spk",
+   "Rickmer Krohn": "spk",
+   "Abhishek Gupta": "org",
+   "Anqi Li": "paper",
+   "Dieter Fox": "paper",
+   "Fabio Ramos": "paper",
+   "Ji Zhang": "paper",
+   "Jingkuan Song": "paper",
+   "Lianli Gao": "paper",
+   "Kimin Lee": "paper",
+   "Yashraj Narang": "paper",
+   "Yijie Guo": "paper",
+   "Nicholas Rhinehart": "paper",
+   "Peter Stone": "paper",
+   "Andrew Wagenmaker": "paper",
+   "Yue Wang": "paper",
+   "Henrik I Christensen": "paper",
+   "Jiawei Fu": "paper",
+   "Yuchen Zhou": "paper",
+   "Zhao-Heng Yin": "paper",
+   "Boyuan Liang": "paper",
+   "Lingfeng Sun": "paper",
+   "Aviral Kumar": "paper",
+   "Max Simchowitz": "paper",
+   "Lillian J. Ratliff": "paper",
+   "Hang Zhao": "paper",
+   "Mengjie Zhao": "paper",
+   "Shaoting Zhu": "paper",
+   "Eric Rosen": "paper",
+   "Karl Schmeckpeper": "paper",
+   "Kausik Sivakumar": "paper",
+   "Nakul Gopalan": "paper",
+   "Xiaohan Zhang": "paper",
+   "John Marangola": "paper",
+   "Pulkit Agrawal": "paper",
+   "David Fridovich-Keil": "paper",
+   "Marco Hutter": "paper",
+   "Chelsea Finn": "paper",
+   "Perry Dong": "paper",
+   "Shuran Song": "paper",
+   "Ali-akbar Agha-mohammadi": "paper",
+   "Dong-Ki Kim": "paper",
+   "Max Olan Smith": "paper",
+   "Shayegan Omidshafiei": "paper",
+   "Yu Xiang": "paper",
+   "Davide Scaramuzza": "paper",
+   "Jiaxu Xing": "paper",
+   "Yunfan Ren": "paper",
+   "Jan Peters": "paper",
+   "Nico Bohlinger": "paper",
+   "Nitish Dashora": "paper",
+   "Georgia Chalvatzaki": "paper",
+   "Vignesh Prasad": "paper",
+   "Laura Smith": "org",
+   "Yang Gao": "org",
+   "Danica Kragic": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "Scaling H2R: Scaling Laws and Diversity in Human-to-Robot Workshop",
+  "url": "http://scaling-h2r-corl.github.io/",
+  "slot": "am",
+  "venue": "JW Marriott",
+  "room": "Rooms 301–302",
+  "items": [
+   [
+    "08:30",
+    "08:35",
+    "Opening Remarks"
+   ],
+   [
+    "08:35",
+    "09:05",
+    "Oral Session 1 5 min talk + 2 min Q&A each"
+   ],
+   [
+    "08:35",
+    "",
+    "Human Universal Grasping"
+   ],
+   [
+    "08:42",
+    "",
+    "Dex-One2Many: Learning Dexterous Manipulation from a Single Human Demonstration"
+   ],
+   [
+    "08:49",
+    "",
+    "Human-to-Robot Transfer via Bridging Representation and Action Space in VLAs"
+   ],
+   [
+    "08:56",
+    "",
+    "BATCH: Behavior Alignment for Cross-Embodiment Learning from Humans"
+   ],
+   [
+    "09:05",
+    "09:30",
+    "Invited Talk 1"
+   ],
+   [
+    "09:30",
+    "09:35",
+    "Break 5 min"
+   ],
+   [
+    "09:35",
+    "09:50",
+    "Oral Session 2 5 min talk + 2 min Q&A each"
+   ],
+   [
+    "09:35",
+    "",
+    "RoSHI: A Versatile Robot-oriented Suit for Human Data In-the-Wild"
+   ],
+   [
+    "09:42",
+    "",
+    "EgoX: Egocentric Cross-Embodiment Manipulation with Embodiment Dreaming"
+   ],
+   [
+    "09:50",
+    "10:05",
+    "Sponsor Talk Tangible"
+   ],
+   [
+    "10:05",
+    "10:30",
+    "Invited Talk 2"
+   ],
+   [
+    "10:30",
+    "11:00",
+    "Coffee Break & Poster Session"
+   ],
+   [
+    "11:00",
+    "11:25",
+    "Invited Talk 3"
+   ],
+   [
+    "11:25",
+    "11:50",
+    "Invited Talk 4"
+   ],
+   [
+    "11:50",
+    "12:00",
+    "Open Forum Crowdsourced audience questions via QR code"
+   ],
+   [
+    "12:00",
+    "12:25",
+    "Panel Discussion"
+   ],
+   [
+    "12:25",
+    "12:30",
+    "Awards & Closing Remarks"
+   ]
+  ],
+  "speakers": [
+   [
+    "Ruijie Zheng",
+    "NVIDIA"
+   ],
+   [
+    "Shuran Song",
+    "Stanford University"
+   ],
+   [
+    "Homanga Bharadhwaj",
+    "Johns Hopkins University"
+   ],
+   [
+    "Chelsea Finn",
+    "Stanford University"
+   ]
+  ],
+  "people": {
+   "Ruijie Zheng": "spk",
+   "Shuran Song": "spk",
+   "Chelsea Finn": "spk",
+   "Tianxing Zhou": "paper",
+   "Furong Huang": "paper",
+   "H. Jin Kim": "paper",
+   "Jia-Bin Huang": "paper",
+   "Jusuk Lee": "paper",
+   "Seungjae Lee": "org",
+   "Yoonkyo Jung": "paper",
+   "Huiwon Jang": "paper",
+   "Jinwoo Shin": "paper",
+   "Zeyi Liu": "paper",
+   "Antonio Loquercio": "paper",
+   "Changliu Liu": "paper",
+   "Ding Zhao": "paper",
+   "Hao Zhang": "paper",
+   "Heng Zhang": "paper",
+   "Jonathan Francis": "paper",
+   "Shangtao Li": "paper",
+   "Yuemin Mao": "paper",
+   "Junjie Ye": "paper",
+   "Sergey Zakharov": "paper",
+   "Vitor Campagnolo Guizilini": "paper",
+   "Yue Wang": "paper",
+   "Botao He": "paper",
+   "Kelin Yu": "paper",
+   "Ruohan Gao": "paper",
+   "Yiannis Aloimonos": "paper",
+   "Zhi Wang": "paper",
+   "Haoang Li": "paper",
+   "Wenxuan Song": "paper",
+   "Harish Ravichandar": "paper",
+   "Jiaqi Fu": "paper",
+   "Kenneth Shaw": "paper",
+   "Linhao Bai": "paper",
+   "Muhammad Zubair Irshad": "paper",
+   "Shalin Jain": "paper",
+   "Yangcen Liu": "paper",
+   "Yunhai Han": "paper",
+   "Zhaodong Yang": "paper",
+   "Ziyu Xiao": "paper",
+   "Zsolt Kira": "paper",
+   "Chenyang Ma": "paper",
+   "Wei Zhan": "paper",
+   "Carmelo Sferrazza": "paper",
+   "Nicklas Hansen": "paper",
+   "Xiaolong Wang": "paper",
+   "Dongyoon Han": "paper",
+   "Jeongeun Park": "paper",
+   "Sangdoo Yun": "paper",
+   "Taekyung Kim": "paper",
+   "Chuizheng Kong": "paper",
+   "Danfei Xu": "paper",
+   "Shreyas Kousik": "paper",
+   "Zhenyang Chen": "paper",
+   "Andreas Krause": "paper",
+   "Georg Martius": "paper",
+   "Kaifeng Zhang": "paper",
+   "Masayoshi Tomizuka": "paper",
+   "Ruihai Wu": "paper",
+   "Tianyue Wu": "paper",
+   "Wanli Xing": "paper",
+   "Bangya Liu": "paper",
+   "Dayou Li": "paper",
+   "Hao Wang": "paper",
+   "Haoquan Fang": "paper",
+   "Jiachen Li": "paper",
+   "Manling Li": "paper",
+   "Marco Pavone": "paper",
+   "Mustafa Mukadam": "paper",
+   "Ruohan Zhang": "paper",
+   "Zhiwen Fan": "paper",
+   "Zihan Wang": "paper",
+   "Ziyao Zeng": "paper",
+   "Erdem Biyik": "paper",
+   "Omar Rayyan": "paper",
+   "Yuchen Cui": "paper",
+   "Guanya Shi": "paper",
+   "Karen Liu": "paper",
+   "Koushil Sreenath": "paper",
+   "Rocky Duan": "paper",
+   "Shibo Zhao": "paper",
+   "Dian Wang": "paper",
+   "Haojie Huang": "paper",
+   "Pulkit Agrawal": "paper",
+   "Saurabh Gupta": "paper",
+   "Yilun Du": "paper",
+   "Jisoo Kim": "paper",
+   "Seungryong Kim": "paper",
+   "Akash Sharma": "org",
+   "Cunxi Dai": "paper",
+   "Francois Robert Hogan": "paper",
+   "Jitendra Malik": "paper",
+   "Ruoshi Liu": "org",
+   "Liu Cao": "paper",
+   "Mengdi Xu": "paper",
+   "Ruoqu Chen": "paper",
+   "Zhangchen Ye": "paper",
+   "Allen Z. Ren": "paper",
+   "Anirudha Majumdar": "paper",
+   "Dhruv Shah": "paper",
+   "Lihan Zha": "paper",
+   "Samuel M Bateman": "paper",
+   "Tenny Yin": "paper",
+   "Amir Hossein Shahidzadeh": "paper",
+   "Cornelia Fermuller": "paper",
+   "Pengcheng Wang": "paper",
+   "Yue Yang": "paper",
+   "Zhiyang Dou": "paper",
+   "Stella X. Yu": "paper",
+   "Hanjung Kim": "org",
+   "Ryan Punamiya": "org",
+   "Seonghyeon Ye": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "Do Robots Need World Models? A Debate on Dynamics Learning, Planning, and End-to-End Robot Learning",
+  "url": "https://do-robots-need-world-models.github.io/",
+  "slot": "am",
+  "venue": "JW Marriott",
+  "room": "Brazos",
+  "items": [
+   [
+    "08:50",
+    "09:00",
+    "10 min | Welcome & opening vote on the six motions"
+   ],
+   [
+    "09:00",
+    "09:25",
+    "25 min | Invited talk: Chelsea Finn"
+   ],
+   [
+    "09:25",
+    "09:50",
+    "25 min | Invited talk: Yunzhu Li"
+   ],
+   [
+    "09:50",
+    "10:20",
+    "30 min | Contributed spotlights"
+   ],
+   [
+    "10:20",
+    "11:00",
+    "40 min | Coffee break & poster session"
+   ],
+   [
+    "11:00",
+    "11:25",
+    "25 min | Invited talk: Georgia Chalvatzaki"
+   ],
+   [
+    "11:25",
+    "11:50",
+    "25 min | Invited talk: Vincent Sitzmann"
+   ],
+   [
+    "11:50",
+    "12:40",
+    "50 min | Structured debate & closing vote — moderated by Yunzhu Li"
+   ],
+   [
+    "12:40",
+    "12:50",
+    "10 min | Awards & closing remarks"
+   ]
+  ],
+  "speakers": [
+   [
+    "Chelsea Finn",
+    ""
+   ],
+   [
+    "Yunzhu Li",
+    ""
+   ],
+   [
+    "Georgia Chalvatzaki",
+    ""
+   ],
+   [
+    "Vincent Sitzmann",
+    ""
+   ],
+   [
+    "Max Zhaoshuo Li",
+    "NVIDIA"
+   ]
+  ],
+  "people": {
+   "Chelsea Finn": "spk",
+   "Yunzhu Li": "spk",
+   "Georgia Chalvatzaki": "spk",
+   "Vincent Sitzmann": "spk",
+   "Alberta Longhini": "org",
+   "Wenlong Huang": "org",
+   "Jeffrey Ichnowski": "org",
+   "Arpit Gupta": "org",
+   "Hyun Joe Jeong": "org",
+   "Kensuke Nakamura": "org",
+   "Junwon Seo": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "BiDexTool: Bimanual Dexterous Tool Use: From Contact-Rich Execution to Generalist Robot Intelligence",
+  "url": "https://bimanual-tool.github.io/",
+  "slot": "am",
+  "venue": "JW Marriott",
+  "room": "Rooms 303–304",
+  "items": [
+   [
+    "8:30",
+    "8:40 AM",
+    "Opening Remarks"
+   ],
+   [
+    "8:40",
+    "9:10 AM",
+    "Invited Talk — Alex Xia"
+   ],
+   [
+    "9:10",
+    "9:40 AM",
+    "Invited Talk — Karen Liu"
+   ],
+   [
+    "9:40",
+    "10:15 AM",
+    "Spotlight Oral Presentations 7 presentations × 5 minutes · View papers"
+   ],
+   [
+    "10:15",
+    "10:40 AM",
+    "Poster & Demo Session + Coffee Break"
+   ],
+   [
+    "10:40",
+    "11:10 AM",
+    "Invited Talk — Jitendra Malik"
+   ],
+   [
+    "11:10",
+    "11:40 AM",
+    "Invited Talk — Ankur Handa"
+   ],
+   [
+    "11:40 AM",
+    "12:20 PM",
+    "Panel Discussion"
+   ],
+   [
+    "12:20",
+    "12:30 PM",
+    "Best Paper Awards & Closing Remarks"
+   ],
+   [
+    "12:30 PM",
+    "",
+    "Workshop Ends"
+   ]
+  ],
+  "speakers": [
+   [
+    "Alex Xia",
+    "Xynova"
+   ],
+   [
+    "Karen Liu",
+    "Stanford"
+   ],
+   [
+    "Jitendra Malik",
+    ""
+   ],
+   [
+    "Ankur Handa",
+    "NVIDIA Robotics"
+   ]
+  ],
+  "people": {
+   "Karen Liu": "spk",
+   "Jitendra Malik": "spk",
+   "Ankur Handa": "spk",
+   "Huang Huang": "paper",
+   "Jiajun Wu": "org",
+   "Youhui Wang": "paper",
+   "Yunzhu Li": "paper",
+   "Dantong Niu": "paper",
+   "Zekai Wang": "paper",
+   "Zhuoyang Liu": "paper",
+   "Anirudh Pai": "paper",
+   "Boning Shao": "paper",
+   "Danfei Xu": "paper",
+   "David M. Chan": "paper",
+   "Fabio Galasso": "paper",
+   "Haiwen Feng": "paper",
+   "Jiahui Lei": "paper",
+   "Jiaxin Ge": "paper",
+   "Jing Wang": "paper",
+   "Junyi Zhang": "paper",
+   "Ken Goldberg": "paper",
+   "Konstantinos Kallidromitis": "paper",
+   "Letian Fu": "paper",
+   "Matteo Gioia": "paper",
+   "Mengda Xu": "paper",
+   "Pieter Abbeel": "paper",
+   "Roei Herzig": "paper",
+   "Ruijie Zheng": "paper",
+   "Ryan Punamiya": "paper",
+   "Stefano Saravalle": "paper",
+   "Trevor Darrell": "paper",
+   "Wei Zhan": "paper",
+   "Yuke Zhu": "paper",
+   "Yunfan Jiang": "paper",
+   "Yuqi Xie": "paper",
+   "Yutong Bai": "paper",
+   "Yuvan Sharma": "paper",
+   "Zhao-Heng Yin": "paper",
+   "Alfred Cueva": "paper",
+   "Chuye Zhang": "paper",
+   "Shuo Cheng": "paper",
+   "Woo Chul Shin": "paper",
+   "Xinchen Yin": "paper",
+   "Yangcen Liu": "paper",
+   "Yiran Yang": "paper",
+   "Zhenyang Chen": "paper",
+   "Bhawna Paliwal": "paper",
+   "Haritheja Etukuru": "paper",
+   "Nur Muhammad Mahi Shafiullah": "paper",
+   "William Liang": "paper",
+   "Akash Sharma": "paper",
+   "Guanya Shi": "paper",
+   "Haozhi Qi": "paper",
+   "Roberto Martín-Martín": "paper",
+   "Shivin Dass": "paper",
+   "Jiaolong Yang": "paper",
+   "Yejin Choi": "paper",
+   "Yining Hong": "paper",
+   "Beining Han": "paper",
+   "Jia Deng": "paper",
+   "David Held": "paper",
+   "Ying Yuan": "paper",
+   "Ding Zhao": "paper",
+   "Mengdi Xu": "paper",
+   "Ruoqu Chen": "paper",
+   "Stephen Tian": "paper",
+   "Abhishek Gupta": "paper",
+   "Yunhai Han": "org",
+   "Haonan Chen": "org",
+   "Yuxiang Ma": "org",
+   "Nicklas Hansen": "org",
+   "Toru Lin": "org",
+   "Nima Fazeli": "org",
+   "Nikolay Atanasov": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "4th CoRL Workshop on Learning Effective Abstractions for Planning (LEAP)",
+  "url": "http://leap-workshop.github.io",
+  "slot": "am",
+  "venue": "JW Marriott",
+  "room": "Room 306",
+  "items": [
+   [
+    "8:30",
+    "8:35",
+    "Opening Remarks"
+   ],
+   [
+    "8:35",
+    "9:05",
+    "Invited Talk 1 (25 min + 5 min Q&A) · Fabio Ramos"
+   ],
+   [
+    "9:05",
+    "9:35",
+    "Invited Talk 2 (25 min + 5 min Q&A) · Dieter Fox"
+   ],
+   [
+    "9:35",
+    "9:45",
+    "Sponsor Talk"
+   ],
+   [
+    "9:45",
+    "11:00",
+    "Poster Session (overlaps with coffee · break, 10:30 – 11:00)"
+   ],
+   [
+    "11:00",
+    "11:30",
+    "Invited Talk 3 (25 min + 5 min Q&A) · Panpan Cai"
+   ],
+   [
+    "11:30",
+    "12:00",
+    "Invited Talk 4 (25 min + 5 min Q&A) · Tomás Lozano-Pérez"
+   ],
+   [
+    "12:00",
+    "12:25",
+    "Panel Discussion & Introspections"
+   ],
+   [
+    "12:25",
+    "12:30",
+    "Closing Remarks / Best Paper Awards"
+   ]
+  ],
+  "speakers": [
+   [
+    "Fabio Ramos",
+    "Nvidia & U. Sydney · USA/AUS"
+   ],
+   [
+    "Dieter Fox",
+    "Ai2 & UW · USA"
+   ],
+   [
+    "Panpan Cai",
+    "Shanghai Jiao Tong U. · China"
+   ],
+   [
+    "Tomás Lozano-Pérez",
+    "MIT · USA"
+   ]
+  ],
+  "people": {
+   "Fabio Ramos": "spk",
+   "Dieter Fox": "spk",
+   "Tomás Lozano-Pérez": "spk"
+  },
+  "note": ""
+ },
+ {
+  "title": "Remember, Retrieve, Act: Memory for Robot Foundation Models",
+  "url": "https://corl2026-memory.github.io/",
+  "slot": "am",
+  "venue": "Hilton",
+  "room": "Room 408",
+  "items": [
+   [
+    "08:30",
+    "08:40",
+    "Opening Remarks"
+   ],
+   [
+    "08:40",
+    "09:10",
+    "Invited Talk: Katerina Fragkiadaki · Carnegie Mellon University"
+   ],
+   [
+    "09:10",
+    "09:40",
+    "Invited Talk: Bernadette Bucher · University of Michigan"
+   ],
+   [
+    "09:40",
+    "10:10",
+    "Lightning Talks · 6 talks × 5 min"
+   ],
+   [
+    "10:10",
+    "10:40",
+    "Posters & Coffee Break · Room 408"
+   ],
+   [
+    "10:40",
+    "11:10",
+    "Invited Talk: Karl Pertsch · Physical Intelligence"
+   ],
+   [
+    "11:10",
+    "11:40",
+    "Invited Talk: Yuejiang Liu · Stanford University"
+   ],
+   [
+    "11:40",
+    "12:20",
+    "Panel Discussion · Katerina Fragkiadaki, Bernadette Bucher, Karl Pertsch, Yuejiang Liu, Coline Devin, Yilun Du"
+   ],
+   [
+    "12:20",
+    "12:30",
+    "Closing Remarks"
+   ]
+  ],
+  "speakers": [
+   [
+    "Bernadette Bucher",
+    "University of Michigan"
+   ],
+   [
+    "Yuejiang Liu",
+    "Stanford University"
+   ],
+   [
+    "Katerina Fragkiadaki",
+    "Carnegie Mellon University"
+   ],
+   [
+    "Karl Pertsch",
+    "Physical Intelligence"
+   ],
+   [
+    "Coline Devin",
+    "Generalist"
+   ],
+   [
+    "Yilun Du",
+    "Kempner Institute, Harvard"
+   ]
+  ],
+  "people": {
+   "Katerina Fragkiadaki": "spk",
+   "Karl Pertsch": "spk",
+   "Yilun Du": "org",
+   "Weirui Ye": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "Everything Beneath the Policy: How Controllers, Hardware, and Data Infrastructure Shape Robot Learning",
+  "url": "https://beneath-the-policy.github.io/",
+  "slot": "am",
+  "venue": "Hilton",
+  "room": "Salon E",
+  "items": [
+   [
+    "8:30",
+    "8:40",
+    "Opening framing. Organizers introduce the four open challenges and the reporting-artifact goal."
+   ],
+   [
+    "8:40",
+    "9:15",
+    "Invited talk: Zeynep Temel ."
+   ],
+   [
+    "9:15",
+    "9:50",
+    "Invited talk: Jan Peters ."
+   ],
+   [
+    "9:50",
+    "10:25",
+    "Invited talk: Alberto Rodriguez ."
+   ],
+   [
+    "10:25",
+    "10:35",
+    "Lightning previews. Short previews from selected contributed papers before the poster session."
+   ],
+   [
+    "10:35",
+    "11:05",
+    "Coffee break and posters. Accepted papers are presented as posters."
+   ],
+   [
+    "11:05",
+    "11:40",
+    "Invited talk: Hao-Shu Fang ."
+   ],
+   [
+    "12:20",
+    "12:30",
+    "Closing synthesis. Themes from talks, posters, and panel; checklist takeaways and pointers to the post-workshop artifact."
+   ]
+  ],
+  "speakers": [
+   [
+    "Zeynep Temel",
+    "Associate Professor, CMU Robotics Institute"
+   ],
+   [
+    "Jan Peters",
+    "Full Professor (W3), TU Darmstadt; Head, DFKI SAIROL"
+   ],
+   [
+    "Alberto Rodriguez",
+    "Director of Robot Behavior, Atlas, Boston Dynamics"
+   ],
+   [
+    "Hao-Shu Fang",
+    "Incoming Assistant Professor of CS, UMD"
+   ]
+  ],
+  "people": {
+   "Zeynep Temel": "spk",
+   "Jan Peters": "spk",
+   "Puze Liu": "paper",
+   "Daniel Szafir": "paper",
+   "Yue Yang": "paper",
+   "Chenhao Lu": "paper",
+   "Byoung-Tak Zhang": "paper",
+   "Hang Zhao": "paper",
+   "Jiakang Chen": "paper",
+   "Jiaxuan Wang": "paper",
+   "Shaoting Zhu": "paper",
+   "Md Faizal Karim": "paper",
+   "Ji Zhang": "paper",
+   "Jingkuan Song": "paper",
+   "Lianli Gao": "paper",
+   "Kostas Daniilidis": "paper",
+   "Tapomayukh Bhattacharjee": "paper",
+   "Kimin Lee": "paper",
+   "Bangya Liu": "paper",
+   "Changliu Liu": "paper",
+   "Dayou Li": "paper",
+   "Hao Wang": "paper",
+   "Haoquan Fang": "paper",
+   "Jiachen Li": "paper",
+   "Manling Li": "paper",
+   "Marco Pavone": "paper",
+   "Masayoshi Tomizuka": "paper",
+   "Mustafa Mukadam": "paper",
+   "Ruohan Zhang": "paper",
+   "Zhiwen Fan": "paper",
+   "Zihan Wang": "paper",
+   "Ziyao Zeng": "paper",
+   "Karl Van Wyk": "paper",
+   "Nathan D. Ratliff": "paper",
+   "Sam Mady": "paper",
+   "Soha Pouya": "paper",
+   "Kevin Zakka": "paper",
+   "Koushil Sreenath": "paper",
+   "Pieter Abbeel": "paper",
+   "Qiayuan Liao": "paper",
+   "Elie Aljalbout": "org",
+   "Pulkit Agrawal": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "3rd Workshop on Dexterous Manipulation: Full-Stack Robotics on Learning and Design",
+  "url": "https://dex-manipulation.github.io/corl2026/",
+  "slot": "pm",
+  "venue": "JW Marriott",
+  "room": "Room 212",
+  "items": [
+   [
+    "2:00 PM",
+    "2:20 PM",
+    "Katerina Fragkiadaki (Carnegie Mellon University)"
+   ],
+   [
+    "2:20 PM",
+    "2:40 PM",
+    "Invited Speaker 2"
+   ],
+   [
+    "2:40 PM",
+    "3:00 PM",
+    "Invited Speaker 3"
+   ],
+   [
+    "3:00 PM",
+    "3:30 PM",
+    "Spotlight Session"
+   ],
+   [
+    "3:30 PM",
+    "4:00 PM",
+    "Poster Session"
+   ],
+   [
+    "4:00 PM",
+    "4:40 PM",
+    "Live Demo Session"
+   ],
+   [
+    "4:40 PM",
+    "5:00 PM",
+    "Invited Speaker 4"
+   ],
+   [
+    "5:00 PM",
+    "5:55 PM",
+    "Panel Discussion"
+   ],
+   [
+    "5:55 PM",
+    "6:00 PM",
+    "Closing Remarks & Award Announcement"
+   ]
+  ],
+  "speakers": [
+   [
+    "Ankur Handa",
+    "NVIDIA Robotics"
+   ],
+   [
+    "Robert Katzschmann",
+    ""
+   ],
+   [
+    "Katerina Fragkiadaki",
+    "Carnegie Mellon University"
+   ],
+   [
+    "Karen Liu",
+    "Stanford University"
+   ]
+  ],
+  "people": {
+   "Ankur Handa": "spk",
+   "Katerina Fragkiadaki": "spk",
+   "Karen Liu": "spk",
+   "Kenneth Shaw": "org",
+   "Haozhi Qi": "org",
+   "Ying Yuan": "org",
+   "Akash Sharma": "org",
+   "Kaifeng Zhang": "org",
+   "Deepak Pathak": "org",
+   "Jitendra Malik": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "Modeling Uncertainty in Robotic World Models",
+  "url": "https://uncertainwm2026.github.io/",
+  "slot": "pm",
+  "venue": "JW Marriott",
+  "room": "Rooms 310–311",
+  "items": [
+   [
+    "2:00",
+    "2:05 PM",
+    "Introduction"
+   ],
+   [
+    "2:05",
+    "2:45 PM",
+    "Leslie Kaelbling — Rational Robots"
+   ],
+   [
+    "2:45",
+    "3:25 PM",
+    "Anirudha Majumdar — Title TBD"
+   ],
+   [
+    "3:25",
+    "4:05 PM",
+    "Panpan Cai — Title TBD"
+   ],
+   [
+    "4:05",
+    "4:45 PM",
+    "Chenhao Li — Title TBD"
+   ],
+   [
+    "4:45",
+    "5:25 PM",
+    "Interactive roundtable discussions"
+   ],
+   [
+    "5:25",
+    "5:30 PM",
+    "Closing remarks"
+   ],
+   [
+    "5:30",
+    "6:00 PM",
+    "Poster session"
+   ]
+  ],
+  "speakers": [],
+  "people": {
+   "Chang Liu": "paper",
+   "Nicklas Hansen": "paper",
+   "Xiaolong Wang": "paper",
+   "Dmitry Berenson": "paper",
+   "Denis Liu": "paper",
+   "Javier Yu": "paper",
+   "Byoung-Tak Zhang": "paper",
+   "Frank C. Park": "paper",
+   "Deepak Pathak": "paper",
+   "Yann LeCun": "paper",
+   "Angela P. Schoellig": "paper",
+   "Haonan Chen": "paper",
+   "Yilun Du": "paper",
+   "Joyce Chai": "paper",
+   "Nima Fazeli": "paper",
+   "Andrea Bajcsy": "paper",
+   "Junwon Seo": "paper",
+   "Apoorva Sharma": "paper",
+   "Edward Schmerling": "paper",
+   "Karen Leung": "paper",
+   "Marco Pavone": "paper",
+   "Ran Tian": "paper",
+   "Sushant Veer": "paper",
+   "Wenhao Ding": "paper",
+   "Kostas Daniilidis": "paper",
+   "Abhinav Mahajan": "paper",
+   "Arthur Jakobsson": "paper",
+   "Bardienus Pieter Duisterhof": "paper",
+   "Jeffrey Ichnowski": "paper",
+   "Karthik Pullalarevu": "paper",
+   "Krishna Suresh": "paper",
+   "Shahram Najam Syed": "paper",
+   "Yuemin Mao": "paper",
+   "Yunchao Yao": "paper",
+   "Leslie Pack Kaelbling": "paper",
+   "Tomás Lozano-Pérez": "paper",
+   "Huang Huang": "paper"
+  },
+  "note": ""
+ },
+ {
+  "title": "Human-Centered Robot Learning and Interaction: Toward Reliable and Scalable Autonomy in Human Environments",
+  "url": "https://hc-robot-learning.github.io/",
+  "slot": "pm",
+  "venue": "JW Marriott",
+  "room": "Room 202",
+  "items": [
+   [
+    "2:00",
+    "2:05",
+    "Opening remarks · Workshop vision and the six open problems."
+   ],
+   [
+    "2:05",
+    "2:35",
+    "Invited talk 1 · 25-minute talk followed by 5 minutes of questions."
+   ],
+   [
+    "2:35",
+    "3:05",
+    "Invited talk 2"
+   ],
+   [
+    "3:05",
+    "3:35",
+    "Invited talk 3"
+   ],
+   [
+    "3:35",
+    "4:05",
+    "Invited talk 4"
+   ],
+   [
+    "4:05",
+    "4:35",
+    "Panel discussion · All four invited speakers."
+   ],
+   [
+    "4:35",
+    "4:55",
+    "Contributed spotlight talks · Five-minute talks from selected submissions."
+   ],
+   [
+    "4:55",
+    "5:05",
+    "Awards & closing synthesis · Best Paper Award."
+   ],
+   [
+    "5:05",
+    "6:00",
+    "Poster & live-demo session"
+   ]
+  ],
+  "speakers": [
+   [
+    "Harold Soh",
+    "National University of Singapore"
+   ],
+   [
+    "Andreea Bobu",
+    "Massachusetts Institute of Technology"
+   ],
+   [
+    "Jakob Thumm",
+    "Stanford University"
+   ],
+   [
+    "Masha Itkina",
+    "Toyota Research Institute"
+   ]
+  ],
+  "people": {
+   "Harold Soh": "spk",
+   "Andreea Bobu": "spk",
+   "Masha Itkina": "spk",
+   "Jiachen Li": "org",
+   "Zehao Wang": "org",
+   "Zhangchen Ye": "org",
+   "Zhiwen Fan": "org",
+   "Andrea Bajcsy": "org",
+   "Runhan Huang": "org",
+   "Hefeifei Jiang": "org",
+   "Kevin Lin": "org",
+   "Yunshen Wang": "org",
+   "Haoyang Weng": "org",
+   "Botian Xu": "org",
+   "Chenghan Yang": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "Robot Learning on the Path to Surgical Autonomy: Methods, Data, and Open Challenges",
+  "url": "https://corl2026-surgical-autonomy.github.io/",
+  "slot": "pm",
+  "venue": "JW Marriott",
+  "room": "Room 213",
+  "items": [
+   [
+    "2:00",
+    "2:10",
+    "Welcome, motivation & Open-H orientation Kiran Bhattacharyya & Alaa Eldin Abdelaal"
+   ],
+   [
+    "2:10",
+    "2:30",
+    "Talk 1 — Clinical reality: what autonomy must solve in the OR Filippo Filicori, MD · Northwell Health"
+   ],
+   [
+    "2:30 PM",
+    "",
+    "How Can Robots Act Like a Surgeon? Perception, Reasoning, and Learning · Industry"
+   ],
+   [
+    "2:30",
+    "2:50",
+    "Talk 2 — How Can Robots Act Like a Surgeon? Perception, Reasoning, and Learning Shan Lin, PhD · Arizona State University"
+   ],
+   [
+    "2:50",
+    "3:10",
+    "Talk 3 — From Data to Deployment: Challenges in Developing Surgical AI Aneeq Zia, PhD · Intuitive Surgical"
+   ],
+   [
+    "3:10 PM",
+    "",
+    "The Open-H ecosystem. What is being built across the Open-H ecosystem, and the strategy behind it. Sets the stage for the hands-on session that follows. · Academic"
+   ],
+   [
+    "3:10",
+    "3:30",
+    "Talk 4 — The Open-H ecosystem and the strategy behind it Mostafa Toloui, PhD · NVIDIA"
+   ],
+   [
+    "3:30",
+    "4:00",
+    "Coffee break + Colab setup help table Organizers"
+   ],
+   [
+    "4:00",
+    "5:00",
+    "Hands-on Open-H — four guided segments, one notebook each All organizers"
+   ],
+   [
+    "4:00",
+    "",
+    "Data loading & visualization — Alaa Eldin Abdelaal"
+   ],
+   [
+    "4:15",
+    "",
+    "Perception & scene understanding — Sreeram Kamabattula"
+   ],
+   [
+    "4:30",
+    "",
+    "Robot learning & evaluation with ACT — Noah Barnes"
+   ],
+   [
+    "4:45",
+    "",
+    "Robot learning & evaluation with VLAs — Kiran Bhattacharyya"
+   ],
+   [
+    "5:00",
+    "5:20",
+    "Talk 5 — Autonomous Robotic Surgery: From Teleoperation to Learning Systems Axel Krieger, PhD · Johns Hopkins University"
+   ],
+   [
+    "5:20",
+    "5:30",
+    "Audience Q&A from the participant questions doc Kiran Bhattacharyya (mod.)"
+   ],
+   [
+    "5:30",
+    "5:55",
+    "Panel — the right next task, dataset, and eval for surgical autonomy Speakers + organizers"
+   ],
+   [
+    "5:55",
+    "6:00",
+    "Closing & take-home links Kiran Bhattacharyya · All times Central Time (CT). The 3:30–4:00 break is the conference-wide afternoon coffee break."
+   ]
+  ],
+  "speakers": [],
+  "people": {
+   "Axel Krieger": "spk"
+  },
+  "note": ""
+ },
+ {
+  "title": "Spatial Intelligence and Structured Reasoning for Embodied Navigation (SISREN)",
+  "url": "https://sisren-embodied-nav.github.io",
+  "slot": "pm",
+  "venue": "JW Marriott",
+  "room": "Room 306",
+  "items": [
+   [
+    "2:00",
+    "2:05 PM",
+    "Opening remarks 5 min · Workshop vision and overview of challenges C1 – C6"
+   ],
+   [
+    "2:05",
+    "3:05 PM",
+    "Invited talk block I 60 min · 25 min talk + 5 min Q&A each · Dinesh Manocha — “Beyond Pixels and Prompts: Scaling Physical, Social, and Adversarial Safety in Vision-Language-Action Navigation”"
+   ],
+   [
+    "3:05",
+    "3:35 PM",
+    "Contributed spotlight session 30 min · 5 min each · MoMa-NMP: Scene-Scale Neural Motion Planning for Mobile Manipulators"
+   ],
+   [
+    "3:35",
+    "4:00 PM",
+    "Afternoon coffee break & poster session 25 min · Refreshments, poster presentations, live demos, and informal discussion."
+   ],
+   [
+    "4:00",
+    "4:20 PM",
+    "Breakout discussion 20 min · Participants self-select into challenge groups — A: C1 · B: C2 C3 · C: C4 · D: C5 C6 . Each group produces a short summary for the panel."
+   ],
+   [
+    "4:20",
+    "5:20 PM",
+    "Invited talk block II 60 min · 25 min talk + 5 min Q&A each · Lu Gan — “Open-Vocabulary, Embodiment-Aware Maps for Navigation in the Wild”"
+   ],
+   [
+    "5:20",
+    "5:50 PM",
+    "Panel discussion & open Q&A 30 min · Moderated discussion with all invited speakers; synthesis of breakout findings across C1 – C6"
+   ],
+   [
+    "5:50",
+    "6:00 PM",
+    "Awards and closing 10 min · Awards, wrap-up, networking, and identification of key open problems."
+   ]
+  ],
+  "speakers": [
+   [
+    "Lu Gan",
+    "Assistant Professor of Aerospace Engineering"
+   ],
+   [
+    "Jason Liu",
+    "Postdoctoral Fellow, Computer Science"
+   ],
+   [
+    "Dinesh Manocha",
+    "Distinguished Professor of Computer Science"
+   ],
+   [
+    "Bolei Zhou",
+    "Associate Professor of Computer Science"
+   ]
+  ],
+  "people": {
+   "Dinesh Manocha": "spk",
+   "Bolei Zhou": "spk",
+   "Joydeep Biswas": "paper",
+   "Cong Liu": "paper",
+   "Neel P. Bhatt": "org",
+   "Sandeep P. Chinchali": "paper",
+   "Seoyoung Lee": "paper",
+   "Zhangyang Wang": "paper",
+   "Hao Zhang": "paper",
+   "John G. Rogers III": "paper",
+   "Maggie Wigness": "paper",
+   "Qianhuang Li": "paper",
+   "Zihao Deng": "paper",
+   "Jonas Frey": "paper",
+   "Manthan Patel": "paper",
+   "Ye Zhao": "paper",
+   "Harish Ravichandar": "paper",
+   "Zsolt Kira": "paper",
+   "Albert Wilcox": "paper",
+   "Animesh Garg": "paper",
+   "Marc Pollefeys": "paper",
+   "Oier Mees": "paper",
+   "Sebastian Scherer": "paper",
+   "Wenshan Wang": "paper",
+   "Cesar Cadena": "paper",
+   "Marco Hutter": "paper",
+   "Benedict Flade": "paper",
+   "Devendra Singh Dhami": "paper",
+   "Felix Divo": "paper",
+   "Julian Eggert": "paper",
+   "Kristian Kersting": "paper",
+   "Simon Kohaut": "paper",
+   "Jiachen Li": "paper",
+   "Jianpeng Yao": "paper",
+   "Jiaqi Li": "paper",
+   "Jinfeng Wang": "paper",
+   "Jinkyoo Park": "paper",
+   "Kanghoon Lee": "paper",
+   "Yiping Li": "paper",
+   "Yuping Wang": "paper",
+   "Zehao Wang": "paper",
+   "Zhaowei Tan": "paper",
+   "Zhixu Li": "paper",
+   "Junwoon Lee": "paper",
+   "Yulun Tian": "paper",
+   "Antonio Loquercio": "paper",
+   "Yizhou Wang": "paper",
+   "Nikolay Atanasov": "paper",
+   "Behrad Rabiei": "paper",
+   "Jiajun Wu": "paper",
+   "Katherine Liu": "paper",
+   "Sergey Zakharov": "paper",
+   "Stephen Tian": "paper",
+   "Vitor Campagnolo Guizilini": "paper",
+   "Jing Zhang": "paper",
+   "Ludovic Righetti": "paper",
+   "Rooholla Khorrambakht": "paper",
+   "Anuva Banwasi": "paper",
+   "Cherie Ho": "paper",
+   "Jeannette Bohg": "paper",
+   "Linfeng Zhao": "paper",
+   "Priya Sundaresan": "paper",
+   "William Muckelroy III": "paper",
+   "Deepak Pathak": "paper",
+   "Jason Jingzhou Liu": "paper",
+   "Jiahui Yang": "paper",
+   "Kenneth Shaw": "paper",
+   "Dhruv Shah": "org",
+   "Lihan Zha": "paper",
+   "Rohan Siva": "paper",
+   "Yunhao Yang": "paper",
+   "Honglin He": "paper",
+   "Vivek Alumootil": "paper",
+   "Zhizheng Liu": "paper",
+   "Karl Van Wyk": "paper",
+   "Nathan D. Ratliff": "paper",
+   "Sam Mady": "paper",
+   "Soha Pouya": "paper",
+   "Dylan Zhou": "paper",
+   "Kenneth Llontop": "paper"
+  },
+  "note": ""
+ },
+ {
+  "title": "Beyond Binary Success: Diagnosing Fine-Grained Capabilities in Robot Manipulation",
+  "url": "https://robofinemani2026.github.io/",
+  "slot": "pm",
+  "venue": "Hilton",
+  "room": "Room 410",
+  "items": [],
+  "speakers": [],
+  "people": {},
+  "note": "No timed agenda on the workshop site yet."
+ },
+ {
+  "title": "Open Problems in Contact-Rich Loco-Manipulation",
+  "url": "https://contact-rich-loco-manipulation.github.io",
+  "slot": "pm",
+  "venue": "JW Marriott",
+  "room": "Room 205",
+  "items": [
+   [
+    "2:00",
+    "2:10 PM",
+    "10 min · Welcome and opening talk"
+   ],
+   [
+    "2:10",
+    "2:35 PM",
+    "25 min · Invited Talk 1: Alan Fern"
+   ],
+   [
+    "2:35",
+    "3:00 PM",
+    "25 min · Invited Talk 2: Pulkit Agrawal"
+   ],
+   [
+    "3:00",
+    "3:20 PM",
+    "20 min · Student Speakers"
+   ],
+   [
+    "3:00",
+    "3:05 PM",
+    "5 min · 1"
+   ],
+   [
+    "3:05",
+    "3:10 PM",
+    "5 min · 2"
+   ],
+   [
+    "3:10",
+    "3:15 PM",
+    "5 min · 3"
+   ],
+   [
+    "3:15",
+    "3:20 PM",
+    "5 min · 4"
+   ],
+   [
+    "3:20",
+    "3:30 PM",
+    "10 min · Open-problem prompts and poster orientation"
+   ],
+   [
+    "3:30",
+    "4:00 PM",
+    "30 min · Conference coffee break and poster session"
+   ],
+   [
+    "4:00",
+    "4:25 PM",
+    "25 min · Invited Talk 3: Emo Todorov"
+   ],
+   [
+    "4:25",
+    "4:50 PM",
+    "25 min · Invited Talk 4: Tao Pang"
+   ],
+   [
+    "4:50",
+    "5:20 PM",
+    "30 min · Interactive open-problem and audience discussion"
+   ],
+   [
+    "5:20",
+    "5:50 PM",
+    "30 min · Panel: Open Problems in Contact-Rich Loco-Manipulation"
+   ],
+   [
+    "5:50",
+    "6:00 PM",
+    "10 min · Awards and closing"
+   ]
+  ],
+  "speakers": [
+   [
+    "Alan Fern",
+    "Oregon State University"
+   ],
+   [
+    "Tao Pang",
+    "Robotics and AI Institute"
+   ],
+   [
+    "Pulkit Agrawal",
+    "MIT"
+   ],
+   [
+    "Emo Todorov",
+    "University of Washington and Roboti"
+   ],
+   [
+    "Xiaomeng Xu",
+    "PanTact: Teaching Whole-Body Dexterity with a Wearable Contact Interface"
+   ],
+   [
+    "An Thanh Dang",
+    "HULK: Learning Whole-Body Forceful Loco-Manipulation for Humanoids"
+   ],
+   [
+    "Seungho Yeom",
+    "Dataset-Free Compliant Humanoid Loco-Manipulation with Dynamic Online Posture"
+   ],
+   [
+    "Songbo Hu",
+    ""
+   ]
+  ],
+  "people": {
+   "Alan Fern": "spk",
+   "Pulkit Agrawal": "spk",
+   "Xiaomeng Xu": "spk",
+   "Aaron M. Johnson": "paper",
+   "Majid Khadiv": "paper",
+   "Michal Ciebielski": "paper",
+   "Shafeef Omar": "paper",
+   "Guanya Shi": "paper",
+   "Jiaman Li": "paper",
+   "Karen Liu": "paper",
+   "Shibo Zhao": "paper",
+   "Sirui Chen": "paper",
+   "Zhen Wu": "paper",
+   "Siheng Zhao": "paper",
+   "Yue Wang": "paper",
+   "Liu Cao": "paper",
+   "Mengdi Xu": "paper",
+   "Ruoqu Chen": "paper",
+   "Yanchao Yang": "paper",
+   "Zihao Wang": "paper",
+   "Botian Xu": "paper",
+   "Jingzhi Cui": "paper",
+   "Boyuan Chen": "paper",
+   "Zhenyu Wu": "paper",
+   "Sethu Vijayakumar": "paper",
+   "Conor Mc Gartoll": "paper",
+   "Nima Fazeli": "paper",
+   "Danfei Xu": "paper",
+   "Jaehwi Jang": "paper",
+   "Ye Zhao": "paper",
+   "Zsolt Kira": "paper",
+   "MARCELO BECKER": "paper",
+   "Jan Peters": "paper",
+   "Puze Liu": "paper",
+   "Kushal Kedia": "paper",
+   "Ding Zhao": "paper",
+   "Hao Zhang": "paper",
+   "Lingfeng Sun": "paper",
+   "John Marangola": "paper",
+   "Khai Nguyen": "paper",
+   "Nolan Fey": "paper",
+   "Jason Ren": "paper",
+   "Jiafei Duan": "paper",
+   "Ranjay Krishna": "paper",
+   "Weikai Huang": "paper",
+   "S. Shankar Sastry": "paper",
+   "Carmelo Sferrazza": "paper",
+   "Han Zhang": "paper",
+   "Shuran Song": "paper",
+   "Xiaofeng Guo": "paper",
+   "Kevin Zakka": "paper",
+   "Koushil Sreenath": "paper",
+   "Pieter Abbeel": "paper",
+   "Qiayuan Liao": "paper",
+   "Aditi Oak": "paper",
+   "Allison Okamura": "paper",
+   "William E. Heap": "paper",
+   "Yimeng Qin": "paper",
+   "Junjie Ye": "paper",
+   "Sergey Zakharov": "paper",
+   "Vitor Campagnolo Guizilini": "paper",
+   "Dong-Ki Kim": "paper",
+   "Jay Patrikar": "paper",
+   "Sebastian Scherer": "paper",
+   "Shayegan Omidshafiei": "paper",
+   "Stella X. Yu": "paper",
+   "Abhishek Gupta": "paper",
+   "Natasha Jaques": "paper",
+   "Sriyash Poddar": "paper",
+   "Sebastian Sanokowski": "paper"
+  },
+  "note": ""
+ },
+ {
+  "title": "Sim-to-Real-to-Field (SRF): The Science of Transfer",
+  "url": "https://sim2real2field-corl26.github.io/",
+  "slot": "pm",
+  "venue": "Hilton",
+  "room": "Salon E",
+  "items": [
+   [
+    "1:25",
+    "",
+    "Poster session & coffee; cross-domain matchmaking; mentoring corner"
+   ],
+   [
+    "2:05",
+    "",
+    "Breakouts on Q1–Q3 (mixed-domain) → report-back"
+   ],
+   [
+    "2:50",
+    "",
+    "Fishbowl panel: what predicts transfer — scale, metrics, or structure?"
+   ],
+   [
+    "3:35",
+    "",
+    "Closing & community next steps"
+   ]
+  ],
+  "speakers": [
+   [
+    "Claire Tomlin",
+    ""
+   ],
+   [
+    "Amy Zhang",
+    "Michael Lutter Boston Dynamics — Atlas Dexterous Manipulation"
+   ],
+   [
+    "Zhongyu Li",
+    ""
+   ]
+  ],
+  "people": {
+   "Zhongyu Li": "spk",
+   "Claire Tomlin": "spk",
+   "Jonas Frey": "org",
+   "Rosario Scalise": "org",
+   "Bike Zhang": "org",
+   "Arjun Krishna": "org",
+   "Dinesh Jayaraman": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "From Human Videos to Dexterous Robot Capability: A Hands-on Tutorial",
+  "url": "https://aanwar-nv.github.io/v2d-tutorial.github.io/",
+  "slot": "pm",
+  "venue": "Hilton",
+  "room": "Salon D",
+  "items": [
+   [
+    "2:00 PM",
+    "2:05 PM",
+    "Setup and pipeline map"
+   ],
+   [
+    "2:05 PM",
+    "2:20 PM",
+    "Exercise 1: make a video queryable"
+   ],
+   [
+    "2:20 PM",
+    "2:35 PM",
+    "Exercise 2: reconstruct a human demonstration"
+   ],
+   [
+    "2:35 PM",
+    "2:50 PM",
+    "Exercise 3: convert reconstruction results to robot tasks"
+   ],
+   [
+    "2:50 PM",
+    "3:05 PM",
+    "Exercise 4: train or evaluate a dexterity task in Isaac Lab"
+   ],
+   [
+    "3:05 PM",
+    "3:20 PM",
+    "Exercise 5: leverage an AI agent"
+   ],
+   [
+    "3:20 PM",
+    "3:25 PM",
+    "Guided extension: failure diagnosis and bring-your-own-data"
+   ],
+   [
+    "3:25 PM",
+    "3:30 PM",
+    "Wrap-up and feedback"
+   ],
+   [
+    "3:30 PM",
+    "4:00 PM",
+    "Poster session and coffee break"
+   ],
+   [
+    "4:00 PM",
+    "5:00 PM",
+    "Panel discussion: future of learning from human videos"
+   ],
+   [
+    "5:00 PM",
+    "6:00 PM",
+    "Video to Data Challenge: winner announcement and top-team presentations · Instructors"
+   ]
+  ],
+  "speakers": [],
+  "people": {
+   "Yan Chang": "spk",
+   "Xinghao Zhu": "spk",
+   "Bowen Wen": "spk",
+   "Shalin Jain": "spk",
+   "John Welsh": "org",
+   "Naema Bhatti": "org",
+   "Kuan Fang": "org",
+   "Joydeep Biswas": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "\"Oops, I Erred\" — Collecting, Curating and Using Imperfect Data for Realistic Scenarios",
+  "url": "http://workshop.oopsie-data.com/",
+  "slot": "pm",
+  "venue": "JW Marriott",
+  "room": "Room 305",
+  "items": [
+   [
+    "12:30",
+    "12:45",
+    "Opening Remarks"
+   ],
+   [
+    "12:45",
+    "1:30 PM",
+    "Keynote Address · Andrea Bajcsy & student"
+   ],
+   [
+    "1:30 PM",
+    "2:30 PM",
+    "Community Collaboration Session · Community"
+   ],
+   [
+    "2:30 PM",
+    "4:00 PM",
+    "Coffee Break & Poster Session · Community"
+   ],
+   [
+    "4:00 PM",
+    "5:00 PM",
+    "Panel: \"What is good data for physical AI? How do we obtain it, process it, and use it?\" · Pepijn Kooijmans , Karl Pertsch , Sonia Chernova"
+   ],
+   [
+    "5:00 PM",
+    "5:30 PM",
+    "Closing Remarks & Awards"
+   ]
+  ],
+  "speakers": [
+   [
+    "Andrea Bajcsy",
+    "Carnegie Mellon University"
+   ],
+   [
+    "Pepijn Kooijmans",
+    "HuggingFace"
+   ],
+   [
+    "Karl Pertsch",
+    "Physical Intelligence"
+   ],
+   [
+    "Sonia Chernova",
+    "Georgia Tech"
+   ]
+  ],
+  "people": {
+   "Roberto Martín-Martín": "org",
+   "Peter Stone": "org",
+   "Sergey Levine": "org",
+   "Andrea Bajcsy": "spk",
+   "Karl Pertsch": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "Bringing Physics Simulation and World Models Together for Robotic Manipulation",
+  "url": "https://corl26ws-physwm.github.io",
+  "slot": "pm",
+  "venue": "JW Marriott",
+  "room": "Brazos",
+  "items": [
+   [
+    "12:50",
+    "1:00",
+    "Opening Remarks"
+   ],
+   [
+    "1:00",
+    "1:30",
+    "Tom Erez: TBD"
+   ],
+   [
+    "1:30",
+    "2:00",
+    "Erwin Coumans: TBD"
+   ],
+   [
+    "2:00",
+    "2:30",
+    "Yunzhu Li: TBD"
+   ],
+   [
+    "2:30",
+    "3:00",
+    "Yann LeCun: Enabling the next AI revolution"
+   ],
+   [
+    "3:00",
+    "4:00",
+    "Panel Discussion with Live Q&A: · Tom Erez, Erwin Coumans, Yunzhu Li, Yann LeCun, Sherry Yang, and Lucy Shi"
+   ],
+   [
+    "4:00",
+    "4:30",
+    "Oral Paper Presentations · SceneRig: An Agentic System for Simulation-Ready 3D Scene Reconstruction from Single Images"
+   ],
+   [
+    "4:30",
+    "5:20",
+    "Coffee Break; Poster and Demo Session"
+   ],
+   [
+    "5:20",
+    "5:30",
+    "Awards and Closing Remarks"
+   ]
+  ],
+  "speakers": [
+   [
+    "Tom Erez",
+    "Google DeepMind"
+   ],
+   [
+    "Erwin Coumans",
+    "NVIDIA"
+   ],
+   [
+    "Yann LeCun",
+    "New York University"
+   ],
+   [
+    "Yunzhu Li",
+    "Columbia University"
+   ],
+   [
+    "Lucy Shi",
+    "Stanford University"
+   ],
+   [
+    "Sherry Yang",
+    "New York University"
+   ]
+  ],
+  "people": {
+   "Erwin Coumans": "spk",
+   "Yann LeCun": "spk",
+   "Yunzhu Li": "spk",
+   "Yixuan Wang": "org",
+   "Kaifeng Zhang": "org",
+   "Elie Aljalbout": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "The UMI Olympics: From Handheld Devices to Real-World Policies",
+  "url": "https://umi-olympics.airoa.io/",
+  "slot": "pm",
+  "venue": "JW Marriott",
+  "room": "Rooms 303–304",
+  "items": [
+   [
+    "14:00",
+    "14:05",
+    "Opening remarks Organizers"
+   ],
+   [
+    "14:05",
+    "14:30",
+    "Invited talk Shuran Song"
+   ],
+   [
+    "14:30",
+    "14:55",
+    "Invited talk Andy Zeng"
+   ],
+   [
+    "14:55",
+    "15:20",
+    "Spotlight talks Contributed papers"
+   ],
+   [
+    "15:20",
+    "15:30",
+    "Device pitches Every exhibitor (~1 min each), before the vote opens"
+   ],
+   [
+    "15:30",
+    "16:00",
+    "Coffee break Device exhibition & posters open; viewing and voting"
+   ],
+   [
+    "16:00",
+    "16:50",
+    "Poster session + live demo Winning-team live robot demo; voting continues"
+   ],
+   [
+    "16:50",
+    "17:05",
+    "Device lightning talks Top-3 most-voted devices (5 min each)"
+   ],
+   [
+    "17:05",
+    "17:30",
+    "Invited talk Hao-Shu Fang"
+   ],
+   [
+    "17:30",
+    "17:55",
+    "Invited talk Yang Gao (remote)"
+   ],
+   [
+    "17:55",
+    "18:00",
+    "Awards + closing Best Policy / Device / Paper"
+   ]
+  ],
+  "speakers": [
+   [
+    "Shuran Song",
+    "Stanford University"
+   ],
+   [
+    "Andy Zeng",
+    "Generalist Robotics"
+   ],
+   [
+    "Hao-Shu Fang",
+    "MIT CSAIL"
+   ],
+   [
+    "Yang Gao",
+    "Tsinghua University (IIIS"
+   ]
+  ],
+  "people": {
+   "Shuran Song": "spk",
+   "Yang Gao": "spk",
+   "Kei Ota": "org",
+   "Yuki Noguchi": "org",
+   "Yifan Hou": "org",
+   "Omar Rayyan": "org",
+   "Mengda Xu": "org",
+   "Tatsuya Matsushima": "org",
+   "Yunzhu Li": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "Workshop on Agentic Robotics",
+  "url": "https://agentic-robotics-workshop.github.io/",
+  "slot": "pm",
+  "venue": "JW Marriott",
+  "room": "Rooms 203–204",
+  "items": [
+   [
+    "14:00",
+    "14:05",
+    "Opening remarks"
+   ],
+   [
+    "14:05",
+    "14:25",
+    "Invited talk · 20 minutes · Ran Zhang"
+   ],
+   [
+    "14:25",
+    "14:45",
+    "Invited talk · 20 minutes · Guanya Shi"
+   ],
+   [
+    "14:45",
+    "15:05",
+    "Invited talk · 20 minutes · Ken Goldberg"
+   ],
+   [
+    "15:05",
+    "15:25",
+    "Invited talk · 20 minutes · Wentao Yuan"
+   ],
+   [
+    "15:25",
+    "15:45",
+    "Invited talk · 20 minutes · Jonathan Tremblay"
+   ],
+   [
+    "15:45",
+    "16:05",
+    "Invited talk · 20 minutes · Tianyu Li"
+   ],
+   [
+    "16:05",
+    "16:15",
+    "Coffee break"
+   ],
+   [
+    "16:15",
+    "17:55",
+    "Live demo & poster session"
+   ],
+   [
+    "17:55",
+    "18:00",
+    "Closing remarks & award ceremony"
+   ]
+  ],
+  "speakers": [],
+  "people": {
+   "Guanya Shi": "spk",
+   "Ken Goldberg": "spk",
+   "Jonathan Tremblay": "spk",
+   "Tianyu Li": "spk",
+   "Haoru Xue": "org",
+   "Wenli Xiao": "org",
+   "Lingfeng Sun": "org",
+   "Jiayuan Mao": "org",
+   "Siyi Chen": "org",
+   "Zi Wang": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "Efficient Foundation Models for Real-Time Embodied AI",
+  "url": "http://efficient-embodied-ai.github.io",
+  "slot": "pm",
+  "venue": "Hilton",
+  "room": "Room 408",
+  "items": [
+   [
+    "14:00",
+    "",
+    "Opening, framing, and live profiling Organizers frame the generality, speed, and deployability trilemma, then profile vanilla OpenVLA on a Jetson on stage, narrating memory and kernel bottlenecks"
+   ],
+   [
+    "14:15",
+    "",
+    "Invited talk 30 minutes including questions"
+   ],
+   [
+    "14:45",
+    "",
+    "Invited talk 30 minutes including questions"
+   ],
+   [
+    "15:15",
+    "",
+    "Lightning talks Five contributed papers, selected for method diversity"
+   ],
+   [
+    "15:35",
+    "",
+    "Afternoon break and posters All accepted papers; live demos welcome"
+   ],
+   [
+    "16:00",
+    "",
+    "Invited talk 30 minutes including questions"
+   ],
+   [
+    "16:30",
+    "",
+    "Invited talk 30 minutes including questions"
+   ],
+   [
+    "17:00",
+    "",
+    "Panel, topic to be announced Moderated, seating invited speakers and guests, with an audience vote before and after"
+   ],
+   [
+    "17:45",
+    "",
+    "Synthesis: roadmap working session Organizer-facilitated, feeding the post-workshop report"
+   ],
+   [
+    "17:55",
+    "",
+    "Best paper and closing"
+   ]
+  ],
+  "speakers": [
+   [
+    "Jiajun Wu",
+    "Stanford University"
+   ],
+   [
+    "Dhruv Shah",
+    "Princeton University and Google DeepMind"
+   ],
+   [
+    "Ouais Alsharif",
+    "Google DeepMind"
+   ],
+   [
+    "Kaifeng Zhang",
+    "Sharpa"
+   ]
+  ],
+  "people": {
+   "Jiajun Wu": "spk",
+   "Dhruv Shah": "spk",
+   "Kaifeng Zhang": "spk",
+   "Changliu Liu": "org",
+   "Zhuoyang Zhang": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "Pretrain to Adapt: What Makes a Pretrained Policy Adaptable?",
+  "url": "https://corl2026-robotcl.github.io/",
+  "slot": "pm",
+  "venue": "JW Marriott",
+  "room": "Rooms 301–302",
+  "items": [
+   [
+    "2:00",
+    "2:05 PM",
+    "Welcome · Opening Remarks"
+   ],
+   [
+    "2:05",
+    "2:30 PM",
+    "Invited Talk 1 · Karl Pertsch"
+   ],
+   [
+    "2:30",
+    "2:55 PM",
+    "Invited Talk 2 · Sherry Yang"
+   ],
+   [
+    "2:55",
+    "3:30 PM",
+    "Oral Talks · Contributed Oral Talks"
+   ],
+   [
+    "2:55",
+    "",
+    "CrossBFM: Distilling a Shared Latent Behavior Space Across Humanoid Embodiments"
+   ],
+   [
+    "3:02",
+    "",
+    "OmniTacTune: Policy-Agnostic Real-World RL for Tactile Residual Adaptation of Visual Policies"
+   ],
+   [
+    "3:09",
+    "",
+    "Beyond Validation Loss: Coverage and Reliability Dynamics in Robot Policy Pretraining"
+   ],
+   [
+    "3:16",
+    "",
+    "Multisensory Continual Learning: Adapting Pretrained Visuomotor Policies to Force"
+   ],
+   [
+    "3:23",
+    "",
+    "Bi-Lipschitz-Regularized Pretraining for Efficient Policy Finetuning"
+   ],
+   [
+    "3:30",
+    "4:15 PM",
+    "Break & Posters · Coffee Break + Poster Session"
+   ],
+   [
+    "4:15",
+    "4:40 PM",
+    "Invited Talk 3 · Siddharth Karamcheti"
+   ],
+   [
+    "4:40",
+    "5:05 PM",
+    "Invited Talk 4 · Jesse Zhang"
+   ],
+   [
+    "5:05",
+    "5:55 PM",
+    "Panel · Panel Discussion"
+   ],
+   [
+    "5:55",
+    "6:00 PM",
+    "Closing · Closing Remarks"
+   ]
+  ],
+  "speakers": [
+   [
+    "Karl Pertsch",
+    "Physical Intelligence"
+   ],
+   [
+    "Sherry Yang",
+    "Asst. Professor, NYU"
+   ],
+   [
+    "Jesse Zhang",
+    "Postdoc, University of Washington"
+   ],
+   [
+    "Siddharth Karamcheti",
+    "Asst. Professor, Georgia Tech"
+   ],
+   [
+    "Felix Yanwei Wang",
+    "Generalist AI"
+   ],
+   [
+    "Mengdi Xu",
+    "Asst. Professor, Tsinghua University"
+   ]
+  ],
+  "people": {
+   "Karl Pertsch": "spk",
+   "Siddharth Karamcheti": "spk",
+   "Mengdi Xu": "spk",
+   "Yilin Wu": "org",
+   "Zhanyi Sun": "org",
+   "Nicklas Hansen": "org",
+   "Andrew Wagenmaker": "org",
+   "Andrea Bajcsy": "org"
+  },
+  "note": ""
+ },
+ {
+  "title": "The action gap: large generative models (video, image, 3D) learn rich knowledge",
+  "url": "https://actiongapworkshop.github.io/",
+  "slot": "pm",
+  "venue": "JW Marriott",
+  "room": "Room 208",
+  "items": [
+   [
+    "14:00",
+    "14:10",
+    "Opening · Opening remarks"
+   ],
+   [
+    "14:10",
+    "14:35",
+    "Talk · Invited talk 1"
+   ],
+   [
+    "14:40",
+    "15:05",
+    "Talk · Invited talk 2"
+   ],
+   [
+    "15:10",
+    "15:30",
+    "Orals · Best paper award & presentation"
+   ],
+   [
+    "15:30",
+    "16:00",
+    "Discussion · Coffee break & Poster session"
+   ],
+   [
+    "16:00",
+    "16:25",
+    "Break · Invited talk 3"
+   ],
+   [
+    "16:30",
+    "16:55",
+    "Talk · Invited talk 4"
+   ],
+   [
+    "17:00",
+    "17:45",
+    "Talk · Oral paper presentations"
+   ],
+   [
+    "17:45",
+    "18:00",
+    "Orals · Jenga Challenge awards"
+   ]
+  ],
+  "speakers": [
+   [
+    "Yilun Du",
+    "Harvard University"
+   ],
+   [
+    "Furong Huang",
+    "University of Maryland"
+   ],
+   [
+    "Amir Bar",
+    "Imperial College London"
+   ]
+  ],
+  "people": {
+   "Yilun Du": "spk",
+   "Furong Huang": "spk",
+   "Amir Bar": "spk",
+   "Xinyi Xu": "org",
+   "Kevin Zhang": "org",
+   "Xiaowei Chi": "org",
+   "Siyuan Wang": "org",
+   "Jiayuan Mao": "org",
+   "Jonathan Tremblay": "org",
+   "Valts Blukis": "org"
+  },
+  "note": ""
+ }
+]

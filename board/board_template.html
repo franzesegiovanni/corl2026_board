@@ -1,0 +1,1643 @@
+<title>CoRL 2026 Board</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: a conference field guide. Sticky tab + filter rail on top, then a time-rail schedule
+   (time column | session card), side drawer for paper detail. Cool slate paper, Austin burnt-orange
+   for "liked", ink blue for "flagged", a single blue ramp for magnitude. */
+:root{
+  --bg:#f3f5f7; --surface:#ffffff; --sunk:#e8ecf0; --ink:#14212d; --ink-2:#465564; --ink-3:#6f7d8a;
+  --line:#d3dae1; --line-2:#e3e8ed;
+  --accent:#b85300; --accent-soft:#f8e7d8; --accent-ink:#ffffff;
+  --flag:#2458a8; --flag-soft:#e0e9f7;
+  --series:#2a78d6; --edge:#b9c3cd; --node:#8996a3;
+  --h0:#cde2fb; --h1:#9ec5f4; --h2:#6da7ec; --h3:#3987e5; --h4:#256abf; --h5:#184f95;
+  --hi-lo:#14212d; --hi-hi:#ffffff;
+  --shadow:0 18px 48px rgba(20,33,45,.18);
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f151b; --surface:#172029; --sunk:#202b36; --ink:#e5ebf1; --ink-2:#b2bfcb; --ink-3:#8795a3;
+  --line:#2d3a47; --line-2:#24303c;
+  --accent:#ef8a3c; --accent-soft:#3a2617; --accent-ink:#1a0e05;
+  --flag:#77a6ec; --flag-soft:#1d2c44;
+  --series:#3987e5; --edge:#3b4957; --node:#6d7c8a;
+  --h0:#1d3047; --h1:#184f95; --h2:#2a78d6; --h3:#5598e7; --h4:#86b6ef; --h5:#b7d3f6;
+  --hi-lo:#e5ebf1; --hi-hi:#0f151b;
+  --shadow:0 18px 48px rgba(0,0,0,.5);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0f151b; --surface:#172029; --sunk:#202b36; --ink:#e5ebf1; --ink-2:#b2bfcb; --ink-3:#8795a3;
+  --line:#2d3a47; --line-2:#24303c;
+  --accent:#ef8a3c; --accent-soft:#3a2617; --accent-ink:#1a0e05;
+  --flag:#77a6ec; --flag-soft:#1d2c44;
+  --series:#3987e5; --edge:#3b4957; --node:#6d7c8a;
+  --h0:#1d3047; --h1:#184f95; --h2:#2a78d6; --h3:#5598e7; --h4:#86b6ef; --h5:#b7d3f6;
+  --hi-lo:#e5ebf1; --hi-hi:#0f151b;
+  --shadow:0 18px 48px rgba(0,0,0,.5);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:150px}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--flag);outline-offset:2px;border-radius:4px}
+a{color:var(--flag)}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1180px;margin:0 auto}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;font-weight:700;letter-spacing:-.01em}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+
+/* masthead */
+.mast{background:var(--surface);border-bottom:1px solid var(--line-2)}
+.mast .wrap{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 24px;padding-block:22px 14px}
+.mast h1{font-size:34px;line-height:1.05}
+.mast h1 span{color:var(--accent)}
+.mast .strap{margin:6px 0 0;color:var(--ink-2);font-size:13.5px}
+.mast .byline{margin:5px 0 0;font-size:11.5px;letter-spacing:.02em;color:var(--ink-3)}
+.venues{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--ink-2)}
+.venues b{font-weight:600;color:var(--ink)}
+.sync{font-size:12px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
+.sync i{width:7px;height:7px;border-radius:50%;background:var(--ink-3);display:inline-block}
+.sync[data-s="cloud"] i{background:#0ca30c}
+.sync[data-s="saving"] i{background:var(--flag)}
+.sync[data-s="error"] i{background:#d03b3b}
+
+/* rail */
+.rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-top:6px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:9px 14px 11px;font-weight:600;font-size:14.5px;color:var(--ink-2);border-bottom:2px solid transparent;white-space:nowrap;text-decoration:none;display:flex;gap:7px;align-items:center}
+.tab:hover{color:var(--ink)}
+.tab[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tab .ct{font-family:var(--f-mono);font-size:11.5px;font-weight:500;background:var(--sunk);color:var(--ink-2);border-radius:99px;padding:1px 7px}
+.filters{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;padding-block:10px;border-top:1px solid var(--line-2)}
+.search{flex:1 1 260px;min-width:0;position:relative}
+.search input{width:100%;font:inherit;font-size:14.5px;padding:8px 12px 8px 34px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--ink-3);fill:none;stroke-width:2}
+select{font:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);max-width:100%}
+.chip{font-size:13px;padding:6px 11px;border:1px solid var(--line);border-radius:99px;color:var(--ink-2);display:inline-flex;gap:6px;align-items:center;white-space:nowrap;background:var(--surface)}
+.chip:hover{border-color:var(--ink-3);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.chip .mono{font-size:11.5px;opacity:.8}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chk{font-size:13px;color:var(--ink-2);display:inline-flex;gap:6px;align-items:center}
+.result{font-size:12.5px;color:var(--ink-3);margin-left:auto;white-space:nowrap}
+.linkbtn{font-size:13px;color:var(--flag);text-decoration:underline;text-underline-offset:2px}
+
+main{padding-block:22px 80px}
+
+/* day switcher */
+.days{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.day{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 14px;text-align:left;min-width:120px}
+.day b{display:block;font-family:var(--f-display);font-size:18px}
+.day span{font-size:12px;color:var(--ink-3)}
+.day[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.day .mk{font-family:var(--f-mono);font-size:11px;color:var(--accent)}
+
+.dayhead{display:flex;align-items:baseline;gap:12px;margin:30px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.dayhead h2{font-size:24px}
+.dayhead span{color:var(--ink-3);font-size:13px}
+
+/* time rail */
+.sess{display:grid;grid-template-columns:104px minmax(0,1fr);gap:16px;margin-bottom:18px}
+.when{padding-top:14px;text-align:right}
+.when time{display:block;font-family:var(--f-mono);font-size:17px;font-weight:500;font-variant-numeric:tabular-nums}
+.when span{font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
+.pill{display:inline-block;margin-top:6px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:99px;background:var(--accent);color:var(--accent-ink)}
+.pill.next{background:var(--sunk);color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--line-2);border-radius:12px;min-width:0}
+.card>header,.card>details>summary{padding:14px 16px 10px;display:block}
+.card .code{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.card .code b{color:var(--ink);font-weight:500}
+.card h3{font-size:18px;line-height:1.25;margin-top:3px}
+.card .meta{margin:4px 0 0;font-size:13px;color:var(--ink-2)}
+.sess.poster .card{border-color:var(--line)}
+details>summary{cursor:pointer;list-style:none}
+details>summary::-webkit-details-marker{display:none}
+summary .tog{font-size:12.5px;color:var(--flag);margin-top:6px;display:inline-block}
+details[open] summary .tog .closed,details:not([open]) summary .tog .opened{display:none}
+.room{display:flex;align-items:baseline;gap:10px;padding:10px 16px 6px;border-top:1px solid var(--line-2);background:var(--bg)}
+.room b{font-family:var(--f-display);font-size:14.5px}
+.room span{font-size:12px;color:var(--ink-3)}
+.note{font-size:13px;color:var(--ink-3);margin:2px 0 0}
+
+/* paper rows */
+.rows{border-top:1px solid var(--line-2)}
+.row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 12px;padding:10px 12px 10px 16px;border-bottom:1px solid var(--line-2);align-items:start}
+.rows>.row:last-child{border-bottom:0}
+.row.liked{background:linear-gradient(90deg,var(--accent-soft),transparent 70%)}
+.row .num{font-family:var(--f-mono);font-size:12.5px;font-variant-numeric:tabular-nums;color:var(--ink-2);min-width:3.4ch;text-align:right;padding-top:2px}
+.row.nonum{grid-template-columns:minmax(0,1fr) auto}
+.row h4{margin:0;font-size:15px;font-weight:600;line-height:1.35}
+.ttl{text-align:left;font-weight:600}
+.ttl:hover{color:var(--flag);text-decoration:underline;text-underline-offset:2px}
+.by{margin:3px 0 0;font-size:13px;color:var(--ink-2);line-height:1.5}
+.au{font-size:13px;color:var(--ink-2)}
+.au:hover{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+.au.hit{color:var(--ink);font-weight:600}
+.au.fav::after{content:"\2665";color:var(--accent);font-size:.85em;margin-left:3px}
+.namerow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.btn.like[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
+.btn.like[aria-pressed="true"] svg{fill:currentColor}
+.pnote{width:100%;max-width:640px;min-height:70px;font:inherit;font-size:14px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);resize:vertical;display:block}
+.pnote-l{font-size:13px;font-weight:600;display:block;margin:12px 0 6px}
+.favs{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;margin-bottom:26px}
+.fav-card{background:var(--surface);border:1px solid var(--line-2);border-radius:10px;padding:12px 14px;min-width:0}
+.fav-card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.fav-card b{font-family:var(--f-display);font-size:16px}
+.fav-card .sub{font-size:12.5px;color:var(--ink-2);margin:2px 0 0}
+.fav-card .where{display:block;margin-top:5px}
+.fav-card .pnote{min-height:54px;margin-top:8px;font-size:13.5px}
+.gnode.fav circle{stroke:var(--accent);stroke-width:3}
+.gnode.fav text{fill:var(--ink)}
+.more{color:var(--ink-3)}
+.tags{margin:6px 0 0;display:flex;flex-wrap:wrap;gap:5px 8px;align-items:center}
+.topic{font-size:12px;background:var(--sunk);color:var(--ink-2);padding:2px 8px;border-radius:5px}
+.topic:hover{color:var(--ink)}
+.badge{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:4px;border:1px solid var(--ink);white-space:nowrap}
+.badge.oral{background:var(--ink);color:var(--surface)}
+.badge.spot{color:var(--ink)}
+.where{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3)}
+.mynote{font-size:12.5px;color:var(--ink-2);font-style:italic;margin:5px 0 0}
+.acts{display:flex;gap:2px}
+.ic{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;color:var(--ink-3)}
+.ic:hover{background:var(--sunk);color:var(--ink)}
+.ic svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.ic.like[aria-pressed="true"]{color:var(--accent)}
+.ic.like[aria-pressed="true"] svg{fill:var(--accent)}
+.ic.flag[aria-pressed="true"]{color:var(--flag)}
+.ic.flag[aria-pressed="true"] svg{fill:var(--flag)}
+.empty{padding:28px 20px;text-align:center;color:var(--ink-2);background:var(--surface);border:1px dashed var(--line);border-radius:12px}
+.empty h3{font-size:19px;margin-bottom:6px;color:var(--ink)}
+.empty p{margin:6px auto;max-width:52ch}
+.btn{font-size:13.5px;font-weight:600;padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:var(--surface);display:inline-flex;gap:8px;align-items:center}
+.btn:hover{border-color:var(--ink-3)}
+.btn.primary{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+
+/* topics */
+.grid2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;align-items:start}
+.panel{background:var(--surface);border:1px solid var(--line-2);border-radius:12px;padding:16px 18px;min-width:0}
+.panel h2{font-size:19px}
+.panel .sub{font-size:13px;color:var(--ink-3);margin:3px 0 14px}
+.bars{display:grid;gap:3px}
+.bar{display:grid;grid-template-columns:minmax(120px,190px) minmax(0,1fr);gap:10px;align-items:center;padding:4px 6px;border-radius:6px;text-align:left}
+.bar:hover{background:var(--bg)}
+.bar[aria-pressed="true"]{background:var(--sunk)}
+.bar[aria-pressed="true"] .bl{font-weight:600;color:var(--ink)}
+.bl{font-size:13px;color:var(--ink-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bt{display:flex;align-items:center;gap:8px;min-width:0}
+.bf{height:12px;border-radius:0 4px 4px 0;background:var(--series);min-width:2px}
+.bv{font-family:var(--f-mono);font-size:12px;color:var(--ink);font-variant-numeric:tabular-nums}
+.bs{font-size:11.5px;color:var(--ink-3);white-space:nowrap}
+.heatwrap{overflow-x:auto}
+table.heat{border-collapse:separate;border-spacing:2px;width:100%;min-width:340px}
+.heat th{font-weight:500;font-size:12px;color:var(--ink-3);text-align:center;padding:4px 2px}
+.heat th.rl{text-align:left;color:var(--ink-2);font-size:13px;font-weight:400;white-space:nowrap;padding-right:8px}
+.heat th.rl button{text-align:left}
+.heat th.rl button:hover{color:var(--ink);text-decoration:underline}
+.heat th .mono{display:block;color:var(--ink);font-size:12px}
+.heat td{padding:0}
+.heat td button{width:100%;height:30px;border-radius:4px;font-family:var(--f-mono);font-size:12.5px;font-variant-numeric:tabular-nums}
+.heat td button:hover{outline:2px solid var(--ink);outline-offset:-2px}
+.hz{background:var(--bg);color:var(--ink-3)}
+.s0{background:var(--h0);color:var(--hi-lo)}.s1{background:var(--h1);color:var(--hi-lo)}.s2{background:var(--h2);color:var(--hi-lo)}
+.s3{background:var(--h3);color:var(--hi-hi)}.s4{background:var(--h4);color:var(--hi-hi)}.s5{background:var(--h5);color:var(--hi-hi)}
+:root[data-theme="dark"] .s3,:root[data-theme="dark"] .s4,:root[data-theme="dark"] .s5{color:var(--hi-hi)}
+.hleg{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;color:var(--ink-3)}
+.hleg i{width:22px;height:10px;border-radius:2px;display:inline-block}
+.listhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:28px 0 12px}
+.listhead h2{font-size:24px}
+.listhead span{color:var(--ink-3);font-size:13px}
+.group{margin-bottom:18px}
+
+/* people */
+.people{display:grid;grid-template-columns:300px minmax(0,1fr);gap:18px;align-items:start}
+.side{display:grid;gap:14px;min-width:0}
+.side .panel{padding:14px}
+.side h3{font-size:15px;margin-bottom:8px}
+.alist{display:grid;gap:1px}
+.arow{display:flex;justify-content:space-between;gap:10px;padding:6px 8px;border-radius:6px;text-align:left;font-size:13.5px;width:100%}
+.arow:hover{background:var(--bg)}
+.arow[aria-pressed="true"]{background:var(--sunk);font-weight:600}
+.arow .mono{font-size:12px;color:var(--ink-3)}
+.side input{width:100%;font:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.gtools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:8px}
+.graphbox{position:relative;border:1px solid var(--line-2);border-radius:10px;background:var(--bg);overflow:hidden}
+#graph{display:block;width:100%;height:520px;touch-action:none}
+.glegend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--ink-2);margin-top:8px}
+.glegend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.ghint{position:absolute;right:10px;bottom:8px;font-size:11.5px;color:var(--ink-3);pointer-events:none}
+.gnode{cursor:pointer}
+.gnode circle{stroke:var(--bg);stroke-width:2;fill:var(--node)}
+.gnode.mk circle{fill:var(--accent)}
+.gnode.sel circle{fill:var(--ink);stroke:var(--accent);stroke-width:3}
+.gnode text{font-size:11px;fill:var(--ink-2);paint-order:stroke;stroke:var(--bg);stroke-width:3px;stroke-linejoin:round;pointer-events:none}
+.gnode.sel text{fill:var(--ink);font-weight:600;font-size:12.5px}
+.gedge{stroke:var(--edge)}
+.dim{opacity:.18}
+.acard{margin-top:16px}
+.acard h2{font-size:26px}
+.astats{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--ink-2);margin:6px 0 10px}
+.co{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px}
+
+/* mine */
+.minehead{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-bottom:18px}
+.minehead h2{font-size:26px;margin-right:auto}
+.stat{font-family:var(--f-mono);font-size:13px;color:var(--ink-2)}
+.stat b{font-size:20px;color:var(--ink);font-weight:500;margin-right:3px}
+.copybox{width:100%;min-height:160px;font-family:var(--f-mono);font-size:12px;border:1px solid var(--line);border-radius:8px;padding:10px;background:var(--surface);color:var(--ink);margin-bottom:14px}
+.meet{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-bottom:26px}
+.person{background:var(--surface);border:1px solid var(--line-2);border-radius:10px;padding:12px 14px;text-align:left;display:block;width:100%}
+.person:hover{border-color:var(--ink-3)}
+.person b{font-family:var(--f-display);font-size:16px;display:block}
+.person span{font-size:12.5px;color:var(--ink-2);display:block;margin-top:2px}
+.person .where{display:block;margin-top:6px}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(10,16,22,.42);z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--surface);z-index:41;box-shadow:var(--shadow);overflow-y:auto;
+  padding:calc(18px + env(safe-area-inset-top,0px)) max(22px,env(safe-area-inset-right,0px)) calc(40px + env(safe-area-inset-bottom,0px)) 22px}
+.dclose{position:sticky;top:0;float:right;margin:-4px -8px 0 8px;background:var(--surface)}
+.drawer h2{font-size:24px;line-height:1.2;margin:8px 0 10px}
+.dauth{display:flex;flex-wrap:wrap;gap:4px 10px;margin-bottom:12px}
+.dauth .au{font-size:14px;color:var(--ink)}
+.dacts{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.dacts .btn[aria-pressed="true"].like{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.dacts .btn[aria-pressed="true"].flag{background:var(--flag);border-color:var(--flag);color:var(--surface)}
+.dacts svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
+.dacts .btn[aria-pressed="true"] svg{fill:currentColor}
+.slot{display:grid;grid-template-columns:86px minmax(0,1fr);gap:4px 12px;padding:10px 0;border-top:1px solid var(--line-2);font-size:14px}
+.slot .k{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);padding-top:2px}
+.slot b{font-weight:600}
+.slot span{color:var(--ink-2);display:block;font-size:13px}
+.big{font-family:var(--f-mono);font-size:22px;font-weight:500;color:var(--ink)}
+.drawer label{font-size:13px;font-weight:600;display:block;margin:16px 0 6px}
+.drawer textarea{width:100%;min-height:84px;font:inherit;font-size:14px;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);resize:vertical}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.links a{font-size:13.5px;font-weight:600;text-decoration:none;padding:7px 12px;border:1px solid var(--line);border-radius:8px;color:var(--ink)}
+.links a:hover{border-color:var(--ink-3)}
+.drawer h3{font-size:16px;margin:24px 0 6px}
+.drawer .rows{border:1px solid var(--line-2);border-radius:10px}
+
+/* photos */
+.ic.cam{position:relative;cursor:pointer}
+/* real file inputs laid over the photo buttons: tapping them opens the phone's camera / gallery natively */
+.filein{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:0;z-index:1}
+.ic.cam:focus-within,.thumb.add:focus-within{outline:2px solid var(--flag);outline-offset:2px}
+.thumb.add{position:relative;cursor:pointer}
+.ic.cam .n{position:absolute;right:1px;top:1px;font-family:var(--f-mono);font-size:10px;line-height:1;background:var(--ink);color:var(--surface);border-radius:99px;padding:2px 4px}
+.rowph{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}
+.thumb{width:56px;height:56px;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:var(--sunk);padding:0;flex:none}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.photos{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px}
+.photos .thumb{width:96px;height:96px;border-radius:8px}
+.thumb.add{display:grid;place-items:center;align-content:center;gap:4px;color:var(--ink-2);font-size:12px;border-style:dashed;background:var(--bg)}
+.thumb.add svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linejoin:round}
+.thumb.busy{display:grid;place-items:center;font-size:11.5px;color:var(--ink-3)}
+.lightbox{position:fixed;inset:0;z-index:80;background:#0b0f14;color:#eef2f6;display:flex;flex-direction:column}
+.lb-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:calc(10px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
+.lb-bar .t{margin-right:auto;font-size:13.5px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60ch}
+.lb-bar button{color:#eef2f6;border:1px solid #3a4652;border-radius:8px;padding:7px 12px;font-size:13.5px}
+.lb-bar button:hover{border-color:#8a99a8}
+.lb-bar button.danger{border-color:#d03b3b;color:#ffb4b4}
+.lb-img{flex:1;min-height:0;overflow:auto;display:flex;align-items:center;justify-content:center;padding:0 0 env(safe-area-inset-bottom,0px)}
+.lb-img img{max-width:100%;max-height:100%;object-fit:contain;cursor:zoom-in}
+.lb-img.full{display:block}
+.lb-img.full img{max-width:none;max-height:none;cursor:zoom-out}
+/* workshops */
+.wshead{margin-bottom:6px}
+.wshead h2{font-size:26px;margin-top:2px}
+.wshead .note{max-width:80ch}
+.wsf{border-top:0;padding-block:12px 4px}
+.wsgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:12px;align-items:start}
+.wagenda>summary::after{content:"Show agenda";margin-left:auto;font-weight:400;font-size:12.5px;color:var(--flag)}
+.wagenda[open]>summary::after{content:"Hide"}
+.ws>header{padding:14px 16px 12px}
+.ws.is-going{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.wtop{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.ws h3{font-size:17px;line-height:1.3;margin-top:6px}
+.ws h3 a{color:var(--ink);text-decoration:none}
+.ws h3 a:hover{color:var(--flag);text-decoration:underline;text-underline-offset:2px}
+.ext{color:var(--ink-3);font-weight:400;font-size:.85em}
+.wsp,.wfol{margin:8px 0 0;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+.wsp .eyebrow{margin-right:4px}
+.wsp .nm{color:var(--ink)}
+.wsp .au{font-size:13.5px;color:var(--ink)}
+.wfol{background:var(--accent-soft);border-radius:6px;padding:4px 8px}
+.wfol .role{color:var(--ink-3);font-size:12px}
+.wpeople{margin-top:8px;font-size:13px;color:var(--ink-2)}
+.wpeople summary{color:var(--flag);font-size:12.5px}
+.wpg{margin-top:6px;line-height:1.6}
+.wagenda{border-top:1px solid var(--line-2)}
+.wagenda>summary{padding:10px 16px;font-weight:600;font-size:13.5px;display:flex;justify-content:space-between;gap:8px}
+.wagenda>summary .mono{font-weight:400;font-size:12px;color:var(--ink-3)}
+.wagenda .note{padding:0 16px 12px}
+.agenda{list-style:none;margin:0;padding:0 16px 8px;display:grid;gap:0}
+.agenda li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;padding:6px 0;border-top:1px dashed var(--line-2);font-size:13.5px}
+.agenda .at{font-size:12px;color:var(--ink-2);padding-top:1px}
+.agenda .atx{min-width:0;overflow-wrap:anywhere}
+.agenda .au{font-size:13.5px;color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.wnote{padding:0 16px 14px}
+.chip.going[aria-pressed="true"],.btn.going[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.wlist .wrow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;border-top:1px solid var(--line-2)}
+.wlist .wrow:first-child{border-top:0}
+.wlist .wrow b{font-size:14.5px;font-weight:600}
+.wlist .wrow b a{color:var(--ink);text-decoration:none}
+.wlist .wrow .where{display:block;margin-top:3px}
+.day.thu{border-style:dashed}
+@media (max-width:900px){ .wsgrid{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:560px){ .agenda li{grid-template-columns:minmax(0,1fr);gap:2px} .wlist .wrow{flex-wrap:wrap} }
+/* My Thursday timeline */
+.tlhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:10px 20px;margin-bottom:12px}
+.tlhead h2{font-size:26px;margin-top:2px}
+.tlctl{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.tlctl .pill{margin:0}
+.tlctl input{font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.tlsub{font-size:15px;margin:6px 0 8px}
+.nowstrip{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-bottom:18px}
+.nowcard{background:var(--surface);border:1px solid var(--line-2);border-radius:10px;padding:10px 12px;min-width:0;display:grid;gap:5px;align-content:start}
+.nowcard.on{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
+.nwt{font-size:12.5px;color:var(--ink-3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nwx{font-size:14px;line-height:1.4}
+.nwx .au{font-size:14px;color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.nwx.muted{color:var(--ink-3)}
+.nwx b,.nwn b{font-weight:500;font-size:12px;color:var(--ink-2);margin-right:4px}
+.nwn{font-size:12.5px;color:var(--ink-2);border-top:1px dashed var(--line-2);padding-top:5px}
+.tlwrap{overflow:auto;max-height:78vh;border:1px solid var(--line);border-radius:12px;background:var(--surface);overscroll-behavior:contain}
+.tlgrid{display:grid;position:relative;min-width:min-content}
+.tlc{position:sticky;top:0;z-index:4;background:var(--surface);border-bottom:1px solid var(--line);padding:8px 10px;min-width:0}
+.tlcorner{left:0;z-index:5}
+.tlh{border-left:1px solid var(--line-2)}
+.tlht{font-family:var(--f-display);font-weight:700;font-size:13.5px;line-height:1.25;margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tlha{display:flex;gap:12px;margin-top:4px;font-size:12px}
+.tlha a{font-size:12px}
+.tlha .linkbtn{font-size:12px;color:var(--ink-3)}
+.tlaxis{position:sticky;left:0;z-index:3;background:var(--surface);border-right:1px solid var(--line-2)}
+.tlaxis span{position:absolute;right:6px;transform:translateY(-50%);font-family:var(--f-mono);font-size:11px;color:var(--ink-3);white-space:nowrap}
+.tlaxis span:first-child{transform:none}
+.tlaxis .nowlab{color:var(--accent-ink);background:var(--accent);border-radius:4px;padding:1px 4px;right:3px;z-index:2}
+.tlcol{position:relative;border-left:1px solid var(--line-2);background-image:linear-gradient(to bottom,var(--line-2) 1px,transparent 1px)}
+.tlsess{position:absolute;left:0;right:0;background:var(--bg);opacity:.6}
+.tlb{position:absolute;overflow:hidden;text-align:left;border-radius:6px;padding:3px 6px;font-size:12px;line-height:1.3;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:flex;flex-direction:column;gap:1px;z-index:1}
+.tlb:hover,.tlb:focus-visible{z-index:2;box-shadow:0 4px 14px rgba(0,0,0,.15);outline:2px solid var(--ink);outline-offset:0}
+.tlbm{font-size:10.5px;color:var(--ink-2)}
+.tlbt{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6}
+.tlb.short{flex-direction:row;align-items:baseline;gap:6px;padding:1px 6px;white-space:nowrap}
+.tlb.short .tlbt{display:block;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.tlb.tlk,.tlb-sw.tlk{background:var(--flag-soft);border-color:color-mix(in srgb,var(--flag) 35%,transparent)}
+.tlb.pan,.tlb-sw.pan{background:var(--accent-soft);border-color:color-mix(in srgb,var(--accent) 35%,transparent)}
+.tlb.pap,.tlb-sw.pap{background:var(--surface);border-color:var(--ink-3);border-style:dashed}
+.tlb.brk,.tlb-sw.brk{background:var(--sunk);border-color:var(--line);color:var(--ink-2)}
+.tlb.oth,.tlb-sw.oth{background:var(--surface);border-color:var(--line)}
+.tlb.on{outline:2px solid var(--accent);outline-offset:0;font-weight:600}
+.nowline{position:absolute;left:0;right:0;height:0;border-top:2px solid var(--accent);z-index:3;pointer-events:none}
+.tllegend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--ink-2);margin:10px 0}
+.tlb-sw{display:inline-block;width:14px;height:10px;border-radius:3px;border:1px solid;margin-right:5px;vertical-align:-1px}
+.tldetail{position:sticky;bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:6;background:var(--surface);border:1px solid var(--ink);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);max-width:720px}
+.tldetail .dclose{float:right;margin:-6px -6px 0 8px;position:static}
+.tldt{margin:6px 0;font-size:15px;line-height:1.45}
+.tldt .au{font-size:15px;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+@media (max-width:560px){ .tlwrap{max-height:70vh} }
+#tip{position:fixed;z-index:60;pointer-events:none;background:var(--ink);color:var(--surface);font-size:12.5px;padding:6px 9px;border-radius:6px;max-width:280px;line-height:1.35}
+#tip b{font-weight:600}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:9px 14px;border-radius:8px;font-size:13.5px;z-index:70}
+.foot{margin-top:40px;font-size:12.5px;color:var(--ink-3);max-width:80ch}
+
+@media (max-width:860px){
+  .grid2,.people{grid-template-columns:minmax(0,1fr)}
+  #graph{height:400px}
+}
+@media (max-width:560px){
+  html{scroll-padding-top:60px}
+  .rail{position:static}
+  .mast h1{font-size:27px}
+  .sess{grid-template-columns:minmax(0,1fr);gap:4px}
+  .when{text-align:left;padding-top:0;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+  .when time{display:inline}
+  .pill{margin-top:0}
+  .row{padding-left:10px;padding-right:6px;gap:4px 8px}
+  .row .acts{flex-direction:column}
+  .bar{grid-template-columns:minmax(0,1fr);gap:2px}
+  .slot{grid-template-columns:minmax(0,1fr)}
+  .result{margin-left:0}
+  .day{min-width:0;flex:1 1 0}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5.5 21V4.5"/><path d="M5.5 4.5h11.5l-2.6 4.2 2.6 4.3H5.5z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24"><path d="M3.5 8.5a2 2 0 0 1 2-2h2.2l1.6-2.2h5.4l1.6 2.2h2.2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.6"/></symbol>
+</svg>
+
+<header class="mast gut">
+  <div class="wrap">
+    <div>
+      <h1>CoRL <span>2026</span> Board</h1>
+      <p class="byline">Created by Giovanni Franzese, PhD</p>
+      <p class="strap"><span class="mono" id="m-count">687</span> accepted papers · Austin, Texas · November 9–11 · times in Austin time (CST)</p>
+    </div>
+    <div style="display:grid;gap:6px;justify-items:start">
+      <div class="venues"><span><b>Hilton Austin</b> orals &amp; spotlights</span><span><b>JW Marriott</b> posters</span></div>
+      <div class="sync" id="sync" data-s="local" role="status"><i></i><span>Likes saved in this browser</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="rail gut">
+  <div class="wrap">
+    <nav class="tabs" aria-label="Views">
+      <a class="tab" href="#schedule" data-view="schedule">Schedule</a>
+      <a class="tab" href="#workshops" data-view="workshops">Workshops <span class="ct">Thu</span></a>
+      <a class="tab" href="#thursday" data-view="thursday">My Thursday <span class="ct" id="going-ct">0</span></a>
+      <a class="tab" href="#topics" data-view="topics">Topics</a>
+      <a class="tab" href="#people" data-view="people">People</a>
+      <a class="tab" href="#mine" data-view="mine">My board <span class="ct" id="mine-ct">0</span></a>
+    </nav>
+    <div class="filters" id="filters">
+      <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search titles and authors" aria-label="Search titles and authors" autocomplete="off"></label>
+      <select id="topic" aria-label="Topic"></select>
+      <select id="loc" aria-label="Location"></select>
+      <label class="chk" id="sec-wrap" hidden><input type="checkbox" id="secondary"> include secondary matches</label>
+      <div class="chips" role="group" aria-label="Presentation type">
+        <button class="chip" id="t-O" data-type="O" aria-pressed="true">Oral <span class="mono"></span></button>
+        <button class="chip" id="t-S" data-type="S" aria-pressed="true">Spotlight <span class="mono"></span></button>
+        <button class="chip" id="t-P" data-type="P" aria-pressed="true">Poster only <span class="mono"></span></button>
+        <button class="chip" id="t-mine" aria-pressed="false"><svg width="13" height="13" viewBox="0 0 24 24" style="fill:currentColor"><use href="#i-heart"/></svg>/<svg width="13" height="13" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2"><use href="#i-flag"/></svg> only</button>
+      </div>
+      <span class="result" id="result" aria-live="polite"></span>
+      <button class="linkbtn" id="clear" hidden>Clear filters</button>
+    </div>
+  </div>
+</div>
+
+<main class="gut"><div class="wrap" id="view"></div></main>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="d-title" hidden></aside>
+<div id="tip" hidden></div>
+<div class="toast" id="toast" hidden role="status"></div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+(function(){
+"use strict";
+const D = /*__DATA__*/null;
+const CAT_LABEL = {
+  VLA_Foundation_Models:"VLA & foundation models", World_Models_Video:"World models & video",
+  Humanoids_Locomotion:"Humanoids & locomotion", Dexterous_Tactile_Bimanual:"Dexterous, tactile & bimanual",
+  Navigation_Driving_Aerial:"Navigation, driving & aerial", Reinforcement_Learning:"Reinforcement learning",
+  Imitation_Learning:"Imitation learning", Perception_3D_Representations:"Perception & 3D",
+  HRI_Feedback_Interaction:"HRI & human feedback", Data_Simulation_Benchmarks:"Data, simulation & benchmarks",
+  Safety_Uncertainty_Failure:"Safety & uncertainty", Planning_Reasoning_Hierarchy:"Planning & reasoning",
+  Hardware_Design:"Hardware & design", Other:"Other"
+};
+const DAYS = [["mon","Monday","Mon","Nov 9","2026-11-09"],["tue","Tuesday","Tue","Nov 10","2026-11-10"],["wed","Wednesday","Wed","Nov 11","2026-11-11"]];
+const A = D.A, C = D.C;
+const SESS = D.S.slice().sort((a,b)=>(a.date+a.start).localeCompare(b.date+b.start));
+const sess = Object.fromEntries(SESS.map(s=>[s.code,s]));
+const sessOrder = Object.fromEntries(SESS.map((s,i)=>[s.code,i]));
+const P = D.P.map(r=>({id:r[0],t:r[1],a:r[2],c:r[3],m:r[4],v:r[5],ts:r[6],ps:r[7],n:r[8]}));
+const byId = new Map(P.map(p=>[p.id,p]));
+const fold = s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+const aPapers = A.map(()=>[]);
+P.forEach(p=>{ p.a.forEach(i=>aPapers[i].push(p)); p.q = fold(p.t+" | "+p.a.map(i=>A[i]).join(" | ")); p.room = roomOf(p); });
+const aFold = A.map(fold);
+const catLabel = i=>CAT_LABEL[C[i]] || C[i].replace(/_/g," ");
+const catOrder = C.map((_,i)=>i).sort((x,y)=>P.filter(p=>p.c===y).length - P.filter(p=>p.c===x).length);
+const $ = s=>document.querySelector(s);
+const esc = s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function roomOf(p){ const s=sess[p.ps]; if(!s) return null; const r=s.rooms.find(r=>p.n>=r[0]&&p.n<=r[1]); return r?{name:r[2],floor:r[3]}:null; }
+function fmt12(hm){ let [h,m]=hm.split(":").map(Number); const ap=h>=12?"PM":"AM"; h=h%12||12; return h+":"+String(m).padStart(2,"0")+" "+ap; }
+function dayShort(code){ const d=DAYS.find(d=>d[0]===sess[code].day); return d?d[2]:""; }
+
+/* ---------- state ---------- */
+const st = { view:"schedule", day:null, q:"", terms:[], topic:-1, loc:"", wq:"", wterms:[], wloc:"", wslot:"all", wmine:false, tprev:null, secondary:false, types:new Set(["O","S","P"]), mine:false, author:null, graph:"ego", mineShow:"all" };
+const LS_KEY = "corl26-board-marks-v1", LS_UI = "corl26-board-ui-v1", LS_PEOPLE = "corl26-board-people-v1", LS_GOING = "corl26-board-going-v1";
+let marks = {}, people = {}, going = {};   // people: author name -> {l:1 (liked), n:"note", t}; going: workshop title -> {g:1, t}
+try { marks = JSON.parse(localStorage.getItem(LS_KEY)||"{}")||{}; } catch(e){ marks = {}; }
+try { people = JSON.parse(localStorage.getItem(LS_PEOPLE)||"{}")||{}; } catch(e){ people = {}; }
+try { going = JSON.parse(localStorage.getItem(LS_GOING)||"{}")||{}; } catch(e){ going = {}; }
+const aIdx = new Map(A.map((n,i)=>[n,i]));
+const isFav = i=>!!(people[A[i]] && people[A[i]].l);
+try { const u = JSON.parse(localStorage.getItem(LS_UI)||"{}"); if(u.day) st.day=u.day; if(typeof u.author==="number") st.author=u.author; if(u.graph) st.graph=u.graph; } catch(e){}
+function saveUI(){ try{ localStorage.setItem(LS_UI, JSON.stringify({day:st.day,author:st.author,graph:st.graph})); }catch(e){} }
+const isMarked = id=>!!(marks[id]&&(marks[id].l||marks[id].f));
+const hasAny = id=>!!(marks[id]&&(marks[id].l||marks[id].f||marks[id].n)) || photosOf(id).length>0;
+function prune(id, m){ if(!m.l && !m.f && !m.n && !(m.ph && m.ph.length)) delete marks[id]; else marks[id]=m; }
+
+/* ---------- persistence: per-person private doc in the artifact db, browser storage as fallback ---------- */
+let docRef=null, inFlight=false, queued=false, pending=false, saveTimer=null, firstSnap=true, retried=false;
+function setSync(s, text){ const el=$("#sync"); el.dataset.s=s; el.querySelector("span").textContent=text; }
+function persistLocal(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(marks)); localStorage.setItem(LS_PEOPLE, JSON.stringify(people)); localStorage.setItem(LS_GOING, JSON.stringify(going)); }catch(e){} }
+function scheduleSave(){
+  persistLocal();
+  if(!docRef) return;
+  pending=true;
+  clearTimeout(saveTimer); saveTimer=setTimeout(flush, 600);
+}
+async function flush(){
+  saveTimer=null;
+  if(!docRef){ pending=false; return; }
+  if(inFlight){ queued=true; return; }
+  inFlight=true; setSync("saving","Saving…");
+  try{
+    await docRef.set({v:1, marks:JSON.parse(JSON.stringify(marks)), people:JSON.parse(JSON.stringify(people)), ws:JSON.parse(JSON.stringify(going)), updated:Date.now()});
+    retried=false; setSync("cloud","Likes saved to your account");
+  } catch(e){
+    if(e && e.code==="unavailable" && !retried){ retried=true; inFlight=false; setTimeout(flush, 1000+Math.random()*1500); return; }
+    if(e && (e.code==="invalid_argument"||e.code==="revoked")){ docRef=null; inFlight=false; pending=false; setSync("local","Likes saved in this browser"); return; }
+    setSync("error","Couldn't save to your account. Kept in this browser.");
+  }
+  inFlight=false;
+  if(queued){ queued=false; flush(); return; }
+  if(!saveTimer) pending=false;
+}
+(async function connect(){
+  if(!(window.claude && typeof window.claude.use==="function")) return;
+  try{
+    const [db,user,assets] = await Promise.all([window.claude.use("db"), window.claude.use("user"), window.claude.use("assets")]);
+    assetsNS = assets || null;
+    if(!db || !user) return;
+    const uid = await user.id();
+    if(!uid) return;
+    // Viewers (view-only access) cannot write the store: keep their likes in this browser without an error
+    if(typeof user.can==="function" && (await user.can("data.write"))===false) return;
+    docRef = db.collection("data/users/"+uid).doc("marks");
+    const timer = setTimeout(()=>{ if(firstSnap) setSync("local","Likes saved in this browser"); }, 10000);
+    docRef.onSnapshot(snap=>{
+      clearTimeout(timer);
+      if(snap.metadata && snap.metadata.hasPendingWrites) return;
+      const data = snap.exists ? (snap.data()||{}) : {};
+      const remote = data.marks||{}, remoteP = data.people||{}, remoteW = data.ws||{};
+      if(firstSnap){
+        firstSnap=false;
+        const merged = Object.assign({}, remote), mergedP = Object.assign({}, remoteP), mergedW = Object.assign({}, remoteW);
+        let changed = false;
+        for(const k in marks){ if(!merged[k]){ merged[k]=marks[k]; changed=true; } }
+        for(const k in people){ if(!mergedP[k]){ mergedP[k]=people[k]; changed=true; } }
+        for(const k in going){ if(!mergedW[k]){ mergedW[k]=going[k]; changed=true; } }
+        marks = merged; people = mergedP; going = mergedW; persistLocal(); rerenderMarks(); refreshPhotos();
+        updateGoingCount();
+        if(st.view==="workshops"||st.view==="thursday") render();
+        setSync("cloud","Likes saved to your account");
+        if(changed) flush();
+        return;
+      }
+      if(inFlight || pending) return;
+      if(JSON.stringify(remote)!==JSON.stringify(marks) || JSON.stringify(remoteP)!==JSON.stringify(people) || JSON.stringify(remoteW)!==JSON.stringify(going)){
+        const typing = document.activeElement && document.activeElement.dataset && document.activeElement.dataset.person!=null;
+        marks=JSON.parse(JSON.stringify(remote)); people=JSON.parse(JSON.stringify(remoteP)); going=JSON.parse(JSON.stringify(remoteW)); persistLocal();
+        if(!typing){ rerenderMarks(); refreshPhotos(); updateGoingCount(); if(st.view==="workshops"||st.view==="thursday") render(); }
+      }
+    }, err=>{ clearTimeout(timer); docRef=null; setSync("local","Likes saved in this browser"); });
+  }catch(e){ /* stay local */ }
+})();
+
+function toggleMark(id, key){
+  const m = Object.assign({}, marks[id]||{});
+  if(m[key]) delete m[key]; else { m[key]=1; m.t=Date.now(); }
+  prune(id, m);
+  scheduleSave(); rerenderMarks(id);
+  toast(key==="l" ? (m.l?"Liked":"Like removed") : (m.f?"Flagged to visit":"Flag removed"));
+}
+function togglePerson(i){
+  const k = A[i], p = Object.assign({}, people[k]||{});
+  if(p.l) delete p.l; else { p.l=1; p.t=Date.now(); }
+  if(!p.l && !p.n) delete people[k]; else people[k]=p;
+  scheduleSave();
+  toast(p.l ? "Added "+k+" to your people" : "Removed "+k+" from your people");
+  document.querySelectorAll('[data-likeperson="'+i+'"]').forEach(b=>{ b.setAttribute("aria-pressed", !!p.l); const s=b.querySelector(".lbl"); if(s) s.textContent = p.l ? "Liked" : "Like person"; });
+  document.querySelectorAll('.au[data-author="'+i+'"]').forEach(b=>b.classList.toggle("fav", !!p.l));
+  const fl = $("#fav-list"); if(fl) fl.innerHTML = favListHTML();
+  if(st.view==="mine") render();
+  if(st.view==="people") document.querySelectorAll(".gnode").forEach(g=>{ const d=g.__data__; if(d && d.i===i){ g.classList.toggle("fav", !!p.l); } });
+}
+function setPersonNote(i, text){
+  const k = A[i], p = Object.assign({}, people[k]||{});
+  if(text.trim()) p.n=text; else delete p.n;
+  if(!p.l && !p.n) delete people[k]; else people[k]=p;
+  scheduleSave();
+}
+function favPeople(){ // [index, entry] for liked people or people with a note, newest first
+  return Object.keys(people).filter(k=>aIdx.has(k) && (people[k].l || people[k].n)).map(k=>[aIdx.get(k), people[k]]).sort((a,b)=>(b[1].t||0)-(a[1].t||0));
+}
+function favListHTML(){
+  const f = favPeople();
+  if(!f.length) return '<p class="note" style="padding:2px 8px 4px">Select “Like person” on anyone’s card to keep them here.</p>';
+  return f.map(([i,e])=>arow(i, e.n ? "note" : aPapers[i].length)).join("");
+}
+function setNote(id, text){
+  const m = Object.assign({}, marks[id]||{});
+  if(text.trim()) m.n=text; else delete m.n;
+  prune(id, m);
+  scheduleSave(); updateMineCount();
+}
+function rerenderMarks(id){
+  updateMineCount();
+  const ids = id ? [id] : P.map(p=>p.id);
+  ids.forEach(pid=>{
+    const m=marks[pid]||{};
+    document.querySelectorAll('.row[data-id="'+pid+'"]').forEach(r=>{
+      r.classList.toggle("liked",!!m.l);
+      const l=r.querySelector(".ic.like"), f=r.querySelector(".ic.flag");
+      if(l) l.setAttribute("aria-pressed",m.l?"true":"false");
+      if(f) f.setAttribute("aria-pressed",m.f?"true":"false");
+    });
+  });
+  // views whose content depends on marks re-render; others were patched in place above
+  if(st.view==="mine" || (st.mine && (st.view==="schedule"||st.view==="topics")) || (!id && st.view==="people")) render();
+  if(!$("#drawer").hidden){
+    const m = marks[openId]||{};
+    $("#drawer").querySelectorAll(".dacts .btn").forEach(b=>b.setAttribute("aria-pressed", !!m[b.dataset.mark]));
+  }
+}
+function updateMineCount(){ $("#mine-ct").textContent = P.filter(p=>isMarked(p.id) || photosOf(p.id).length).length; }
+
+/* ---------- photos: stored with the board under your account (assets + private marks doc), else in this browser (IndexedDB) ---------- */
+let assetsNS = null;
+const localPh = new Map();   // pid -> [{key,url,t}]
+const busy = new Set();      // pids with an upload in progress
+let idb = null;
+const cloudPhotos = ()=> !!(assetsNS && docRef);
+function photosOf(pid){
+  const cloud = ((marks[pid]||{}).ph||[]).map(x=>({cloud:true, id:x.id, url:"/_blob/"+x.id, t:x.t||0}));
+  const loc = (localPh.get(pid)||[]).map(x=>({cloud:false, key:x.key, url:x.url, t:x.t||0}));
+  return cloud.concat(loc).sort((a,b)=>a.t-b.t);
+}
+function idbOpen(){
+  return new Promise(res=>{
+    try{ const r=indexedDB.open("corl26-board-photos",1); r.onupgradeneeded=()=>r.result.createObjectStore("photos"); r.onsuccess=()=>res(r.result); r.onerror=()=>res(null); }
+    catch(e){ res(null); }
+  });
+}
+async function idbLoad(){
+  idb = await idbOpen(); if(!idb) return;
+  try{
+    const req = idb.transaction("photos").objectStore("photos").openCursor();
+    req.onsuccess = ()=>{ const c=req.result;
+      if(c){ const v=c.value; const b = v.blob || new Blob([v.buf],{type:v.type||"image/jpeg"}); const arr=localPh.get(v.pid)||[]; arr.push({key:c.key, url:URL.createObjectURL(b), t:v.t}); localPh.set(v.pid,arr); c.continue(); }
+      else if(localPh.size){ updateMineCount(); refreshPhotos(); }
+    };
+  }catch(e){}
+}
+let idbReady = null; // set at init; uploads wait for the local store to open
+async function idbPut(pid, blob){
+  if(idbReady) await idbReady;
+  const buf = await blob.arrayBuffer(); // raw bytes: Blob values in IndexedDB are unreliable on some Safari versions
+  return new Promise((res,rej)=>{
+    if(!idb) return rej({code:"no_storage"});
+    const t=Date.now(), key=pid+":"+t;
+    try{
+      const tx=idb.transaction("photos","readwrite"); tx.objectStore("photos").put({pid,buf,type:blob.type||"image/jpeg",t}, key);
+      tx.oncomplete=()=>{ const arr=localPh.get(pid)||[]; arr.push({key,url:URL.createObjectURL(blob),t}); localPh.set(pid,arr); res(); };
+      tx.onerror=()=>rej({code:"no_storage"}); tx.onabort=()=>rej({code:"quota"});
+    }catch(e){ rej({code:"no_storage"}); }
+  });
+}
+function idbDel(pid, key){
+  return new Promise((res,rej)=>{
+    try{ const tx=idb.transaction("photos","readwrite"); tx.objectStore("photos").delete(key);
+      tx.oncomplete=()=>{ const arr=(localPh.get(pid)||[]).filter(x=>{ if(x.key===key){ URL.revokeObjectURL(x.url); return false; } return true; }); if(arr.length) localPh.set(pid,arr); else localPh.delete(pid); res(); };
+      tx.onerror=()=>rej(tx.error);
+    }catch(e){ rej(e); }
+  });
+}
+// Downscale to 2400px on the long side (poster text stays readable, uploads stay small on conference wifi)
+function prepImage(file){
+  return new Promise(resolve=>{
+    const url = URL.createObjectURL(file), img = new Image();
+    img.onload = ()=>{
+      try{
+        const k = Math.min(1, 2400/Math.max(img.naturalWidth, img.naturalHeight));
+        const cv = document.createElement("canvas"); cv.width=Math.round(img.naturalWidth*k); cv.height=Math.round(img.naturalHeight*k);
+        cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height);
+        cv.toBlob(b=>{ URL.revokeObjectURL(url); resolve(b||file); }, "image/jpeg", 0.85);
+      }catch(e){ URL.revokeObjectURL(url); resolve(file); }
+    };
+    img.onerror = ()=>{ URL.revokeObjectURL(url); resolve(file); };
+    img.src = url;
+  });
+}
+const sleep = ms=>new Promise(r=>setTimeout(r,ms));
+async function addPhotos(pid, files){
+  const list = [...files].filter(f=>!f.type || f.type.startsWith("image/"));
+  if(!list.length){ toast("Pick a photo (an image file)"); return; }
+  busy.add(pid); refreshPhotos(pid);
+  let ok=0, msg="";
+  for(const file of list){
+    try{
+      const blob = await prepImage(file);
+      const type = /^image\/(jpeg|png|webp|gif)$/.test(blob.type) ? blob.type : "image/jpeg";
+      if(cloudPhotos()){
+        let r;
+        try{ r = await assetsNS.upload(blob, {type}); }
+        catch(e){ if(e && e.code==="store_unavailable"){ await sleep(1500); r = await assetsNS.upload(blob, {type}); } else throw e; }
+        const m = Object.assign({}, marks[pid]||{}); m.ph = (m.ph||[]).concat([{id:r.id, t:Date.now()}]); prune(pid, m); scheduleSave();
+      } else {
+        await idbPut(pid, blob);
+      }
+      ok++;
+    }catch(e){
+      const c = e && e.code;
+      if(c==="not_granted" || c==="capability_disabled" || c==="capability_removed"){
+        assetsNS = null; // this view cannot store photos with the board: keep them in this browser
+        try{ await idbPut(pid, await prepImage(file)); ok++; continue; }catch(_){}
+      }
+      msg = c==="too_large" ? "That photo is too large." : (c==="quota_or_state"||c==="quota") ? "Photo storage is full." : c==="rate_limited" ? "Too many uploads at once. Wait a moment and try again." : c==="no_storage" ? "This browser can't store photos (private window?)." : "Couldn't save the photo. Try again.";
+    }
+  }
+  busy.delete(pid);
+  refreshPhotos(pid); updateMineCount();
+  toast(ok ? (ok>1? ok+" photos added" : "Photo added")+(cloudPhotos()?"":" in this browser") : msg);
+}
+async function deletePhoto(pid, ph){
+  try{
+    if(ph.cloud){
+      if(assetsNS){ try{ await assetsNS.delete(ph.id); }catch(e){ if(e && e.code==="store_unavailable"){ await sleep(1200); await assetsNS.delete(ph.id); } else if(!(e && e.code==="invalid_request")) throw e; } }
+      const m = Object.assign({}, marks[pid]||{}); m.ph = (m.ph||[]).filter(x=>x.id!==ph.id); if(!m.ph.length) delete m.ph; prune(pid, m); scheduleSave();
+    } else await idbDel(pid, ph.key);
+    toast("Photo deleted");
+  }catch(e){ toast("Couldn't delete the photo. Try again."); }
+  refreshPhotos(pid); updateMineCount();
+}
+// Re-render everything that shows photos for one paper (or all)
+function refreshPhotos(pid){
+  if(st.view==="mine"){ render(); }
+  else {
+    const sel = pid ? '.row[data-id="'+pid+'"]' : ".row";
+    document.querySelectorAll(sel).forEach(r=>{ const p=byId.get(r.dataset.id); if(p) r.outerHTML = rowHTML(p, r.dataset.ctx); });
+  }
+  if(!$("#drawer").hidden && (!pid || pid===openId)){ const box=$("#d-photos"); if(box) box.innerHTML = drawerPhotosHTML(openId); }
+}
+function thumbsHTML(pid, size){
+  const ph = photosOf(pid);
+  return ph.map((x,i)=>'<button class="thumb" data-photo="'+pid+'" data-idx="'+i+'" aria-label="Open photo '+(i+1)+' of '+ph.length+'"><img src="'+esc(x.url)+'" alt="" loading="lazy" decoding="async"></button>').join("");
+}
+function drawerPhotosHTML(pid){
+  const where = cloudPhotos() ? "Saved with your board on your account. Other people using this board don't see them." : "Saved in this browser only.";
+  return '<div class="photos">'+thumbsHTML(pid)+(busy.has(pid)?'<div class="thumb busy">Saving…</div>':'')
+    + '<label class="thumb add"><input class="filein" type="file" accept="image/*" capture="environment" data-pid="'+pid+'" aria-label="Take a photo with the camera"><svg viewBox="0 0 24 24"><use href="#i-cam"/></svg>Take photo</label>'
+    + '<label class="thumb add"><input class="filein" type="file" accept="image/*" multiple data-pid="'+pid+'" aria-label="Add photos from your gallery or files"><svg viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M20.5 16l-5-5-8 8.5"/></svg>From gallery</label></div><p class="note">'+where+'</p>';
+}
+// lightbox
+let lb = null;
+function openLightbox(pid, idx){
+  const ph = photosOf(pid); if(!ph.length) return;
+  lb = {pid, idx:Math.max(0,Math.min(idx,ph.length-1)), confirm:false, full:false, back:document.activeElement};
+  renderLightbox(); $("#lightbox").hidden=false; document.body.style.overflow="hidden";
+  const c=$("#lightbox [data-lb='close']"); if(c) c.focus();
+}
+function renderLightbox(){
+  const ph = photosOf(lb.pid); if(!ph.length){ closeLightbox(); return; }
+  lb.idx = Math.min(lb.idx, ph.length-1);
+  const p = byId.get(lb.pid), x = ph[lb.idx];
+  $("#lightbox").innerHTML = '<div class="lb-bar"><span class="t"><span class="mono">'+(lb.idx+1)+' / '+ph.length+'</span> · '+esc(p.t)+'</span>'
+    + (ph.length>1?'<button data-lb="prev" aria-label="Previous photo">←</button><button data-lb="next" aria-label="Next photo">→</button>':'')
+    + (lb.confirm ? '<button class="danger" data-lb="del-yes">Delete this photo</button><button data-lb="del-no">Keep</button>' : '<button data-lb="del">Delete</button>')
+    + '<button data-lb="close" aria-label="Close">Close</button></div>'
+    + '<div class="lb-img'+(lb.full?' full':'')+'"><img src="'+esc(x.url)+'" alt="Photo '+(lb.idx+1)+' for '+esc(p.t)+'" data-lb="zoom"></div>';
+}
+function closeLightbox(){
+  $("#lightbox").hidden=true; $("#lightbox").innerHTML="";
+  if($("#drawer").hidden) document.body.style.overflow="";
+  const back = lb && lb.back; lb=null;
+  if(back && document.contains(back)) back.focus();
+}
+document.addEventListener("click", async e=>{
+  const t = e.target.closest("[data-lb],[data-photo]"); if(!t) return;
+  if(t.dataset.photo){ openLightbox(t.dataset.photo, +t.dataset.idx||0); return; }
+  if(!lb) return;
+  const a = t.dataset.lb, n = photosOf(lb.pid).length;
+  if(a==="close") closeLightbox();
+  else if(a==="prev"){ lb.idx=(lb.idx-1+n)%n; lb.confirm=false; lb.full=false; renderLightbox(); }
+  else if(a==="next"){ lb.idx=(lb.idx+1)%n; lb.confirm=false; lb.full=false; renderLightbox(); }
+  else if(a==="del"){ lb.confirm=true; renderLightbox(); const y=$("#lightbox [data-lb='del-yes']"); if(y) y.focus(); }
+  else if(a==="del-no"){ lb.confirm=false; renderLightbox(); }
+  else if(a==="del-yes"){ const ph=photosOf(lb.pid)[lb.idx]; lb.confirm=false; await deletePhoto(lb.pid, ph); if(lb){ if(photosOf(lb.pid).length) renderLightbox(); else closeLightbox(); } }
+  else if(a==="zoom"){ lb.full=!lb.full; renderLightbox(); }
+});
+// The file inputs sit inside the photo buttons; the phone opens its camera / gallery when they are tapped
+document.addEventListener("change", e=>{
+  const inp = e.target;
+  if(!inp.classList || !inp.classList.contains("filein")) return;
+  const files = inp.files ? [...inp.files] : [];
+  const pid = inp.dataset.pid;
+  inp.value = "";
+  if(pid && files.length) addPhotos(pid, files);
+});
+
+/* ---------- filters ---------- */
+// Location keys: "v:<venue>" (a whole hotel) or "r:<room>" (a poster room)
+function locSess(s){
+  if(!st.loc) return true;
+  const name = st.loc.slice(2);
+  return st.loc[0]==="v" ? s.venue===name : s.rooms.some(r=>r[2]===name);
+}
+function passesLoc(p){
+  if(!st.loc) return true;
+  const name = st.loc.slice(2);
+  if(st.loc[0]==="r") return !!(p.room && p.room.name===name);
+  return !!((p.ts && sess[p.ts].venue===name) || (p.ps && sess[p.ps].venue===name));
+}
+function passesBase(p){
+  if(st.loc && !passesLoc(p)) return false;
+  if(st.terms.length && !st.terms.every(t=>p.q.includes(t))) return false;
+  if(!st.types.has(p.v)) return false;
+  if(st.mine && !isMarked(p.id)) return false;
+  return true;
+}
+function inTopic(p, t){ return p.c===t || (st.secondary && p.m.includes(t)); }
+function passes(p){ return passesBase(p) && (st.topic<0 || inTopic(p, st.topic)); }
+const filtersActive = ()=> st.terms.length>0 || st.topic>=0 || st.types.size<3 || st.mine || !!st.loc;
+
+/* ---------- paper row ---------- */
+function authorsHTML(p, max){
+  const hit = i=> st.terms.length && st.terms.some(t=>aFold[i].includes(t));
+  let list = p.a, extra = 0;
+  if(max && list.length>max){
+    const shown = list.slice(0,max-1);
+    const hits = list.slice(max-1).filter(hit);
+    const last = list[list.length-1];
+    list = shown.concat(hits.slice(0,2)); if(!list.includes(last)) list.push(last);
+    extra = p.a.length - list.length;
+    const head = list.slice(0,-1).map(i=>authBtn(i,hit(i))).join(", ");
+    return head + (extra>0?' <span class="more">+'+extra+'</span> … ':", ") + authBtn(last,hit(last));
+  }
+  return list.map(i=>authBtn(i,hit(i))).join(", ");
+}
+const authBtn = (i,h)=>'<button class="au'+(h?' hit':'')+(isFav(i)?' fav':'')+'" data-author="'+i+'">'+esc(A[i])+'</button>';
+function typeBadge(p){ return p.v==="O"?'<span class="badge oral">Oral</span>':p.v==="S"?'<span class="badge spot">Spotlight</span>':""; }
+function posterRef(p){
+  const s=sess[p.ps]; if(!s) return "";
+  return "Poster "+p.ps.slice(1)+" · "+dayShort(p.ps)+" "+fmt12(s.start)+" · #"+p.n+(p.room?" "+p.room.name:"");
+}
+function talkRef(p){ const s=sess[p.ts]; return s ? s.label+" · "+dayShort(p.ts)+" "+fmt12(s.start) : ""; }
+function iconBtn(p, key){
+  const m=marks[p.id]||{}, on=!!m[key];
+  const lab = key==="l" ? "Like" : "Flag to visit";
+  return '<button class="ic '+(key==="l"?"like":"flag")+'" data-mark="'+key+'" data-pid="'+p.id+'" aria-pressed="'+on+'" aria-label="'+lab+': '+esc(p.t)+'" title="'+lab+'"><svg viewBox="0 0 24 24"><use href="#i-'+(key==="l"?"heart":"flag")+'"/></svg></button>';
+}
+// ctx: "poster" (number column, talk badge), "talk" (poster ref), "list" (both refs)
+function rowHTML(p, ctx){
+  const m=marks[p.id]||{};
+  let where = "";
+  if(ctx==="poster"){ if(p.ts) where='<span class="where">also '+esc(talkRef(p))+'</span>'; }
+  else if(ctx==="talk"){ where='<span class="where">'+esc(posterRef(p))+'</span>'; }
+  else { where='<span class="where">'+esc((p.ts?talkRef(p)+" · ":"")+posterRef(p))+'</span>'; }
+  const nph = photosOf(p.id).length;
+  return '<article class="row'+(ctx==="poster"?"":" nonum")+(m.l?" liked":"")+'" data-id="'+p.id+'" data-ctx="'+ctx+'">'
+    + (ctx==="poster" ? '<span class="num" aria-label="Poster number">'+p.n+'</span>' : "")
+    + '<div class="body" style="min-width:0"><h4><button class="ttl" data-open="'+p.id+'">'+esc(p.t)+'</button></h4>'
+    + '<p class="by">'+authorsHTML(p,5)+'</p>'
+    + '<p class="tags">'+typeBadge(p)+'<button class="topic" data-topic="'+p.c+'" title="Show this topic">'+esc(catLabel(p.c))+'</button>'+where+'</p>'
+    + (m.n ? '<p class="mynote">“'+esc(m.n)+'”</p>' : "")
+    + (nph ? '<div class="rowph">'+thumbsHTML(p.id)+'</div>' : "")
+    + '</div><div class="acts">'+iconBtn(p,"l")+iconBtn(p,"f")
+    + '<label class="ic cam" title="Add a photo"><input class="filein" type="file" accept="image/*" multiple data-pid="'+p.id+'" aria-label="Add a photo: '+esc(p.t)+'"><svg viewBox="0 0 24 24"><use href="#i-cam"/></svg>'+(nph?'<span class="n">'+nph+'</span>':'')+'</label>'
+    + '</div></article>';
+}
+
+/* ---------- Austin clock ---------- */
+function austinNow(){
+  try{
+    const f = new Intl.DateTimeFormat("en-CA",{timeZone:"America/Chicago",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"});
+    const o = Object.fromEntries(f.formatToParts(new Date()).map(x=>[x.type,x.value]));
+    return {date:o.year+"-"+o.month+"-"+o.day, hm:o.hour+":"+o.minute};
+  }catch(e){ return {date:"",hm:""}; }
+}
+
+/* ---------- views ---------- */
+function render(){
+  document.querySelectorAll(".tab").forEach(t=>t.toggleAttribute("aria-current",false));
+  const cur=document.querySelector('.tab[data-view="'+st.view+'"]'); if(cur) cur.setAttribute("aria-current","page");
+  $("#filters").hidden = !(st.view==="schedule"||st.view==="topics");
+  $("#sec-wrap").hidden = st.topic<0;
+  $("#clear").hidden = !filtersActive();
+  const v = $("#view");
+  if(st.view==="schedule") v.innerHTML = viewSchedule();
+  else if(st.view==="topics") v.innerHTML = viewTopics();
+  else if(st.view==="workshops") v.innerHTML = viewWorkshops();
+  else if(st.view==="thursday"){ v.innerHTML = viewThursday(); afterThursday(); }
+  else if(st.view==="people"){ v.innerHTML = viewPeople(); drawGraph(); }
+  else v.innerHTML = viewMine();
+  const shown = P.filter(passes).length;
+  $("#result").textContent = filtersActive() ? shown+" of "+P.length+" papers" : P.length+" papers";
+}
+
+function viewSchedule(){
+  const now = austinNow();
+  if(!st.day){ const d=DAYS.find(d=>d[4]===now.date); st.day = d?d[0]:"mon"; }
+  const fa = filtersActive();
+  let html = '<div class="days" role="group" aria-label="Day">';
+  DAYS.forEach(d=>{
+    const onDay = c=> c && sess[c].day===d[0] && locSess(sess[c]);
+    const n = P.filter(p=>passes(p) && (onDay(p.ts) || onDay(p.ps))).length;
+    const nm = P.filter(p=>isMarked(p.id) && ((p.ts&&sess[p.ts].day===d[0])||(p.ps&&sess[p.ps].day===d[0]))).length;
+    html += '<button class="day" data-day="'+d[0]+'" aria-pressed="'+(st.day===d[0])+'"><b>'+d[2]+' '+d[3].split(" ")[1]+'</b><span>'+n+' papers'+(nm?' · <span class="mk">'+nm+' marked</span>':'')+'</span></button>';
+  });
+  html += '<button class="day" data-day="all" aria-pressed="'+(st.day==="all")+'"><b>All days</b><span>Nov 9–11</span></button>';
+  if(W.length) html += '<a class="day thu" href="#workshops" style="text-decoration:none;color:inherit"><b>Thu 12</b><span>'+W.length+' workshops'+(W.filter(isGoing).length?' · <span class="mk">'+W.filter(isGoing).length+' going</span>':'')+'</span></a>';
+  html += '</div>';
+  let nextFound = false, any = false;
+  DAYS.filter(d=>st.day==="all"||st.day===d[0]).forEach(d=>{
+    html += '<div class="dayhead"><h2>'+d[1]+', '+d[3]+'</h2><span>'+(d[4]===now.date?"Today":"")+'</span></div>';
+    SESS.filter(s=>s.day===d[0]).forEach(s=>{
+      const isPoster = s.kind==="poster";
+      if(!locSess(s)) return;
+      const all = P.filter(p=> isPoster ? p.ps===s.code : p.ts===s.code);
+      const list = all.filter(passes);
+      if(fa && !list.length) return;
+      any = true;
+      if(isPoster) list.sort((a,b)=>a.n-b.n); else list.sort((a,b)=>a.t.localeCompare(b.t));
+      let pill = "";
+      if(s.date===now.date && now.hm>=s.start && now.hm<s.end) pill='<span class="pill">Now</span>';
+      else if(!nextFound && (s.date>now.date || s.date===now.date && s.start>now.hm)){ nextFound=true; pill='<span class="pill next">Up next</span>'; }
+      const count = fa ? list.length+" of "+all.length : String(all.length);
+      html += '<section class="sess '+s.kind+'" id="s-'+s.code+'"><div class="when"><time>'+fmt12(s.start).replace(/ (AM|PM)/,"")+'</time><span>'+fmt12(s.start).slice(-2)+' – '+fmt12(s.end)+'</span>'+pill+'</div><div class="card">';
+      if(isPoster){
+        const open = fa || st.day!=="all";
+        html += '<details'+(open?" open":"")+'><summary><div class="code"><b>'+esc(s.code)+'</b> · '+esc(s.venue)+'</div><h3>'+esc(s.label)+'</h3><p class="meta">'+count+' posters · '+s.rooms.map(r=>esc(r[2])+' ('+esc(r[3])+') #'+r[0]+'–'+r[1]).join(' · ')+'</p><span class="tog"><span class="opened">Hide posters</span><span class="closed">Show posters</span></span></summary>';
+        s.rooms.forEach(r=>{
+          const rl = list.filter(p=>p.n>=r[0]&&p.n<=r[1]);
+          if(!rl.length) return;
+          html += '<div class="room"><b>'+esc(r[2])+'</b><span>'+esc(r[3])+' · posters '+r[0]+'–'+r[1]+(fa?' · '+rl.length+' shown':'')+'</span></div><div class="rows">'+rl.map(p=>rowHTML(p,"poster")).join("")+'</div>';
+        });
+        const rest = list.filter(p=>!p.room);
+        if(rest.length) html += '<div class="rows">'+rest.map(p=>rowHTML(p,"poster")).join("")+'</div>';
+        html += '</details>';
+      } else {
+        html += '<header><div class="code"><b>'+esc(s.label)+'</b> · '+esc(s.venue)+'</div><h3>'+esc(s.theme)+'</h3><p class="meta">'+count+' talks</p></header><div class="rows">'+list.map(p=>rowHTML(p,"talk")).join("")+'</div>';
+      }
+      html += '</div></section>';
+    });
+  });
+  if(!any) html += emptyFilters();
+  html += '<p class="foot">Schedule from the official CoRL 2026 accepted-papers page. Orals and spotlights are also presented as posters; their poster slot is shown on each talk. Topics are assigned by keyword matching on titles and abstracts, so treat them as a rough guide.</p>';
+  return html;
+}
+function emptyFilters(){
+  return '<div class="empty"><h3>No papers match these filters</h3><p>Try a shorter search, another topic, or turn the presentation types back on.</p><p><button class="btn" data-clear>Clear filters</button></p></div>';
+}
+
+function viewTopics(){
+  const base = P.filter(passesBase);
+  const prim = C.map(()=>0), sec = C.map(()=>0);
+  base.forEach(p=>{ prim[p.c]++; p.m.forEach(j=>sec[j]++); });
+  const order = catOrder.slice().sort((x,y)=>prim[y]-prim[x] || x-y);
+  const max = Math.max(1,...prim);
+  let html = '<div class="grid2"><section class="panel"><h2>Papers per topic</h2><p class="sub">Main topic of each paper'+(st.terms.length||st.mine||st.types.size<3?' (current filters applied)':'')+'. Select a topic to list its papers.</p><div class="bars">';
+  order.forEach(i=>{
+    html += '<button class="bar" data-settopic="'+i+'" aria-pressed="'+(st.topic===i)+'" data-tip="<b>'+esc(catLabel(i))+'</b><br>'+prim[i]+' papers as main topic<br>'+sec[i]+' more list it as a secondary match"><span class="bl">'+esc(catLabel(i))+'</span><span class="bt"><span class="bf" style="width:'+(prim[i]/max*78).toFixed(2)+'%"></span><span class="bv">'+prim[i]+'</span><span class="bs">+'+sec[i]+'</span></span></button>';
+  });
+  html += '</div><p class="hleg">The number after + counts papers that list the topic as a secondary match.</p></section>';
+  // heatmap topic x poster session
+  const ps = SESS.filter(s=>s.kind==="poster");
+  const cell = {}; let hmax=1;
+  order.forEach(i=>ps.forEach(s=>{ const n=base.filter(p=>p.ps===s.code && (p.c===i || st.secondary && p.m.includes(i))).length; cell[i+"|"+s.code]=n; hmax=Math.max(hmax,n); }));
+  html += '<section class="panel"><h2>Which day to walk the posters</h2><p class="sub">Posters per topic in each poster session'+(st.secondary?', secondary matches included':'')+'. Select a cell to list them.</p><div class="heatwrap"><table class="heat"><thead><tr><th></th>'+ps.map(s=>'<th>'+esc(s.code)+'<span class="mono">'+dayShort(s.code)+' '+fmt12(s.start).replace(":00","")+'</span></th>').join("")+'</tr></thead><tbody>';
+  order.forEach(i=>{
+    html += '<tr><th class="rl" scope="row"><button data-settopic="'+i+'">'+esc(catLabel(i))+'</button></th>';
+    ps.forEach(s=>{
+      const n=cell[i+"|"+s.code]; const k = n? Math.min(5, Math.ceil(n/hmax*6)-1) : -1;
+      html += '<td><button class="'+(k<0?"hz":"s"+k)+'" data-settopic="'+i+'" data-jump="'+s.code+'" data-tip="<b>'+esc(catLabel(i))+'</b><br>'+n+' posters in '+esc(s.label)+'<br>'+dayShort(s.code)+' '+esc(s.time)+'" aria-label="'+esc(catLabel(i))+', '+esc(s.label)+': '+n+' posters">'+(n||"–")+'</button></td>';
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table></div><div class="hleg">fewer '+[0,1,2,3,4,5].map(k=>'<i class="s'+k+'"></i>').join("")+' more <span style="margin-left:auto" class="mono">max '+hmax+'</span></div></section></div>';
+  if(st.topic<0){
+    html += '<div class="listhead"><h2>Pick a topic</h2><span>Select a bar or a cell above, or use the topic menu in the filter bar.</span></div>';
+  } else {
+    const list = P.filter(passes);
+    html += '<div class="listhead" id="topic-list"><h2>'+esc(catLabel(st.topic))+'</h2><span>'+list.length+' papers'+(st.secondary?' including secondary matches':' as main topic')+' · grouped by poster session</span><button class="linkbtn" data-settopic="-1">Show all topics</button></div>';
+    if(!list.length) html += emptyFilters();
+    ps.forEach(s=>{
+      const l = list.filter(p=>p.ps===s.code).sort((a,b)=>a.n-b.n);
+      if(!l.length) return;
+      html += '<div class="group card" id="g-'+s.code+'"><header><div class="code"><b>'+esc(s.code)+'</b> · '+esc(s.venue)+'</div><h3>'+esc(s.label)+' · '+DAYS.find(d=>d[0]===s.day)[1]+' '+esc(s.time)+'</h3><p class="meta">'+l.length+' posters</p></header><div class="rows">'+l.map(p=>rowHTML(p,"poster")).join("")+'</div></div>';
+    });
+  }
+  return html;
+}
+
+/* ---------- people ---------- */
+const coCache = new Map();
+function coauthors(i){
+  if(coCache.has(i)) return coCache.get(i);
+  const m = new Map();
+  aPapers[i].forEach(p=>p.a.forEach(j=>{ if(j!==i) m.set(j,(m.get(j)||0)+1); }));
+  coCache.set(i,m); return m;
+}
+function markedAuthors(){
+  const m = new Map();
+  P.forEach(p=>{ if(isMarked(p.id)) p.a.forEach(i=>m.set(i,(m.get(i)||0)+1)); });
+  return m;
+}
+const topAuthors = A.map((_,i)=>i).sort((x,y)=>aPapers[y].length-aPapers[x].length || A[x].localeCompare(A[y])).slice(0,25);
+function viewPeople(){
+  const ma = markedAuthors();
+  if(st.author==null || !A[st.author]){
+    const best = [...ma.entries()].sort((a,b)=>b[1]-a[1] || aPapers[b[0]].length-aPapers[a[0]].length)[0];
+    st.author = best ? best[0] : topAuthors[0];
+  }
+  const sel = st.author;
+  let html = '<div class="people"><div class="side">'
+    + '<div class="panel"><h3><label for="aq">Find a person</label></h3><input id="aq" type="search" placeholder="Name, e.g. Chelsea Finn" autocomplete="off"><div class="alist" id="aq-res" style="margin-top:6px"></div></div>'
+    + '<div class="panel"><h3>People you liked</h3><div class="alist" id="fav-list">'+favListHTML()+'</div></div>';
+  const mlist = [...ma.entries()].sort((a,b)=>b[1]-a[1] || aPapers[b[0]].length-aPapers[a[0]].length).slice(0,15);
+  if(mlist.length) html += '<div class="panel"><h3>On your marked papers</h3><div class="alist">'+mlist.map(([i,n])=>arow(i, n+" marked")).join("")+'</div></div>';
+  html += '<div class="panel"><h3>Most papers at CoRL 2026</h3><div class="alist">'+topAuthors.map(i=>arow(i, aPapers[i].length)).join("")+'</div></div></div>';
+  const co = coauthors(sel);
+  html += '<div style="min-width:0"><div class="panel"><div class="gtools"><div class="chips" role="group" aria-label="Graph"><button class="chip" data-graph="ego" aria-pressed="'+(st.graph==="ego")+'">Around '+esc(A[sel])+'</button><button class="chip" data-graph="all" aria-pressed="'+(st.graph==="all")+'">Everyone with 3+ papers</button></div><span class="bs" id="g-info"></span></div>'
+    + '<div class="graphbox"><svg id="graph" role="img" aria-label="Co-author network"></svg><span class="ghint">Drag to pan · scroll or pinch to zoom · select a dot</span></div>'
+    + '<div class="glegend"><span><i style="background:var(--ink);box-shadow:0 0 0 2px var(--accent)"></i>Selected person</span><span><i style="background:var(--node);box-shadow:0 0 0 2px var(--accent)"></i>Person you liked</span><span><i style="background:var(--accent)"></i>Author of a paper you liked or flagged</span><span><i style="background:var(--node)"></i>Other authors · dot size = papers at CoRL · line = co-authored paper (papers with more than 12 authors only link to the selected person)</span></div></div>';
+  // author card
+  const papers = aPapers[sel].slice().sort((a,b)=>(sessOrder[a.ps]-sessOrder[b.ps]) || a.n-b.n);
+  const days = new Set(papers.map(p=>sess[p.ps]&&sess[p.ps].day));
+  const pe = people[A[sel]]||{};
+  html += '<section class="acard"><div class="eyebrow">Person</div><div class="namerow"><h2>'+esc(A[sel])+'</h2>'
+    + '<button class="btn like" data-likeperson="'+sel+'" aria-pressed="'+!!pe.l+'"><svg viewBox="0 0 24 24"><use href="#i-heart"/></svg><span class="lbl">'+(pe.l?"Liked":"Like person")+'</span></button></div><div class="astats"><span><b class="mono">'+papers.length+'</b> paper'+(papers.length>1?"s":"")+'</span><span><b class="mono">'+co.size+'</b> co-authors here</span><span>posters on '+DAYS.filter(d=>days.has(d[0])).map(d=>d[2]).join(", ")+'</span>'
+    + '<a href="https://openreview.net/search?term='+encodeURIComponent(A[sel])+'&group=all&content=all&source=all" target="_blank" rel="noopener">OpenReview ↗</a><a href="https://scholar.google.com/scholar?q='+encodeURIComponent('author:"'+A[sel]+'"')+'" target="_blank" rel="noopener">Google Scholar ↗</a></div>';
+  html += '<label class="pnote-l" for="pnote">Your note about '+esc(A[sel])+'</label><textarea class="pnote" id="pnote" data-person="'+sel+'" placeholder="Where you met, what you talked about, follow-ups…">'+esc(pe.n||"")+'</textarea><p class="note" style="margin-bottom:14px">Private to you, like your paper likes.</p>';
+  const topCo = [...co.entries()].sort((a,b)=>b[1]-a[1]||aPapers[b[0]].length-aPapers[a[0]].length).slice(0,14);
+  if(topCo.length) html += '<div class="eyebrow">Frequent co-authors at CoRL</div><div class="co">'+topCo.map(([j,n])=>'<button class="chip" data-author="'+j+'">'+esc(A[j])+(n>1?' <span class="mono">×'+n+'</span>':'')+'</button>').join("")+'</div>';
+  html += personWorkshopsHTML(sel);
+  html += '<h3 style="font-size:17px;margin:18px 0 8px">Where to find '+esc(A[sel])+'</h3><div class="card"><div class="rows" style="border-top:0">'+papers.map(p=>rowHTML(p,"list")).join("")+'</div></div></section></div></div>';
+  return html;
+}
+function arow(i, right){ return '<button class="arow" data-author="'+i+'" aria-pressed="'+(st.author===i)+'"><span>'+esc(A[i])+'</span><span class="mono">'+right+'</span></button>'; }
+function authorSearch(q){
+  const box = $("#aq-res"); if(!box) return;
+  const f = fold(q.trim());
+  if(!f){ box.innerHTML=""; return; }
+  const hits = A.map((_,i)=>i).filter(i=>aFold[i].includes(f)).sort((x,y)=>aPapers[y].length-aPapers[x].length).slice(0,12);
+  box.innerHTML = hits.length ? hits.map(i=>arow(i, aPapers[i].length)).join("") : '<p class="note" style="padding:6px 8px">Nobody by that name among CoRL 2026 authors.</p>';
+}
+
+let sim=null, lastW=0;
+function drawGraph(){
+  const svgEl = $("#graph"); if(!svgEl) return;
+  if(sim){ sim.stop(); sim=null; }
+  if(!window.d3){ svgEl.outerHTML='<div class="empty" style="margin:16px">The graph library did not load. The lists and the person card still work.</div>'; return; }
+  const W = svgEl.clientWidth || 800, H = svgEl.clientHeight || 520; lastW = W;
+  const ma = markedAuthors();
+  const sel = st.author;
+  let ids;
+  if(st.graph==="ego"){
+    const co = [...coauthors(sel).entries()].sort((a,b)=>b[1]-a[1]||aPapers[b[0]].length-aPapers[a[0]].length).slice(0,70).map(e=>e[0]);
+    ids = [sel, ...co];
+  } else {
+    ids = A.map((_,i)=>i).filter(i=>aPapers[i].length>=3 || isFav(i));
+    if(!ids.includes(sel)) ids.push(sel);
+  }
+  const set = new Set(ids);
+  const nodes = ids.map(i=>({i, n:aPapers[i].length, r:3.5+2.3*Math.sqrt(aPapers[i].length), mk:ma.has(i)}));
+  const ew = new Map();
+  // papers with very long author lists would link everyone to everyone; they only link to the selected person
+  const BIG = 12;
+  ids.forEach(i=>aPapers[i].forEach(p=>p.a.forEach(j=>{ if(j>i && set.has(j) && (p.a.length<=BIG || i===sel || j===sel)){ const k=i+"|"+j; ew.set(k,(ew.get(k)||0)+1); } })));
+  // pairs counted once per paper per endpoint i, so each shared paper counts once
+  const links = [...ew.entries()].map(([k,w])=>{ const [s,t]=k.split("|").map(Number); return {source:s,target:t,w}; });
+  $("#g-info").textContent = nodes.length+" people · "+links.length+" links";
+  const svg = d3.select(svgEl); svg.selectAll("*").remove();
+  svg.attr("viewBox",[0,0,W,H]);
+  const g = svg.append("g");
+  const ego = st.graph==="ego";
+  const center = nodes.find(n=>n.i===sel); if(ego && center){ center.fx=W/2; center.fy=H/2; }
+  sim = d3.forceSimulation(nodes)
+    .force("link", d3.forceLink(links).id(d=>d.i).distance(l=> ego ? 70+ (l.source.i===sel||l.target.i===sel? 40:0) : 34).strength(l=>Math.min(1, (ego?.15:.25)*l.w)))
+    .force("charge", d3.forceManyBody().strength(ego?-260:-48).distanceMax(ego?260:400))
+    .force("collide", d3.forceCollide(d=>d.r+(ego?6:2)))
+    .force("x", d3.forceX(W/2).strength(ego?.04:.07)).force("y", d3.forceY(H/2).strength(ego?.06:.09));
+  const lk = g.append("g").selectAll("line").data(links).join("line").attr("class","gedge").attr("stroke-width",d=>Math.min(4,.8+(d.w-1)*.9)).attr("stroke-opacity",ego?.75:.55);
+  const nd = g.append("g").selectAll("g").data(nodes).join("g").attr("class",d=>"gnode"+(d.i===sel?" sel":"")+(d.mk?" mk":"")+(isFav(d.i)?" fav":""));
+  nd.append("circle").attr("r",d=>d.r);
+  const showLabel = d => isFav(d.i) || (ego ? (d.i===sel || nodes.length<=36 || d.n>=2 || d.mk) : (d.i===sel || d.n>=7 || d.mk));
+  nd.filter(showLabel).append("text").attr("x",d=>d.r+3).attr("y",4).text(d=>A[d.i]);
+  const adj = new Map(nodes.map(n=>[n.i,new Set([n.i])]));
+  links.forEach(l=>{ const s=l.source.i??l.source, t=l.target.i??l.target; adj.get(s).add(t); adj.get(t).add(s); });
+  nd.on("mouseenter",(e,d)=>{
+      const nb = adj.get(d.i);
+      nd.classed("dim",x=>!nb.has(x.i)); lk.classed("dim",l=>l.source.i!==d.i&&l.target.i!==d.i);
+      const sh = d.i===sel? "" : (coauthors(sel).get(d.i) ? "<br>"+coauthors(sel).get(d.i)+" paper(s) with "+esc(A[sel]) : "");
+      tip(e, "<b>"+esc(A[d.i])+"</b>"+(isFav(d.i)?" ♥":"")+"<br>"+d.n+" paper"+(d.n>1?"s":"")+" at CoRL"+(ma.get(d.i)?" · "+ma.get(d.i)+" marked by you":"")+sh);
+    })
+    .on("mousemove",e=>moveTip(e))
+    .on("mouseleave",()=>{ nd.classed("dim",false); lk.classed("dim",false); hideTip(); })
+    .on("click",(e,d)=>{ hideTip(); selectAuthor(d.i, false); });
+  nd.call(d3.drag()
+    .on("start",(e,d)=>{ if(!e.active) sim.alphaTarget(.2).restart(); d.fx=d.x; d.fy=d.y; })
+    .on("drag",(e,d)=>{ d.fx=e.x; d.fy=e.y; })
+    .on("end",(e,d)=>{ if(!e.active) sim.alphaTarget(0); if(!(ego&&d.i===sel)){ d.fx=null; d.fy=null; } }));
+  const zoom = d3.zoom().scaleExtent([.25,5]).on("zoom",e=>g.attr("transform",e.transform));
+  svg.call(zoom);
+  const tick = ()=>{ lk.attr("x1",d=>d.source.x).attr("y1",d=>d.source.y).attr("x2",d=>d.target.x).attr("y2",d=>d.target.y); nd.attr("transform",d=>"translate("+d.x+","+d.y+")"); };
+  const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  sim.stop(); for(let k=0;k<(reduce?300:160);k++) sim.tick();
+  tick();
+  if(!ego){ // fit overview
+    const xs=nodes.map(n=>n.x), ys=nodes.map(n=>n.y);
+    const x0=Math.min(...xs)-20,x1=Math.max(...xs)+90,y0=Math.min(...ys)-20,y1=Math.max(...ys)+20;
+    const k=Math.min(2, .95*Math.min(W/(x1-x0), H/(y1-y0)));
+    svg.call(zoom.transform, d3.zoomIdentity.translate(W/2-k*(x0+x1)/2, H/2-k*(y0+y1)/2).scale(k));
+    if(center){ /* keep selected visible */ }
+  }
+  sim.on("tick",tick);
+  if(!reduce) sim.alpha(.15).restart();
+}
+function selectAuthor(i, scroll){
+  st.author=i; saveUI();
+  if(st.view!=="people"){ location.hash="people"; return; }
+  render();
+  if(scroll!==false) window.scrollTo({top:0});
+}
+
+/* ---------- workshops (Thursday, Nov 12) ---------- */
+const W = (D.W||[]).map((w,i)=>Object.assign({i}, w));
+const ROLE = {spk:"Speaking", org:"Organizing", paper:"Workshop paper", other:"Listed on the site"};
+const SLOT = {am:["Morning","8:30 AM – 12:30 PM"], pm:["Afternoon","2:00 – 6:00 PM"]};
+const wsBy = A.map(()=>[]);   // author -> [[workshop index, role]]
+W.forEach(w=>{
+  const seen = new Set();
+  w.pp.forEach(([ai,role])=>{ wsBy[ai].push([w.i,role]); seen.add(ai); });
+  w.sp.forEach(([n,a,ai])=>{ if(ai>=0 && !seen.has(ai)){ wsBy[ai].push([w.i,"spk"]); seen.add(ai); } });
+  w.q = fold([w.t, w.v, w.r].concat(w.it.map(x=>x[2]), w.sp.map(x=>x[0]+" "+x[1]), w.pp.map(x=>A[x[0]])).join(" | "));
+  // names to link inside agenda text, longest first
+  const names = new Map(); w.pp.forEach(([ai])=>names.set(A[ai],ai)); w.sp.forEach(([n,a,ai])=>{ if(ai>=0) names.set(n,ai); });
+  w.names = [...names.entries()].sort((a,b)=>b[0].length-a[0].length);
+});
+const isGoing = w=>!!(going[w.t] && going[w.t].g);
+function followedIn(w){ // people you liked or authors of your marked papers who are involved
+  const mine = markedAuthors(); const out = new Map();
+  const add = (ai, role)=>{ if(ai>=0 && (isFav(ai) || mine.has(ai)) && !out.has(ai)) out.set(ai, role); };
+  w.sp.forEach(([n,a,ai])=>add(ai,"spk")); w.pp.forEach(([ai,role])=>add(ai,role));
+  return out;
+}
+function wsLocMatch(w){
+  if(!st.wloc) return true;
+  const name = st.wloc.slice(2);
+  return st.wloc[0]==="v" ? w.v===name : w.r===name;
+}
+function wsPasses(w){
+  if(st.wslot!=="all" && w.s!==st.wslot) return false;
+  if(!wsLocMatch(w)) return false;
+  if(st.wterms.length && !st.wterms.every(t=>w.q.includes(t))) return false;
+  if(st.wmine && !isGoing(w) && !followedIn(w).size) return false;
+  return true;
+}
+function linkNames(w, text){
+  let h = esc(text);
+  w.names.forEach(([n,ai])=>{ const e=esc(n); if(h.includes(e)) h = h.split(e).join('<button class="au'+(isFav(ai)?' fav':'')+'" data-author="'+ai+'">'+e+'</button>'); });
+  return h;
+}
+function goingBtn(w, big){
+  const on = isGoing(w);
+  return '<button class="'+(big?'btn ':'chip ')+'going" data-going="'+w.i+'" aria-pressed="'+on+'"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'+(on?"Going":"I'm going")+'</button>';
+}
+function wsCard(w, openAgenda){
+  const fol = followedIn(w);
+  const groups = {spk:[], org:[], paper:[], other:[]};
+  w.pp.forEach(([ai,role])=>groups[role] && groups[role].push(ai));
+  const nCorl = w.pp.length;
+  let h = '<article class="ws card'+(isGoing(w)?' is-going':'')+'" id="w-'+w.i+'"><header>'
+    + '<div class="wtop"><div class="code"><b>'+SLOT[w.s][0]+'</b> · '+esc(w.v)+' · <b>'+esc(w.r)+'</b></div>'+goingBtn(w)+'</div>'
+    + '<h3>'+(w.u?'<a href="'+esc(w.u)+'" target="_blank" rel="noopener">'+esc(w.t)+' <span class="ext">↗</span></a>':esc(w.t))+'</h3>';
+  if(w.sp.length) h += '<p class="wsp"><span class="eyebrow">Speakers</span> '+w.sp.map(([n,a,ai])=> ai>=0
+      ? '<button class="au'+(isFav(ai)?' fav':'')+'" data-author="'+ai+'" title="'+esc(a||"")+'">'+esc(n)+'</button>'
+      : '<span class="nm" title="'+esc(a||"")+'">'+esc(n)+'</span>').join(", ")+'</p>';
+  if(fol.size) h += '<p class="wfol">'+[...fol.entries()].map(([ai,role])=>'<button class="au'+(isFav(ai)?' fav':'')+'" data-author="'+ai+'">'+esc(A[ai])+'</button> <span class="role">'+ROLE[role].toLowerCase()+'</span>').join(" · ")+'</p>';
+  if(nCorl) h += '<details class="wpeople"><summary>'+nCorl+' CoRL 2026 author'+(nCorl>1?'s':'')+' involved: '+["spk","org","paper","other"].filter(r=>groups[r].length).map(r=>groups[r].length+' '+ROLE[r].toLowerCase()).join(' · ')+'</summary>'
+      + ["spk","org","paper","other"].filter(r=>groups[r].length).map(r=>'<div class="wpg"><span class="eyebrow">'+ROLE[r]+'</span> '+groups[r].sort((a,b)=>aPapers[b].length-aPapers[a].length).map(ai=>'<button class="au'+(isFav(ai)?' fav':'')+'" data-author="'+ai+'">'+esc(A[ai])+'</button>').join(", ")+'</div>').join("")+'</details>';
+  h += '</header>';
+  if(w.it.length){
+    h += '<details class="wagenda"'+(openAgenda?' open':'')+'><summary>Agenda <span class="mono">'+w.it.length+' items</span></summary><ol class="agenda">'
+      + w.it.map(([a,b,t])=>'<li><span class="at mono">'+esc(a)+(b?'–'+esc(b):'')+'</span><span class="atx">'+linkNames(w,t)+'</span></li>').join("")+'</ol>'
+      + '<p class="note">Times as listed on the workshop site.</p></details>';
+  } else h += '<p class="note wnote">'+esc(w.note||"No agenda yet.")+(w.u?' <a href="'+esc(w.u)+'" target="_blank" rel="noopener">Open the site ↗</a>':'')+'</p>';
+  return h + '</article>';
+}
+function viewWorkshops(){
+  if(!W.length) return '<div class="empty"><h3>No workshop data</h3><p>Run board/build_workshops.py, then rebuild the board.</p></div>';
+  const venues = [...new Set(W.map(w=>w.v))].sort(), rooms = [...new Set(W.map(w=>w.r))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
+  const nGo = W.filter(isGoing).length;
+  let h = '<div class="wshead"><div><div class="eyebrow">Thursday, November 12</div><h2>Workshops &amp; tutorials</h2>'
+    + '<p class="note">'+W.length+' half-day workshops at the JW Marriott and the Hilton. Rooms come from the CoRL schedule and are tentative. Agendas and speakers were read from each workshop’s own site, so check the site for last-minute changes.</p>'+(nGo?'<p style="margin:8px 0 0"><a class="btn" href="#thursday" style="text-decoration:none">See your '+nGo+' workshop'+(nGo>1?'s':'')+' side by side →</a></p>':'')+'</div></div>'
+    + '<div class="filters wsf"><label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="wq" type="search" placeholder="Search workshops, speakers, agenda" aria-label="Search workshops" autocomplete="off" value="'+esc(st.wq)+'"></label>'
+    + '<select id="wloc" aria-label="Workshop location"><option value="">All rooms</option>'+venues.map(v=>'<option value="v:'+esc(v)+'"'+(st.wloc==="v:"+v?" selected":"")+'>'+esc(v)+' · all rooms</option>').join("")+rooms.map(r=>'<option value="r:'+esc(r)+'"'+(st.wloc==="r:"+r?" selected":"")+'>'+esc(r)+' · '+esc(W.find(w=>w.r===r).v)+'</option>').join("")+'</select>'
+    + '<div class="chips" role="group" aria-label="Session">'+[["all","Both sessions"],["am","Morning"],["pm","Afternoon"]].map(([k,l])=>'<button class="chip" data-wslot="'+k+'" aria-pressed="'+(st.wslot===k)+'">'+l+'</button>').join("")
+    + '<button class="chip" data-wmine="1" aria-pressed="'+st.wmine+'">Going or with people I follow</button></div></div>';
+  return h + '<div id="ws-results">'+wsResultsHTML()+'</div>';
+}
+function wsResultsHTML(){
+  const nGo = W.filter(isGoing).length;
+  const open = st.wterms.length>0;
+  let any = false, h = "";
+  ["am","pm"].forEach(s=>{
+    const list = W.filter(w=>w.s===s && wsPasses(w)).sort((a,b)=>(isGoing(b)-isGoing(a)) || (followedIn(b).size-followedIn(a).size) || a.t.localeCompare(b.t));
+    if(!list.length) return; any = true;
+    h += '<section class="wslot"><div class="dayhead"><h2>'+SLOT[s][0]+'</h2><span class="mono">'+SLOT[s][1]+' · '+list.length+' workshop'+(list.length>1?'s':'')+'</span></div><div class="wsgrid">'+list.map(w=>wsCard(w, open)).join("")+'</div></section>';
+  });
+  if(!any) h += '<div class="empty"><h3>No workshops match</h3><p>Try a shorter search or another room.</p><p><button class="btn" data-wclear>Clear workshop filters</button></p></div>';
+  h += '<p class="foot">'+(nGo?nGo+' workshop'+(nGo>1?'s':'')+' marked as going. ':'')+'Names link to the person’s card when they are also authors of a CoRL 2026 paper. Matching is by exact name, so two people with the same name can be mixed up.</p>';
+  return h;
+}
+function toggleGoing(i){
+  const w = W[i]; if(!w) return;
+  const g = Object.assign({}, going[w.t]||{});
+  if(g.g) delete going[w.t]; else going[w.t] = {g:1, t:Date.now()};
+  scheduleSave();
+  toast(isGoing(w) ? "Added to your Thursday plan" : "Removed from your Thursday plan");
+  document.querySelectorAll('[data-going="'+i+'"]').forEach(b=>{ const on=isGoing(w); b.setAttribute("aria-pressed",on); b.lastChild.textContent = on?"Going":"I'm going"; });
+  const card = document.getElementById("w-"+i); if(card) card.classList.toggle("is-going", isGoing(w));
+  updateGoingCount();
+  if(st.view==="mine" || st.view==="people" || st.view==="thursday") render();
+}
+function updateGoingCount(){ const el=$("#going-ct"); if(el) el.textContent = W.filter(isGoing).length; }
+
+/* ---------- My Thursday: going workshops side by side on one time axis ---------- */
+const THU = "2026-11-12";
+const SLOTWIN = {am:[510,750], pm:[840,1080]};
+function tMin(t){
+  const m = /(\d{1,2}):(\d{2})\s*(AM|PM)?/i.exec(t||""); if(!m) return null;
+  let h=+m[1]; const mi=+m[2], ap=(m[3]||"").toUpperCase();
+  if(ap==="PM" && h!==12) h+=12; else if(ap==="AM" && h===12) h=0; else if(!ap && h<7) h+=12;
+  return h*60+mi;
+}
+const hhmm = m=>{ let h=Math.floor(m/60), mi=m%60; const ap=h>=12?"PM":"AM"; h=h%12||12; return h+":"+String(mi).padStart(2,"0")+" "+ap; };
+function kindOf(t){
+  const s=t.toLowerCase();
+  if(/coffee|break|lunch|poster|exhibit|demo session/.test(s)) return "brk";
+  if(/panel|debate|discussion|breakout|q&a|fishbowl|roundtable|forum|vote/.test(s)) return "pan";
+  if(/invited|keynote|talk|speaker|tutorial|exercise|lecture/.test(s)) return "tlk";
+  if(/oral|spotlight|lightning|paper|presentation/.test(s)) return "pap";
+  return "oth";
+}
+const KIND = {tlk:"Talk", pan:"Panel / discussion", pap:"Papers", brk:"Break / posters", oth:"Other"};
+function layoutItems(w){
+  const win = SLOTWIN[w.s];
+  const its = w.it.map(([a,b,t],k)=>({k, s:tMin(a), e:b?tMin(b):null, a, b, t:t.replace(/^\d+\s*min\s*[|·:]\s*/i,"")})).filter(x=>x.s!=null).sort((x,y)=>x.s-y.s||x.k-y.k);
+  its.forEach((x,j)=>{
+    if(x.e==null || x.e<=x.s){ const nx=its.slice(j+1).find(y=>y.s>x.s); x.e = nx ? nx.s : Math.max(x.s+15, Math.min(x.s+30, win[1])); }
+    if(x.e<=x.s) x.e = x.s+10;
+    x.kind = kindOf(x.t);
+  });
+  const groups=[]; let g=[], gEnd=-1;
+  its.forEach(x=>{ if(g.length && x.s>=gEnd){ groups.push(g); g=[]; gEnd=-1; } g.push(x); gEnd=Math.max(gEnd,x.e); });
+  if(g.length) groups.push(g);
+  groups.forEach(gr=>{ const lanes=[]; gr.forEach(x=>{ let l=lanes.findIndex(end=>end<=x.s); if(l<0){ l=lanes.length; lanes.push(0); } lanes[l]=x.e; x.lane=l; }); gr.forEach(x=>x.nl=lanes.length); });
+  return its;
+}
+function thuNow(){
+  const n = austinNow();
+  if(n.date===THU && st.tprev==null){ const [h,m]=n.hm.split(":").map(Number); return {min:h*60+m, live:true}; }
+  return {min: st.tprev!=null ? st.tprev : 600, live:false};
+}
+const PXM = 2.1; // pixels per minute
+function viewThursday(){
+  const gw = W.filter(isGoing).sort((a,b)=>a.s.localeCompare(b.s) || a.r.localeCompare(b.r,undefined,{numeric:true}));
+  if(!gw.length) return '<div class="empty" style="padding:40px 20px"><h3>No workshops picked yet</h3><p>Mark the workshops you are interested in with “I’m going”. They appear here side by side on one timeline, with what is on right now in each room.</p><p><a class="btn primary" href="#workshops" style="text-decoration:none">Choose workshops</a></p></div>';
+  const lay = gw.map(w=>({w, its:layoutItems(w)}));
+  let t0 = Math.min(...lay.map(L=>L.its.length?L.its[0].s:SLOTWIN[L.w.s][0]), ...gw.map(w=>SLOTWIN[w.s][0]));
+  let t1 = Math.max(...lay.map(L=>L.its.length?Math.max(...L.its.map(x=>x.e)):SLOTWIN[L.w.s][1]), ...gw.map(w=>SLOTWIN[w.s][1]));
+  t0 = Math.floor(t0/60)*60; t1 = Math.ceil(t1/60)*60;
+  const H = (t1-t0)*PXM, now = thuNow();
+  const nowIn = now.min>=t0 && now.min<=t1;
+  // "right now" strip
+  let strip = '<div class="nowstrip">';
+  lay.forEach(({w,its})=>{
+    const cur = its.filter(x=>x.s<=now.min && now.min<x.e);
+    const nxt = its.find(x=>x.s>now.min);
+    const win = SLOTWIN[w.s];
+    let body;
+    if(!its.length) body = '<span class="nwx">'+(now.min>=win[0]&&now.min<win[1]?'In session · no agenda published':'Session '+SLOT[w.s][1])+'</span>';
+    else if(cur.length) body = cur.map(x=>'<span class="nwx"><b class="mono">'+hhmm(x.s)+'–'+hhmm(x.e)+'</b> '+linkNames(w,x.t)+'</span>').join("");
+    else body = '<span class="nwx muted">'+(now.min<win[0]?'Starts '+hhmm(win[0]):now.min>=win[1]?'Finished':'Between items')+'</span>';
+    if(nxt) body += '<span class="nwn">Next <b class="mono">'+hhmm(nxt.s)+'</b> '+esc(nxt.t.length>80?nxt.t.slice(0,78)+'…':nxt.t)+'</span>';
+    strip += '<div class="nowcard'+(cur.length?' on':'')+'"><div class="code"><b>'+esc(w.r)+'</b> · '+esc(w.v)+'</div><div class="nwt">'+esc(w.t)+'</div>'+body+'</div>';
+  });
+  strip += '</div>';
+  let h = '<div class="tlhead"><div><div class="eyebrow">Thursday, November 12 · workshops you’re going to</div><h2>My Thursday</h2></div>'
+    + '<div class="tlctl"><span class="pill'+(now.live?'':' next')+'">'+(now.live?'Live':'Preview')+'</span><label for="tprev" class="note">'+(now.live?'Now':'Show what’s on at')+'</label>'
+    + '<input type="time" id="tprev" step="300" min="07:00" max="19:00" value="'+String(Math.floor(now.min/60)).padStart(2,"0")+':'+String(now.min%60).padStart(2,"0")+'">'
+    + (st.tprev!=null?'<button class="linkbtn" data-tlive>Back to live time</button>':'')+'</div></div>'
+    + (now.live?'':'<p class="note" style="margin:-4px 0 12px">It isn’t Thursday in Austin yet, so this is a preview. On the day, the line and the “now” cards follow Austin time.</p>')
+    + '<h3 class="tlsub">Right now · '+hhmm(now.min)+'</h3>' + strip;
+  // grid
+  const cols = gw.length;
+  h += '<div class="tlwrap" id="tlwrap"><div class="tlgrid" style="grid-template-columns:52px repeat('+cols+',minmax(210px,1fr))">'
+    + '<div class="tlc tlcorner"></div>'
+    + lay.map(({w})=>'<div class="tlc tlh"><div class="code"><b>'+SLOT[w.s][0]+'</b> · '+esc(w.r)+'</div><div class="tlht" title="'+esc(w.t)+'">'+esc(w.t)+'</div><div class="tlha">'+(w.u?'<a href="'+esc(w.u)+'" target="_blank" rel="noopener">Site ↗</a>':'')+'<button class="linkbtn" data-going="'+w.i+'">Remove</button></div></div>').join("");
+  // axis
+  let axis = '<div class="tlaxis" style="height:'+H+'px">';
+  for(let m=t0; m<=t1; m+=60) axis += '<span style="top:'+((m-t0)*PXM)+'px">'+hhmm(m).replace(":00","")+'</span>';
+  if(nowIn) axis += '<span class="nowlab" style="top:'+((now.min-t0)*PXM)+'px">'+hhmm(now.min).replace(/ (AM|PM)/,"")+'</span>';
+  h += axis+'</div>';
+  lay.forEach(({w,its})=>{
+    const win = SLOTWIN[w.s];
+    h += '<div class="tlcol" style="height:'+H+'px;background-size:100% '+(30*PXM)+'px">'
+      + '<div class="tlsess" style="top:'+((win[0]-t0)*PXM)+'px;height:'+((win[1]-win[0])*PXM)+'px"></div>';
+    if(!its.length) h += '<div class="tlb oth" style="top:'+((win[0]-t0)*PXM)+'px;height:'+((win[1]-win[0])*PXM)+'px;left:2px;right:2px"><span class="tlbt">'+esc(w.note||"No agenda published")+'</span></div>';
+    its.forEach(x=>{
+      const top=(x.s-t0)*PXM, ht=Math.max(18,(x.e-x.s)*PXM-2), wd=100/x.nl;
+      const on = x.s<=now.min && now.min<x.e;
+      const tipHtml = '<b>'+esc(hhmm(x.s)+' – '+hhmm(x.e))+'</b><br>'+esc(x.t)+'<br><span style="opacity:.75">'+esc(w.r)+' · '+esc(w.t)+'</span>';
+      h += '<button class="tlb '+x.kind+(on?' on':'')+(ht<40?' short':'')+'" data-tl="'+w.i+':'+x.k+'" style="top:'+top+'px;height:'+ht+'px;left:calc('+(x.lane*wd)+'% + 2px);width:calc('+wd+'% - 4px)" data-tip="'+esc(tipHtml)+'">'
+        + '<span class="tlbm mono">'+hhmm(x.s).replace(/ (AM|PM)/,"")+'</span><span class="tlbt">'+esc(x.t)+'</span></button>';
+    });
+    if(nowIn) h += '<div class="nowline" style="top:'+((now.min-t0)*PXM)+'px"></div>';
+    h += '</div>';
+  });
+  h += '</div></div>'
+    + '<div class="tllegend">'+Object.keys(KIND).map(k=>'<span><i class="tlb-sw '+k+'"></i>'+KIND[k]+'</span>').join("")+'<span class="note">Select a block for details · times as listed on each workshop’s site</span></div>'
+    + '<div class="tldetail" id="tl-detail" hidden></div>';
+  return h;
+}
+let tlScroll = null, tlTimer = null;
+function afterThursday(){
+  const wrap = $("#tlwrap"); if(!wrap) return;
+  if(tlScroll){ wrap.scrollTop=tlScroll[0]; wrap.scrollLeft=tlScroll[1]; tlScroll=null; }
+  else { const nl = wrap.querySelector(".nowline"); if(nl) wrap.scrollTop = Math.max(0, parseFloat(nl.style.top) - 140); }
+  clearInterval(tlTimer);
+  tlTimer = setInterval(()=>{ // keep the live view current
+    if(st.view!=="thursday" || st.tprev!=null || !thuNow().live || document.activeElement && document.activeElement.id==="tprev") return;
+    const w=$("#tlwrap"); if(w) tlScroll=[w.scrollTop,w.scrollLeft]; render();
+  }, 60000);
+}
+function showTlDetail(key){
+  const [wi,k] = key.split(":").map(Number); const w=W[wi]; if(!w) return;
+  const x = layoutItems(w).find(y=>y.k===k); if(!x) return;
+  const d = $("#tl-detail"); d.hidden=false;
+  d.innerHTML = '<button class="ic dclose" data-tlclose aria-label="Close details"><svg viewBox="0 0 24 24"><use href="#i-x"/></svg></button>'
+    + '<div class="code"><b>'+hhmm(x.s)+' – '+hhmm(x.e)+'</b> · '+esc(w.r)+' · '+esc(w.v)+'</div><p class="tldt">'+linkNames(w,x.t)+'</p><p class="note">'+esc(w.t)+(w.u?' · <a href="'+esc(w.u)+'" target="_blank" rel="noopener">Workshop site ↗</a>':'')+'</p>';
+}
+function personWorkshopsHTML(ai){
+  const list = wsBy[ai]; if(!list.length) return "";
+  return '<h3 style="font-size:17px;margin:18px 0 8px">At the workshops · Thursday, Nov 12</h3><div class="card wlist">'+list.map(([wi,role])=>{
+    const w = W[wi];
+    const slots = w.it.filter(it=>it[2].includes(A[ai])).map(it=>it[0]+(it[1]?'–'+it[1]:''));
+    return '<div class="wrow"><div style="min-width:0"><b>'+(w.u?'<a href="'+esc(w.u)+'" target="_blank" rel="noopener">'+esc(w.t)+' ↗</a>':esc(w.t))+'</b>'
+      + '<span class="where">'+ROLE[role]+' · '+SLOT[w.s][0]+' '+SLOT[w.s][1]+(slots.length?' · on the agenda at '+esc(slots.join(", ")):'')+' · '+esc(w.v)+', '+esc(w.r)+'</span></div>'+goingBtn(w)+'</div>';
+  }).join("")+'</div>';
+}
+
+/* ---------- mine ---------- */
+function viewMine(){
+  const all = P.filter(p=>hasAny(p.id));
+  const favs = favPeople();
+  const nl = P.filter(p=>marks[p.id]&&marks[p.id].l).length, nf = P.filter(p=>marks[p.id]&&marks[p.id].f).length, nn = P.filter(p=>marks[p.id]&&marks[p.id].n).length;
+  const nph = P.reduce((s,p)=>s+photosOf(p.id).length, 0);
+  const goingW = W.filter(isGoing).sort((a,b)=>a.s.localeCompare(b.s));
+  if(!all.length && !favs.length && !goingW.length){
+    return '<div class="empty" style="padding:40px 20px"><h3>Your board is empty</h3><p>Select the heart on any paper to like it, the flag to mark a poster you want to visit, or the camera to keep a photo of the poster. Your picks show up here as an itinerary in the order you can see them, with poster numbers and rooms.</p><p style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px"><button class="btn primary" data-start="orals">Browse the 21 orals</button><button class="btn" data-start="schedule">Open the schedule</button></p></div>';
+  }
+  const showP = p => st.mineShow==="all" ? true : st.mineShow==="ph" ? photosOf(p.id).length>0 : st.mineShow==="l" ? !!(marks[p.id]&&marks[p.id].l) : !!(marks[p.id]&&marks[p.id].f);
+  const list = all.filter(showP);
+  let html = '<div class="minehead"><h2>My board</h2><span class="stat"><b>'+nl+'</b>liked</span><span class="stat"><b>'+nf+'</b>flagged</span><span class="stat"><b>'+nn+'</b>notes</span><span class="stat"><b>'+nph+'</b>photos</span><span class="stat"><b>'+favs.filter(f=>f[1].l).length+'</b>people</span><button class="btn" id="copy-md">Copy as Markdown</button></div>'
+    + '<div class="chips" role="group" aria-label="Show" style="margin-bottom:18px"><button class="chip" data-mineshow="all" aria-pressed="'+(st.mineShow==="all")+'">Everything</button><button class="chip" data-mineshow="l" aria-pressed="'+(st.mineShow==="l")+'">Liked</button><button class="chip" data-mineshow="f" aria-pressed="'+(st.mineShow==="f")+'">Flagged to visit</button><button class="chip" data-mineshow="ph" aria-pressed="'+(st.mineShow==="ph")+'">With photos</button></div><div id="copy-slot"></div>';
+  // people you liked, with your notes
+  if(favs.length){
+    html += '<div class="eyebrow" style="margin-bottom:8px">People you liked</div><div class="favs">'+favs.map(([i,e])=>{
+      const ps = aPapers[i].slice().sort((a,b)=>sessOrder[a.ps]-sessOrder[b.ps]||a.n-b.n);
+      return '<div class="fav-card"><div class="top"><div style="min-width:0"><button class="au" data-author="'+i+'" style="text-align:left"><b>'+esc(A[i])+'</b></button>'
+        + '<p class="sub">'+aPapers[i].length+' paper'+(aPapers[i].length>1?"s":"")+' at CoRL</p><span class="where">'+ps.slice(0,3).map(p=>esc("P"+p.ps.slice(1)+" "+dayShort(p.ps)+" #"+p.n+(p.room?" "+p.room.name:""))).join(" · ")+(ps.length>3?" …":"")+'</span></div>'
+        + '<button class="ic like" data-likeperson="'+i+'" aria-pressed="'+!!e.l+'" aria-label="'+(e.l?"Unlike ":"Like ")+esc(A[i])+'" title="'+(e.l?"Unlike":"Like")+'"><svg viewBox="0 0 24 24"><use href="#i-heart"/></svg></button></div>'
+        + '<textarea class="pnote" id="pn-'+i+'" data-person="'+i+'" aria-label="Your note about '+esc(A[i])+'" placeholder="Where you met, follow-ups…">'+esc(e.n||"")+'</textarea></div>';
+    }).join("")+'</div>';
+  }
+  // people to meet
+  const ma = new Map(); list.forEach(p=>p.a.forEach(i=>ma.set(i,(ma.get(i)||0)+1)));
+  const meet = [...ma.entries()].filter(e=>e[1]>=2).sort((a,b)=>b[1]-a[1]||aPapers[b[0]].length-aPapers[a[0]].length).slice(0,12);
+  if(meet.length){
+    html += '<div class="eyebrow" style="margin-bottom:8px">People on two or more of your papers</div><div class="meet">'+meet.map(([i,n])=>{
+      const ps = aPapers[i].slice().sort((a,b)=>sessOrder[a.ps]-sessOrder[b.ps]||a.n-b.n);
+      return '<button class="person" data-author="'+i+'"><b>'+esc(A[i])+'</b><span>'+n+' of your papers · '+aPapers[i].length+' at CoRL</span><span class="where">'+ps.slice(0,3).map(p=>esc("P"+p.ps.slice(1)+" "+dayShort(p.ps)+" #"+p.n)).join(" · ")+(ps.length>3?" …":"")+'</span></button>';
+    }).join("")+'</div>';
+  }
+  if(list.length || goingW.length) html += '<div class="eyebrow" style="margin-bottom:4px">Itinerary</div>';
+  else if(all.length) html += '<p class="note">No papers match this view.</p>';
+  DAYS.forEach(d=>{
+    const ss = SESS.filter(s=>s.day===d[0]).map(s=>({s, l:list.filter(p=> s.kind==="poster" ? p.ps===s.code : p.ts===s.code)})).filter(x=>x.l.length);
+    if(!ss.length) return;
+    html += '<div class="dayhead"><h2>'+d[1]+', '+d[3]+'</h2></div>';
+    ss.forEach(({s,l})=>{
+      const isPoster = s.kind==="poster";
+      l.sort((a,b)=> isPoster ? a.n-b.n : a.t.localeCompare(b.t));
+      html += '<section class="sess '+s.kind+'"><div class="when"><time>'+fmt12(s.start).replace(/ (AM|PM)/,"")+'</time><span>'+fmt12(s.start).slice(-2)+' – '+fmt12(s.end)+'</span></div><div class="card"><header><div class="code"><b>'+esc(isPoster?s.code:s.label)+'</b> · '+esc(s.venue)+'</div><h3>'+esc(isPoster?s.label:s.theme)+'</h3><p class="meta">'+l.length+' of yours'+(isPoster?' · '+s.rooms.map(r=>esc(r[2])+' '+esc(r[3])+' #'+r[0]+'–'+r[1]).join(' · '):'')+'</p></header><div class="rows">'+l.map(p=>rowHTML(p, isPoster?"poster":"talk")).join("")+'</div></div></section>';
+    });
+  });
+  if(goingW.length){
+    html += '<div class="dayhead"><h2>Thursday, Nov 12</h2><span>Workshops</span></div>';
+    ["am","pm"].forEach(s=>{
+      const l = goingW.filter(w=>w.s===s); if(!l.length) return;
+      html += '<section class="sess"><div class="when"><time>'+(s==="am"?"8:30":"2:00")+'</time><span>'+(s==="am"?"AM – 12:30 PM":"PM – 6:00 PM")+'</span></div><div class="card wlist">'
+        + (l.length>1?'<p class="note" style="padding:10px 14px 0;color:var(--accent)">'+l.length+' workshops at the same time: pick one or move between rooms.</p>':'')
+        + l.map(w=>'<div class="wrow"><div style="min-width:0"><b>'+(w.u?'<a href="'+esc(w.u)+'" target="_blank" rel="noopener">'+esc(w.t)+' ↗</a>':esc(w.t))+'</b><span class="where">'+esc(w.v)+' · '+esc(w.r)+(w.sp.length?' · '+esc(w.sp.slice(0,4).map(x=>x[0]).join(", ")):'')+'</span></div>'+goingBtn(w)+'</div>').join("")+'</div></section>';
+    });
+  }
+  html += '<p class="foot">Likes, flags and notes are private to you: other people who open this board have their own. When the header says "saved to your account" they follow you to your phone; otherwise they stay in this browser.</p>';
+  return html;
+}
+function markdownExport(){
+  const lines = ["# My CoRL 2026 board",""];
+  DAYS.forEach(d=>{
+    const ss = SESS.filter(s=>s.day===d[0]);
+    let dayLines = [];
+    ss.forEach(s=>{
+      const isPoster = s.kind==="poster";
+      const l = P.filter(p=>hasAny(p.id) && (isPoster?p.ps===s.code:p.ts===s.code)).sort((a,b)=>isPoster?a.n-b.n:a.t.localeCompare(b.t));
+      if(!l.length) return;
+      dayLines.push("### "+s.time+" · "+(isPoster?s.label:s.label+": "+s.theme)+" ("+s.venue+")");
+      l.forEach(p=>{
+        const m=marks[p.id]||{}; const tag=(m.l?"♥":"")+(m.f?"⚑":""); const np=photosOf(p.id).length;
+        dayLines.push("- "+(tag?tag+" ":"")+(isPoster?"#"+p.n+(p.room?" "+p.room.name:"")+" · ":"")+p.t+" — "+p.a.slice(0,3).map(i=>A[i]).join(", ")+(p.a.length>3?" et al.":"")+" — https://openreview.net/forum?id="+p.id+(np?" ("+np+" photo"+(np>1?"s":"")+")":""));
+        if(m.n) dayLines.push("  - Note: "+m.n.replace(/\n+/g," "));
+      });
+      dayLines.push("");
+    });
+    if(dayLines.length){ lines.push("## "+d[1]+", "+d[3],""); lines.push(...dayLines); }
+  });
+  const gw = W.filter(isGoing).sort((a,b)=>a.s.localeCompare(b.s));
+  if(gw.length){
+    lines.push("## Thursday, Nov 12 · Workshops","");
+    gw.forEach(w=>lines.push("- "+SLOT[w.s][1]+" · "+w.t+" — "+w.v+", "+w.r+(w.u?" — "+w.u:"")));
+    lines.push("");
+  }
+  const favs = favPeople();
+  if(favs.length){
+    lines.push("## People","");
+    favs.forEach(([i,e])=>lines.push("- "+(e.l?"♥ ":"")+A[i]+" ("+aPapers[i].length+" paper"+(aPapers[i].length>1?"s":"")+" at CoRL)"+(e.n?" — "+e.n.replace(/\n+/g," "):"")));
+    lines.push("");
+  }
+  return lines.join("\n");
+}
+
+/* ---------- drawer ---------- */
+let openId=null, lastFocus=null;
+function openDrawer(id){
+  lastFocus = document.activeElement; openId=id;
+  renderDrawer(id);
+  $("#drawer").hidden=false; $("#scrim").hidden=false;
+  document.body.style.overflow="hidden";
+  const c=$("#drawer .dclose"); if(c) c.focus();
+}
+function closeDrawer(){
+  $("#drawer").hidden=true; $("#scrim").hidden=true; document.body.style.overflow=""; openId=null;
+  if(st.view==="mine"){ clearTimeout(noteT); render(); }
+  if(lastFocus && document.contains(lastFocus)) lastFocus.focus();
+}
+function renderDrawer(id){
+  const p = byId.get(id); if(!p) return;
+  const m = marks[id]||{};
+  const dr = $("#drawer");
+  const ts = sess[p.ts], ps = sess[p.ps];
+  const others = new Map();
+  p.a.forEach(i=>aPapers[i].forEach(q=>{ if(q.id!==id) others.set(q.id,(others.get(q.id)||0)+1); }));
+  const more = [...others.entries()].sort((a,b)=>b[1]-a[1]).slice(0,8).map(e=>byId.get(e[0]));
+  let html = '<button class="ic dclose" aria-label="Close" title="Close (Esc)"><svg viewBox="0 0 24 24"><use href="#i-x"/></svg></button>'
+    + '<div class="eyebrow">'+(p.v==="O"?"Oral":p.v==="S"?"Spotlight":"Poster")+' · '+esc(catLabel(p.c))+'</div>'
+    + '<h2 id="d-title">'+esc(p.t)+'</h2>'
+    + '<div class="dauth">'+p.a.map(i=>'<button class="au" data-author="'+i+'">'+esc(A[i])+(aPapers[i].length>1?' <span class="mono more">'+aPapers[i].length+'</span>':'')+'</button>').join("")+'</div>'
+    + '<div class="tags">'+[p.c].concat(p.m).map((c,k)=>'<button class="topic" data-topic="'+c+'">'+(k?"also ":"")+esc(catLabel(c))+'</button>').join("")+'</div>'
+    + '<div class="dacts"><button class="btn like" data-mark="l" data-pid="'+id+'" aria-pressed="'+!!m.l+'"><svg viewBox="0 0 24 24"><use href="#i-heart"/></svg>Like</button><button class="btn flag" data-mark="f" data-pid="'+id+'" aria-pressed="'+!!m.f+'"><svg viewBox="0 0 24 24"><use href="#i-flag"/></svg>Flag to visit</button></div>';
+  if(ts) html += '<div class="slot"><div class="k">Talk</div><div><b>'+esc(ts.label)+' · '+DAYS.find(d=>d[0]===ts.day)[1]+' '+esc(ts.time)+'</b><span>'+esc(ts.theme)+' · '+esc(ts.venue)+'</span></div></div>';
+  if(ps) html += '<div class="slot"><div class="k">Poster</div><div><span class="big">#'+p.n+'</span><b style="display:block">'+esc(ps.label)+' · '+DAYS.find(d=>d[0]===ps.day)[1]+' '+esc(ps.time)+'</b><span>'+esc(ps.venue)+(p.room?' · '+esc(p.room.name)+', '+esc(p.room.floor):'')+'</span></div></div>';
+  html += '<div class="links"><a href="https://openreview.net/forum?id='+encodeURIComponent(id)+'" target="_blank" rel="noopener">OpenReview ↗</a><a href="https://openreview.net/pdf?id='+encodeURIComponent(id)+'" target="_blank" rel="noopener">PDF ↗</a><a href="https://scholar.google.com/scholar?q='+encodeURIComponent('"'+p.t+'"')+'" target="_blank" rel="noopener">Scholar ↗</a></div>'
+    + '<label>Photos</label><div id="d-photos">'+drawerPhotosHTML(id)+'</div>'
+    + '<label for="note">Your note</label><textarea id="note" placeholder="What stood out, questions to ask at the poster…">'+esc(m.n||"")+'</textarea>';
+  if(more.length) html += '<h3>More from these authors</h3><div class="rows">'+more.map(q=>rowHTML(q,"list")).join("")+'</div>';
+  dr.innerHTML = html;
+  dr.scrollTop = 0;
+}
+
+/* ---------- tooltip & toast ---------- */
+const tipEl = $("#tip");
+function tip(e, html){ tipEl.innerHTML=html; tipEl.hidden=false; moveTip(e); }
+function moveTip(e){ const x=e.clientX, y=e.clientY, w=tipEl.offsetWidth, h=tipEl.offsetHeight; tipEl.style.left=Math.max(8,Math.min(innerWidth-w-8,x+14))+"px"; tipEl.style.top=Math.max(8,(y+h+20>innerHeight? y-h-12 : y+16))+"px"; }
+function hideTip(){ tipEl.hidden=true; }
+let toastT=null;
+function toast(t){ const el=$("#toast"); el.textContent=t; el.hidden=false; clearTimeout(toastT); toastT=setTimeout(()=>el.hidden=true, 1600); }
+
+/* ---------- events ---------- */
+document.addEventListener("click", e=>{
+  const t = e.target.closest("button,a"); if(!t) return;
+  if(t.dataset.mark){ e.preventDefault(); toggleMark(t.dataset.pid, t.dataset.mark); return; }
+  if(t.dataset.likeperson!=null){ togglePerson(+t.dataset.likeperson); return; }
+  if(t.dataset.going!=null){ toggleGoing(+t.dataset.going); return; }
+  if(t.dataset.tl){ hideTip(); showTlDetail(t.dataset.tl); return; }
+  if(t.hasAttribute("data-tlclose")){ $("#tl-detail").hidden=true; return; }
+  if(t.hasAttribute("data-tlive")){ st.tprev=null; render(); return; }
+  if(t.dataset.wslot){ st.wslot=t.dataset.wslot; render(); return; }
+  if(t.dataset.wmine){ st.wmine=!st.wmine; render(); return; }
+  if(t.hasAttribute("data-wclear")){ st.wq=""; st.wterms=[]; st.wloc=""; st.wslot="all"; st.wmine=false; render(); return; }
+  if(t.dataset.open){ openDrawer(t.dataset.open); return; }
+  if(t.classList.contains("dclose")){ closeDrawer(); return; }
+  if(t.dataset.author!=null){ if(!$("#drawer").hidden) closeDrawer(); selectAuthor(+t.dataset.author); return; }
+  if(t.dataset.topic!=null){ if(!$("#drawer").hidden) closeDrawer(); st.topic=+t.dataset.topic; $("#topic").value=st.topic; if(st.view!=="topics") location.hash="topics"; else { render(); jumpTo("topic-list"); } return; }
+  if(t.dataset.settopic!=null){
+    const v=+t.dataset.settopic; st.topic = (v===st.topic && !t.dataset.jump) ? -1 : v; $("#topic").value=st.topic; render();
+    if(st.topic>=0) jumpTo(t.dataset.jump ? "g-"+t.dataset.jump : "topic-list"); return;
+  }
+  if(t.dataset.day){ st.day=t.dataset.day; saveUI(); render(); return; }
+  if(t.dataset.type){ const k=t.dataset.type; if(st.types.has(k)&&st.types.size>1) st.types.delete(k); else st.types.add(k); syncChips(); render(); return; }
+  if(t.id==="t-mine"){ st.mine=!st.mine; syncChips(); render(); return; }
+  if(t.id==="clear" || t.hasAttribute("data-clear")){ clearFilters(); return; }
+  if(t.dataset.graph){ st.graph=t.dataset.graph; saveUI(); render(); return; }
+  if(t.dataset.mineshow){ st.mineShow=t.dataset.mineshow; render(); return; }
+  if(t.dataset.start){ if(t.dataset.start==="orals"){ st.types=new Set(["O"]); st.day="all"; syncChips(); } location.hash="schedule"; if(st.view==="schedule") render(); return; }
+  if(t.id==="copy-md"){ copyMarkdown(); return; }
+});
+function jumpTo(id){ const el=document.getElementById(id); if(el) el.scrollIntoView({block:"start"}); }
+document.addEventListener("mouseover", e=>{ const t=e.target.closest("[data-tip]"); if(t) tip(e, t.dataset.tip); });
+document.addEventListener("mousemove", e=>{ if(!tipEl.hidden && e.target.closest("[data-tip]")) moveTip(e); });
+document.addEventListener("mouseout", e=>{ const t=e.target.closest("[data-tip]"); if(t && !t.contains(e.relatedTarget)) hideTip(); });
+document.addEventListener("focusin", e=>{ const t=e.target.closest("[data-tip]"); if(t){ const r=t.getBoundingClientRect(); tip({clientX:r.left+r.width/2, clientY:r.bottom}, t.dataset.tip); } });
+document.addEventListener("focusout", e=>{ if(e.target.closest("[data-tip]")) hideTip(); });
+$("#scrim").addEventListener("click", closeDrawer);
+document.addEventListener("keydown", e=>{
+  if(lb){
+    if(e.key==="Escape"){ e.preventDefault(); closeLightbox(); }
+    else if(e.key==="ArrowLeft" || e.key==="ArrowRight"){ const b=$("#lightbox [data-lb='"+(e.key==="ArrowLeft"?"prev":"next")+"']"); if(b) b.click(); }
+    return;
+  }
+  if(e.key==="Escape" && !$("#drawer").hidden){ closeDrawer(); }
+  if(e.key==="/" && document.activeElement.tagName!=="INPUT" && document.activeElement.tagName!=="TEXTAREA" && !$("#filters").hidden){ e.preventDefault(); $("#q").focus(); }
+  if(e.key==="Tab" && !$("#drawer").hidden){ // keep focus inside the drawer
+    const f=[...$("#drawer").querySelectorAll("button,a,textarea")]; if(!f.length) return;
+    if(e.shiftKey && document.activeElement===f[0]){ e.preventDefault(); f[f.length-1].focus(); }
+    else if(!e.shiftKey && document.activeElement===f[f.length-1]){ e.preventDefault(); f[0].focus(); }
+  }
+});
+let noteT=null;
+document.addEventListener("input", e=>{
+  if(e.target.id==="note"){ const id=openId, v=e.target.value; clearTimeout(noteT); setNote(id, v); }
+  if(e.target.id==="aq") authorSearch(e.target.value);
+  if(e.target.id==="wq"){ const v=e.target.value; clearTimeout(wqT); wqT=setTimeout(()=>{ st.wq=v; st.wterms=fold(v).split(/\s+/).filter(Boolean); const r=$("#ws-results"); if(r) r.innerHTML=wsResultsHTML(); }, 160); }
+  if(e.target.dataset && e.target.dataset.person!=null) setPersonNote(+e.target.dataset.person, e.target.value);
+});
+let qT=null, wqT=null;
+document.addEventListener("change", e=>{
+  if(e.target.id==="wloc"){ st.wloc=e.target.value; render(); }
+  if(e.target.id==="tprev" && e.target.value){ const [h,m]=e.target.value.split(":").map(Number); st.tprev=h*60+m; const w=$("#tlwrap"); render(); }
+});
+$("#q").addEventListener("input", e=>{ clearTimeout(qT); qT=setTimeout(()=>{ st.q=e.target.value; st.terms=fold(st.q).split(/\s+/).filter(Boolean); render(); }, 140); });
+$("#topic").addEventListener("change", e=>{ st.topic=+e.target.value; render(); });
+$("#loc").addEventListener("change", e=>{ st.loc=e.target.value; render(); });
+$("#secondary").addEventListener("change", e=>{ st.secondary=e.target.checked; render(); });
+function clearFilters(){ st.q=""; st.terms=[]; $("#q").value=""; st.topic=-1; $("#topic").value="-1"; st.loc=""; $("#loc").value=""; st.secondary=false; $("#secondary").checked=false; st.types=new Set(["O","S","P"]); st.mine=false; syncChips(); render(); }
+function syncChips(){
+  ["O","S","P"].forEach(k=>$("#t-"+k).setAttribute("aria-pressed", st.types.has(k)));
+  $("#t-mine").setAttribute("aria-pressed", st.mine);
+}
+async function copyMarkdown(){
+  const text = markdownExport();
+  try{ await navigator.clipboard.writeText(text); toast("Copied your board as Markdown"); }
+  catch(err){
+    const slot=$("#copy-slot"); slot.innerHTML='<p class="note">Copying is blocked here. Select the text below and copy it.</p><textarea class="copybox" id="copybox" readonly></textarea>';
+    const ta=$("#copybox"); ta.value=text; ta.focus(); ta.select();
+  }
+}
+window.addEventListener("hashchange", route);
+let rz=null; window.addEventListener("resize", ()=>{ clearTimeout(rz); rz=setTimeout(()=>{ const g=$("#graph"); if(st.view==="people" && g && Math.abs(g.clientWidth-lastW)>40) drawGraph(); }, 250); });
+window.addEventListener("beforeunload", ()=>{ persistLocal(); });
+function route(){
+  const h = location.hash.replace("#","");
+  const nv = ["schedule","workshops","thursday","topics","people","mine"].includes(h) ? h : "schedule";
+  const changed = nv!==st.view; st.view = nv;
+  if(!$("#drawer").hidden) closeDrawer();
+  hideTip(); render();
+  if(changed) window.scrollTo({top:0});
+}
+
+/* ---------- init ---------- */
+(function init(){
+  $("#m-count").textContent = P.length;
+  const sel=$("#topic");
+  sel.innerHTML = '<option value="-1">All topics</option>'+catOrder.map(i=>'<option value="'+i+'">'+esc(catLabel(i))+' ('+P.filter(p=>p.c===i).length+')</option>').join("");
+  ["O","S","P"].forEach(k=>{ $("#t-"+k).querySelector(".mono").textContent = P.filter(p=>p.v===k).length; });
+  // location menu built from the schedule: each hotel, then each poster room
+  const venues = [...new Set(SESS.map(s=>s.venue))];
+  const rooms = new Map(); SESS.forEach(s=>s.rooms.forEach(r=>{ const k=r[2]; const o=rooms.get(k)||{floor:r[3],lo:r[0],hi:r[1],venue:s.venue}; o.lo=Math.min(o.lo,r[0]); o.hi=Math.max(o.hi,r[1]); rooms.set(k,o); }));
+  const what = v=> SESS.filter(s=>s.venue===v).every(s=>s.kind==="poster") ? "posters" : "orals & spotlights";
+  $("#loc").innerHTML = '<option value="">All locations</option>'
+    + venues.map(v=>'<option value="v:'+esc(v)+'">'+esc(v)+' · '+what(v)+'</option>').join("")
+    + [...rooms.entries()].map(([k,o])=>'<option value="r:'+esc(k)+'">'+esc(o.venue)+' · '+esc(k)+', '+esc(o.floor)+' (#'+o.lo+'–'+o.hi+')</option>').join("");
+  updateMineCount();
+  updateGoingCount();
+  route();
+  idbReady = idbLoad();
+})();
+})();
+</script>

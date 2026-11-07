@@ -1,0 +1,15 @@
+# Downloaded papers: large, and they belong to their authors. Only the index is kept.
+CoRL2026/*/
+CoRL2026/**/*.pdf
+
+# Cached copies of the CoRL and workshop web pages (the build scripts download them again)
+board/ws_cache/
+board/schedule_source.html
+board/corl2026_board_standalone.html
+
+# Local junk
+__pycache__/
+*.pyc
+.env
+.DS_Store
+.claude/settings.local.json
