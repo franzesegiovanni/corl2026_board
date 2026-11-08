@@ -35,6 +35,7 @@ def fetch(url, name, refresh):
 
 
 def to_lines(t):
+    t = t.replace("\r\n", "\n").replace("\r", "\n")  # some sites use Windows or old-Mac line endings
     t = re.sub(r"<script.*?</script>|<style.*?</style>|<noscript.*?</noscript>|<svg.*?</svg>", "", t, flags=re.S | re.I)
     t = re.sub(r"<(br|/p|/div|/li|/tr|/h\d|/section|/table|/ul|/dt|/dd|/header|/article)\b[^>]*>", "\n", t, flags=re.I)
     t = re.sub(r"</t[dh]>", " | ", t, flags=re.I)

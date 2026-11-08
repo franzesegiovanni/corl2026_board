@@ -2,7 +2,7 @@
 
 A pocket guide to the [Conference on Robot Learning 2026](https://2026.corl.org/) (Austin, Texas, November 9–12): all 687 accepted papers and all 32 workshops in one page you can use on your phone.
 
-Created by Giovanni Franzese, PhD.
+Created by Giovanni Franzese.
 
 ## What it does
 
@@ -33,6 +33,7 @@ Python 3, standard library only.
 
 ```bash
 python corl2026_download.py --dry-run      # paper metadata -> CoRL2026/index.csv (add no flag to also download the PDFs)
+python board/extract_abstracts.py          # abstracts + keywords from the downloaded PDFs -> board/abstracts.json (needs pdftotext)
 python board/build_workshops.py --refresh  # workshop rooms from corl.org + agendas and speakers from each workshop site
 python board/build_board.py --refresh      # official paper schedule + everything above -> board/corl2026_board.html and index.html
 ```

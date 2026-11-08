@@ -168,6 +168,16 @@ details[open] summary .tog .closed,details:not([open]) summary .tog .opened{disp
 .badge.spot{color:var(--ink)}
 .where{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3)}
 .mynote{font-size:12.5px;color:var(--ink-2);font-style:italic;margin:5px 0 0}
+.abs-t{font-size:12px;color:var(--flag);display:inline-flex;align-items:center;gap:3px}
+.abs-t::after{content:"▾";font-size:10px;transition:transform .15s}
+.abs-t[aria-expanded="true"]::after{transform:rotate(180deg)}
+.abs-t:hover{text-decoration:underline;text-underline-offset:2px}
+.abs{margin:7px 0 2px;font-size:13.5px;line-height:1.55;color:var(--ink);max-width:95ch}
+.abs.clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;color:var(--ink-2);cursor:pointer}
+.abs .kw,.dkw{display:block;margin-top:6px;font-size:12px;color:var(--ink-3)}
+.abs.clamp .kw{display:none}
+.abs mark,.dabs mark{background:var(--accent-soft);color:inherit;border-radius:2px;padding:0 1px}
+.dabs{font-size:14.5px;line-height:1.6;margin:0}
 .acts{display:flex;gap:2px}
 .ic{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;color:var(--ink-3)}
 .ic:hover{background:var(--sunk);color:var(--ink)}
@@ -429,7 +439,7 @@ table.heat{border-collapse:separate;border-spacing:2px;width:100%;min-width:340p
   .bar{grid-template-columns:minmax(0,1fr);gap:2px}
   .slot{grid-template-columns:minmax(0,1fr)}
   .result{margin-left:0}
-  .day{min-width:0;flex:1 1 0}
+  .day{min-width:0;flex:1 1 calc(33% - 8px)}
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 </style>
@@ -445,7 +455,7 @@ table.heat{border-collapse:separate;border-spacing:2px;width:100%;min-width:340p
   <div class="wrap">
     <div>
       <h1>CoRL <span>2026</span> Board</h1>
-      <p class="byline">Created by Giovanni Franzese, PhD</p>
+      <p class="byline">Created by Giovanni Franzese</p>
       <p class="strap"><span class="mono" id="m-count">687</span> accepted papers · Austin, Texas · November 9–11 · times in Austin time (CST)</p>
     </div>
     <div style="display:grid;gap:6px;justify-items:start">
@@ -475,6 +485,7 @@ table.heat{border-collapse:separate;border-spacing:2px;width:100%;min-width:340p
         <button class="chip" id="t-O" data-type="O" aria-pressed="true">Oral <span class="mono"></span></button>
         <button class="chip" id="t-S" data-type="S" aria-pressed="true">Spotlight <span class="mono"></span></button>
         <button class="chip" id="t-P" data-type="P" aria-pressed="true">Poster only <span class="mono"></span></button>
+        <button class="chip" id="t-abs" aria-pressed="false" title="Show a short preview of every abstract">Abstracts</button>
         <button class="chip" id="t-mine" aria-pressed="false"><svg width="13" height="13" viewBox="0 0 24 24" style="fill:currentColor"><use href="#i-heart"/></svg>/<svg width="13" height="13" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2"><use href="#i-flag"/></svg> only</button>
       </div>
       <span class="result" id="result" aria-live="polite"></span>
@@ -533,8 +544,8 @@ try { people = JSON.parse(localStorage.getItem(LS_PEOPLE)||"{}")||{}; } catch(e)
 try { going = JSON.parse(localStorage.getItem(LS_GOING)||"{}")||{}; } catch(e){ going = {}; }
 const aIdx = new Map(A.map((n,i)=>[n,i]));
 const isFav = i=>!!(people[A[i]] && people[A[i]].l);
-try { const u = JSON.parse(localStorage.getItem(LS_UI)||"{}"); if(u.day) st.day=u.day; if(typeof u.author==="number") st.author=u.author; if(u.graph) st.graph=u.graph; } catch(e){}
-function saveUI(){ try{ localStorage.setItem(LS_UI, JSON.stringify({day:st.day,author:st.author,graph:st.graph})); }catch(e){} }
+try { const u = JSON.parse(localStorage.getItem(LS_UI)||"{}"); if(u.day) st.day=u.day; if(typeof u.author==="number") st.author=u.author; if(u.graph) st.graph=u.graph; if(u.showAbs) st.showAbs=true; } catch(e){}
+function saveUI(){ try{ localStorage.setItem(LS_UI, JSON.stringify({day:st.day,author:st.author,graph:st.graph,showAbs:!!st.showAbs})); }catch(e){} }
 const isMarked = id=>!!(marks[id]&&(marks[id].l||marks[id].f));
 const hasAny = id=>!!(marks[id]&&(marks[id].l||marks[id].f||marks[id].n)) || photosOf(id).length>0;
 function prune(id, m){ if(!m.l && !m.f && !m.n && !(m.ph && m.ph.length)) delete marks[id]; else marks[id]=m; }
@@ -903,12 +914,66 @@ function rowHTML(p, ctx){
     + (ctx==="poster" ? '<span class="num" aria-label="Poster number">'+p.n+'</span>' : "")
     + '<div class="body" style="min-width:0"><h4><button class="ttl" data-open="'+p.id+'">'+esc(p.t)+'</button></h4>'
     + '<p class="by">'+authorsHTML(p,5)+'</p>'
-    + '<p class="tags">'+typeBadge(p)+'<button class="topic" data-topic="'+p.c+'" title="Show this topic">'+esc(catLabel(p.c))+'</button>'+where+'</p>'
+    + '<p class="tags">'+typeBadge(p)+'<button class="topic" data-topic="'+p.c+'" title="Show this topic">'+esc(catLabel(p.c))+'</button>'+where
+    + '<button class="abs-t" data-abs="'+p.id+'" aria-expanded="false">Abstract</button></p>'
+    + (st.showAbs ? absHTML(p.id, true) : "")
     + (m.n ? '<p class="mynote">“'+esc(m.n)+'”</p>' : "")
     + (nph ? '<div class="rowph">'+thumbsHTML(p.id)+'</div>' : "")
     + '</div><div class="acts">'+iconBtn(p,"l")+iconBtn(p,"f")
     + '<label class="ic cam" title="Add a photo"><input class="filein" type="file" accept="image/*" multiple data-pid="'+p.id+'" aria-label="Add a photo: '+esc(p.t)+'"><svg viewBox="0 0 24 24"><use href="#i-cam"/></svg>'+(nph?'<span class="n">'+nph+'</span>':'')+'</label>'
     + '</div></article>';
+}
+
+/* ---------- abstracts: abstracts.json is published next to the page and loaded in the background ---------- */
+let ABS = null, absWaiters = [];
+function absHighlight(text){
+  let h = esc(text);
+  if(st.terms.length){
+    const rx = new RegExp("("+st.terms.filter(t=>t.length>2).map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|")+")","gi");
+    if(rx.source!=="()") h = h.replace(rx, "<mark>$1</mark>");
+  }
+  return h;
+}
+function absHTML(id, clamp){
+  if(!ABS) return '<p class="abs'+(clamp?' clamp':'')+'" data-absfor="'+id+'">Loading abstract…</p>';
+  const x = ABS[id];
+  if(!x) return '<p class="abs" data-absfor="'+id+'">No abstract here. <a href="https://openreview.net/forum?id='+encodeURIComponent(id)+'" target="_blank" rel="noopener">Read it on OpenReview ↗</a></p>';
+  return '<p class="abs'+(clamp?' clamp':'')+'" data-absfor="'+id+'" title="'+(clamp?'Select to read the whole abstract':'')+'">'+absHighlight(x.a)+(x.k?'<span class="kw">Keywords: '+esc(x.k)+'</span>':'')+'</p>';
+}
+async function loadAbstracts(){
+  for(const u of ["abstracts.json","board/abstracts.json"]){
+    try{
+      const r = await fetch(u);
+      if(!r.ok) continue;
+      ABS = await r.json();
+      P.forEach(p=>{ const x=ABS[p.id]; if(x) p.q += " | "+fold(x.a+" "+x.k); });
+      $("#q").placeholder = "Search titles, authors and abstracts";
+      break;
+    }catch(e){}
+  }
+  if(!ABS) ABS = {};
+  // fill everything that was waiting
+  document.querySelectorAll("[data-absfor]").forEach(el=>{ el.outerHTML = absHTML(el.dataset.absfor, el.classList.contains("clamp")); });
+  const d = $("#d-abs"); if(d && openId) d.innerHTML = drawerAbsHTML(openId);
+  if(st.terms.length && (st.view==="schedule"||st.view==="topics")) render();
+}
+function drawerAbsHTML(id){
+  if(!ABS) return '<p class="note">Loading abstract…</p>';
+  const x = ABS[id];
+  if(!x) return '<p class="note">No abstract available here. <a href="https://openreview.net/forum?id='+encodeURIComponent(id)+'" target="_blank" rel="noopener">Read it on OpenReview ↗</a></p>';
+  return '<p class="dabs">'+absHighlight(x.a)+'</p>'+(x.k?'<span class="dkw">Keywords: '+esc(x.k)+'</span>':'');
+}
+function toggleAbs(btn){
+  const row = btn.closest(".row"); if(!row) return;
+  const id = btn.dataset.abs;
+  let el = row.querySelector(".abs");
+  if(el && el.classList.contains("clamp")){ el.classList.remove("clamp"); btn.setAttribute("aria-expanded","true"); return; }
+  if(el){
+    if(st.showAbs){ el.classList.add("clamp"); } else el.remove();
+    btn.setAttribute("aria-expanded","false"); return;
+  }
+  btn.closest(".tags").insertAdjacentHTML("afterend", absHTML(id, false));
+  btn.setAttribute("aria-expanded","true");
 }
 
 /* ---------- Austin clock ---------- */
@@ -1511,6 +1576,7 @@ function renderDrawer(id){
     + '<h2 id="d-title">'+esc(p.t)+'</h2>'
     + '<div class="dauth">'+p.a.map(i=>'<button class="au" data-author="'+i+'">'+esc(A[i])+(aPapers[i].length>1?' <span class="mono more">'+aPapers[i].length+'</span>':'')+'</button>').join("")+'</div>'
     + '<div class="tags">'+[p.c].concat(p.m).map((c,k)=>'<button class="topic" data-topic="'+c+'">'+(k?"also ":"")+esc(catLabel(c))+'</button>').join("")+'</div>'
+    + '<h3 style="margin-top:16px">Abstract</h3><div id="d-abs">'+drawerAbsHTML(id)+'</div>'
     + '<div class="dacts"><button class="btn like" data-mark="l" data-pid="'+id+'" aria-pressed="'+!!m.l+'"><svg viewBox="0 0 24 24"><use href="#i-heart"/></svg>Like</button><button class="btn flag" data-mark="f" data-pid="'+id+'" aria-pressed="'+!!m.f+'"><svg viewBox="0 0 24 24"><use href="#i-flag"/></svg>Flag to visit</button></div>';
   if(ts) html += '<div class="slot"><div class="k">Talk</div><div><b>'+esc(ts.label)+' · '+DAYS.find(d=>d[0]===ts.day)[1]+' '+esc(ts.time)+'</b><span>'+esc(ts.theme)+' · '+esc(ts.venue)+'</span></div></div>';
   if(ps) html += '<div class="slot"><div class="k">Poster</div><div><span class="big">#'+p.n+'</span><b style="display:block">'+esc(ps.label)+' · '+DAYS.find(d=>d[0]===ps.day)[1]+' '+esc(ps.time)+'</b><span>'+esc(ps.venue)+(p.room?' · '+esc(p.room.name)+', '+esc(p.room.floor):'')+'</span></div></div>';
@@ -1535,6 +1601,8 @@ document.addEventListener("click", e=>{
   const t = e.target.closest("button,a"); if(!t) return;
   if(t.dataset.mark){ e.preventDefault(); toggleMark(t.dataset.pid, t.dataset.mark); return; }
   if(t.dataset.likeperson!=null){ togglePerson(+t.dataset.likeperson); return; }
+  if(t.dataset.abs){ toggleAbs(t); return; }
+  if(t.id==="t-abs"){ st.showAbs=!st.showAbs; saveUI(); syncChips(); render(); return; }
   if(t.dataset.going!=null){ toggleGoing(+t.dataset.going); return; }
   if(t.dataset.tl){ hideTip(); showTlDetail(t.dataset.tl); return; }
   if(t.hasAttribute("data-tlclose")){ $("#tl-detail").hidden=true; return; }
@@ -1600,7 +1668,14 @@ function clearFilters(){ st.q=""; st.terms=[]; $("#q").value=""; st.topic=-1; $(
 function syncChips(){
   ["O","S","P"].forEach(k=>$("#t-"+k).setAttribute("aria-pressed", st.types.has(k)));
   $("#t-mine").setAttribute("aria-pressed", st.mine);
+  $("#t-abs").setAttribute("aria-pressed", !!st.showAbs);
 }
+// a clamped preview opens on click too
+document.addEventListener("click", e=>{
+  const a = e.target.closest(".abs.clamp"); if(!a || e.target.closest("a,button")) return;
+  const btn = a.closest(".row") && a.closest(".row").querySelector(".abs-t");
+  a.classList.remove("clamp"); if(btn) btn.setAttribute("aria-expanded","true");
+});
 async function copyMarkdown(){
   const text = markdownExport();
   try{ await navigator.clipboard.writeText(text); toast("Copied your board as Markdown"); }
@@ -1636,8 +1711,10 @@ function route(){
     + [...rooms.entries()].map(([k,o])=>'<option value="r:'+esc(k)+'">'+esc(o.venue)+' · '+esc(k)+', '+esc(o.floor)+' (#'+o.lo+'–'+o.hi+')</option>').join("");
   updateMineCount();
   updateGoingCount();
+  syncChips();
   route();
   idbReady = idbLoad();
+  loadAbstracts();
 })();
 })();
 </script>
