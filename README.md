@@ -1,5 +1,7 @@
 # CoRL 2026 Board
 
+![CoRL 2026 Board: the My Thursday workshop timeline on a laptop and the paper schedule on a phone](docs/screenshots/linkedin-wide.png)
+
 A pocket guide to the [Conference on Robot Learning 2026](https://2026.corl.org/) (Austin, Texas, November 9–12): all 687 accepted papers and all 32 workshops in one page you can use on your phone.
 
 Created by Giovanni Franzese.
@@ -13,15 +15,33 @@ Created by Giovanni Franzese.
 - **People**: co-author network, each person's papers and workshop talks, and where to find them. Like people and keep notes on who you met.
 - **My board**: your liked and flagged papers as an itinerary in the order you will see them, your notes, your poster photos and the people you liked. Copy it all as Markdown.
 
+## Screenshots
+
+The likes, flags and workshops marked in these screenshots are examples.
+
+| Schedule, with abstract previews | Paper details |
+|---|---|
+| ![Monday's schedule with spotlight talks, poster numbers and abstract previews](docs/screenshots/schedule.png) | ![Side panel of an oral paper with authors, abstract, talk and poster slot](docs/screenshots/paper.png) |
+| **Workshops** | **My Thursday** |
+| ![Workshop cards with room, speakers, CoRL authors involved and agenda](docs/screenshots/workshops.png) | ![Chosen workshops side by side with what is on now in each room](docs/screenshots/thursday.png) |
+| **Topics** | **People** |
+| ![Papers per topic and posters per topic in each poster session](docs/screenshots/topics.png) | ![Co-author network around one researcher with their papers and workshops](docs/screenshots/people.png) |
+| **My board** | **On the phone** |
+| ![Liked and flagged papers as an itinerary with poster numbers](docs/screenshots/mine.png) | <img src="docs/screenshots/thursday-phone.png" alt="My Thursday on a phone" width="260"> |
+
+To regenerate them after an update: `python board/build_board.py && python docs/screenshots/make_screenshots.py`.
+
 ## Use it
 
-**In the browser, no setup:** open the GitHub Pages site of this repository (`https://<your-user>.github.io/<this-repo>/`). Likes, notes and photos are saved in that browser only.
+There are two ways. Start with the first one; the second is only needed if you want your picks synced across devices.
 
-**Your own copy in Claude (synced across your devices):** with [Claude Code](https://claude.com/claude-code) signed in to your claude.ai account:
+**1. Try it now (no account, no install):** open **https://franzesegiovanni.github.io/corl2026_board/** on your phone or laptop. Everything works, and your likes, notes and photos are saved privately in that browser. They are not synced to your other devices.
+
+**2. Your own synced copy (optional, needs Claude):** with [Claude Code](https://claude.com/claude-code) signed in to your claude.ai account, publish your own private copy. Your likes, notes, Thursday plan and photos are then saved to your account and follow you between laptop and phone.
 
 ```bash
-git clone https://github.com/<your-user>/<this-repo>.git
-cd <this-repo>
+git clone https://github.com/franzesegiovanni/corl2026_board.git
+cd corl2026_board
 claude "/publish-board"
 ```
 
