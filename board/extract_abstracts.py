@@ -32,7 +32,9 @@ def clean(s):
 
 
 def parse(text):
-    m = re.search(r"\bAbstract\s*[:.—–-]?\s*", text, re.I)
+    # the heading "Abstract:" (at a line start, or followed by punctuation); never "Abstractions" in a title
+    m = (re.search(r"(?m)^\s*Abstract\b\s*[:.—–-]?\s*", text, re.I)
+         or re.search(r"\bAbstract\b\s*[:.—–-]\s*", text, re.I))
     if not m:
         return "", ""
     rest = text[m.end():]
@@ -73,8 +75,22 @@ def main():
             out[r["id"]] = {"a": a, "k": k}
         if (i + 1) % 100 == 0:
             print(f"  {i + 1}/{len(rows)}", file=sys.stderr)
+    # Hand corrections always win, so they survive re-running this script
+    fixes_path = HERE / "abstract_fixes.json"
+    n_fix = 0
+    if fixes_path.exists():
+        fixes = json.loads(fixes_path.read_text(encoding="utf-8"))
+        for pid, fx in fixes.items():
+            if pid.startswith("_") or not isinstance(fx, dict):
+                continue  # "_how_to" and other notes
+            entry = out.setdefault(pid, {"a": "", "k": ""})
+            for key in ("a", "k"):
+                if key in fx:
+                    entry[key] = fx[key]
+            n_fix += 1
     (HERE / "abstracts.json").write_text(json.dumps(out, ensure_ascii=False, indent=0), encoding="utf-8")
-    print(f"{len(out)} abstracts -> {HERE / 'abstracts.json'}  ({len(missing)} PDFs missing, {len(short)} suspiciously short)")
+    print(f"{len(out)} abstracts -> {HERE / 'abstracts.json'}  ({len(missing)} PDFs missing, "
+          f"{len(short)} suspiciously short, {n_fix} hand corrections applied)")
     if short:
         print("  short:", " ".join(short[:20]))
 

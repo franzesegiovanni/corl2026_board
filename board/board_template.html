@@ -323,6 +323,37 @@ table.heat{border-collapse:separate;border-spacing:2px;width:100%;min-width:340p
 .lb-img img{max-width:100%;max-height:100%;object-fit:contain;cursor:zoom-in}
 .lb-img.full{display:block}
 .lb-img.full img{max-width:none;max-height:none;cursor:zoom-out}
+/* main program items */
+.dayhead .livelink{margin-left:auto;font-size:13px;font-weight:600;color:var(--flag);text-decoration:none;white-space:nowrap}
+.dayhead .livelink + .livelink{margin-left:12px}
+.dayhead .livelink:hover{text-decoration:underline;text-underline-offset:2px}
+.evcard{border-color:var(--line)}
+.ev-keynote .evcard{box-shadow:inset 4px 0 0 var(--accent)}
+.ev-early .evcard{box-shadow:inset 4px 0 0 var(--flag)}
+.ev-panel .evcard{box-shadow:inset 4px 0 0 var(--ink-3)}
+.evcard>header{padding:14px 16px 12px}
+.evcard h3{font-size:18px}
+.evspk{margin:6px 0 0;font-size:14.5px;color:var(--ink)}
+.evspk .au,.evpan .au,.evcard .meta .au{font-size:inherit;color:var(--ink);font-weight:600}
+.evspk span,.evpan span{color:var(--ink-3);font-size:13px}
+.evpan{margin:8px 0 0;font-size:14px;line-height:1.7}
+.evslim{padding:10px 16px}
+.evslim .meta{margin:3px 0 0}
+.evmore{border-top:1px solid var(--line-2)}
+.evmore>summary{padding:10px 16px;font-size:13px;color:var(--flag)}
+.evmore>summary::after{content:" ▾"}
+.evmore[open]>summary::after{content:" ▴"}
+.evbody{padding:0 16px 14px;font-size:14px;line-height:1.6;max-width:85ch}
+.evbody h4{font-size:12px;font-family:var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin:12px 0 4px;font-weight:500}
+.evbody p{margin:0 0 8px}
+.ev-mini{margin-bottom:10px}
+.ev-mini .when{padding-top:2px}
+.evline{font-size:14px;color:var(--ink-2);padding:3px 0 0;border-left:2px dotted var(--line);padding-left:12px;min-width:0}
+.evline b{color:var(--ink);font-weight:600}
+.evv{color:var(--ink-3);font-size:13px}
+.evv::before{content:"· "}
+.evpar{display:block;margin-top:3px;font-size:13px;color:var(--ink-2)}
+.ev-social .evline{border-left-color:var(--accent)}
 /* workshops */
 .wshead{margin-bottom:6px}
 .wshead h2{font-size:26px;margin-top:2px}
@@ -1019,8 +1050,22 @@ function viewSchedule(){
   html += '</div>';
   let nextFound = false, any = false;
   DAYS.filter(d=>st.day==="all"||st.day===d[0]).forEach(d=>{
-    html += '<div class="dayhead"><h2>'+d[1]+', '+d[3]+'</h2><span>'+(d[4]===now.date?"Today":"")+'</span></div>';
-    SESS.filter(s=>s.day===d[0]).forEach(s=>{
+    const gd = (G.days||[]).find(x=>x.day===d[0]);
+    const live = gd && gd.live && gd.live.length ? gd.live.map(l=>'<a class="livelink" href="'+esc(l.url)+'" target="_blank" rel="noopener">▶ '+esc(l.label)+'</a>').join("") : "";
+    html += '<div class="dayhead"><h2>'+d[1]+', '+d[3]+'</h2><span>'+(d[4]===now.date?"Today":"")+'</span>'+live+'</div>';
+    // one timeline per day: paper sessions plus program items (keynotes, panel, breaks…), sorted by start time
+    const entries = [];
+    SESS.filter(s=>s.day===d[0]).forEach(s=>entries.push({start:s.start, end:s.end, date:s.date, s}));
+    GE.filter(e=>e.day===d[0] && evPasses(e)).forEach(e=>entries.push({start:e.start, end:e.end, date:e.date, e}));
+    entries.sort((a,b)=>a.start.localeCompare(b.start) || (a.s?-1:1));
+    entries.forEach(en=>{
+      const pillFor = ()=>{
+        if(en.date===now.date && now.hm>=en.start && now.hm<en.end) return '<span class="pill">Now</span>';
+        if(!nextFound && (en.date>now.date || en.date===now.date && en.start>now.hm)){ nextFound=true; return '<span class="pill next">Up next</span>'; }
+        return "";
+      };
+      if(en.e){ any = true; html += eventHTML(en.e, pillFor()); return; }
+      const s = en.s;
       const isPoster = s.kind==="poster";
       if(!locSess(s)) return;
       const all = P.filter(p=> isPoster ? p.ps===s.code : p.ts===s.code);
@@ -1028,9 +1073,7 @@ function viewSchedule(){
       if(fa && !list.length) return;
       any = true;
       if(isPoster) list.sort((a,b)=>a.n-b.n); else list.sort((a,b)=>a.t.localeCompare(b.t));
-      let pill = "";
-      if(s.date===now.date && now.hm>=s.start && now.hm<s.end) pill='<span class="pill">Now</span>';
-      else if(!nextFound && (s.date>now.date || s.date===now.date && s.start>now.hm)){ nextFound=true; pill='<span class="pill next">Up next</span>'; }
+      const pill = pillFor();
       const count = fa ? list.length+" of "+all.length : String(all.length);
       html += '<section class="sess '+s.kind+'" id="s-'+s.code+'"><div class="when"><time>'+fmt12(s.start).replace(/ (AM|PM)/,"")+'</time><span>'+fmt12(s.start).slice(-2)+' – '+fmt12(s.end)+'</span>'+pill+'</div><div class="card">';
       if(isPoster){
@@ -1045,7 +1088,8 @@ function viewSchedule(){
         if(rest.length) html += '<div class="rows">'+rest.map(p=>rowHTML(p,"poster")).join("")+'</div>';
         html += '</details>';
       } else {
-        html += '<header><div class="code"><b>'+esc(s.label)+'</b> · '+esc(s.venue)+'</div><h3>'+esc(s.theme)+'</h3><p class="meta">'+count+' talks</p></header><div class="rows">'+list.map(p=>rowHTML(p,"talk")).join("")+'</div>';
+        const ch = chairOf[s.code];
+        html += '<header><div class="code"><b>'+esc(s.label)+'</b> · '+esc(s.venue)+'</div><h3>'+esc(s.theme)+'</h3><p class="meta">'+count+' talks'+(ch?' · Session chair: '+peopleHTML(ch):'')+'</p></header><div class="rows">'+list.map(p=>rowHTML(p,"talk")).join("")+'</div>';
       }
       html += '</div></section>';
     });
@@ -1054,6 +1098,82 @@ function viewSchedule(){
   html += '<p class="foot">Schedule from the official CoRL 2026 accepted-papers page. Orals and spotlights are also presented as posters; their poster slot is shown on each talk. Topics are assigned by keyword matching on titles and abstracts, so treat them as a rough guide.</p>';
   return html;
 }
+/* ---------- main program: keynotes, early-career keynotes, panel, sponsor talks, breaks, socials ---------- */
+const G = D.G || {};
+const GE = (G.events||[]).map(e=>Object.assign({}, e));
+const GSPK = G.speakers || [];
+const GPAN = (G.panel||{}).people || [];
+const chairOf = {}; GE.forEach(e=>{ if(e.code && e.chair) chairOf[e.code] = e.chair; });
+const spkByName = new Map(GSPK.map(s=>[s.name, s]));
+GE.forEach(e=>{
+  const sp = GSPK.filter(s=>s.name===e.person || (s.role==="fireside" && e.lines.some(l=>l.includes(s.name))));
+  e.spk = sp;
+  e.q = fold([e.title, e.venue, e.chair].concat(e.lines, sp.map(s=>s.name+" "+s.aff+" "+s.title+" "+s.abstract),
+        e.kind==="panel" ? GPAN.map(p=>p.name+" "+p.aff) : [], e.parallel ? [e.parallel.title, e.parallel.venue] : []).join(" | "));
+});
+function evPasses(e){
+  if(["spotlight","oral","poster","workshop"].includes(e.kind)) return false;   // shown through the paper sessions / Workshops tab
+  if(st.topic>=0 || st.types.size<3 || st.mine) return false;
+  if(st.loc){ if(st.loc[0]==="r") return false; if(!(e.venue||"").includes(st.loc.slice(2))) return false; }
+  if(st.terms.length && !st.terms.every(t=>e.q.includes(t))) return false;
+  return true;
+}
+// a name, or several joined by "&": link the ones who are CoRL 2026 authors to their People card
+function peopleHTML(names){
+  return names.split(/\s*&\s*|\s+and\s+/).map(n=>{ n=n.trim(); const i=aIdx.get(n); return i!=null ? authBtn(i,false) : '<span class="nm">'+esc(n)+'</span>'; }).join(" &amp; ");
+}
+function paras(t){ return t.split(/\n+/).map(x=>'<p>'+esc(x)+'</p>').join(""); }
+function eventHTML(e, pill){
+  const when = '<div class="when"><time>'+fmt12(e.start).replace(/ (AM|PM)/,"")+'</time><span>'+fmt12(e.start).slice(-2)+' – '+fmt12(e.end)+'</span>'+pill+'</div>';
+  const venue = e.venue ? esc(e.venue) : "";
+  if(e.kind==="keynote" || e.kind==="early"){
+    const main = e.spk.find(s=>s.role!=="fireside") || null, side = e.spk.filter(s=>s.role==="fireside");
+    let h = '<section class="sess ev ev-'+e.kind+'">'+when+'<div class="card evcard"><header><div class="code"><b>'+esc(e.title)+'</b>'+(venue?' · '+venue:'')+'</div>'
+      + '<h3>'+esc(main ? main.title : (e.person||e.title))+'</h3>'
+      + '<p class="evspk">'+(e.person ? peopleHTML(e.person) : "")+(main && main.aff ? ' <span>'+esc(main.aff)+'</span>' : '')+'</p>'
+      + side.map(s=>'<p class="evspk">+ Fireside chat with '+peopleHTML(s.name)+' <span>'+esc(s.aff)+'</span></p>').join("")
+      + (e.chair ? '<p class="meta">Session chair: '+peopleHTML(e.chair)+'</p>' : '') + '</header>';
+    const body = (main && main.abstract ? '<h4>Abstract</h4>'+paras(main.abstract) : '')
+      + e.spk.filter(s=>s.bio).map(s=>'<h4>About '+esc(s.name)+'</h4><p>'+esc(s.bio)+'</p>').join("");
+    if(body) h += '<details class="evmore"><summary>Abstract and speaker bio</summary><div class="evbody">'+body+'</div></details>';
+    return h + '</div></section>';
+  }
+  if(e.kind==="panel"){
+    return '<section class="sess ev ev-panel">'+when+'<div class="card evcard"><header><div class="code"><b>Special panel</b>'+(venue?' · '+venue:'')+'</div><h3>The CoRL 2026 debate</h3>'
+      + (GPAN.length ? '<p class="evpan">'+GPAN.map(p=>peopleHTML(p.name)+' <span>'+esc(p.aff)+'</span>').join(" · ")+'</p>' : '')
+      + (e.chair ? '<p class="meta">Session chair: '+peopleHTML(e.chair)+'</p>' : '') + '</header></div></section>';
+  }
+  if(e.kind==="sponsor"){
+    return '<section class="sess ev ev-sponsor">'+when+'<div class="card evcard evslim"><div class="code"><b>Sponsor talks</b>'+(venue?' · '+venue:'')+'</div><p class="meta">'+esc(e.title)+(e.chair ? ' · Session chair: '+peopleHTML(e.chair) : '')+'</p></div></section>';
+  }
+  // breaks, lunch, welcome, socials, closing: one compact line
+  const extra = e.lines.length ? ' · '+esc(e.lines.join(" ")) : "";
+  const par = e.parallel ? '<span class="evpar">In parallel: <b>'+esc(e.parallel.title)+'</b>'+(e.parallel.venue?' ('+esc(e.parallel.venue)+')':'')+'</span>' : "";
+  return '<section class="sess ev ev-mini ev-'+e.kind+'">'+when+'<div class="evline"><b>'+esc(e.title)+'</b>'+extra+(venue?' <span class="evv">'+venue+'</span>':'')+par+'</div></section>';
+}
+// program roles of one person (keynote, panel, session chair) for their People card
+function programRoles(name){
+  const out = [];
+  GE.forEach(e=>{
+    const t = e.kind==="spotlight"||e.kind==="oral" ? e.title+" · "+(e.lines[0]||"") : e.title;
+    if((e.kind==="keynote"||e.kind==="early") && (e.person===name || e.spk.some(s=>s.name===name))){
+      const s = spkByName.get(name);
+      out.push({what:(s && s.role==="fireside" ? "Fireside chat in " : "")+e.title, detail:s && s.role!=="fireside" ? "“"+s.title+"”" : "", e});
+    }
+    if(e.kind==="panel" && GPAN.some(p=>p.name===name)) out.push({what:"Panelist · the CoRL 2026 debate", detail:"", e});
+    if(e.chair && e.chair.split(/\s*&\s*/).includes(name)) out.push({what:"Session chair · "+t, detail:"", e});
+  });
+  return out;
+}
+function programRolesHTML(ai){
+  const r = programRoles(A[ai]); if(!r.length) return "";
+  return '<h3 style="font-size:17px;margin:18px 0 8px">On the CoRL 2026 program</h3><div class="card wlist">'+r.map(x=>{
+    const dn = DAYS.find(d=>d[0]===x.e.day);
+    return '<div class="wrow"><div style="min-width:0"><b>'+esc(x.what)+'</b>'+(x.detail?'<span class="where" style="font-family:var(--f-body);font-size:13px;color:var(--ink-2)">'+esc(x.detail)+'</span>':'')
+      + '<span class="where">'+(dn?dn[2]+' '+dn[3]:esc(x.e.day))+' · '+fmt12(x.e.start)+' – '+fmt12(x.e.end)+(x.e.venue?' · '+esc(x.e.venue):'')+'</span></div></div>';
+  }).join("")+'</div>';
+}
+
 function emptyFilters(){
   return '<div class="empty"><h3>No papers match these filters</h3><p>Try a shorter search, another topic, or turn the presentation types back on.</p><p><button class="btn" data-clear>Clear filters</button></p></div>';
 }
@@ -1139,6 +1259,7 @@ function viewPeople(){
   html += '<label class="pnote-l" for="pnote">Your note about '+esc(A[sel])+'</label><textarea class="pnote" id="pnote" data-person="'+sel+'" placeholder="Where you met, what you talked about, follow-ups…">'+esc(pe.n||"")+'</textarea><p class="note" style="margin-bottom:14px">Private to you, like your paper likes.</p>';
   const topCo = [...co.entries()].sort((a,b)=>b[1]-a[1]||aPapers[b[0]].length-aPapers[a[0]].length).slice(0,14);
   if(topCo.length) html += '<div class="eyebrow">Frequent co-authors at CoRL</div><div class="co">'+topCo.map(([j,n])=>'<button class="chip" data-author="'+j+'">'+esc(A[j])+(n>1?' <span class="mono">×'+n+'</span>':'')+'</button>').join("")+'</div>';
+  html += programRolesHTML(sel);
   html += personWorkshopsHTML(sel);
   html += '<h3 style="font-size:17px;margin:18px 0 8px">Where to find '+esc(A[sel])+'</h3><div class="card"><div class="rows" style="border-top:0">'+papers.map(p=>rowHTML(p,"list")).join("")+'</div></div></section></div></div>';
   return html;

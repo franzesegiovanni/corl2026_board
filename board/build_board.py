@@ -137,7 +137,12 @@ def main():
             W.append(dict(t=w["title"], u=w["url"], s=w["slot"], v=w["venue"], r=w["room"], it=w["items"], note=w["note"],
                           sp=[[n, a, aidx.get(n, -1)] for n, a in w["speakers"]],
                           pp=[[aidx[n], role] for n, role in w["people"].items() if n in aidx]))
-    data = json.dumps(dict(S=sessions, C=cats, A=authors, P=papers, W=W), ensure_ascii=False, separators=(",", ":"))
+    # main program (keynotes, chairs, panel, breaks, livestreams): built separately by build_program.py
+    G = {}
+    gpath = HERE / "program.json"
+    if gpath.exists():
+        G = json.loads(gpath.read_text(encoding="utf-8"))
+    data = json.dumps(dict(S=sessions, C=cats, A=authors, P=papers, W=W, G=G), ensure_ascii=False, separators=(",", ":"))
     data = data.replace("</", "<\\/")
     page = (HERE / "board_template.html").read_text(encoding="utf-8").replace("/*__DATA__*/null", data)
     Path(args.out).write_text(page, encoding="utf-8")

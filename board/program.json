@@ -1,0 +1,765 @@
+{
+ "days": [
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "title": "Monday, November 9",
+   "live": [
+    {
+     "label": "Watch livestream",
+     "url": "https://youtube.com/live/F_4AAOQsWlA?feature=share"
+    }
+   ]
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "title": "Tuesday, November 10",
+   "live": [
+    {
+     "label": "Watch livestream",
+     "url": "https://youtube.com/live/uPXoJm-L3YY?feature=share"
+    }
+   ]
+  },
+  {
+   "day": "wed",
+   "date": "2026-11-11",
+   "title": "Wednesday, November 11",
+   "live": [
+    {
+     "label": "Livestream: Hilton",
+     "url": "https://youtube.com/live/bYUBR0OcK_c?feature=share"
+    }
+   ]
+  },
+  {
+   "day": "thu",
+   "date": "2026-11-12",
+   "title": "Thursday, November 12 – Workshops",
+   "live": []
+  }
+ ],
+ "events": [
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "08:30",
+   "end": "09:00",
+   "kind": "general",
+   "title": "Welcome",
+   "lines": [],
+   "venue": "Hilton Austin",
+   "chair": "",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "09:00",
+   "end": "09:30",
+   "kind": "spotlight",
+   "title": "Spotlight S1",
+   "lines": [
+    "Generalist policies, memory and transfer",
+    "9 papers × 3 min"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Yash Narang",
+   "code": "S1",
+   "person": ""
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "09:30",
+   "end": "10:00",
+   "kind": "early",
+   "title": "Early Career Keynote I",
+   "lines": [
+    "Hang Zhao"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Chen Feng",
+   "code": "",
+   "person": "Hang Zhao"
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "10:00",
+   "end": "10:30",
+   "kind": "break",
+   "title": "Coffee Break",
+   "lines": [],
+   "venue": "Hilton Austin & JW Marriott",
+   "chair": "",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "10:30",
+   "end": "11:00",
+   "kind": "oral",
+   "title": "Oral O1",
+   "lines": [
+    "Generalist policies and context scaling",
+    "3 papers × 10 min"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Michael Ryoo",
+   "code": "O1",
+   "person": ""
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "11:00",
+   "end": "11:30",
+   "kind": "oral",
+   "title": "Oral O2",
+   "lines": [
+    "World models and temporal representations",
+    "3 papers × 10 min"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Andrea Bajcsy",
+   "code": "O2",
+   "person": ""
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "11:30",
+   "end": "12:00",
+   "kind": "oral",
+   "title": "Oral O3",
+   "lines": [
+    "Data, simulation and evaluation",
+    "3 papers × 10 min"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Ed Johns",
+   "code": "O3",
+   "person": ""
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "12:00",
+   "end": "13:30",
+   "kind": "break",
+   "title": "Lunch",
+   "lines": [],
+   "venue": "JW Marriott & Fareground",
+   "chair": "",
+   "code": "",
+   "person": "",
+   "parallel": {
+    "title": "Late-Breaking Results: Agentic Robotics",
+    "venue": "Griffin, JW Marriott"
+   }
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "13:30",
+   "end": "14:00",
+   "kind": "sponsor",
+   "title": "3x Sponsor talks",
+   "lines": [],
+   "venue": "Hilton Austin",
+   "chair": "Carlo Sferrazza",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "14:00",
+   "end": "14:30",
+   "kind": "early",
+   "title": "Early Career Keynote II",
+   "lines": [
+    "Negar Mehr"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Ken Goldberg",
+   "code": "",
+   "person": "Negar Mehr"
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "14:30",
+   "end": "15:00",
+   "kind": "spotlight",
+   "title": "Spotlight S2",
+   "lines": [
+    "Efficient execution, world models and learning",
+    "9 papers × 3 min"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Dinesh Jayaraman",
+   "code": "S2",
+   "person": ""
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "15:00",
+   "end": "15:30",
+   "kind": "break",
+   "title": "Coffee Break",
+   "lines": [],
+   "venue": "Hilton Austin & JW Marriott",
+   "chair": "",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "15:30",
+   "end": "16:30",
+   "kind": "keynote",
+   "title": "Keynote I",
+   "lines": [
+    "Wolfram Burgard"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Dieter Fox",
+   "code": "",
+   "person": "Wolfram Burgard"
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "16:30",
+   "end": "17:00",
+   "kind": "sponsor",
+   "title": "3x Sponsor talks",
+   "lines": [],
+   "venue": "Hilton Austin",
+   "chair": "Matt Walter",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "17:00",
+   "end": "18:30",
+   "kind": "poster",
+   "title": "Poster session I",
+   "lines": [],
+   "venue": "JW Marriott",
+   "chair": "",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "18:30",
+   "end": "19:00",
+   "kind": "social",
+   "title": "Transportation to Long Center",
+   "lines": [],
+   "venue": "",
+   "chair": "",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "mon",
+   "date": "2026-11-09",
+   "start": "19:00",
+   "end": "22:00",
+   "kind": "social",
+   "title": "Social Dinner",
+   "lines": [],
+   "venue": "Long Center",
+   "chair": "",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "start": "08:30",
+   "end": "09:00",
+   "kind": "spotlight",
+   "title": "Spotlight S3",
+   "lines": [
+    "Human learning, dexterity and cooperation",
+    "9 papers × 3 min"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Danfei Xu",
+   "code": "S3",
+   "person": ""
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "start": "09:00",
+   "end": "09:30",
+   "kind": "oral",
+   "title": "Oral O4",
+   "lines": [
+    "Reinforcement learning and motion reasoning",
+    "3 papers × 10 min"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Katerina Fragkiadaki",
+   "code": "O4",
+   "person": ""
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "start": "09:30",
+   "end": "10:00",
+   "kind": "early",
+   "title": "Early Career Keynote III",
+   "lines": [
+    "Roberto Martin-Martin"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Georgia Chalvatzaki",
+   "code": "",
+   "person": "Roberto Martin-Martin"
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "start": "10:00",
+   "end": "10:30",
+   "kind": "break",
+   "title": "Coffee Break",
+   "lines": [],
+   "venue": "Hilton Austin & JW Marriott",
+   "chair": "",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "start": "10:30",
+   "end": "11:00",
+   "kind": "oral",
+   "title": "Oral O5",
+   "lines": [
+    "Dexterous learning, grasping and assembly",
+    "3 papers × 10 min"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Masha Itkina",
+   "code": "O5",
+   "person": ""
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "start": "11:00",
+   "end": "11:30",
+   "kind": "oral",
+   "title": "Oral O6",
+   "lines": [
+    "Force, tactile control and manipulation planning",
+    "3 papers × 10 min"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Ian Abraham",
+   "code": "O6",
+   "person": ""
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "start": "11:30",
+   "end": "12:00",
+   "kind": "oral",
+   "title": "Oral O7",
+   "lines": [
+    "Humanoid data, control and skills",
+    "3 papers × 10 min"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Koushil Sreenath",
+   "code": "O7",
+   "person": ""
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "start": "12:00",
+   "end": "13:30",
+   "kind": "break",
+   "title": "Lunch",
+   "lines": [],
+   "venue": "JW Marriott & Fareground",
+   "chair": "",
+   "code": "",
+   "person": "",
+   "parallel": {
+    "title": "Late-Breaking Results: Real2Sim2Real",
+    "venue": "Griffin, JW Marriott"
+   }
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "start": "13:30",
+   "end": "14:00",
+   "kind": "sponsor",
+   "title": "3x Sponsor talks",
+   "lines": [],
+   "venue": "Hilton Austin",
+   "chair": "Neel Bhatt",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "start": "14:00",
+   "end": "14:30",
+   "kind": "spotlight",
+   "title": "Spotlight S4",
+   "lines": [
+    "Touch, force and contact-rich manipulation",
+    "9 papers × 3 min"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Yunzhu Li",
+   "code": "S4",
+   "person": ""
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "start": "14:30",
+   "end": "15:00",
+   "kind": "spotlight",
+   "title": "Spotlight S5",
+   "lines": [
+    "Deformable manipulation, geometry and morphology",
+    "9 papers × 3 min"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Rudi Lioutikov",
+   "code": "S5",
+   "person": ""
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "start": "15:00",
+   "end": "15:30",
+   "kind": "break",
+   "title": "Coffee Break",
+   "lines": [],
+   "venue": "Hilton Austin & JW Marriott",
+   "chair": "",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "start": "15:30",
+   "end": "16:30",
+   "kind": "keynote",
+   "title": "Keynote II",
+   "lines": [
+    "Russ Tedrake"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Ani Majumdar",
+   "code": "",
+   "person": "Russ Tedrake"
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "start": "16:30",
+   "end": "17:00",
+   "kind": "sponsor",
+   "title": "3x Sponsor talks",
+   "lines": [],
+   "venue": "Hilton Austin",
+   "chair": "Dhruv Shah",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "tue",
+   "date": "2026-11-10",
+   "start": "17:00",
+   "end": "18:30",
+   "kind": "poster",
+   "title": "Poster session II",
+   "lines": [],
+   "venue": "JW Marriott",
+   "chair": "",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "wed",
+   "date": "2026-11-11",
+   "start": "08:30",
+   "end": "09:00",
+   "kind": "spotlight",
+   "title": "Spotlight S6",
+   "lines": [
+    "Optimization, agentic planning and evaluation",
+    "9 papers × 3 min"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Negar Mehr",
+   "code": "S6",
+   "person": ""
+  },
+  {
+   "day": "wed",
+   "date": "2026-11-11",
+   "start": "09:00",
+   "end": "09:30",
+   "kind": "spotlight",
+   "title": "Spotlight S7",
+   "lines": [
+    "Humanoid locomotion and whole-body control",
+    "9 papers × 3 min"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Roberto Martin-Martin",
+   "code": "S7",
+   "person": ""
+  },
+  {
+   "day": "wed",
+   "date": "2026-11-11",
+   "start": "09:30",
+   "end": "10:00",
+   "kind": "spotlight",
+   "title": "Spotlight S8",
+   "lines": [
+    "Perception, navigation and autonomous systems",
+    "9 papers × 3 min"
+   ],
+   "venue": "Hilton Austin",
+   "chair": "Hang Zhao",
+   "code": "S8",
+   "person": ""
+  },
+  {
+   "day": "wed",
+   "date": "2026-11-11",
+   "start": "10:00",
+   "end": "10:30",
+   "kind": "break",
+   "title": "Coffee Break",
+   "lines": [],
+   "venue": "JW Marriott",
+   "chair": "",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "wed",
+   "date": "2026-11-11",
+   "start": "10:30",
+   "end": "12:00",
+   "kind": "poster",
+   "title": "Poster session III",
+   "lines": [],
+   "venue": "JW Marriott",
+   "chair": "",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "wed",
+   "date": "2026-11-11",
+   "start": "12:00",
+   "end": "13:30",
+   "kind": "break",
+   "title": "Lunch",
+   "lines": [],
+   "venue": "JW Marriott & Fareground",
+   "chair": "",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "wed",
+   "date": "2026-11-11",
+   "start": "13:30",
+   "end": "15:00",
+   "kind": "social",
+   "title": "Dessert Reception (Bass Hall)",
+   "lines": [
+    "+ Tours of Texas Robotics (Anna Hiss Gym)"
+   ],
+   "venue": "",
+   "chair": "",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "wed",
+   "date": "2026-11-11",
+   "start": "15:00",
+   "end": "16:00",
+   "kind": "keynote",
+   "title": "Keynote III",
+   "lines": [
+    "Fei-Fei Li",
+    "+ Fireside Chat with Lisa Su"
+   ],
+   "venue": "Bass Hall",
+   "chair": "Yuke Zhu & Peter Stone",
+   "code": "",
+   "person": "Fei-Fei Li"
+  },
+  {
+   "day": "wed",
+   "date": "2026-11-11",
+   "start": "16:00",
+   "end": "17:00",
+   "kind": "panel",
+   "title": "Panel",
+   "lines": [],
+   "venue": "Bass Hall",
+   "chair": "Vincent Vanhoucke",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "wed",
+   "date": "2026-11-11",
+   "start": "17:00",
+   "end": "18:00",
+   "kind": "general",
+   "title": "Closing Interlude (5:00-5:15PM)",
+   "lines": [
+    "Awards & Farewell (Bass Hall)"
+   ],
+   "venue": "",
+   "chair": "",
+   "code": "",
+   "person": ""
+  },
+  {
+   "day": "thu",
+   "date": "2026-11-12",
+   "start": "08:30",
+   "end": "17:30",
+   "kind": "workshop",
+   "title": "Workshops",
+   "lines": [],
+   "venue": "JW Marriott",
+   "chair": "",
+   "code": "",
+   "person": ""
+  }
+ ],
+ "speakers": [
+  {
+   "name": "Wolfram Burgard",
+   "aff": "Professor of Computer Science at the University of Technology Nuremberg",
+   "title": "Challenges to Realize Embodied AI",
+   "abstract": "To achieve Embodied Artificial Intelligence, we need robots that can robustly perceive their environments and execute actions. The key challenge is that no sensors or actuators are perfect, so robots must be able to handle the resulting uncertainty. In this presentation, I will discuss the opportunities of the probabilistic and deep-learning approaches to robotics and how they can be combined to get the best of both worlds. Finally, I will describe how we can utilize the potential of foundation models to even better deal with complex and changing real-world environments.",
+   "bio": "Wolfram Burgard is a professor of Computer Science at the University of Technology Nuremberg, where he heads the research group on Robotics and Artificial Intelligence. Before this, he was a professor of autonomous intelligent systems at the University of Freiburg, Germany. From 2019 until 2021, he was VP for Automated Driving and Machine Learning at the Toyota Research Institute in Los Altos, USA. He has published over 400 papers. He received multiple awards, including the IEEE Technical Field Award, the IEEE RAS Pioneer Award, and the Leibniz Prize of the German Research Foundation. He is a fellow of the IEEE, the AAAI, and the EurAI, and a member of the German Academy of Sciences Leopoldina and the Heidelberg Academy of Sciences and Humanities.",
+   "role": "keynote"
+  },
+  {
+   "name": "Russ Tedrake",
+   "aff": "Toyota Professor of Electrical Engineering and Computer Science , Aeronautics and Astronautics , and Mechanical Engineering at MIT",
+   "title": "Learning in the factories",
+   "abstract": "How do we make large models for manipulation useful in real applications, and what value can real-world deployments bring back to the models?\nWe started Walden Robotics in January 2026 with the conviction that it was time to get out of the labs and into real applications. We deployed our first robot into a live production environment just two months later, and have been learning and expanding our fleet ever since. We believe that the best physical AI will be built via a continuous cycle of deployment and learning grounded in real work. And we've been testing that belief with data.\nIn this talk I'll discuss what we've learned about how performance scales with deployment. I'll also share some specific ways in which my own world view has changed as I've been spending more and more time in the factories and with experts who have spent their careers in mass-production manufacturing.",
+   "bio": "Dr. Russ Tedrake is co-founder and CEO of Walden Robotics. Russ is also the Toyota Professor of Electrical Engineering and Computer Science, Aeronautics and Astronautics, and Mechanical Engineering at MIT. Russ was formerly the Senior Vice President of Large Behavior Models at the Toyota Research Institute. He was the leader of Team MIT's entry in the DARPA Robotics Challenge. He is well known for his leadership of the open-source robotics toolkit Drake and for his online courses/textbooks: Underactuated Robotics and Robotic Manipulation.",
+   "role": "keynote"
+  },
+  {
+   "name": "Fei-Fei Li",
+   "aff": "Sequoia Professor in the Computer Science Department at Stanford University",
+   "title": "Atlas: A Unified World Model for Generation and Reconstruction",
+   "abstract": "In this talk, Dr. Fei-Fei Li will discuss recent advances in world modeling based on work by the research team at World Labs. In particular, she will present Atlas, an autoregressive frame generation model that unifies pixel generation and 3D scene reconstruction.\nThe second half of the session will feature a fireside chat between Dr. Fei-Fei Li and Dr. Lisa Su, Chair, President and CEO of AMD.",
+   "bio": "Dr. Fei-Fei Li is the inaugural Sequoia Professor in the Computer Science Department at Stanford University, and a Founding Co-Director of Stanford’s Human-Centered AI Institute. She served as the Director of Stanford’s AI Lab from 2013 to 2018. She is currently the Founder CEO of World Labs, a frontier AI research and product company advancing spatial and physical intelligence. Previously, Dr. Li has served as a Vice President at Google and Chief Scientist of AI/ML at Google Cloud (2017-2018), board member or advisor in various public or private companies (notably Twitter).",
+   "role": "keynote"
+  },
+  {
+   "name": "Lisa Su",
+   "aff": "Chair and Chief Executive Officer, AMD",
+   "title": "Fireside Chat with Lisa Su and Fei-Fei Li",
+   "abstract": "",
+   "bio": "As chair and chief executive officer at AMD, Dr. Lisa Su has led the company's transformation into the industry's high-performance and adaptive computing leader, helping solve the world's most important challenges by delivering the next-generation of computing and AI solutions. Prior to serving as chair and CEO, she was the chief operating officer responsible for integrating AMD's business units, sales, global operations and infrastructure enablement teams into a single market-facing organization responsible for all aspects of product strategy and execution. Prior to AMD, Dr. Su held leadership roles at Freescale Semiconductor, including chief technology officer and senior vice president and general manager of Networking and Multimedia. She spent 13 years at IBM in engineering and business leadership positions, including leading the Semiconductor Research and Development Center. In 2026, she received the National Medal of Science, the United States' highest recognition for scientists and engineers. She is a member of the American Academy of Arts & Sciences and the National Academy of Engineering, and a recipient of the IEEE Robert N. Noyce Medal.",
+   "role": "fireside"
+  },
+  {
+   "name": "Negar Mehr",
+   "aff": "Assistant Professor, University of California, Berkeley",
+   "title": "How Can Robots Learn to Interact and Coordinate with Others?",
+   "abstract": "Robots in the real world rarely act alone. They share spaces with other robots and people, so they need to learn how to interact and coordinate. This talk explores why that is challenging and how we can help robots succeed in interactions. I’ll begin with multi-agent reinforcement learning, where challenges such as credit assignment make coordination difficult to learn, and show how foundation models can help coach robots. Coordination can also be learned from demonstrations rather than trial and error. I’ll discuss why imitating interacting agents differs from single-agent imitation, and how it can still build on single-agent methods. Finally, I’ll turn the question around: How can ideas from multi-agent learning help a single robot learn? I’ll show how continual learning can be formulated as a consensus optimization problem which offers a natural way to balance learning new tasks with retaining previously learned skills.",
+   "bio": "Negar Mehr is an Assistant Professor of Mechanical Engineering at UC Berkeley, where she directs the Berkeley Intelligent Control (ICON) Lab. Her research focuses on multi-agent interactions. Her lab develops learning-based methods grounded in game theory and control to help robots interact safely and intelligently with people and other autonomous agents. She received her Ph.D. in Mechanical Engineering from UC Berkeley in 2019 and was a postdoctoral scholar in Aeronautics and Astronautics at Stanford University. Before returning to Berkeley, she was an Assistant Professor of Aerospace Engineering at the University of Illinois Urbana-Champaign. She has received the ONR Young Investigator Award, the AFOSR Young Investigator Award, the NSF CAREER Award, the ASME Rising Star Award, and the IEEE ITSS Best Ph.D. Dissertation Award.",
+   "role": "early"
+  },
+  {
+   "name": "Roberto Martin-Martin",
+   "aff": "Assistant Professor, University of Texas, Austin",
+   "title": "Learning Without Starting Over: Expanding What Robots Can Learn in the Real World",
+   "abstract": "Two robots can be equally capable today yet very different to teach tomorrow. As foundation models expand what robots can already do, an equally important question is how to expand their learning potential: the capabilities they can acquire next with the limited experience and supervision available to them. In this talk, I will argue that expanding this potential requires asking not only how robots learn, but what they should learn and reuse to acquire new capabilities safely and efficiently through real-world interaction. I will present selected learning systems for mobile manipulation that address this question in three ways: learning reusable action spaces that support safer and more efficient physical exploration; using human demonstrations and corrections to guide real-world refinement; and selecting or collecting experience according to its contribution to policy improvement. I will close with a perspective on memory and continual learning as steps toward making these improvements persist across tasks and deployments. Together, these directions aim to expand the learning frontier by preserving useful knowledge while enabling the changes that new tasks require.",
+   "bio": "Roberto Martín-Martín is an Assistant Professor of Computer Science at the University of Texas at Austin, where he directs the Robot Interactive Intelligence Lab (RobIn). He builds robotic systems that learn in the real world, studying how robots can acquire useful skills from people and physical interaction, learn safely from limited experience, and keep improving continuously over time. He pursues these questions through mobile and whole-body manipulation, contact-rich interaction, and long-horizon tasks in everyday environments. Alongside his work on physical robots, he has helped create simulation platforms and benchmarks that let researchers develop and test robot learning at scale, including Robosuite, iGibson, BEHAVIOR, and OopsieVerse. He earned his Ph.D. at TU Berlin under Oliver Brock and conducted postdoctoral research at the Stanford Vision and Learning Lab with Fei-Fei Li and Silvio Savarese. His work has received the RSS Best Systems Paper Award, ICRA Best Paper Award, and IROS Best Mechanism Award, and he was part of the winning team of the first Amazon Picking Challenge. His individual honors include the NSF CAREER Award, Amazon Faculty Award, Meta Research Award and TRI Young Faculty Researcher Award, along with recognition as an RSS Pioneer and early-career distinctions from AAAI and IJCAI. He also serves the robotics community as Chair of the IEEE Technical Committee on Mobile Manipulation and as a co-founder of QueerInRobotics.",
+   "role": "early"
+  },
+  {
+   "name": "Hang Zhao",
+   "aff": "Assistant Professor, Tsinghua University",
+   "title": "Organizing Physical AI Across Timescales",
+   "abstract": "The physical world does not pause while a robot computes. Frontier models can now drive robots, yet they take seconds to choose a motion while contact unfolds in milliseconds. Rather than dividing a robot’s intelligence by function, I argue for dividing it by timescale, from S2 reasoning over seconds, through S1 policies at tens of hertz, to S0 control at hundreds of hertz, with each layer still learned end to end. This raises two problems. The first is speed within each layer. I will show three ways to keep S1 policies fast: learning world models from video during training while skipping video generation at execution; training with chain-of-thought supervision while acting without it; and streaming action tokenizers that execute as they are generated, keeping the policy in step with a real clock. The second is coordination across layers, through interfaces that carry intent down and feedback up. Finally, I will discuss open questions, including what S2 can express to S1; what S1 must pass to S0 beyond motion; and whether a learned policy can know when it is unsure.",
+   "bio": "Hang Zhao is an Assistant Professor at IIIS, Tsinghua University, and a co-founder of Galaxea AI, a robotics startup. His research spans foundation models for robot manipulation, agile whole-body locomotion, and vision-centric autonomous driving. Before joining Tsinghua, he was a research scientist at Waymo. He received his Ph.D. from MIT, advised by Professor Antonio Torralba.",
+   "role": "early"
+  }
+ ],
+ "panel": {
+  "intro": "We are honored to have the following panelists for the CoRL 2026 debate:",
+  "people": [
+   {
+    "name": "Vincent Vanhoucke",
+    "aff": "Waymo"
+   },
+   {
+    "name": "Marc Toussaint",
+    "aff": "TU Berlin"
+   },
+   {
+    "name": "Chelsea Finn",
+    "aff": "Stanford/Physical Intelligence"
+   },
+   {
+    "name": "Leslie Kaelbling",
+    "aff": "MIT"
+   },
+   {
+    "name": "Pulkit Agrawal",
+    "aff": "MIT/Eka Robotics"
+   },
+   {
+    "name": "Edward Johns",
+    "aff": "Imperial College London / Machenta"
+   },
+   {
+    "name": "Yonatan Bisk",
+    "aff": "CMU"
+   }
+  ]
+ }
+}
