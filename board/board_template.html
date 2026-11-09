@@ -11,7 +11,7 @@
   --bg:#f3f5f7; --surface:#ffffff; --sunk:#e8ecf0; --ink:#14212d; --ink-2:#465564; --ink-3:#6f7d8a;
   --line:#d3dae1; --line-2:#e3e8ed;
   --accent:#b85300; --accent-soft:#f8e7d8; --accent-ink:#ffffff;
-  --flag:#2458a8; --flag-soft:#e0e9f7;
+  --flag:#2458a8; --flag-soft:#e0e9f7; --hl:#ffe98a;
   --series:#2a78d6; --edge:#b9c3cd; --node:#8996a3;
   --h0:#cde2fb; --h1:#9ec5f4; --h2:#6da7ec; --h3:#3987e5; --h4:#256abf; --h5:#184f95;
   --hi-lo:#14212d; --hi-hi:#ffffff;
@@ -24,7 +24,7 @@
   --bg:#0f151b; --surface:#172029; --sunk:#202b36; --ink:#e5ebf1; --ink-2:#b2bfcb; --ink-3:#8795a3;
   --line:#2d3a47; --line-2:#24303c;
   --accent:#ef8a3c; --accent-soft:#3a2617; --accent-ink:#1a0e05;
-  --flag:#77a6ec; --flag-soft:#1d2c44;
+  --flag:#77a6ec; --flag-soft:#1d2c44; --hl:#5b4a0c;
   --series:#3987e5; --edge:#3b4957; --node:#6d7c8a;
   --h0:#1d3047; --h1:#184f95; --h2:#2a78d6; --h3:#5598e7; --h4:#86b6ef; --h5:#b7d3f6;
   --hi-lo:#e5ebf1; --hi-hi:#0f151b;
@@ -35,7 +35,7 @@
   --bg:#0f151b; --surface:#172029; --sunk:#202b36; --ink:#e5ebf1; --ink-2:#b2bfcb; --ink-3:#8795a3;
   --line:#2d3a47; --line-2:#24303c;
   --accent:#ef8a3c; --accent-soft:#3a2617; --accent-ink:#1a0e05;
-  --flag:#77a6ec; --flag-soft:#1d2c44;
+  --flag:#77a6ec; --flag-soft:#1d2c44; --hl:#5b4a0c;
   --series:#3987e5; --edge:#3b4957; --node:#6d7c8a;
   --h0:#1d3047; --h1:#184f95; --h2:#2a78d6; --h3:#5598e7; --h4:#86b6ef; --h5:#b7d3f6;
   --hi-lo:#e5ebf1; --hi-hi:#0f151b;
@@ -178,6 +178,16 @@ details[open] summary .tog .closed,details:not([open]) summary .tog .opened{disp
 .abs.clamp .kw{display:none}
 .abs mark,.dabs mark{background:var(--accent-soft);color:inherit;border-radius:2px;padding:0 1px}
 .dabs{font-size:14.5px;line-height:1.6;margin:0}
+/* sentence highlights (yellow highlighter, distinct from the orange search marks) */
+.sent.hl{background:var(--hl);color:var(--ink);border-radius:3px;box-shadow:0 0 0 2px var(--hl);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#d-abs .sent{cursor:pointer;border-radius:3px;transition:background .12s}
+#d-abs .sent:hover{background:var(--sunk)}
+#d-abs .sent.hl:hover{background:var(--hl)}
+#d-abs .sent:focus-visible{outline:2px solid var(--flag);outline-offset:1px}
+.hlhint{font-size:12px;color:var(--ink-3);margin:8px 0 0}
+.hlbadge{font-family:var(--f-mono);font-size:11px;background:var(--hl);color:var(--ink);border-radius:4px;padding:1px 6px;white-space:nowrap}
+.hlq{margin:8px 0 2px;display:grid;gap:4px}
+.hlq p{margin:0;font-size:13px;line-height:1.5;color:var(--ink);padding-left:10px;border-left:3px solid var(--hl)}
 .acts{display:flex;gap:2px}
 .ic{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;color:var(--ink-3)}
 .ic:hover{background:var(--sunk);color:var(--ink)}
@@ -578,8 +588,9 @@ const isFav = i=>!!(people[A[i]] && people[A[i]].l);
 try { const u = JSON.parse(localStorage.getItem(LS_UI)||"{}"); if(u.day) st.day=u.day; if(typeof u.author==="number") st.author=u.author; if(u.graph) st.graph=u.graph; if(u.showAbs) st.showAbs=true; } catch(e){}
 function saveUI(){ try{ localStorage.setItem(LS_UI, JSON.stringify({day:st.day,author:st.author,graph:st.graph,showAbs:!!st.showAbs})); }catch(e){} }
 const isMarked = id=>!!(marks[id]&&(marks[id].l||marks[id].f));
-const hasAny = id=>!!(marks[id]&&(marks[id].l||marks[id].f||marks[id].n)) || photosOf(id).length>0;
-function prune(id, m){ if(!m.l && !m.f && !m.n && !(m.ph && m.ph.length)) delete marks[id]; else marks[id]=m; }
+const hasHL = id=>!!(marks[id] && marks[id].hl && marks[id].hl.length);
+const hasAny = id=>!!(marks[id]&&(marks[id].l||marks[id].f||marks[id].n)) || hasHL(id) || photosOf(id).length>0;
+function prune(id, m){ if(!m.l && !m.f && !m.n && !(m.ph && m.ph.length) && !(m.hl && m.hl.length)) delete marks[id]; else marks[id]=m; }
 
 /* ---------- persistence: per-person private doc in the artifact db, browser storage as fallback ---------- */
 let docRef=null, inFlight=false, queued=false, pending=false, saveTimer=null, firstSnap=true, retried=false;
@@ -707,7 +718,7 @@ function rerenderMarks(id){
     $("#drawer").querySelectorAll(".dacts .btn").forEach(b=>b.setAttribute("aria-pressed", !!m[b.dataset.mark]));
   }
 }
-function updateMineCount(){ $("#mine-ct").textContent = P.filter(p=>isMarked(p.id) || photosOf(p.id).length).length; }
+function updateMineCount(){ $("#mine-ct").textContent = P.filter(p=>isMarked(p.id) || hasHL(p.id) || photosOf(p.id).length).length; }
 
 /* ---------- photos: stored with the board under your account (assets + private marks doc), else in this browser (IndexedDB) ---------- */
 let assetsNS = null;
@@ -946,8 +957,10 @@ function rowHTML(p, ctx){
     + '<div class="body" style="min-width:0"><h4><button class="ttl" data-open="'+p.id+'">'+esc(p.t)+'</button></h4>'
     + '<p class="by">'+authorsHTML(p,5)+'</p>'
     + '<p class="tags">'+typeBadge(p)+'<button class="topic" data-topic="'+p.c+'" title="Show this topic">'+esc(catLabel(p.c))+'</button>'+where
-    + '<button class="abs-t" data-abs="'+p.id+'" aria-expanded="false">Abstract</button></p>'
-    + (st.showAbs ? absHTML(p.id, true) : "")
+    + '<button class="abs-t" data-abs="'+p.id+'" aria-expanded="false">Abstract</button>'
+    + (hasHL(p.id) ? '<span class="hlbadge" title="Sentences you highlighted">'+marks[p.id].hl.length+' highlighted</span>' : '')+'</p>'
+    + (st.view==="mine" && hasHL(p.id) && ABS ? '<div class="hlq">'+highlightedSentences(p.id).map(s=>'<p>'+esc(s)+'</p>').join("")+'</div>'
+       : (st.showAbs ? absHTML(p.id, true) : ""))
     + (m.n ? '<p class="mynote">“'+esc(m.n)+'”</p>' : "")
     + (nph ? '<div class="rowph">'+thumbsHTML(p.id)+'</div>' : "")
     + '</div><div class="acts">'+iconBtn(p,"l")+iconBtn(p,"f")
@@ -957,19 +970,61 @@ function rowHTML(p, ctx){
 
 /* ---------- abstracts: abstracts.json is published next to the page and loaded in the background ---------- */
 let ABS = null, absWaiters = [];
-function absHighlight(text){
-  let h = esc(text);
+function markTerms(h){
   if(st.terms.length){
     const rx = new RegExp("("+st.terms.filter(t=>t.length>2).map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|")+")","gi");
     if(rx.source!=="()") h = h.replace(rx, "<mark>$1</mark>");
   }
   return h;
 }
+function absHighlight(text){ return markTerms(esc(text)); }
+// split an abstract into sentences, without breaking on "e.g.", "et al.", "Fig.", initials and the like
+const ABBR = /(?:\b(?:e\.g|i\.e|et al|vs|cf|etc|approx|Fig|Figs|Eq|Eqs|Sec|Tab|No|Dr|Prof|resp|w\.r\.t|a\.k\.a)\.|(?:^|\s)[A-Z]\.)$/;
+function sentences(t){
+  const out = [], re = /([.!?]["”’')\]]*)\s+(?=["“(\[]?[A-Z0-9π])/g;
+  let start = 0, m;
+  while((m = re.exec(t))){
+    const cut = m.index + m[1].length, seg = t.slice(start, cut);
+    if(ABBR.test(seg)) continue;
+    if(seg.trim()) out.push(seg.trim());
+    start = re.lastIndex;
+  }
+  if(t.slice(start).trim()) out.push(t.slice(start).trim());
+  return out;
+}
+// a sentence is remembered by a short hash of its text, so highlights survive edits elsewhere in the abstract
+function sHash(s){ const n = fold(s).replace(/\s+/g," ").trim(); let h = 5381; for(let i=0;i<n.length;i++) h = ((h<<5)+h+n.charCodeAt(i))|0; return (h>>>0).toString(36); }
+function hlSet(id){ return new Set((marks[id]||{}).hl||[]); }
+function absRender(id, text, interactive){
+  const on = hlSet(id);
+  return sentences(text).map(s=>{
+    const h = sHash(s), lit = on.has(h), body = markTerms(esc(s));
+    if(interactive) return '<span class="sent'+(lit?' hl':'')+'" data-h="'+h+'" role="button" tabindex="0" aria-pressed="'+lit+'">'+body+'</span>';
+    return lit ? '<span class="sent hl">'+body+'</span>' : body;
+  }).join(" ");
+}
+function highlightedSentences(id){
+  const x = ABS && ABS[id], on = hlSet(id);
+  return x && on.size ? sentences(x.a).filter(s=>on.has(sHash(s))) : [];
+}
+function toggleHL(id, h){
+  const m = Object.assign({}, marks[id]||{});
+  const s = new Set(m.hl||[]);
+  const added = !s.has(h);
+  if(added) s.add(h); else s.delete(h);
+  if(s.size) m.hl = [...s]; else delete m.hl;
+  if(added) m.t = Date.now();
+  prune(id, m); scheduleSave();
+  document.querySelectorAll('#d-abs .sent[data-h="'+h+'"]').forEach(el=>{ el.classList.toggle("hl", added); el.setAttribute("aria-pressed", added); });
+  if(st.view==="mine") render();
+  else document.querySelectorAll('.row[data-id="'+id+'"]').forEach(r=>{ const p=byId.get(id); if(p) r.outerHTML = rowHTML(p, r.dataset.ctx); });
+  updateMineCount();
+}
 function absHTML(id, clamp){
   if(!ABS) return '<p class="abs'+(clamp?' clamp':'')+'" data-absfor="'+id+'">Loading abstract…</p>';
   const x = ABS[id];
   if(!x) return '<p class="abs" data-absfor="'+id+'">No abstract here. <a href="https://openreview.net/forum?id='+encodeURIComponent(id)+'" target="_blank" rel="noopener">Read it on OpenReview ↗</a></p>';
-  return '<p class="abs'+(clamp?' clamp':'')+'" data-absfor="'+id+'" title="'+(clamp?'Select to read the whole abstract':'')+'">'+absHighlight(x.a)+(x.k?'<span class="kw">Keywords: '+esc(x.k)+'</span>':'')+'</p>';
+  return '<p class="abs'+(clamp?' clamp':'')+'" data-absfor="'+id+'" title="'+(clamp?'Select to read the whole abstract':'')+'">'+absRender(id, x.a, false)+(x.k?'<span class="kw">Keywords: '+esc(x.k)+'</span>':'')+'</p>';
 }
 async function loadAbstracts(){
   for(const u of ["abstracts.json","board/abstracts.json"]){
@@ -986,13 +1041,14 @@ async function loadAbstracts(){
   // fill everything that was waiting
   document.querySelectorAll("[data-absfor]").forEach(el=>{ el.outerHTML = absHTML(el.dataset.absfor, el.classList.contains("clamp")); });
   const d = $("#d-abs"); if(d && openId) d.innerHTML = drawerAbsHTML(openId);
-  if(st.terms.length && (st.view==="schedule"||st.view==="topics")) render();
+  if(st.terms.length && (st.view==="schedule"||st.view==="topics") || st.view==="mine") render();
 }
 function drawerAbsHTML(id){
   if(!ABS) return '<p class="note">Loading abstract…</p>';
   const x = ABS[id];
   if(!x) return '<p class="note">No abstract available here. <a href="https://openreview.net/forum?id='+encodeURIComponent(id)+'" target="_blank" rel="noopener">Read it on OpenReview ↗</a></p>';
-  return '<p class="dabs">'+absHighlight(x.a)+'</p>'+(x.k?'<span class="dkw">Keywords: '+esc(x.k)+'</span>':'');
+  return '<p class="dabs">'+absRender(id, x.a, true)+'</p>'+(x.k?'<span class="dkw">Keywords: '+esc(x.k)+'</span>':'')
+    + '<p class="hlhint">Tap a sentence to highlight it; tap again to remove. Highlights are private and appear on My board.</p>';
 }
 function toggleAbs(btn){
   const row = btn.closest(".row"); if(!row) return;
@@ -1589,10 +1645,10 @@ function viewMine(){
   if(!all.length && !favs.length && !goingW.length){
     return '<div class="empty" style="padding:40px 20px"><h3>Your board is empty</h3><p>Select the heart on any paper to like it, the flag to mark a poster you want to visit, or the camera to keep a photo of the poster. Your picks show up here as an itinerary in the order you can see them, with poster numbers and rooms.</p><p style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px"><button class="btn primary" data-start="orals">Browse the 21 orals</button><button class="btn" data-start="schedule">Open the schedule</button></p></div>';
   }
-  const showP = p => st.mineShow==="all" ? true : st.mineShow==="ph" ? photosOf(p.id).length>0 : st.mineShow==="l" ? !!(marks[p.id]&&marks[p.id].l) : !!(marks[p.id]&&marks[p.id].f);
+  const showP = p => st.mineShow==="all" ? true : st.mineShow==="ph" ? photosOf(p.id).length>0 : st.mineShow==="hl" ? hasHL(p.id) : st.mineShow==="l" ? !!(marks[p.id]&&marks[p.id].l) : !!(marks[p.id]&&marks[p.id].f);
   const list = all.filter(showP);
-  let html = '<div class="minehead"><h2>My board</h2><span class="stat"><b>'+nl+'</b>liked</span><span class="stat"><b>'+nf+'</b>flagged</span><span class="stat"><b>'+nn+'</b>notes</span><span class="stat"><b>'+nph+'</b>photos</span><span class="stat"><b>'+favs.filter(f=>f[1].l).length+'</b>people</span><button class="btn" id="copy-md">Copy as Markdown</button></div>'
-    + '<div class="chips" role="group" aria-label="Show" style="margin-bottom:18px"><button class="chip" data-mineshow="all" aria-pressed="'+(st.mineShow==="all")+'">Everything</button><button class="chip" data-mineshow="l" aria-pressed="'+(st.mineShow==="l")+'">Liked</button><button class="chip" data-mineshow="f" aria-pressed="'+(st.mineShow==="f")+'">Flagged to visit</button><button class="chip" data-mineshow="ph" aria-pressed="'+(st.mineShow==="ph")+'">With photos</button></div><div id="copy-slot"></div>';
+  let html = '<div class="minehead"><h2>My board</h2><span class="stat"><b>'+nl+'</b>liked</span><span class="stat"><b>'+nf+'</b>flagged</span><span class="stat"><b>'+nn+'</b>notes</span><span class="stat"><b>'+nph+'</b>photos</span><span class="stat"><b>'+P.reduce((s,p)=>s+(hasHL(p.id)?marks[p.id].hl.length:0),0)+'</b>highlights</span><span class="stat"><b>'+favs.filter(f=>f[1].l).length+'</b>people</span><button class="btn" id="copy-md">Copy as Markdown</button></div>'
+    + '<div class="chips" role="group" aria-label="Show" style="margin-bottom:18px"><button class="chip" data-mineshow="all" aria-pressed="'+(st.mineShow==="all")+'">Everything</button><button class="chip" data-mineshow="l" aria-pressed="'+(st.mineShow==="l")+'">Liked</button><button class="chip" data-mineshow="f" aria-pressed="'+(st.mineShow==="f")+'">Flagged to visit</button><button class="chip" data-mineshow="ph" aria-pressed="'+(st.mineShow==="ph")+'">With photos</button><button class="chip" data-mineshow="hl" aria-pressed="'+(st.mineShow==="hl")+'">With highlights</button></div><div id="copy-slot"></div>';
   // people you liked, with your notes
   if(favs.length){
     html += '<div class="eyebrow" style="margin-bottom:8px">People you liked</div><div class="favs">'+favs.map(([i,e])=>{
@@ -1650,6 +1706,7 @@ function markdownExport(){
         const m=marks[p.id]||{}; const tag=(m.l?"♥":"")+(m.f?"⚑":""); const np=photosOf(p.id).length;
         dayLines.push("- "+(tag?tag+" ":"")+(isPoster?"#"+p.n+(p.room?" "+p.room.name:"")+" · ":"")+p.t+" — "+p.a.slice(0,3).map(i=>A[i]).join(", ")+(p.a.length>3?" et al.":"")+" — https://openreview.net/forum?id="+p.id+(np?" ("+np+" photo"+(np>1?"s":"")+")":""));
         if(m.n) dayLines.push("  - Note: "+m.n.replace(/\n+/g," "));
+        highlightedSentences(p.id).forEach(s=>dayLines.push("  > "+s));
       });
       dayLines.push("");
     });
@@ -1791,6 +1848,15 @@ function syncChips(){
   $("#t-mine").setAttribute("aria-pressed", st.mine);
   $("#t-abs").setAttribute("aria-pressed", !!st.showAbs);
 }
+// tap (or Enter/Space on) a sentence in the paper panel to highlight it
+document.addEventListener("click", e=>{
+  const s = e.target.closest("#d-abs .sent"); if(!s || e.target.closest("a,button")) return;
+  if(openId) toggleHL(openId, s.dataset.h);
+});
+document.addEventListener("keydown", e=>{
+  const s = e.target.closest && e.target.closest("#d-abs .sent");
+  if(s && (e.key==="Enter" || e.key===" ")){ e.preventDefault(); if(openId) toggleHL(openId, s.dataset.h); }
+});
 // a clamped preview opens on click too
 document.addEventListener("click", e=>{
   const a = e.target.closest(".abs.clamp"); if(!a || e.target.closest("a,button")) return;

@@ -13,7 +13,7 @@ Created by Giovanni Franzese.
 - **My Thursday**: your chosen workshops side by side on one timeline, with a "now" line and what is happening in each room right now.
 - **Topics**: papers per topic and which poster day suits your area.
 - **People**: co-author network, each person's papers and workshop talks, and where to find them. Like people and keep notes on who you met.
-- **My board**: your liked and flagged papers as an itinerary in the order you will see them, your notes, your poster photos and the people you liked. Copy it all as Markdown.
+- **My board**: your liked and flagged papers as an itinerary in the order you will see them, your notes, your poster photos, the abstract sentences you highlighted (tap a sentence in a paper's abstract) and the people you liked. Copy it all as Markdown.
 
 ## Screenshots
 
