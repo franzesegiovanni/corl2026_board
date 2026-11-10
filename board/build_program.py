@@ -5,7 +5,7 @@ sponsor talks, breaks, socials, livestreams) -> board/program.json
     python board/build_program.py            # uses cached pages in board/ws_cache/ when present
     python board/build_program.py --refresh  # re-download
 
-Sources: the program grid on https://www.corl.org/program (its day-by-day agenda), plus the
+Sources: the program grid on https://www.corl.org/program (its day-by-day agenda), plus the Diamond Sponsor Talks,
 Keynotes, Early Career Keynotes and Special Panel pages for titles, abstracts and bios.
 """
 import argparse, html, json, re, sys
@@ -128,6 +128,30 @@ def speakers(page, role):
     return out
 
 
+def sponsor_talks(page):
+    """Diamond sponsor talks: one <article class="talkcard"> per 10-minute talk."""
+    e = embedded(page)
+    dayname = {"Monday": "mon", "Tuesday": "tue", "Wednesday": "wed", "Thursday": "thu"}
+    out = []
+    for card in re.findall(r'<article class="talkcard">(.*?)</article>', e, re.S):
+        def one(cls):
+            m = re.search(r'<div class="' + cls + r'">(.*?)</div>', card, re.S)
+            return " ".join(html.unescape(re.sub("<[^>]+>", " ", m.group(1))).split()) if m else ""
+        t = re.search(r'<span class="time">(.*?)</span><span class="dt">(\w+)', card)
+        if not t:
+            continue
+        a, _, b = html.unescape(t.group(1)).replace("—", "–").partition("–")
+        b = b.strip()
+        ap = b[-2:]
+        a = a.strip() + ("" if a.strip()[-2:] in ("AM", "PM") else " " + ap)
+        spk = [{"name": " ".join(html.unescape(re.sub("<[^>]+>", "", s.group(1))).split()),
+                "role": " ".join(html.unescape(re.sub("<[^>]+>", "", s.group(2) or "")).split())}
+               for s in re.finditer(r'<div class="speaker"><strong>(.*?)</strong>(?:<span class="role">(.*?)</span>)?</div>', card, re.S)]
+        out.append({"day": dayname.get(t.group(2), ""), "start": to24(a), "end": to24(b), "sponsor": one("sponsor"),
+                    "title": one("talk"), "speakers": spk, "bio": one("bio")})
+    return out
+
+
 def panel(page):
     lines = text(re.sub(r"</(p|div|h\d|li)>", "\n", re.sub(r"<script.*?</script>|<style.*?</style>", "", page, flags=re.S)))
     try:
@@ -151,10 +175,11 @@ def main():
     spk = speakers(fetch(f"{BASE}/program/keynotes", "_corl_keynotes", a.refresh), "keynote")
     spk += speakers(fetch(f"{BASE}/program/early-career-keynotes", "_corl_early", a.refresh), "early")
     pan = panel(fetch(f"{BASE}/program/special-panel", "_corl_panel", a.refresh))
-    out = {"days": days, "events": events, "speakers": spk, "panel": pan}
+    spons = sponsor_talks(fetch(f"{BASE}/program/diamond-sponsor-talks", "_corl_sponsors", a.refresh))
+    out = {"days": days, "events": events, "speakers": spk, "panel": pan, "sponsor_talks": spons}
     (HERE / "program.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{len(events)} program items over {len(days)} days, {len(spk)} keynote speakers, "
-          f"{len(pan['people'])} panelists -> {HERE / 'program.json'}")
+          f"{len(pan['people'])} panelists, {len(spons)} sponsor talks -> {HERE / 'program.json'}")
 
 
 if __name__ == "__main__":

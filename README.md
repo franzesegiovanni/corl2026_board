@@ -8,7 +8,7 @@ Created by Giovanni Franzese.
 
 ## What it does
 
-- **Schedule**: every paper by day and session (orals and spotlights at the Hilton, posters at the JW Marriott) with poster number, room and floor, plus the keynotes and early-career keynotes (with abstracts and speaker bios), the special panel, session chairs, sponsor talks, breaks, socials and livestream links. Filter by topic, presentation type and location, and see what is on now.
+- **Schedule**: every paper by day and session (orals and spotlights at the Hilton, posters at the JW Marriott) with poster number, room and floor, plus the keynotes and early-career keynotes (with abstracts and speaker bios), the special panel, session chairs, the diamond sponsor talks (sponsor, title and speaker), breaks, socials and livestream links. Filter by topic, presentation type and location, and see what is on now.
 - **Workshops** (Thursday, Nov 12): the 32 workshops with room, invited speakers and agenda, read from each workshop's website. Mark the ones you are going to.
 - **My Thursday**: your chosen workshops side by side on one timeline, with a "now" line and what is happening in each room right now.
 - **Topics**: papers per topic and which poster day suits your area.
@@ -66,7 +66,7 @@ python board/build_board.py --refresh      # official paper schedule + everythin
 
 - Papers: OpenReview (CoRL 2026 accepted papers).
 - Paper schedule, poster numbers and rooms: the official [accepted papers page](https://2026.corl.org/program/accepted-papers).
-- Keynotes, early-career keynotes, special panel, session chairs and livestreams: the official [program](https://www.corl.org/program) and its keynote pages.
+- Keynotes, early-career keynotes, special panel, sponsor talks, session chairs and livestreams: the official [program](https://www.corl.org/program), its keynote pages and the [diamond sponsor talks](https://www.corl.org/program/diamond-sponsor-talks).
 - Workshop rooms and sessions: the official [workshops page](https://www.corl.org/program/workshops). Rooms are marked tentative by CoRL.
 - Workshop agendas and speakers: each workshop's own website, read automatically. Sites differ a lot, so a few entries may be incomplete or misread. Times are shown as each site lists them. Check the workshop site for last-minute changes.
 - Topics are assigned by keyword matching on titles and abstracts, so treat them as a rough guide.

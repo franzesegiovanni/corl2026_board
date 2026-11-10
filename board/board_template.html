@@ -346,6 +346,19 @@ table.heat{border-collapse:separate;border-spacing:2px;width:100%;min-width:340p
 .evspk{margin:6px 0 0;font-size:14.5px;color:var(--ink)}
 .evspk .au,.evpan .au,.evcard .meta .au{font-size:inherit;color:var(--ink);font-weight:600}
 .evspk span,.evpan span{color:var(--ink-3);font-size:13px}
+.sptalks{list-style:none;margin:0;padding:0 16px 6px;border-top:1px solid var(--line-2)}
+.sptalks li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:10px;padding:9px 0;border-top:1px dashed var(--line-2);font-size:14px}
+.sptalks li:first-child{border-top:0}
+.sptalks .at{font-size:12px;color:var(--ink-2);padding-top:2px}
+.spn{font-weight:600}
+.spt{display:block;color:var(--ink);margin-top:1px}
+.spt.muted{color:var(--ink-3);font-style:italic;font-size:13px}
+.sps{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.sps .au,.sps .nm{font-size:13px;color:var(--ink);font-weight:600}
+.sps span{color:var(--ink-3)}
+.spbio{margin-top:4px;font-size:13px}
+.spbio summary{color:var(--flag);font-size:12.5px}
+.spbio p{margin:4px 0 0;color:var(--ink-2);line-height:1.5}
 .sch{font-size:12.5px;font-weight:600;color:var(--flag);text-decoration:none;white-space:nowrap;margin-left:4px}
 .sch:hover{text-decoration:underline;text-underline-offset:2px}
 .evpan{margin:8px 0 0;font-size:14px;line-height:1.7}
@@ -1173,12 +1186,16 @@ const GPAN = (G.panel||{}).people || [];
 const chairOf = {}; GE.forEach(e=>{ if(e.code && e.chair) chairOf[e.code] = e.chair; });
 const spkByName = new Map(GSPK.map(s=>[s.name, s]));
 const EVK = ["keynote","early","panel","sponsor"];   // program items you can like, note and photograph
-GE.forEach(e=>{ e.id = "ev-"+e.day+"-"+e.start.replace(":",""); });
+const GST = G.sponsor_talks || [];   // diamond sponsor talks, 10 minutes each, inside the "Sponsor talks" slots
+GE.forEach(e=>{
+  e.id = "ev-"+e.day+"-"+e.start.replace(":","");
+  e.talks = e.kind==="sponsor" ? GST.filter(t=>t.day===e.day && t.start>=e.start && t.start<e.end) : [];
+});
 const evById = new Map(GE.map(e=>[e.id, e]));
 function evTalkTitle(e){
   const main = (e.spk||[]).find(s=>s.role!=="fireside");
   if(e.kind==="panel") return "The CoRL 2026 debate";
-  if(e.kind==="sponsor") return "Sponsor talks";
+  if(e.kind==="sponsor") return "Sponsor talks"+(e.talks && e.talks.length ? ": "+e.talks.map(t=>t.sponsor).join(", ") : "");
   return main ? main.title : (e.person||e.title);
 }
 function titleOf(id){ const p=byId.get(id); if(p) return p.t; const e=evById.get(id); return e ? e.title+": "+evTalkTitle(e) : id; }
@@ -1214,6 +1231,7 @@ GE.forEach(e=>{
   const sp = GSPK.filter(s=>s.name===e.person || (s.role==="fireside" && e.lines.some(l=>l.includes(s.name))));
   e.spk = sp;
   e.q = fold([e.title, e.venue, e.chair].concat(e.lines, sp.map(s=>s.name+" "+s.aff+" "+s.title+" "+s.abstract),
+        (e.talks||[]).map(t=>t.sponsor+" "+t.title+" "+t.speakers.map(s=>s.name+" "+s.role).join(" ")),
         e.kind==="panel" ? GPAN.map(p=>p.name+" "+p.aff) : [], e.parallel ? [e.parallel.title, e.parallel.venue] : []).join(" | "));
 });
 function evPasses(e){
@@ -1252,7 +1270,15 @@ function eventHTML(e, pill){
       + (e.chair ? '<p class="meta">Session chair: '+peopleHTML(e.chair)+'</p>' : '') + '</header>' + evMineHTML(e) + '</div></section>';
   }
   if(e.kind==="sponsor"){
-    return '<section class="sess ev ev-sponsor">'+when+'<div class="card evcard"><div class="evslim"><div class="code"><b>Sponsor talks</b>'+(venue?' · '+venue:'')+'</div><p class="meta">'+esc(e.title)+(e.chair ? ' · Session chair: '+peopleHTML(e.chair) : '')+'</p></div>' + evMineHTML(e) + '</div></section>';
+    if(!e.talks.length) return '<section class="sess ev ev-sponsor">'+when+'<div class="card evcard"><div class="evslim"><div class="code"><b>Sponsor talks</b>'+(venue?' · '+venue:'')+'</div><p class="meta">'+esc(e.title)+(e.chair ? ' · Session chair: '+peopleHTML(e.chair) : '')+'</p></div>' + evMineHTML(e) + '</div></section>';
+    return '<section class="sess ev ev-sponsor">'+when+'<div class="card evcard"><header><div class="code"><b>Diamond sponsor talks</b>'+(venue?' · '+venue:'')+'</div><h3>'+esc(e.talks.map(t=>t.sponsor).join(" · "))+'</h3>'
+      + (e.chair ? '<p class="meta">'+e.talks.length+' talks × 10 min · Session chair: '+peopleHTML(e.chair)+'</p>' : '') + '</header>'
+      + '<ol class="sptalks">'+e.talks.map(t=>'<li><span class="at mono">'+fmt12(t.start).replace(/ (AM|PM)/,"")+'</span><div style="min-width:0"><b class="spn">'+esc(t.sponsor)+'</b>'
+          + (t.title ? '<span class="spt">'+esc(t.title)+'</span>' : '<span class="spt muted">Title not announced yet</span>')
+          + (t.speakers.length ? '<span class="sps">'+t.speakers.map(s=>peopleHTML(s.name)+(s.role?' <span>'+esc(s.role)+'</span>':'')).join(" · ")+'</span>' : '')
+          + (t.bio ? '<details class="spbio"><summary>About the speaker</summary><p>'+esc(t.bio)+'</p></details>' : '')
+          + '</div></li>').join("")+'</ol>'
+      + evMineHTML(e) + '</div></section>';
   }
   // breaks, lunch, welcome, socials, closing: one compact line
   const extra = e.lines.length ? ' · '+esc(e.lines.join(" ")) : "";
@@ -1270,6 +1296,7 @@ function programRoles(name){
     }
     if(e.kind==="panel" && GPAN.some(p=>p.name===name)) out.push({what:"Panelist · the CoRL 2026 debate", detail:"", e});
     if(e.chair && e.chair.split(/\s*&\s*/).includes(name)) out.push({what:"Session chair · "+t, detail:"", e});
+    (e.talks||[]).forEach(tk=>{ if(tk.speakers.some(s=>s.name===name)) out.push({what:"Sponsor talk · "+tk.sponsor, detail:tk.title?"“"+tk.title+"”":"", e:Object.assign({}, e, {start:tk.start, end:tk.end})}); });
   });
   return out;
 }

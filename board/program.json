@@ -761,5 +761,174 @@
     "aff": "CMU"
    }
   ]
- }
+ },
+ "sponsor_talks": [
+  {
+   "day": "mon",
+   "start": "13:30",
+   "end": "13:40",
+   "sponsor": "Sharpa",
+   "title": "Scaling Robotic Dexterity Toward Real-World Applications",
+   "speakers": [
+    {
+     "name": "Wei ‘Reed’ Lu",
+     "role": "SVP of Global Business Development"
+    }
+   ],
+   "bio": "Wei ‘Reed’ Lu is SVP of Global Business Development at Sharpa. With a decade of experience spanning autonomous driving and robotics, his previous roles include VP of Business at Hesai Technology and a leadership position at CATL. At Sharpa, Reed leads global partnerships and commercialization, helping bring tactile sensing, dexterous manipulation, and Physical AI technologies into real-world applications."
+  },
+  {
+   "day": "mon",
+   "start": "13:40",
+   "end": "13:50",
+   "sponsor": "Lightwheel",
+   "title": "Scaling Robot Learning Through Data and Simulation",
+   "speakers": [
+    {
+     "name": "Christian Ureno",
+     "role": ""
+    }
+   ],
+   "bio": ""
+  },
+  {
+   "day": "mon",
+   "start": "13:50",
+   "end": "14:00",
+   "sponsor": "NVIDIA",
+   "title": "From Dreaming to Doing: World Action Models and Agentic Robotics",
+   "speakers": [
+    {
+     "name": "Jim Fan",
+     "role": "Director of AI and Distinguished Research Scientist"
+    }
+   ],
+   "bio": ""
+  },
+  {
+   "day": "mon",
+   "start": "16:30",
+   "end": "16:40",
+   "sponsor": "GM",
+   "title": "",
+   "speakers": [
+    {
+     "name": "Sean Harris",
+     "role": "Director, AI ML"
+    }
+   ],
+   "bio": ""
+  },
+  {
+   "day": "mon",
+   "start": "16:40",
+   "end": "16:50",
+   "sponsor": "BitRobot",
+   "title": "RoboCap & RoboColosseum",
+   "speakers": [
+    {
+     "name": "Michael Cho",
+     "role": "Cofounder, BitRobot Network"
+    },
+    {
+     "name": "Jiafei Duan",
+     "role": "Assistant Professor, NUS"
+    }
+   ],
+   "bio": ""
+  },
+  {
+   "day": "mon",
+   "start": "16:50",
+   "end": "17:00",
+   "sponsor": "MaxInsights",
+   "title": "",
+   "speakers": [],
+   "bio": ""
+  },
+  {
+   "day": "tue",
+   "start": "13:30",
+   "end": "13:40",
+   "sponsor": "Google DeepMind",
+   "title": "Building general purpose robots with Gemini",
+   "speakers": [
+    {
+     "name": "Kanishka Rao",
+     "role": ""
+    }
+   ],
+   "bio": ""
+  },
+  {
+   "day": "tue",
+   "start": "13:40",
+   "end": "13:50",
+   "sponsor": "Boston Dynamics",
+   "title": "Actions and Agents for True Long-Horizon Behavior.",
+   "speakers": [
+    {
+     "name": "Alberto Rodriguez",
+     "role": "Director of Robot Behavior, Atlas"
+    }
+   ],
+   "bio": ""
+  },
+  {
+   "day": "tue",
+   "start": "13:50",
+   "end": "14:00",
+   "sponsor": "Franka / Agile Robots",
+   "title": "The Reference Platform for Physical AI",
+   "speakers": [
+    {
+     "name": "Sven Parusel",
+     "role": "Co-founder, Franka Robotics; Head of Research Partnerships"
+    }
+   ],
+   "bio": ""
+  },
+  {
+   "day": "tue",
+   "start": "16:30",
+   "end": "16:40",
+   "sponsor": "Meta Robotics Studio",
+   "title": "",
+   "speakers": [
+    {
+     "name": "Jonathan Tompson",
+     "role": ""
+    }
+   ],
+   "bio": ""
+  },
+  {
+   "day": "tue",
+   "start": "16:40",
+   "end": "16:50",
+   "sponsor": "AGIBOT",
+   "title": "Scaling Robot Intelligence: From Human Experience to Self-Improving Robots",
+   "speakers": [
+    {
+     "name": "Yongjian Shen",
+     "role": "Director, Ecosystem & Solutions, AGIBOT Genie"
+    }
+   ],
+   "bio": ""
+  },
+  {
+   "day": "tue",
+   "start": "16:50",
+   "end": "17:00",
+   "sponsor": "Tesla",
+   "title": "Building Foundational Models for Robotics at Tesla",
+   "speakers": [
+    {
+     "name": "Patrick Cho",
+     "role": "Engineering Manager / Technical lead - full-stack AI model development, end-to-end policies, and real-world deployments"
+    }
+   ],
+   "bio": ""
+  }
+ ]
 }
