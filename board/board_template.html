@@ -356,6 +356,13 @@ table.heat{border-collapse:separate;border-spacing:2px;width:100%;min-width:340p
 .evbody{padding:0 16px 14px;font-size:14px;line-height:1.6;max-width:85ch}
 .evbody h4{font-size:12px;font-family:var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin:12px 0 4px;font-weight:500}
 .evbody p{margin:0 0 8px}
+.evmine{padding:10px 16px 14px;border-top:1px solid var(--line-2);display:grid;gap:8px}
+.evacts{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.btn.sm{font-size:12.5px;font-weight:600;padding:6px 10px;gap:6px}
+label.btn{position:relative;cursor:pointer}
+label.btn:focus-within{outline:2px solid var(--flag);outline-offset:2px}
+.evmine .rowph{margin:0}
+.evnote{max-width:none;min-height:64px}
 .ev-mini{margin-bottom:10px}
 .ev-mini .when{padding-top:2px}
 .evline{font-size:14px;color:var(--ink-2);padding:3px 0 0;border-left:2px dotted var(--line);padding-left:12px;min-width:0}
@@ -711,6 +718,7 @@ function rerenderMarks(id){
       if(f) f.setAttribute("aria-pressed",m.f?"true":"false");
     });
   });
+  refreshEvBoxes(id && evById.has(id) ? id : (id ? "__none__" : null));
   // views whose content depends on marks re-render; others were patched in place above
   if(st.view==="mine" || (st.mine && (st.view==="schedule"||st.view==="topics")) || (!id && st.view==="people")) render();
   if(!$("#drawer").hidden){
@@ -718,7 +726,7 @@ function rerenderMarks(id){
     $("#drawer").querySelectorAll(".dacts .btn").forEach(b=>b.setAttribute("aria-pressed", !!m[b.dataset.mark]));
   }
 }
-function updateMineCount(){ $("#mine-ct").textContent = P.filter(p=>isMarked(p.id) || hasHL(p.id) || photosOf(p.id).length).length; }
+function updateMineCount(){ $("#mine-ct").textContent = P.filter(p=>isMarked(p.id) || hasHL(p.id) || photosOf(p.id).length).length + GE.filter(e=>hasAny(e.id)).length; }
 
 /* ---------- photos: stored with the board under your account (assets + private marks doc), else in this browser (IndexedDB) ---------- */
 let assetsNS = null;
@@ -833,6 +841,7 @@ function refreshPhotos(pid){
   else {
     const sel = pid ? '.row[data-id="'+pid+'"]' : ".row";
     document.querySelectorAll(sel).forEach(r=>{ const p=byId.get(r.dataset.id); if(p) r.outerHTML = rowHTML(p, r.dataset.ctx); });
+    refreshEvBoxes(pid || null);
   }
   if(!$("#drawer").hidden && (!pid || pid===openId)){ const box=$("#d-photos"); if(box) box.innerHTML = drawerPhotosHTML(openId); }
 }
@@ -857,12 +866,12 @@ function openLightbox(pid, idx){
 function renderLightbox(){
   const ph = photosOf(lb.pid); if(!ph.length){ closeLightbox(); return; }
   lb.idx = Math.min(lb.idx, ph.length-1);
-  const p = byId.get(lb.pid), x = ph[lb.idx];
-  $("#lightbox").innerHTML = '<div class="lb-bar"><span class="t"><span class="mono">'+(lb.idx+1)+' / '+ph.length+'</span> · '+esc(p.t)+'</span>'
+  const pt = titleOf(lb.pid), x = ph[lb.idx];
+  $("#lightbox").innerHTML = '<div class="lb-bar"><span class="t"><span class="mono">'+(lb.idx+1)+' / '+ph.length+'</span> · '+esc(pt)+'</span>'
     + (ph.length>1?'<button data-lb="prev" aria-label="Previous photo">←</button><button data-lb="next" aria-label="Next photo">→</button>':'')
     + (lb.confirm ? '<button class="danger" data-lb="del-yes">Delete this photo</button><button data-lb="del-no">Keep</button>' : '<button data-lb="del">Delete</button>')
     + '<button data-lb="close" aria-label="Close">Close</button></div>'
-    + '<div class="lb-img'+(lb.full?' full':'')+'"><img src="'+esc(x.url)+'" alt="Photo '+(lb.idx+1)+' for '+esc(p.t)+'" data-lb="zoom"></div>';
+    + '<div class="lb-img'+(lb.full?' full':'')+'"><img src="'+esc(x.url)+'" alt="Photo '+(lb.idx+1)+' for '+esc(pt)+'" data-lb="zoom"></div>';
 }
 function closeLightbox(){
   $("#lightbox").hidden=true; $("#lightbox").innerHTML="";
@@ -1161,6 +1170,44 @@ const GSPK = G.speakers || [];
 const GPAN = (G.panel||{}).people || [];
 const chairOf = {}; GE.forEach(e=>{ if(e.code && e.chair) chairOf[e.code] = e.chair; });
 const spkByName = new Map(GSPK.map(s=>[s.name, s]));
+const EVK = ["keynote","early","panel","sponsor"];   // program items you can like, note and photograph
+GE.forEach(e=>{ e.id = "ev-"+e.day+"-"+e.start.replace(":",""); });
+const evById = new Map(GE.map(e=>[e.id, e]));
+function evTalkTitle(e){
+  const main = (e.spk||[]).find(s=>s.role!=="fireside");
+  if(e.kind==="panel") return "The CoRL 2026 debate";
+  if(e.kind==="sponsor") return "Sponsor talks";
+  return main ? main.title : (e.person||e.title);
+}
+function titleOf(id){ const p=byId.get(id); if(p) return p.t; const e=evById.get(id); return e ? e.title+": "+evTalkTitle(e) : id; }
+// your like, photos and note for one keynote / panel / sponsor slot
+function evMineHTML(e){
+  const id = e.id, m = marks[id]||{}, ph = photosOf(id), noteOpen = !!m.n || st.evNoteOpen===id;
+  const cam = '<svg viewBox="0 0 24 24"><use href="#i-cam"/></svg>';
+  return '<div class="evmine" data-evbox="'+id+'"><div class="evacts">'
+    + '<button class="btn sm like" data-mark="l" data-pid="'+id+'" aria-pressed="'+!!m.l+'"><svg viewBox="0 0 24 24"><use href="#i-heart"/></svg>'+(m.l?'Liked':'Like')+'</button>'
+    + '<label class="btn sm">'+cam+'Take photo<input class="filein" type="file" accept="image/*" capture="environment" data-pid="'+id+'" aria-label="Take a photo of this talk"></label>'
+    + '<label class="btn sm"><svg viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M20.5 16l-5-5-8 8.5"/></svg>Add photo<input class="filein" type="file" accept="image/*" multiple data-pid="'+id+'" aria-label="Add photos of this talk from your gallery"></label>'
+    + (noteOpen ? '' : '<button class="btn sm" data-evnoteopen="'+id+'"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>Add note</button>')
+    + (busy.has(id) ? '<span class="note">Saving photo…</span>' : '')
+    + '</div>'
+    + (ph.length ? '<div class="rowph">'+thumbsHTML(id)+'</div>' : '')
+    + (noteOpen ? '<textarea class="pnote evnote" data-evnote="'+id+'" aria-label="Your notes on '+esc(e.title)+'" placeholder="Your notes on this talk: key ideas, questions, follow-ups…">'+esc(m.n||"")+'</textarea>' : '')
+    + '</div>';
+}
+function refreshEvBoxes(id){
+  document.querySelectorAll(id ? '[data-evbox="'+id+'"]' : '[data-evbox]').forEach(b=>{
+    const e = evById.get(b.dataset.evbox); if(!e) return;
+    const typing = b.contains(document.activeElement) && document.activeElement.tagName==="TEXTAREA";
+    if(!typing){ b.outerHTML = evMineHTML(e); return; }
+    // while you type a note, refresh the buttons and photos but leave the note box alone
+    const tmp = document.createElement("div"); tmp.innerHTML = evMineHTML(e);
+    const fresh = tmp.firstElementChild;
+    b.querySelector(".evacts").replaceWith(fresh.querySelector(".evacts"));
+    const oldPh = b.querySelector(".rowph"), newPh = fresh.querySelector(".rowph");
+    if(oldPh && newPh) oldPh.replaceWith(newPh); else if(oldPh) oldPh.remove(); else if(newPh) b.querySelector(".evacts").after(newPh);
+  });
+}
 GE.forEach(e=>{
   const sp = GSPK.filter(s=>s.name===e.person || (s.role==="fireside" && e.lines.some(l=>l.includes(s.name))));
   e.spk = sp;
@@ -1192,15 +1239,15 @@ function eventHTML(e, pill){
     const body = (main && main.abstract ? '<h4>Abstract</h4>'+paras(main.abstract) : '')
       + e.spk.filter(s=>s.bio).map(s=>'<h4>About '+esc(s.name)+'</h4><p>'+esc(s.bio)+'</p>').join("");
     if(body) h += '<details class="evmore"><summary>Abstract and speaker bio</summary><div class="evbody">'+body+'</div></details>';
-    return h + '</div></section>';
+    return h + evMineHTML(e) + '</div></section>';
   }
   if(e.kind==="panel"){
     return '<section class="sess ev ev-panel">'+when+'<div class="card evcard"><header><div class="code"><b>Special panel</b>'+(venue?' · '+venue:'')+'</div><h3>The CoRL 2026 debate</h3>'
       + (GPAN.length ? '<p class="evpan">'+GPAN.map(p=>peopleHTML(p.name)+' <span>'+esc(p.aff)+'</span>').join(" · ")+'</p>' : '')
-      + (e.chair ? '<p class="meta">Session chair: '+peopleHTML(e.chair)+'</p>' : '') + '</header></div></section>';
+      + (e.chair ? '<p class="meta">Session chair: '+peopleHTML(e.chair)+'</p>' : '') + '</header>' + evMineHTML(e) + '</div></section>';
   }
   if(e.kind==="sponsor"){
-    return '<section class="sess ev ev-sponsor">'+when+'<div class="card evcard evslim"><div class="code"><b>Sponsor talks</b>'+(venue?' · '+venue:'')+'</div><p class="meta">'+esc(e.title)+(e.chair ? ' · Session chair: '+peopleHTML(e.chair) : '')+'</p></div></section>';
+    return '<section class="sess ev ev-sponsor">'+when+'<div class="card evcard"><div class="evslim"><div class="code"><b>Sponsor talks</b>'+(venue?' · '+venue:'')+'</div><p class="meta">'+esc(e.title)+(e.chair ? ' · Session chair: '+peopleHTML(e.chair) : '')+'</p></div>' + evMineHTML(e) + '</div></section>';
   }
   // breaks, lunch, welcome, socials, closing: one compact line
   const extra = e.lines.length ? ' · '+esc(e.lines.join(" ")) : "";
@@ -1638,15 +1685,18 @@ function personWorkshopsHTML(ai){
 /* ---------- mine ---------- */
 function viewMine(){
   const all = P.filter(p=>hasAny(p.id));
+  const evAll = GE.filter(e=>EVK.includes(e.kind) && hasAny(e.id));   // keynotes / panel / sponsor talks you liked, noted or photographed
   const favs = favPeople();
-  const nl = P.filter(p=>marks[p.id]&&marks[p.id].l).length, nf = P.filter(p=>marks[p.id]&&marks[p.id].f).length, nn = P.filter(p=>marks[p.id]&&marks[p.id].n).length;
-  const nph = P.reduce((s,p)=>s+photosOf(p.id).length, 0);
+  const ids = all.map(p=>p.id).concat(evAll.map(e=>e.id));
+  const nl = ids.filter(i=>marks[i]&&marks[i].l).length, nf = P.filter(p=>marks[p.id]&&marks[p.id].f).length, nn = ids.filter(i=>marks[i]&&marks[i].n).length;
+  const nph = ids.reduce((s,i)=>s+photosOf(i).length, 0);
   const goingW = W.filter(isGoing).sort((a,b)=>a.s.localeCompare(b.s));
-  if(!all.length && !favs.length && !goingW.length){
+  if(!all.length && !evAll.length && !favs.length && !goingW.length){
     return '<div class="empty" style="padding:40px 20px"><h3>Your board is empty</h3><p>Select the heart on any paper to like it, the flag to mark a poster you want to visit, or the camera to keep a photo of the poster. Your picks show up here as an itinerary in the order you can see them, with poster numbers and rooms.</p><p style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px"><button class="btn primary" data-start="orals">Browse the 21 orals</button><button class="btn" data-start="schedule">Open the schedule</button></p></div>';
   }
   const showP = p => st.mineShow==="all" ? true : st.mineShow==="ph" ? photosOf(p.id).length>0 : st.mineShow==="hl" ? hasHL(p.id) : st.mineShow==="l" ? !!(marks[p.id]&&marks[p.id].l) : !!(marks[p.id]&&marks[p.id].f);
   const list = all.filter(showP);
+  const evList = evAll.filter(e=> st.mineShow==="all" ? true : st.mineShow==="ph" ? photosOf(e.id).length>0 : st.mineShow==="l" ? !!(marks[e.id]&&marks[e.id].l) : false);
   let html = '<div class="minehead"><h2>My board</h2><span class="stat"><b>'+nl+'</b>liked</span><span class="stat"><b>'+nf+'</b>flagged</span><span class="stat"><b>'+nn+'</b>notes</span><span class="stat"><b>'+nph+'</b>photos</span><span class="stat"><b>'+P.reduce((s,p)=>s+(hasHL(p.id)?marks[p.id].hl.length:0),0)+'</b>highlights</span><span class="stat"><b>'+favs.filter(f=>f[1].l).length+'</b>people</span><button class="btn" id="copy-md">Copy as Markdown</button></div>'
     + '<div class="chips" role="group" aria-label="Show" style="margin-bottom:18px"><button class="chip" data-mineshow="all" aria-pressed="'+(st.mineShow==="all")+'">Everything</button><button class="chip" data-mineshow="l" aria-pressed="'+(st.mineShow==="l")+'">Liked</button><button class="chip" data-mineshow="f" aria-pressed="'+(st.mineShow==="f")+'">Flagged to visit</button><button class="chip" data-mineshow="ph" aria-pressed="'+(st.mineShow==="ph")+'">With photos</button><button class="chip" data-mineshow="hl" aria-pressed="'+(st.mineShow==="hl")+'">With highlights</button></div><div id="copy-slot"></div>';
   // people you liked, with your notes
@@ -1668,13 +1718,21 @@ function viewMine(){
       return '<button class="person" data-author="'+i+'"><b>'+esc(A[i])+'</b><span>'+n+' of your papers · '+aPapers[i].length+' at CoRL</span><span class="where">'+ps.slice(0,3).map(p=>esc("P"+p.ps.slice(1)+" "+dayShort(p.ps)+" #"+p.n)).join(" · ")+(ps.length>3?" …":"")+'</span></button>';
     }).join("")+'</div>';
   }
-  if(list.length || goingW.length) html += '<div class="eyebrow" style="margin-bottom:4px">Itinerary</div>';
-  else if(all.length) html += '<p class="note">No papers match this view.</p>';
+  if(list.length || evList.length || goingW.length) html += '<div class="eyebrow" style="margin-bottom:4px">Itinerary</div>';
+  else if(all.length || evAll.length) html += '<p class="note">Nothing matches this view.</p>';
   DAYS.forEach(d=>{
-    const ss = SESS.filter(s=>s.day===d[0]).map(s=>({s, l:list.filter(p=> s.kind==="poster" ? p.ps===s.code : p.ts===s.code)})).filter(x=>x.l.length);
+    const ss = SESS.filter(s=>s.day===d[0]).map(s=>({start:s.start, s, l:list.filter(p=> s.kind==="poster" ? p.ps===s.code : p.ts===s.code)})).filter(x=>x.l.length)
+      .concat(evList.filter(e=>e.day===d[0]).map(e=>({start:e.start, e})))
+      .sort((a,b)=>a.start.localeCompare(b.start));
     if(!ss.length) return;
     html += '<div class="dayhead"><h2>'+d[1]+', '+d[3]+'</h2></div>';
-    ss.forEach(({s,l})=>{
+    ss.forEach(({s,l,e})=>{
+      if(e){
+        const main = (e.spk||[]).find(x=>x.role!=="fireside");
+        html += '<section class="sess ev ev-'+e.kind+'"><div class="when"><time>'+fmt12(e.start).replace(/ (AM|PM)/,"")+'</time><span>'+fmt12(e.start).slice(-2)+' – '+fmt12(e.end)+'</span></div><div class="card evcard"><header><div class="code"><b>'+esc(e.kind==="panel"?"Special panel":e.title)+'</b>'+(e.venue?' · '+esc(e.venue):'')+'</div><h3>'+esc(evTalkTitle(e))+'</h3>'
+          + (e.person ? '<p class="evspk">'+peopleHTML(e.person)+(main&&main.aff?' <span>'+esc(main.aff)+'</span>':'')+'</p>' : '') + '</header>' + evMineHTML(e) + '</div></section>';
+        return;
+      }
       const isPoster = s.kind==="poster";
       l.sort((a,b)=> isPoster ? a.n-b.n : a.t.localeCompare(b.t));
       html += '<section class="sess '+s.kind+'"><div class="when"><time>'+fmt12(s.start).replace(/ (AM|PM)/,"")+'</time><span>'+fmt12(s.start).slice(-2)+' – '+fmt12(s.end)+'</span></div><div class="card"><header><div class="code"><b>'+esc(isPoster?s.code:s.label)+'</b> · '+esc(s.venue)+'</div><h3>'+esc(isPoster?s.label:s.theme)+'</h3><p class="meta">'+l.length+' of yours'+(isPoster?' · '+s.rooms.map(r=>esc(r[2])+' '+esc(r[3])+' #'+r[0]+'–'+r[1]).join(' · '):'')+'</p></header><div class="rows">'+l.map(p=>rowHTML(p, isPoster?"poster":"talk")).join("")+'</div></div></section>';
@@ -1697,6 +1755,13 @@ function markdownExport(){
   DAYS.forEach(d=>{
     const ss = SESS.filter(s=>s.day===d[0]);
     let dayLines = [];
+    GE.filter(e=>e.day===d[0] && EVK.includes(e.kind) && hasAny(e.id)).forEach(e=>{
+      const m = marks[e.id]||{}, np = photosOf(e.id).length;
+      dayLines.push("### "+fmt12(e.start)+" · "+e.title+(e.person?": "+e.person:"")+(e.venue?" ("+e.venue+")":""));
+      dayLines.push("- "+(m.l?"♥ ":"")+evTalkTitle(e)+(np?" ("+np+" photo"+(np>1?"s":"")+")":""));
+      if(m.n) dayLines.push("  - Note: "+m.n.replace(/\n+/g," "));
+      dayLines.push("");
+    });
     ss.forEach(s=>{
       const isPoster = s.kind==="poster";
       const l = P.filter(p=>hasAny(p.id) && (isPoster?p.ps===s.code:p.ts===s.code)).sort((a,b)=>isPoster?a.n-b.n:a.t.localeCompare(b.t));
@@ -1780,6 +1845,7 @@ document.addEventListener("click", e=>{
   if(t.dataset.mark){ e.preventDefault(); toggleMark(t.dataset.pid, t.dataset.mark); return; }
   if(t.dataset.likeperson!=null){ togglePerson(+t.dataset.likeperson); return; }
   if(t.dataset.abs){ toggleAbs(t); return; }
+  if(t.dataset.evnoteopen){ const id=t.dataset.evnoteopen; st.evNoteOpen=id; refreshEvBoxes(id); const ta=document.querySelector('[data-evnote="'+id+'"]'); if(ta) ta.focus(); return; }
   if(t.id==="t-abs"){ st.showAbs=!st.showAbs; saveUI(); syncChips(); render(); return; }
   if(t.dataset.going!=null){ toggleGoing(+t.dataset.going); return; }
   if(t.dataset.tl){ hideTip(); showTlDetail(t.dataset.tl); return; }
@@ -1829,6 +1895,7 @@ document.addEventListener("keydown", e=>{
 let noteT=null;
 document.addEventListener("input", e=>{
   if(e.target.id==="note"){ const id=openId, v=e.target.value; clearTimeout(noteT); setNote(id, v); }
+  if(e.target.dataset && e.target.dataset.evnote){ setNote(e.target.dataset.evnote, e.target.value); }
   if(e.target.id==="aq") authorSearch(e.target.value);
   if(e.target.id==="wq"){ const v=e.target.value; clearTimeout(wqT); wqT=setTimeout(()=>{ st.wq=v; st.wterms=fold(v).split(/\s+/).filter(Boolean); const r=$("#ws-results"); if(r) r.innerHTML=wsResultsHTML(); }, 160); }
   if(e.target.dataset && e.target.dataset.person!=null) setPersonNote(+e.target.dataset.person, e.target.value);
