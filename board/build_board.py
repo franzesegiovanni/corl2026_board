@@ -142,6 +142,24 @@ def main():
     gpath = HERE / "program.json"
     if gpath.exists():
         G = json.loads(gpath.read_text(encoding="utf-8"))
+        # link a demo to its CoRL paper only when the demo lists a paper ID and the paper shares an author and title words
+        words = lambda s: {w for w in re.findall(r"[a-z0-9]+", s.lower()) if len(w) > 2}
+        for g in (G.get("demos") or {}).get("groups", []):
+            for d in g["demos"]:
+                if not d.get("paper_no"):
+                    continue
+                best, score = None, 0.0
+                for p in papers:
+                    if not set(authors[i] for i in p[2]) & set(d["authors"]):
+                        continue
+                    a, b = words(d["title"]), words(p[1])
+                    s = len(a & b) / max(1, len(a | b))
+                    if p[1].lower().startswith(d["title"].lower().split(":")[0].strip()):
+                        s += 1
+                    if s > score:
+                        best, score = p[0], s
+                if best and score >= 0.25:
+                    d["pid"] = best
     data = json.dumps(dict(S=sessions, C=cats, A=authors, P=papers, W=W, G=G), ensure_ascii=False, separators=(",", ":"))
     data = data.replace("</", "<\\/")
     page = (HERE / "board_template.html").read_text(encoding="utf-8").replace("/*__DATA__*/null", data)

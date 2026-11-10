@@ -346,6 +346,24 @@ table.heat{border-collapse:separate;border-spacing:2px;width:100%;min-width:340p
 .evspk{margin:6px 0 0;font-size:14.5px;color:var(--ink)}
 .evspk .au,.evpan .au,.evcard .meta .au{font-size:inherit;color:var(--ink);font-weight:600}
 .evspk span,.evpan span{color:var(--ink-3);font-size:13px}
+/* demos */
+.demo>header{padding:14px 16px 12px}
+.demo h3{font-size:17px;line-height:1.3;margin-top:4px}
+.demo.is-flag{border-color:var(--flag);box-shadow:inset 0 0 0 1px var(--flag)}
+.dbadges{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:8px 0 0}
+.dline{margin:6px 0 0;font-size:13.5px;line-height:1.55;color:var(--ink)}
+.dline .eyebrow{margin-right:4px}
+.dline .au,.dline .nm{font-size:13.5px;color:var(--ink)}
+.dline.muted,.dline.muted .au,.dline.muted .nm{color:var(--ink-2);font-size:13px}
+.dlinks{display:flex;flex-wrap:wrap;gap:6px 16px;margin:10px 0 0;font-size:13px}
+.dlinks a{color:var(--flag);font-weight:600;text-decoration:none}
+.dlinks a:hover{text-decoration:underline}
+.btn.flag[aria-pressed="true"]{background:var(--flag);border-color:var(--flag);color:var(--surface)}
+.btn.flag[aria-pressed="true"] svg{fill:currentColor}
+.demoline{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;margin:-4px 0 16px;padding:10px 14px;border-radius:10px;background:var(--flag-soft);color:var(--ink);text-decoration:none;font-size:14px}
+.demoline b{font-weight:600}
+.demoline span{margin-left:auto;color:var(--flag);font-weight:600;font-size:13px}
+.demoline:hover span{text-decoration:underline}
 .sptalks{list-style:none;margin:0;padding:0 16px 6px;border-top:1px solid var(--line-2)}
 .sptalks li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:10px;padding:9px 0;border-top:1px dashed var(--line-2);font-size:14px}
 .sptalks li:first-child{border-top:0}
@@ -532,6 +550,7 @@ label.btn:focus-within{outline:2px solid var(--flag);outline-offset:2px}
   <div class="wrap">
     <nav class="tabs" aria-label="Views">
       <a class="tab" href="#schedule" data-view="schedule">Schedule</a>
+      <a class="tab" href="#demos" data-view="demos">Demos</a>
       <a class="tab" href="#workshops" data-view="workshops">Workshops <span class="ct">Thu</span></a>
       <a class="tab" href="#thursday" data-view="thursday">My Thursday <span class="ct" id="going-ct">0</span></a>
       <a class="tab" href="#topics" data-view="topics">Topics</a>
@@ -741,7 +760,7 @@ function rerenderMarks(id){
     $("#drawer").querySelectorAll(".dacts .btn").forEach(b=>b.setAttribute("aria-pressed", !!m[b.dataset.mark]));
   }
 }
-function updateMineCount(){ $("#mine-ct").textContent = P.filter(p=>isMarked(p.id) || hasHL(p.id) || photosOf(p.id).length).length + GE.filter(e=>hasAny(e.id)).length; }
+function updateMineCount(){ $("#mine-ct").textContent = P.filter(p=>isMarked(p.id) || hasHL(p.id) || photosOf(p.id).length).length + GE.filter(e=>hasAny(e.id)).length + DM.filter(d=>hasAny(d.id)).length; }
 
 /* ---------- photos: stored with the board under your account (assets + private marks doc), else in this browser (IndexedDB) ---------- */
 let assetsNS = null;
@@ -1107,6 +1126,7 @@ function render(){
   if(st.view==="schedule") v.innerHTML = viewSchedule();
   else if(st.view==="topics") v.innerHTML = viewTopics();
   else if(st.view==="workshops") v.innerHTML = viewWorkshops();
+  else if(st.view==="demos") v.innerHTML = viewDemos();
   else if(st.view==="thursday"){ v.innerHTML = viewThursday(); afterThursday(); }
   else if(st.view==="people"){ v.innerHTML = viewPeople(); drawGraph(); }
   else v.innerHTML = viewMine();
@@ -1133,6 +1153,8 @@ function viewSchedule(){
     const gd = (G.days||[]).find(x=>x.day===d[0]);
     const live = gd && gd.live && gd.live.length ? gd.live.map(l=>'<a class="livelink" href="'+esc(l.url)+'" target="_blank" rel="noopener">▶ '+esc(l.label)+'</a>').join("") : "";
     html += '<div class="dayhead"><h2>'+d[1]+', '+d[3]+'</h2><span>'+(d[4]===now.date?"Today":"")+'</span>'+live+'</div>';
+    const dToday = DM.filter(x=>x.days.includes(d[0]));
+    if(dToday.length && !fa) html += '<a class="demoline" href="#demos" data-gotodemos="'+d[0]+'"><b>Researcher demos'+(d[4]===now.date?' today':'')+'</b> · '+dToday.length+' demos in '+[...new Set(dToday.map(x=>x.room))].join(", ")+'<span>See the demos →</span></a>';
     // one timeline per day: paper sessions plus program items (keynotes, panel, breaks…), sorted by start time
     const entries = [];
     SESS.filter(s=>s.day===d[0]).forEach(s=>entries.push({start:s.start, end:s.end, date:s.date, s}));
@@ -1196,6 +1218,7 @@ function evTalkTitle(e){
   const main = (e.spk||[]).find(s=>s.role!=="fireside");
   if(e.kind==="panel") return "The CoRL 2026 debate";
   if(e.kind==="sponsor") return "Sponsor talks"+(e.talks && e.talks.length ? ": "+e.talks.map(t=>t.sponsor).join(", ") : "");
+  if(e.kind==="demo") return e.dtitle;
   return main ? main.title : (e.person||e.title);
 }
 function titleOf(id){ const p=byId.get(id); if(p) return p.t; const e=evById.get(id); return e ? e.title+": "+evTalkTitle(e) : id; }
@@ -1205,6 +1228,7 @@ function evMineHTML(e){
   const cam = '<svg viewBox="0 0 24 24"><use href="#i-cam"/></svg>';
   return '<div class="evmine" data-evbox="'+id+'"><div class="evacts">'
     + '<button class="btn sm like" data-mark="l" data-pid="'+id+'" aria-pressed="'+!!m.l+'"><svg viewBox="0 0 24 24"><use href="#i-heart"/></svg>'+(m.l?'Liked':'Like')+'</button>'
+    + (e.kind==="demo" ? '<button class="btn sm flag" data-mark="f" data-pid="'+id+'" aria-pressed="'+!!m.f+'"><svg viewBox="0 0 24 24"><use href="#i-flag"/></svg>'+(m.f?'Flagged':'Flag to visit')+'</button>' : '')
     + '<label class="btn sm">'+cam+'Take photo<input class="filein" type="file" accept="image/*" capture="environment" data-pid="'+id+'" aria-label="Take a photo of this talk"></label>'
     + '<label class="btn sm"><svg viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M20.5 16l-5-5-8 8.5"/></svg>Add photo<input class="filein" type="file" accept="image/*" multiple data-pid="'+id+'" aria-label="Add photos of this talk from your gallery"></label>'
     + (noteOpen ? '' : '<button class="btn sm" data-evnoteopen="'+id+'"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>Add note</button>')
@@ -1213,6 +1237,61 @@ function evMineHTML(e){
     + (ph.length ? '<div class="rowph">'+thumbsHTML(id)+'</div>' : '')
     + (noteOpen ? '<textarea class="pnote evnote" data-evnote="'+id+'" aria-label="Your notes on '+esc(e.title)+'" placeholder="Your notes on this talk: key ideas, questions, follow-ups…">'+esc(m.n||"")+'</textarea>' : '')
     + '</div>';
+}
+/* ---------- researcher demos (Mon and Tue) ---------- */
+const DMG = ((G.demos||{}).groups||[]).map(g=>{
+  const m = g.name.match(/^(.*?)\s*\((.*)\)\s*$/);
+  return {name:g.name, room: m ? m[1] : g.name.replace(/\s+Demos$/i,""), place: m ? m[2] : "", theme:g.theme, demos:g.demos};
+});
+const DM = [];
+DMG.forEach(g=>g.demos.forEach(d=>{
+  const x = Object.assign({}, d, {id:"demo-"+d.n, kind:"demo", title:"Demo "+d.n, dtitle:d.title, room:g.room, place:g.place});
+  x.q = fold([x.title, x.dtitle, x.room, x.place, x.affiliation, x.where].concat(x.presenters, x.authors).join(" | "));
+  DM.push(x); evById.set(x.id, x);
+}));
+const DAYNAME = {mon:"Mon", tue:"Tue", wed:"Wed", thu:"Thu"};
+function demoWhen(d){ return d.days.length ? d.days.map(x=>DAYNAME[x]).join(" & ") : (d.where || ""); }
+function demoCard(d){
+  const mk = marks[d.id]||{};
+  return '<article class="demo card'+(mk.f?' is-flag':'')+'" id="'+d.id+'"><header>'
+    + '<div class="code"><b>Demo '+d.n+'</b> · '+esc(d.room)+(d.place?' · '+esc(d.place):'')+'</div>'
+    + '<h3>'+esc(d.dtitle)+'</h3>'
+    + '<p class="dbadges">'+d.days.map(x=>'<span class="badge spot">'+DAYNAME[x]+' '+(x==="mon"?"Nov 9":x==="tue"?"Nov 10":"")+'</span>').join("")
+      + (d.where ? '<span class="where">'+esc(d.where)+'</span>' : '')+'</p>'
+    + (d.presenters.length ? '<p class="dline"><span class="eyebrow">Presenters</span> '+d.presenters.map(n=>peopleHTML(n)).join(", ")+'</p>' : '')
+    + (d.authors.length ? '<p class="dline muted"><span class="eyebrow">Authors</span> '+d.authors.map(n=>peopleHTML(n)).join(", ")+'</p>' : '')
+    + (d.affiliation ? '<p class="dline muted">'+esc(d.affiliation)+'</p>' : '')
+    + '<p class="dlinks">'+(d.image ? '<a href="'+esc(d.image)+'" target="_blank" rel="noopener">View demo image ↗</a>' : '')
+      + (d.pid ? '<button class="linkbtn" data-open="'+d.pid+'">Open the CoRL paper</button>' : '')+'</p>'
+    + '</header>' + evMineHTML(d) + '</article>';
+}
+function demoPasses(d){
+  if(st.dday && st.dday!=="all" && !d.days.includes(st.dday)) return false;
+  if(st.dterms && st.dterms.length && !st.dterms.every(t=>d.q.includes(t))) return false;
+  if(st.dmine && !hasAny(d.id)) return false;
+  return true;
+}
+function demoResultsHTML(){
+  let h = "", n = 0;
+  DMG.forEach(g=>{
+    const l = DM.filter(d=>d.room===g.room && demoPasses(d));
+    if(!l.length) return; n += l.length;
+    h += '<section class="dgroup"><div class="dayhead"><h2>'+esc(g.room)+'</h2><span>'+esc(g.place||"")+(g.theme?' · '+esc(g.theme):'')+' · '+l.length+' demo'+(l.length>1?'s':'')+'</span></div><div class="wsgrid">'+l.map(demoCard).join("")+'</div></section>';
+  });
+  if(!n) h = '<div class="empty"><h3>No demos match</h3><p>Try another day or a shorter search.</p></div>';
+  return h;
+}
+function viewDemos(){
+  if(!DM.length) return '<div class="empty"><h3>No demo data</h3><p>Run board/build_program.py, then rebuild the board.</p></div>';
+  const intro = (G.demos||{}).intro || "";
+  if(!st.dday){ const now = austinNow(); const d = DAYS.find(x=>x[4]===now.date); st.dday = d && DM.some(m=>m.days.includes(d[0])) ? d[0] : "all"; }
+  const cnt = k => DM.filter(d=>k==="all" || d.days.includes(k)).length;
+  return '<div class="wshead"><div class="eyebrow">Monday and Tuesday · JW Marriott</div><h2>Researcher demos</h2><p class="note">'+esc(intro)+'</p></div>'
+    + '<div class="filters wsf"><label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="dq" type="search" placeholder="Search demos, presenters, labs" aria-label="Search demos" autocomplete="off" value="'+esc(st.dq||"")+'"></label>'
+    + '<div class="chips" role="group" aria-label="Day">'+[["all","Both days"],["mon","Mon Nov 9"],["tue","Tue Nov 10"]].map(([k,l])=>'<button class="chip" data-dday="'+k+'" aria-pressed="'+(st.dday===k)+'">'+l+' <span class="mono">'+cnt(k)+'</span></button>').join("")
+    + '<button class="chip" data-dmine="1" aria-pressed="'+!!st.dmine+'">Liked, flagged or noted</button></div></div>'
+    + '<div id="demo-results">'+demoResultsHTML()+'</div>'
+    + '<p class="foot">From the official <a href="https://www.corl.org/program/demos" target="_blank" rel="noopener">CoRL 2026 demos page</a>. Two demos (Outdoor) run in a different place: see each card. Names link to People cards when they are also CoRL 2026 paper authors.</p>';
 }
 function refreshEvBoxes(id){
   document.querySelectorAll(id ? '[data-evbox="'+id+'"]' : '[data-evbox]').forEach(b=>{
@@ -1298,11 +1377,16 @@ function programRoles(name){
     if(e.chair && e.chair.split(/\s*&\s*/).includes(name)) out.push({what:"Session chair · "+t, detail:"", e});
     (e.talks||[]).forEach(tk=>{ if(tk.speakers.some(s=>s.name===name)) out.push({what:"Sponsor talk · "+tk.sponsor, detail:tk.title?"“"+tk.title+"”":"", e:Object.assign({}, e, {start:tk.start, end:tk.end})}); });
   });
+  DM.forEach(d=>{
+    const pres = d.presenters.includes(name), auth = d.authors.includes(name);
+    if(pres || auth) out.push({what:(pres?"Presenting":"Co-author of")+" Demo "+d.n, detail:"“"+d.dtitle+"”", demo:d});
+  });
   return out;
 }
 function programRolesHTML(ai){
   const r = programRoles(A[ai]); if(!r.length) return "";
   return '<h3 style="font-size:17px;margin:18px 0 8px">On the CoRL 2026 program</h3><div class="card wlist">'+r.map(x=>{
+    if(x.demo) return '<div class="wrow"><div style="min-width:0"><b><a href="#demos" data-gotodemos="all">'+esc(x.what)+'</a></b><span class="where" style="font-family:var(--f-body);font-size:13px;color:var(--ink-2)">'+esc(x.detail)+'</span><span class="where">'+esc(demoWhen(x.demo))+' · '+esc(x.demo.room)+(x.demo.place?' · '+esc(x.demo.place):'')+'</span></div></div>';
     const dn = DAYS.find(d=>d[0]===x.e.day);
     return '<div class="wrow"><div style="min-width:0"><b>'+esc(x.what)+'</b>'+(x.detail?'<span class="where" style="font-family:var(--f-body);font-size:13px;color:var(--ink-2)">'+esc(x.detail)+'</span>':'')
       + '<span class="where">'+(dn?dn[2]+' '+dn[3]:esc(x.e.day))+' · '+fmt12(x.e.start)+' – '+fmt12(x.e.end)+(x.e.venue?' · '+esc(x.e.venue):'')+'</span></div></div>';
@@ -1718,12 +1802,13 @@ function personWorkshopsHTML(ai){
 function viewMine(){
   const all = P.filter(p=>hasAny(p.id));
   const evAll = GE.filter(e=>EVK.includes(e.kind) && hasAny(e.id));   // keynotes / panel / sponsor talks you liked, noted or photographed
+  const dmAll = DM.filter(d=>hasAny(d.id));
   const favs = favPeople();
-  const ids = all.map(p=>p.id).concat(evAll.map(e=>e.id));
-  const nl = ids.filter(i=>marks[i]&&marks[i].l).length, nf = P.filter(p=>marks[p.id]&&marks[p.id].f).length, nn = ids.filter(i=>marks[i]&&marks[i].n).length;
+  const ids = all.map(p=>p.id).concat(evAll.map(e=>e.id), dmAll.map(d=>d.id));
+  const nl = ids.filter(i=>marks[i]&&marks[i].l).length, nf = ids.filter(i=>marks[i]&&marks[i].f).length, nn = ids.filter(i=>marks[i]&&marks[i].n).length;
   const nph = ids.reduce((s,i)=>s+photosOf(i).length, 0);
   const goingW = W.filter(isGoing).sort((a,b)=>a.s.localeCompare(b.s));
-  if(!all.length && !evAll.length && !favs.length && !goingW.length){
+  if(!all.length && !evAll.length && !dmAll.length && !favs.length && !goingW.length){
     return '<div class="empty" style="padding:40px 20px"><h3>Your board is empty</h3><p>Select the heart on any paper to like it, the flag to mark a poster you want to visit, or the camera to keep a photo of the poster. Your picks show up here as an itinerary in the order you can see them, with poster numbers and rooms.</p><p style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px"><button class="btn primary" data-start="orals">Browse the 21 orals</button><button class="btn" data-start="schedule">Open the schedule</button></p></div>';
   }
   const showP = p => st.mineShow==="all" ? true : st.mineShow==="ph" ? photosOf(p.id).length>0 : st.mineShow==="hl" ? hasHL(p.id) : st.mineShow==="l" ? !!(marks[p.id]&&marks[p.id].l) : !!(marks[p.id]&&marks[p.id].f);
@@ -1740,6 +1825,11 @@ function viewMine(){
         + '<button class="ic like" data-likeperson="'+i+'" aria-pressed="'+!!e.l+'" aria-label="'+(e.l?"Unlike ":"Like ")+esc(A[i])+'" title="'+(e.l?"Unlike":"Like")+'"><svg viewBox="0 0 24 24"><use href="#i-heart"/></svg></button></div>'
         + '<textarea class="pnote" id="pn-'+i+'" data-person="'+i+'" aria-label="Your note about '+esc(A[i])+'" placeholder="Where you met, follow-ups…">'+esc(e.n||"")+'</textarea></div>';
     }).join("")+'</div>';
+  }
+  // demos you liked, flagged or noted
+  const dmList = dmAll.filter(d=> st.mineShow==="all" ? true : st.mineShow==="ph" ? photosOf(d.id).length>0 : st.mineShow==="l" ? !!(marks[d.id]&&marks[d.id].l) : st.mineShow==="f" ? !!(marks[d.id]&&marks[d.id].f) : false);
+  if(dmList.length){
+    html += '<div class="eyebrow" style="margin-bottom:8px">Demos</div><div class="wsgrid" style="margin-bottom:22px">'+dmList.sort((a,b)=>a.n-b.n).map(demoCard).join("")+'</div>';
   }
   // people to meet
   const ma = new Map(); list.forEach(p=>p.a.forEach(i=>ma.set(i,(ma.get(i)||0)+1)));
@@ -1809,6 +1899,16 @@ function markdownExport(){
     });
     if(dayLines.length){ lines.push("## "+d[1]+", "+d[3],""); lines.push(...dayLines); }
   });
+  const dm = DM.filter(d=>hasAny(d.id));
+  if(dm.length){
+    lines.push("## Demos","");
+    dm.forEach(d=>{
+      const m = marks[d.id]||{}, np = photosOf(d.id).length, tag = (m.l?"♥":"")+(m.f?"⚑":"");
+      lines.push("- "+(tag?tag+" ":"")+"Demo "+d.n+": "+d.dtitle+" — "+demoWhen(d)+", "+d.room+(d.presenters.length?" — "+d.presenters.join(", "):"")+(np?" ("+np+" photo"+(np>1?"s":"")+")":""));
+      if(m.n) lines.push("  - Note: "+m.n.replace(/\n+/g," "));
+    });
+    lines.push("");
+  }
   const gw = W.filter(isGoing).sort((a,b)=>a.s.localeCompare(b.s));
   if(gw.length){
     lines.push("## Thursday, Nov 12 · Workshops","");
@@ -1880,6 +1980,9 @@ document.addEventListener("click", e=>{
   if(t.dataset.evnoteopen){ const id=t.dataset.evnoteopen; st.evNoteOpen=id; refreshEvBoxes(id); const ta=document.querySelector('[data-evnote="'+id+'"]'); if(ta) ta.focus(); return; }
   if(t.id==="t-abs"){ st.showAbs=!st.showAbs; saveUI(); syncChips(); render(); return; }
   if(t.dataset.going!=null){ toggleGoing(+t.dataset.going); return; }
+  if(t.dataset.dday){ st.dday=t.dataset.dday; render(); return; }
+  if(t.dataset.gotodemos){ st.dday=t.dataset.gotodemos; return; }   // the link itself switches to the Demos tab
+  if(t.dataset.dmine){ st.dmine=!st.dmine; render(); return; }
   if(t.dataset.tl){ hideTip(); showTlDetail(t.dataset.tl); return; }
   if(t.hasAttribute("data-tlclose")){ $("#tl-detail").hidden=true; return; }
   if(t.hasAttribute("data-tlive")){ st.tprev=null; render(); return; }
@@ -1929,6 +2032,7 @@ document.addEventListener("input", e=>{
   if(e.target.id==="note"){ const id=openId, v=e.target.value; clearTimeout(noteT); setNote(id, v); }
   if(e.target.dataset && e.target.dataset.evnote){ setNote(e.target.dataset.evnote, e.target.value); }
   if(e.target.id==="aq") authorSearch(e.target.value);
+  if(e.target.id==="dq"){ st.dq=e.target.value; st.dterms=fold(st.dq).split(/\s+/).filter(Boolean); const r=$("#demo-results"); if(r) r.innerHTML=demoResultsHTML(); }
   if(e.target.id==="wq"){ const v=e.target.value; clearTimeout(wqT); wqT=setTimeout(()=>{ st.wq=v; st.wterms=fold(v).split(/\s+/).filter(Boolean); const r=$("#ws-results"); if(r) r.innerHTML=wsResultsHTML(); }, 160); }
   if(e.target.dataset && e.target.dataset.person!=null) setPersonNote(+e.target.dataset.person, e.target.value);
 });
@@ -1975,7 +2079,7 @@ let rz=null; window.addEventListener("resize", ()=>{ clearTimeout(rz); rz=setTim
 window.addEventListener("beforeunload", ()=>{ persistLocal(); });
 function route(){
   const h = location.hash.replace("#","");
-  const nv = ["schedule","workshops","thursday","topics","people","mine"].includes(h) ? h : "schedule";
+  const nv = ["schedule","demos","workshops","thursday","topics","people","mine"].includes(h) ? h : "schedule";
   const changed = nv!==st.view; st.view = nv;
   if(!$("#drawer").hidden) closeDrawer();
   hideTip(); render();

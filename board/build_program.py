@@ -152,6 +152,35 @@ def sponsor_talks(page):
     return out
 
 
+def demos(page):
+    """Researcher demos, grouped by room: <section class="group"> with <article class="demo"> entries."""
+    e = embedded(page)
+    clean = lambda s: " ".join(html.unescape(re.sub("<[^>]+>", " ", s)).split())
+    intro = re.search(r'<p class="intro">(.*?)</p>', e, re.S)
+    groups = []
+    for sec in re.findall(r'<section class="group"[^>]*>(.*?)</section>', e, re.S):
+        h = re.search(r'<h3[^>]*>(.*?)</h3>', sec, re.S)
+        th = re.search(r'<p class="theme">(.*?)</p>', sec, re.S)
+        items = []
+        for art in re.findall(r'<article class="demo"[^>]*>(.*?)</article>', sec, re.S):
+            def field(label):
+                m = re.search(r"<strong>" + label + r":</strong>(.*?)</p>", art, re.S)
+                return clean(m.group(1)) if m else ""
+            badges = [(b.group(1), clean(b.group(2))) for b in re.finditer(r'<span class="badge\s*([\w ]*)">(.*?)</span>', art, re.S)]
+            days = [{"Monday": "mon", "Tuesday": "tue", "Wednesday": "wed", "Thursday": "thu"}[t.split(",")[0]]
+                    for c, t in badges if not c.strip() and t.split(",")[0] in ("Monday", "Tuesday", "Wednesday", "Thursday")]
+            pid = next((re.sub(r"\D", "", t) for c, t in badges if "id" in c.split()), "")
+            where = next((t for c, t in badges if "loc" in c.split()), "")
+            img = re.search(r'<a class="imglink" href="([^"]+)"', art)
+            num = re.search(r'<div class="demo-num">\s*Demo\s*(\d+)', art)
+            items.append({"n": int(num.group(1)) if num else 0, "title": clean(re.search(r'<h4 class="demo-title">(.*?)</h4>', art, re.S).group(1)),
+                          "days": days, "where": where, "paper_no": pid, "presenters": [x.strip() for x in field("Presenters").split(",") if x.strip()],
+                          "authors": [x.strip() for x in field("Demo authors").split(",") if x.strip()],
+                          "affiliation": field("Affiliation"), "image": img.group(1) if img else ""})
+        groups.append({"name": clean(h.group(1)) if h else "", "theme": clean(th.group(1)) if th else "", "demos": items})
+    return {"intro": clean(intro.group(1)) if intro else "", "groups": groups}
+
+
 def panel(page):
     lines = text(re.sub(r"</(p|div|h\d|li)>", "\n", re.sub(r"<script.*?</script>|<style.*?</style>", "", page, flags=re.S)))
     try:
@@ -176,10 +205,12 @@ def main():
     spk += speakers(fetch(f"{BASE}/program/early-career-keynotes", "_corl_early", a.refresh), "early")
     pan = panel(fetch(f"{BASE}/program/special-panel", "_corl_panel", a.refresh))
     spons = sponsor_talks(fetch(f"{BASE}/program/diamond-sponsor-talks", "_corl_sponsors", a.refresh))
-    out = {"days": days, "events": events, "speakers": spk, "panel": pan, "sponsor_talks": spons}
+    dem = demos(fetch(f"{BASE}/program/demos", "_corl_demos", a.refresh))
+    out = {"days": days, "events": events, "speakers": spk, "panel": pan, "sponsor_talks": spons, "demos": dem}
     (HERE / "program.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{len(events)} program items over {len(days)} days, {len(spk)} keynote speakers, "
-          f"{len(pan['people'])} panelists, {len(spons)} sponsor talks -> {HERE / 'program.json'}")
+          f"{len(pan['people'])} panelists, {len(spons)} sponsor talks, "
+          f"{sum(len(g['demos']) for g in dem['groups'])} demos -> {HERE / 'program.json'}")
 
 
 if __name__ == "__main__":

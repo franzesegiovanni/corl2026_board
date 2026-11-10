@@ -930,5 +930,444 @@
    ],
    "bio": ""
   }
- ]
+ ],
+ "demos": {
+  "intro": "Researcher demos at CoRL 2026 take place on Monday, November 9 and Tuesday, November 10. Indoor demos are in the Lone Star (3rd floor) and Griffin (2nd floor) rooms at the JW Marriott, and two demos run outdoors.",
+  "groups": [
+   {
+    "name": "Lone Star (3rd floor @ JW Marriott)",
+    "theme": "Robot Foundation Model, Humanoid, Robot Learning Platform",
+    "demos": [
+     {
+      "n": 1,
+      "title": "MolmoAct2",
+      "days": [
+       "tue"
+      ],
+      "where": "",
+      "paper_no": "176",
+      "presenters": [
+       "Jiafei Duan"
+      ],
+      "authors": [
+       "Haoquan Fang",
+       "Jiafei Duan"
+      ],
+      "affiliation": "National University of Singapore",
+      "image": "https://drive.google.com/open?id=1o2K5Yopo0-eeCOKth5KxBZl8e_1WOUyQ"
+     },
+     {
+      "n": 2,
+      "title": "Robot Foundation Model with Counterfactual Pretraining: A Unified Model for Acting, World Modeling, and Progress Tracking",
+      "days": [
+       "mon",
+       "tue"
+      ],
+      "where": "",
+      "paper_no": "",
+      "presenters": [
+       "Atlas Kazemian",
+       "Klemen Kotar",
+       "Wenlong Huang"
+      ],
+      "authors": [
+       "Atlas Kazemian",
+       "Klemen Kotar",
+       "Wenlong Huang",
+       "Gia Ancone",
+       "Ieva Bagdonaviciute",
+       "Chongkai Gao",
+       "Khai Loong Aw",
+       "Li Fei-Fei",
+       "Dan Yamins"
+      ],
+      "affiliation": "Stanford University",
+      "image": "https://drive.google.com/open?id=1EEAqhh29uVgjN3cVLvTlBwZwg-5x8DRU"
+     },
+     {
+      "n": 3,
+      "title": "aibo Research Prototype and SDK: A Multimodal Companion-Robot Platform for Robot Learning and HRI",
+      "days": [
+       "mon",
+       "tue"
+      ],
+      "where": "",
+      "paper_no": "",
+      "presenters": [
+       "Keitaro Murakami",
+       "Sho Kinoshita",
+       "Takuma Morita"
+      ],
+      "authors": [
+       "Keitaro Murakami",
+       "Shinnosuke Usami",
+       "Toko Hayamizu",
+       "Kazumi Nakamiya",
+       "Ai Tateishi",
+       "Sho Kinoshita",
+       "Takuma Morita"
+      ],
+      "affiliation": "Sony Group Corporation",
+      "image": "https://drive.google.com/open?id=1PijvNqcYiPmGPFjnoP2jz34QNwn4T6kS"
+     },
+     {
+      "n": 4,
+      "title": "Beyond Demonstrations: Reasoning-Guided Humanoid Loco-Manipulation with the Alpamayo Open Physical AI Platform",
+      "days": [
+       "tue"
+      ],
+      "where": "",
+      "paper_no": "",
+      "presenters": [
+       "Thomas Tian"
+      ],
+      "authors": [
+       "Thomas Tian",
+       "Yuxin Chen",
+       "Junli Ren",
+       "Wenhao Ding",
+       "Yuxiao Chen",
+       "Yu Wang",
+       "Shuhan Tan",
+       "Wenyan Cong",
+       "Yulong Cao",
+       "Yan Wang",
+       "Wenjie Luo",
+       "Boris Ivanovic",
+       "Marco Pavone"
+      ],
+      "affiliation": "NVIDIA, UC Berkeley, Stanford",
+      "image": "https://drive.google.com/open?id=1MBb1dGcU5eA2ivAbkS6QuUE5k_OGlUPg"
+     },
+     {
+      "n": 5,
+      "title": "FreeLook: Head-Tracked 3D Feedback for Teleoperation",
+      "days": [
+       "tue"
+      ],
+      "where": "",
+      "paper_no": "",
+      "presenters": [
+       "Jules Ropars",
+       "Jiafei Duan"
+      ],
+      "authors": [
+       "Jules Ropars",
+       "Ruiyi Chen",
+       "Jiafei Duan"
+      ],
+      "affiliation": "Robotics and State Estimation (RSE) Lab, University of Washington (Jules Ropars); National University of Singapore (Ruiyi Chen and Jiafei Duan)",
+      "image": "https://drive.google.com/open?id=1HaVLoePfNCGWD1G4BeSG1fO0ti0yUdu8"
+     },
+     {
+      "n": 6,
+      "title": "EndoNav: An RSI Policy for Autonomous Navigation Through Endoscopic Lumen",
+      "days": [
+       "tue"
+      ],
+      "where": "",
+      "paper_no": "",
+      "presenters": [
+       "Chi Kit Ng",
+       "Tianchun Wu",
+       "Siu Hing Lui",
+       "Hanlin Zhao",
+       "Hongliang Ren"
+      ],
+      "authors": [
+       "Chi Kit Ng",
+       "Tianchun Wu",
+       "Siu Hing Lui",
+       "Hanlin Zhao",
+       "Hongliang Ren"
+      ],
+      "affiliation": "The Chinese University of Hong Kong",
+      "image": "https://drive.google.com/open?id=1gTrYXpTUaHbm9-7lJdqqtcgz-uY4VELH"
+     },
+     {
+      "n": 7,
+      "title": "YUBI: Yielding Universal Bidigital Interface from Portable Data Collection to Cross-Embodiment VLA Deployment",
+      "days": [
+       "mon",
+       "tue"
+      ],
+      "where": "",
+      "paper_no": "267",
+      "presenters": [
+       "Takehiko Ohkawa"
+      ],
+      "authors": [
+       "Takehiko Ohkawa",
+       "Yuki Noguchi",
+       "Makoto Sugiura",
+       "Takuya Okubo",
+       "Yuya Kanai",
+       "Guillem Torrente",
+       "Yueh-Hua Wu",
+       "Tatsuya Matsushima",
+       "Kei Ota"
+      ],
+      "affiliation": "AI Robot Association (AIRoA), The University of Tokyo",
+      "image": "https://drive.google.com/open?id=1sfSvjztDPmNsiPImuXLAiEClNbIFy1gy"
+     },
+     {
+      "n": 8,
+      "title": "DreamFAR: Drive a Robot That Exists Only Inside a World Model",
+      "days": [
+       "mon",
+       "tue"
+      ],
+      "where": "",
+      "paper_no": "",
+      "presenters": [
+       "Yiming Dou",
+       "Sumedh Anand Sontakke",
+       "Ruoshi Liu"
+      ],
+      "authors": [
+       "Yiming Dou",
+       "Botao He",
+       "Sumedh Anand Sontakke",
+       "Antonio Loquercio",
+       "Andrew Owens",
+       "Jitendra Malik",
+       "Ruoshi Liu"
+      ],
+      "affiliation": "Amazon Frontier AI & Robotics; Cornell University; University of Maryland, College Park; University of Pennsylvania",
+      "image": "https://drive.google.com/open?id=1tDyaorgWb1-VDoShCmpu7ocn32iKjlAQ"
+     }
+    ]
+   },
+   {
+    "name": "Griffin (2nd floor @ JW Marriott)",
+    "theme": "Dexterous Hand, Tactile Sensing, Contact-Rich Manipulation",
+    "demos": [
+     {
+      "n": 9,
+      "title": "ART-Glove: Articulated Tactile Glove for Contact-Grounded Dexterous Interaction Capture",
+      "days": [
+       "mon"
+      ],
+      "where": "",
+      "paper_no": "",
+      "presenters": [
+       "Changyi Lin"
+      ],
+      "authors": [
+       "Changyi Lin",
+       "Ding Zhao"
+      ],
+      "affiliation": "Carnegie Mellon University",
+      "image": "https://drive.google.com/open?id=1FngRXWvjAEJFwW7Xlg1K0uXG3iyN6pA-"
+     },
+     {
+      "n": 10,
+      "title": "Tactile Imaging for Hand-Held Artificial Palpation",
+      "days": [
+       "mon"
+      ],
+      "where": "",
+      "paper_no": "",
+      "presenters": [
+       "Zohar Rimon"
+      ],
+      "authors": [
+       "Zohar Rimon",
+       "Elisei Shafer",
+       "Tal Tepper",
+       "Daniel Kozin",
+       "Alon Malka",
+       "Roy Holland",
+       "Aviv Tamar"
+      ],
+      "affiliation": "Technion - Israel Institute of Technology",
+      "image": "https://drive.google.com/open?id=1ayAVD3Ih3-2atTlR8Y4S2DYyU4kOLS6b"
+     },
+     {
+      "n": 11,
+      "title": "Scalable 3D Force-Sensing Tactile Skins for Robot Learning",
+      "days": [
+       "mon",
+       "tue"
+      ],
+      "where": "",
+      "paper_no": "",
+      "presenters": [
+       "Ariel Slepyan",
+       "Anand Bhattad",
+       "Homanga Bharadhwaj",
+       "Krishna Murthy Jatavallabhula"
+      ],
+      "authors": [
+       "Ariel Slepyan",
+       "Geeta Chandra Raju Bethala",
+       "Jiafeng Gu",
+       "Anagha Dangle",
+       "Yinzhe Zhou",
+       "Hongyuan Fu",
+       "Jade Sim",
+       "Tuhin Basu",
+       "Xinyi Yin",
+       "Faizal Karim",
+       "Gregory Hager",
+       "Anand Bhattad",
+       "Homanga Bharadhwaj",
+       "Krishna Murthy Jatavallabhula",
+       "Nitish Thakor"
+      ],
+      "affiliation": "Massachusetts Institute of Technology; Johns Hopkins University",
+      "image": "https://drive.google.com/open?id=1ZPuPbJDMxtZefB-SsNfkXABd6NUCcgLd"
+     },
+     {
+      "n": 12,
+      "title": "Pick Anything: Learning Human-like Grasping from Human Videos",
+      "days": [
+       "mon",
+       "tue"
+      ],
+      "where": "",
+      "paper_no": "",
+      "presenters": [
+       "Mahi Shafiullah",
+       "Avinash Sannanaranagouda",
+       "Tingfan Wu"
+      ],
+      "authors": [
+       "Homanga Bharadhwaj",
+       "Matthew Chang",
+       "Alexander Clegg",
+       "Francois Hogan",
+       "Haozhi Qi",
+       "Avinash Sannanaranagouda",
+       "Nur Muhammad (Mahi) Shafiullah",
+       "Akash Sharma",
+       "Kenneth Shaw",
+       "Julen Urain",
+       "Tingfan Wu",
+       "Jitendra Malik"
+      ],
+      "affiliation": "Amazon Frontier AI & Robotics",
+      "image": "https://drive.google.com/open?id=1lXtEEbCkl9kuMEETO81XoiXEdSkBqcMu"
+     },
+     {
+      "n": 13,
+      "title": "FlexiTac Live: Hands-On Tactile Sensing for Robot Learning",
+      "days": [
+       "mon",
+       "tue"
+      ],
+      "where": "",
+      "paper_no": "",
+      "presenters": [
+       "Binghao Huang"
+      ],
+      "authors": [
+       "Binghao Huang",
+       "Yunzhu Li"
+      ],
+      "affiliation": "Columbia University",
+      "image": "https://drive.google.com/open?id=1yD61RnGuu1zlX40SdM2zqfeKeknOfOCz"
+     },
+     {
+      "n": 14,
+      "title": "DexMixer: Online Motion Adaptation via Modifier Directives for Contact-Rich Manipulation",
+      "days": [
+       "mon"
+      ],
+      "where": "",
+      "paper_no": "",
+      "presenters": [
+       "Ryoga Oishi",
+       "Toshiaki Tsuji"
+      ],
+      "authors": [
+       "Ryoga Oishi",
+       "Yuki Kasuga",
+       "Sho Sakaino",
+       "Toshiaki Tsuji"
+      ],
+      "affiliation": "Saitama University, University of Tsukuba",
+      "image": "https://drive.google.com/open?id=1ZueYO7CoFsAUen9mhljKlJx2dkkuImpS"
+     },
+     {
+      "n": 15,
+      "title": "MiTaS: Multi-Resolution Tactile Imitation Learning for Contact-Rich Robotic Manipulation",
+      "days": [
+       "mon",
+       "tue"
+      ],
+      "where": "",
+      "paper_no": "1698",
+      "presenters": [
+       "Rickmer Krohn",
+       "Vignesh Prasad",
+       "Nils Dengler",
+       "Georgia Chalvatzaki"
+      ],
+      "authors": [
+       "Rickmer Krohn",
+       "Erik Helmut",
+       "Nils Dengler",
+       "Vignesh Prasad",
+       "Niklas Funk",
+       "Jan Peters and Georgia Chalvatzaki"
+      ],
+      "affiliation": "Interactive Robot Perception & Learning (Pearl Lab), TU Darmstadt, Germany; Intelligent Autonomous Systems, TU Darmstadt, Germany",
+      "image": "https://drive.google.com/open?id=1imFuCV0qnuUmffk-qJQkiJQ9vg8wqAtC"
+     }
+    ]
+   },
+   {
+    "name": "Outdoor Demos",
+    "theme": "",
+    "demos": [
+     {
+      "n": 16,
+      "title": "Perception-Driven Social Behaviors on Spot for Public Human-Robot Events",
+      "days": [
+       "mon",
+       "tue"
+      ],
+      "where": "Pre-function space (hallway) outside the Griffin booths in JW Marriott (2nd floor)",
+      "paper_no": "",
+      "presenters": [
+       "Ivanna Aleman-Coronado",
+       "Jeslyn Chang",
+       "Dylan Pina"
+      ],
+      "authors": [
+       "Ivanna Aleman-Coronado",
+       "Jeslyn Chang",
+       "Dylan Pina",
+       "Nathan Tsoi",
+       "Joydeep Biswas"
+      ],
+      "affiliation": "University of Texas at Austin",
+      "image": "https://drive.google.com/open?id=1t3jYeWGghObPUj_8RwnfBtVzuZNjuGI_"
+     },
+     {
+      "n": 17,
+      "title": "Can You Beat an Autonomous Car?",
+      "days": [],
+      "where": "During the social welcome dinner at the Long Center",
+      "paper_no": "",
+      "presenters": [
+       "Rwik Rana",
+       "Jesse Quattrociocchi"
+      ],
+      "authors": [
+       "Rwik Rana",
+       "Jesse Quattrociocchi",
+       "Christian Ellis",
+       "Nathan Tsoi",
+       "Garrett Warnell",
+       "Joydeep Biswas"
+      ],
+      "affiliation": "University of Texas at Austin",
+      "image": "https://drive.google.com/open?id=1Fzr1JhHi1UgQY3_PE7J1yaNv7GWfv1KH"
+     }
+    ]
+   }
+  ]
+ }
 }
