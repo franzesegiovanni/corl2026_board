@@ -346,6 +346,8 @@ table.heat{border-collapse:separate;border-spacing:2px;width:100%;min-width:340p
 .evspk{margin:6px 0 0;font-size:14.5px;color:var(--ink)}
 .evspk .au,.evpan .au,.evcard .meta .au{font-size:inherit;color:var(--ink);font-weight:600}
 .evspk span,.evpan span{color:var(--ink-3);font-size:13px}
+.sch{font-size:12.5px;font-weight:600;color:var(--flag);text-decoration:none;white-space:nowrap;margin-left:4px}
+.sch:hover{text-decoration:underline;text-underline-offset:2px}
 .evpan{margin:8px 0 0;font-size:14px;line-height:1.7}
 .evslim{padding:10px 16px}
 .evslim .meta{margin:3px 0 0}
@@ -1226,6 +1228,9 @@ function peopleHTML(names){
   return names.split(/\s*&\s*|\s+and\s+/).map(n=>{ n=n.trim(); const i=aIdx.get(n); return i!=null ? authBtn(i,false) : '<span class="nm">'+esc(n)+'</span>'; }).join(" &amp; ");
 }
 function paras(t){ return t.split(/\n+/).map(x=>'<p>'+esc(x)+'</p>').join(""); }
+// Google Scholar profile search: lists matching profiles (photo, affiliation) so you can pick the right person
+function scholarURL(name){ return "https://scholar.google.com/citations?view_op=search_authors&mauthors="+encodeURIComponent(name); }
+function scholarLink(name){ return '<a class="sch" href="'+scholarURL(name)+'" target="_blank" rel="noopener" aria-label="Google Scholar profile of '+esc(name)+'">Scholar ↗</a>'; }
 function eventHTML(e, pill){
   const when = '<div class="when"><time>'+fmt12(e.start).replace(/ (AM|PM)/,"")+'</time><span>'+fmt12(e.start).slice(-2)+' – '+fmt12(e.end)+'</span>'+pill+'</div>';
   const venue = e.venue ? esc(e.venue) : "";
@@ -1233,8 +1238,8 @@ function eventHTML(e, pill){
     const main = e.spk.find(s=>s.role!=="fireside") || null, side = e.spk.filter(s=>s.role==="fireside");
     let h = '<section class="sess ev ev-'+e.kind+'">'+when+'<div class="card evcard"><header><div class="code"><b>'+esc(e.title)+'</b>'+(venue?' · '+venue:'')+'</div>'
       + '<h3>'+esc(main ? main.title : (e.person||e.title))+'</h3>'
-      + '<p class="evspk">'+(e.person ? peopleHTML(e.person) : "")+(main && main.aff ? ' <span>'+esc(main.aff)+'</span>' : '')+'</p>'
-      + side.map(s=>'<p class="evspk">+ Fireside chat with '+peopleHTML(s.name)+' <span>'+esc(s.aff)+'</span></p>').join("")
+      + '<p class="evspk">'+(e.person ? peopleHTML(e.person) : "")+(main && main.aff ? ' <span>'+esc(main.aff)+'</span>' : '')+(e.person ? ' '+scholarLink(e.person) : '')+'</p>'
+      + side.map(s=>'<p class="evspk">+ Fireside chat with '+peopleHTML(s.name)+' <span>'+esc(s.aff)+'</span> '+scholarLink(s.name)+'</p>').join("")
       + (e.chair ? '<p class="meta">Session chair: '+peopleHTML(e.chair)+'</p>' : '') + '</header>';
     const body = (main && main.abstract ? '<h4>Abstract</h4>'+paras(main.abstract) : '')
       + e.spk.filter(s=>s.bio).map(s=>'<h4>About '+esc(s.name)+'</h4><p>'+esc(s.bio)+'</p>').join("");
@@ -1358,7 +1363,7 @@ function viewPeople(){
   const pe = people[A[sel]]||{};
   html += '<section class="acard"><div class="eyebrow">Person</div><div class="namerow"><h2>'+esc(A[sel])+'</h2>'
     + '<button class="btn like" data-likeperson="'+sel+'" aria-pressed="'+!!pe.l+'"><svg viewBox="0 0 24 24"><use href="#i-heart"/></svg><span class="lbl">'+(pe.l?"Liked":"Like person")+'</span></button></div><div class="astats"><span><b class="mono">'+papers.length+'</b> paper'+(papers.length>1?"s":"")+'</span><span><b class="mono">'+co.size+'</b> co-authors here</span><span>posters on '+DAYS.filter(d=>days.has(d[0])).map(d=>d[2]).join(", ")+'</span>'
-    + '<a href="https://openreview.net/search?term='+encodeURIComponent(A[sel])+'&group=all&content=all&source=all" target="_blank" rel="noopener">OpenReview ↗</a><a href="https://scholar.google.com/scholar?q='+encodeURIComponent('author:"'+A[sel]+'"')+'" target="_blank" rel="noopener">Google Scholar ↗</a></div>';
+    + '<a href="https://openreview.net/search?term='+encodeURIComponent(A[sel])+'&group=all&content=all&source=all" target="_blank" rel="noopener">OpenReview ↗</a><a href="'+scholarURL(A[sel])+'" target="_blank" rel="noopener">Google Scholar ↗</a></div>';
   html += '<label class="pnote-l" for="pnote">Your note about '+esc(A[sel])+'</label><textarea class="pnote" id="pnote" data-person="'+sel+'" placeholder="Where you met, what you talked about, follow-ups…">'+esc(pe.n||"")+'</textarea><p class="note" style="margin-bottom:14px">Private to you, like your paper likes.</p>';
   const topCo = [...co.entries()].sort((a,b)=>b[1]-a[1]||aPapers[b[0]].length-aPapers[a[0]].length).slice(0,14);
   if(topCo.length) html += '<div class="eyebrow">Frequent co-authors at CoRL</div><div class="co">'+topCo.map(([j,n])=>'<button class="chip" data-author="'+j+'">'+esc(A[j])+(n>1?' <span class="mono">×'+n+'</span>':'')+'</button>').join("")+'</div>';
@@ -1730,7 +1735,7 @@ function viewMine(){
       if(e){
         const main = (e.spk||[]).find(x=>x.role!=="fireside");
         html += '<section class="sess ev ev-'+e.kind+'"><div class="when"><time>'+fmt12(e.start).replace(/ (AM|PM)/,"")+'</time><span>'+fmt12(e.start).slice(-2)+' – '+fmt12(e.end)+'</span></div><div class="card evcard"><header><div class="code"><b>'+esc(e.kind==="panel"?"Special panel":e.title)+'</b>'+(e.venue?' · '+esc(e.venue):'')+'</div><h3>'+esc(evTalkTitle(e))+'</h3>'
-          + (e.person ? '<p class="evspk">'+peopleHTML(e.person)+(main&&main.aff?' <span>'+esc(main.aff)+'</span>':'')+'</p>' : '') + '</header>' + evMineHTML(e) + '</div></section>';
+          + (e.person ? '<p class="evspk">'+peopleHTML(e.person)+(main&&main.aff?' <span>'+esc(main.aff)+'</span>':'')+' '+scholarLink(e.person)+'</p>' : '') + '</header>' + evMineHTML(e) + '</div></section>';
         return;
       }
       const isPoster = s.kind==="poster";
