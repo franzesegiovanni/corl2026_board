@@ -8,7 +8,7 @@ Created by Giovanni Franzese.
 
 ## What it does
 
-- **Schedule**: every paper by day and session (orals and spotlights at the Hilton, posters at the JW Marriott) with poster number, room and floor, plus the keynotes and early-career keynotes (with abstracts and speaker bios), the special panel, session chairs, the diamond sponsor talks (sponsor, title and speaker), breaks, socials and livestream links. Filter by topic, presentation type and location, and see what is on now.
+- **Schedule**: every paper by day and session (orals and spotlights at the Hilton, posters at the JW Marriott) with poster number, room and floor, plus the keynotes and early-career keynotes (with abstracts and speaker bios), the special panel, session chairs, the diamond sponsor talks (sponsor, title and speaker), breaks, socials and livestream links. The award finalists carry a trophy badge, and a Finalists chip lists just them. Filter by topic, presentation type and location, and see what is on now.
 - **Demos** (Monday and Tuesday): the 17 researcher demos by room (Lone Star, Griffin, outdoor) with day, presenters, authors, affiliation, the demo image and, where there is one, the CoRL paper. Like, flag, note and photograph the ones you visit.
 - **Workshops** (Thursday, Nov 12): the 32 workshops with room, invited speakers and agenda, read from each workshop's website. Mark the ones you are going to.
 - **My Thursday**: your chosen workshops side by side on one timeline, with a "now" line and what is happening in each room right now.
@@ -57,7 +57,7 @@ python corl2026_download.py --dry-run      # paper metadata -> CoRL2026/index.cs
 python board/extract_abstracts.py          # abstracts + keywords from the downloaded PDFs -> board/abstracts.json (needs pdftotext);
                                            # hand corrections in board/abstract_fixes.json are applied on top
 python board/build_workshops.py --refresh  # workshop rooms from corl.org + agendas and speakers from each workshop site
-python board/build_program.py --refresh    # keynotes, early-career keynotes, panel, session chairs, breaks from corl.org/program
+python board/build_program.py --refresh    # keynotes, early-career keynotes, panel, chairs, sponsor talks, demos, award finalists from corl.org/program
 python board/build_board.py --refresh      # official paper schedule + everything above -> board/corl2026_board.html and index.html
 ```
 
@@ -69,6 +69,7 @@ python board/build_board.py --refresh      # official paper schedule + everythin
 - Paper schedule, poster numbers and rooms: the official [accepted papers page](https://2026.corl.org/program/accepted-papers).
 - Keynotes, early-career keynotes, special panel, sponsor talks, session chairs and livestreams: the official [program](https://www.corl.org/program), its keynote pages and the [diamond sponsor talks](https://www.corl.org/program/diamond-sponsor-talks).
 - Researcher demos: the official [demos page](https://www.corl.org/program/demos).
+- Award finalists: the official [awards page](https://www.corl.org/program/awards).
 - Workshop rooms and sessions: the official [workshops page](https://www.corl.org/program/workshops). Rooms are marked tentative by CoRL.
 - Workshop agendas and speakers: each workshop's own website, read automatically. Sites differ a lot, so a few entries may be incomplete or misread. Times are shown as each site lists them. Check the workshop site for last-minute changes.
 - Topics are assigned by keyword matching on titles and abstracts, so treat them as a rough guide.

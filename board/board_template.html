@@ -11,7 +11,7 @@
   --bg:#f3f5f7; --surface:#ffffff; --sunk:#e8ecf0; --ink:#14212d; --ink-2:#465564; --ink-3:#6f7d8a;
   --line:#d3dae1; --line-2:#e3e8ed;
   --accent:#b85300; --accent-soft:#f8e7d8; --accent-ink:#ffffff;
-  --flag:#2458a8; --flag-soft:#e0e9f7; --hl:#ffe98a;
+  --flag:#2458a8; --flag-soft:#e0e9f7; --hl:#ffe98a; --award:#7a5200; --award-soft:#fbeec6;
   --series:#2a78d6; --edge:#b9c3cd; --node:#8996a3;
   --h0:#cde2fb; --h1:#9ec5f4; --h2:#6da7ec; --h3:#3987e5; --h4:#256abf; --h5:#184f95;
   --hi-lo:#14212d; --hi-hi:#ffffff;
@@ -24,7 +24,7 @@
   --bg:#0f151b; --surface:#172029; --sunk:#202b36; --ink:#e5ebf1; --ink-2:#b2bfcb; --ink-3:#8795a3;
   --line:#2d3a47; --line-2:#24303c;
   --accent:#ef8a3c; --accent-soft:#3a2617; --accent-ink:#1a0e05;
-  --flag:#77a6ec; --flag-soft:#1d2c44; --hl:#5b4a0c;
+  --flag:#77a6ec; --flag-soft:#1d2c44; --hl:#5b4a0c; --award:#f2c94c; --award-soft:#3a2e0c;
   --series:#3987e5; --edge:#3b4957; --node:#6d7c8a;
   --h0:#1d3047; --h1:#184f95; --h2:#2a78d6; --h3:#5598e7; --h4:#86b6ef; --h5:#b7d3f6;
   --hi-lo:#e5ebf1; --hi-hi:#0f151b;
@@ -35,7 +35,7 @@
   --bg:#0f151b; --surface:#172029; --sunk:#202b36; --ink:#e5ebf1; --ink-2:#b2bfcb; --ink-3:#8795a3;
   --line:#2d3a47; --line-2:#24303c;
   --accent:#ef8a3c; --accent-soft:#3a2617; --accent-ink:#1a0e05;
-  --flag:#77a6ec; --flag-soft:#1d2c44; --hl:#5b4a0c;
+  --flag:#77a6ec; --flag-soft:#1d2c44; --hl:#5b4a0c; --award:#f2c94c; --award-soft:#3a2e0c;
   --series:#3987e5; --edge:#3b4957; --node:#6d7c8a;
   --h0:#1d3047; --h1:#184f95; --h2:#2a78d6; --h3:#5598e7; --h4:#86b6ef; --h5:#b7d3f6;
   --hi-lo:#e5ebf1; --hi-hi:#0f151b;
@@ -166,6 +166,12 @@ details[open] summary .tog .closed,details:not([open]) summary .tog .opened{disp
 .badge{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:4px;border:1px solid var(--ink);white-space:nowrap}
 .badge.oral{background:var(--ink);color:var(--surface)}
 .badge.spot{color:var(--ink)}
+.badge.award{background:var(--award-soft);color:var(--award);border-color:var(--award);display:inline-flex;align-items:center;gap:4px}
+.badge.award svg{width:11px;height:11px;fill:currentColor}
+.awnote{display:flex;gap:10px;align-items:flex-start;margin:12px 0 10px;padding:10px 12px;border-radius:8px;background:var(--award-soft);color:var(--ink);font-size:13.5px;line-height:1.45}
+.awnote svg{width:18px;height:18px;flex:none;fill:var(--award);margin-top:1px}
+.awnote b{color:var(--award)}
+.chip.aw svg{width:12px;height:12px;fill:currentColor;vertical-align:-1px}
 .where{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3)}
 .mynote{font-size:12.5px;color:var(--ink-2);font-style:italic;margin:5px 0 0}
 .abs-t{font-size:12px;color:var(--flag);display:inline-flex;align-items:center;gap:3px}
@@ -526,7 +532,7 @@ label.btn:focus-within{outline:2px solid var(--flag);outline-offset:2px}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></symbol>
   <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5.5 21V4.5"/><path d="M5.5 4.5h11.5l-2.6 4.2 2.6 4.3H5.5z"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
   <symbol id="i-cam" viewBox="0 0 24 24"><path d="M3.5 8.5a2 2 0 0 1 2-2h2.2l1.6-2.2h5.4l1.6 2.2h2.2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.6"/></symbol>
@@ -567,6 +573,7 @@ label.btn:focus-within{outline:2px solid var(--flag);outline-offset:2px}
         <button class="chip" id="t-O" data-type="O" aria-pressed="true">Oral <span class="mono"></span></button>
         <button class="chip" id="t-S" data-type="S" aria-pressed="true">Spotlight <span class="mono"></span></button>
         <button class="chip" id="t-P" data-type="P" aria-pressed="true">Poster only <span class="mono"></span></button>
+        <button class="chip aw" id="t-aw" aria-pressed="false" title="Only the CoRL 2026 award finalists" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-trophy"/></svg> Finalists <span class="mono"></span></button>
         <button class="chip" id="t-abs" aria-pressed="false" title="Show a short preview of every abstract">Abstracts</button>
         <button class="chip" id="t-mine" aria-pressed="false"><svg width="13" height="13" viewBox="0 0 24 24" style="fill:currentColor"><use href="#i-heart"/></svg>/<svg width="13" height="13" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2"><use href="#i-flag"/></svg> only</button>
       </div>
@@ -607,7 +614,10 @@ const P = D.P.map(r=>({id:r[0],t:r[1],a:r[2],c:r[3],m:r[4],v:r[5],ts:r[6],ps:r[7
 const byId = new Map(P.map(p=>[p.id,p]));
 const fold = s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
 const aPapers = A.map(()=>[]);
-P.forEach(p=>{ p.a.forEach(i=>aPapers[i].push(p)); p.q = fold(p.t+" | "+p.a.map(i=>A[i]).join(" | ")); p.room = roomOf(p); });
+// award finalists (and winners once announced) from corl.org/program/awards: {openreview id: label}
+const AWD = (D.G && D.G.awards) || {papers:{}, note:""};
+P.forEach(p=>{ p.a.forEach(i=>aPapers[i].push(p)); p.aw = AWD.papers[p.id] || ""; p.q = fold(p.t+" | "+p.a.map(i=>A[i]).join(" | ")+(p.aw?" | "+p.aw:"")); p.room = roomOf(p); });
+const AWN = P.filter(p=>p.aw).length;
 const aFold = A.map(fold);
 const catLabel = i=>CAT_LABEL[C[i]] || C[i].replace(/_/g," ");
 const catOrder = C.map((_,i)=>i).sort((x,y)=>P.filter(p=>p.c===y).length - P.filter(p=>p.c===x).length);
@@ -618,7 +628,7 @@ function fmt12(hm){ let [h,m]=hm.split(":").map(Number); const ap=h>=12?"PM":"AM
 function dayShort(code){ const d=DAYS.find(d=>d[0]===sess[code].day); return d?d[2]:""; }
 
 /* ---------- state ---------- */
-const st = { view:"schedule", day:null, q:"", terms:[], topic:-1, loc:"", wq:"", wterms:[], wloc:"", wslot:"all", wmine:false, tprev:null, secondary:false, types:new Set(["O","S","P"]), mine:false, author:null, graph:"ego", mineShow:"all" };
+const st = { view:"schedule", day:null, q:"", terms:[], topic:-1, loc:"", wq:"", wterms:[], wloc:"", wslot:"all", wmine:false, tprev:null, secondary:false, types:new Set(["O","S","P"]), mine:false, award:false, author:null, graph:"ego", mineShow:"all" };
 const LS_KEY = "corl26-board-marks-v1", LS_UI = "corl26-board-ui-v1", LS_PEOPLE = "corl26-board-people-v1", LS_GOING = "corl26-board-going-v1";
 let marks = {}, people = {}, going = {};   // people: author name -> {l:1 (liked), n:"note", t}; going: workshop title -> {g:1, t}
 try { marks = JSON.parse(localStorage.getItem(LS_KEY)||"{}")||{}; } catch(e){ marks = {}; }
@@ -954,11 +964,12 @@ function passesBase(p){
   if(st.terms.length && !st.terms.every(t=>p.q.includes(t))) return false;
   if(!st.types.has(p.v)) return false;
   if(st.mine && !isMarked(p.id)) return false;
+  if(st.award && !p.aw) return false;
   return true;
 }
 function inTopic(p, t){ return p.c===t || (st.secondary && p.m.includes(t)); }
 function passes(p){ return passesBase(p) && (st.topic<0 || inTopic(p, st.topic)); }
-const filtersActive = ()=> st.terms.length>0 || st.topic>=0 || st.types.size<3 || st.mine || !!st.loc;
+const filtersActive = ()=> st.terms.length>0 || st.topic>=0 || st.types.size<3 || st.mine || st.award || !!st.loc;
 
 /* ---------- paper row ---------- */
 function authorsHTML(p, max){
@@ -976,7 +987,8 @@ function authorsHTML(p, max){
   return list.map(i=>authBtn(i,hit(i))).join(", ");
 }
 const authBtn = (i,h)=>'<button class="au'+(h?' hit':'')+(isFav(i)?' fav':'')+'" data-author="'+i+'">'+esc(A[i])+'</button>';
-function typeBadge(p){ return p.v==="O"?'<span class="badge oral">Oral</span>':p.v==="S"?'<span class="badge spot">Spotlight</span>':""; }
+function awardBadge(p){ return p.aw ? '<span class="badge award" title="CoRL 2026 '+esc(p.aw.toLowerCase())+'. '+esc(AWD.note)+'"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-trophy"/></svg>'+esc(p.aw)+'</span>' : ""; }
+function typeBadge(p){ return awardBadge(p)+(p.v==="O"?'<span class="badge oral">Oral</span>':p.v==="S"?'<span class="badge spot">Spotlight</span>':""); }
 function posterRef(p){
   const s=sess[p.ps]; if(!s) return "";
   return "Poster "+p.ps.slice(1)+" · "+dayShort(p.ps)+" "+fmt12(s.start)+" · #"+p.n+(p.room?" "+p.room.name:"");
@@ -1315,7 +1327,7 @@ GE.forEach(e=>{
 });
 function evPasses(e){
   if(["spotlight","oral","poster","workshop"].includes(e.kind)) return false;   // shown through the paper sessions / Workshops tab
-  if(st.topic>=0 || st.types.size<3 || st.mine) return false;
+  if(st.topic>=0 || st.types.size<3 || st.mine || st.award) return false;
   if(st.loc){ if(st.loc[0]==="r") return false; if(!(e.venue||"").includes(st.loc.slice(2))) return false; }
   if(st.terms.length && !st.terms.every(t=>e.q.includes(t))) return false;
   return true;
@@ -1360,7 +1372,8 @@ function eventHTML(e, pill){
       + evMineHTML(e) + '</div></section>';
   }
   // breaks, lunch, welcome, socials, closing: one compact line
-  const extra = e.lines.length ? ' · '+esc(e.lines.join(" ")) : "";
+  const extra = (e.lines.length ? ' · '+esc(e.lines.join(" ")) : "")
+    + (AWN && /award/i.test(e.title+" "+e.lines.join(" ")) ? ' <button class="linkbtn awl" data-awards>See the '+AWN+' award finalists</button>' : "");
   const par = e.parallel ? '<span class="evpar">In parallel: <b>'+esc(e.parallel.title)+'</b>'+(e.parallel.venue?' ('+esc(e.parallel.venue)+')':'')+'</span>' : "";
   return '<section class="sess ev ev-mini ev-'+e.kind+'">'+when+'<div class="evline"><b>'+esc(e.title)+'</b>'+extra+(venue?' <span class="evv">'+venue+'</span>':'')+par+'</div></section>';
 }
@@ -1890,7 +1903,7 @@ function markdownExport(){
       if(!l.length) return;
       dayLines.push("### "+s.time+" · "+(isPoster?s.label:s.label+": "+s.theme)+" ("+s.venue+")");
       l.forEach(p=>{
-        const m=marks[p.id]||{}; const tag=(m.l?"♥":"")+(m.f?"⚑":""); const np=photosOf(p.id).length;
+        const m=marks[p.id]||{}; const tag=(m.l?"♥":"")+(m.f?"⚑":"")+(p.aw?"🏆":""); const np=photosOf(p.id).length;
         dayLines.push("- "+(tag?tag+" ":"")+(isPoster?"#"+p.n+(p.room?" "+p.room.name:"")+" · ":"")+p.t+" — "+p.a.slice(0,3).map(i=>A[i]).join(", ")+(p.a.length>3?" et al.":"")+" — https://openreview.net/forum?id="+p.id+(np?" ("+np+" photo"+(np>1?"s":"")+")":""));
         if(m.n) dayLines.push("  - Note: "+m.n.replace(/\n+/g," "));
         highlightedSentences(p.id).forEach(s=>dayLines.push("  > "+s));
@@ -1949,6 +1962,7 @@ function renderDrawer(id){
   let html = '<button class="ic dclose" aria-label="Close" title="Close (Esc)"><svg viewBox="0 0 24 24"><use href="#i-x"/></svg></button>'
     + '<div class="eyebrow">'+(p.v==="O"?"Oral":p.v==="S"?"Spotlight":"Poster")+' · '+esc(catLabel(p.c))+'</div>'
     + '<h2 id="d-title">'+esc(p.t)+'</h2>'
+    + (p.aw ? '<p class="awnote"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-trophy"/></svg><span><b>CoRL 2026 '+esc(p.aw)+'.</b> '+esc(AWD.note)+'</span></p>' : '')
     + '<div class="dauth">'+p.a.map(i=>'<button class="au" data-author="'+i+'">'+esc(A[i])+(aPapers[i].length>1?' <span class="mono more">'+aPapers[i].length+'</span>':'')+'</button>').join("")+'</div>'
     + '<div class="tags">'+[p.c].concat(p.m).map((c,k)=>'<button class="topic" data-topic="'+c+'">'+(k?"also ":"")+esc(catLabel(c))+'</button>').join("")+'</div>'
     + '<h3 style="margin-top:16px">Abstract</h3><div id="d-abs">'+drawerAbsHTML(id)+'</div>'
@@ -2000,6 +2014,8 @@ document.addEventListener("click", e=>{
   if(t.dataset.day){ st.day=t.dataset.day; saveUI(); render(); return; }
   if(t.dataset.type){ const k=t.dataset.type; if(st.types.has(k)&&st.types.size>1) st.types.delete(k); else st.types.add(k); syncChips(); render(); return; }
   if(t.id==="t-mine"){ st.mine=!st.mine; syncChips(); render(); return; }
+  if(t.id==="t-aw"){ st.award=!st.award; if(st.award) st.day="all"; syncChips(); render(); return; }
+  if(t.hasAttribute("data-awards")){ st.award=true; st.day="all"; syncChips(); if(st.view!=="schedule") location.hash="schedule"; else { render(); scrollTo(0,0); } return; }
   if(t.id==="clear" || t.hasAttribute("data-clear")){ clearFilters(); return; }
   if(t.dataset.graph){ st.graph=t.dataset.graph; saveUI(); render(); return; }
   if(t.dataset.mineshow){ st.mineShow=t.dataset.mineshow; render(); return; }
@@ -2045,10 +2061,11 @@ $("#q").addEventListener("input", e=>{ clearTimeout(qT); qT=setTimeout(()=>{ st.
 $("#topic").addEventListener("change", e=>{ st.topic=+e.target.value; render(); });
 $("#loc").addEventListener("change", e=>{ st.loc=e.target.value; render(); });
 $("#secondary").addEventListener("change", e=>{ st.secondary=e.target.checked; render(); });
-function clearFilters(){ st.q=""; st.terms=[]; $("#q").value=""; st.topic=-1; $("#topic").value="-1"; st.loc=""; $("#loc").value=""; st.secondary=false; $("#secondary").checked=false; st.types=new Set(["O","S","P"]); st.mine=false; syncChips(); render(); }
+function clearFilters(){ st.q=""; st.terms=[]; $("#q").value=""; st.topic=-1; $("#topic").value="-1"; st.loc=""; $("#loc").value=""; st.secondary=false; $("#secondary").checked=false; st.types=new Set(["O","S","P"]); st.mine=false; st.award=false; syncChips(); render(); }
 function syncChips(){
   ["O","S","P"].forEach(k=>$("#t-"+k).setAttribute("aria-pressed", st.types.has(k)));
   $("#t-mine").setAttribute("aria-pressed", st.mine);
+  $("#t-aw").setAttribute("aria-pressed", st.award);
   $("#t-abs").setAttribute("aria-pressed", !!st.showAbs);
 }
 // tap (or Enter/Space on) a sentence in the paper panel to highlight it
@@ -2092,6 +2109,7 @@ function route(){
   const sel=$("#topic");
   sel.innerHTML = '<option value="-1">All topics</option>'+catOrder.map(i=>'<option value="'+i+'">'+esc(catLabel(i))+' ('+P.filter(p=>p.c===i).length+')</option>').join("");
   ["O","S","P"].forEach(k=>{ $("#t-"+k).querySelector(".mono").textContent = P.filter(p=>p.v===k).length; });
+  if(AWN){ $("#t-aw").hidden=false; $("#t-aw").querySelector(".mono").textContent = AWN; }
   // location menu built from the schedule: each hotel, then each poster room
   const venues = [...new Set(SESS.map(s=>s.venue))];
   const rooms = new Map(); SESS.forEach(s=>s.rooms.forEach(r=>{ const k=r[2]; const o=rooms.get(k)||{floor:r[3],lo:r[0],hi:r[1],venue:s.venue}; o.lo=Math.min(o.lo,r[0]); o.hi=Math.max(o.hi,r[1]); rooms.set(k,o); }));

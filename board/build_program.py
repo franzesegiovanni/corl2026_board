@@ -181,6 +181,26 @@ def demos(page):
     return {"intro": clean(intro.group(1)) if intro else "", "groups": groups}
 
 
+def awards(page):
+    """Award finalists (and winners, once announced): {"note": ..., "papers": {openreview id: label}}."""
+    e = embedded(page)
+    papers, note = {}, ""
+    m = re.search(r'<p class="intro"[^>]*>(.*?)</p>', e, re.S)
+    if m:
+        note = " ".join(text(m.group(1)))
+    # each section heading ("Award Finalists", later perhaps "Best Paper Award") labels the papers listed under it
+    for sec in re.split(r'(?=<h3)', e):
+        h = re.match(r'<h3[^>]*>(.*?)</h3>', sec, re.S)
+        if not h:
+            continue
+        label = " ".join(text(h.group(1)))
+        label = re.sub(r"s$", "", label)  # "Award Finalists" -> "Award Finalist"
+        for pid in re.findall(r'openreview\.net/forum\?id=([A-Za-z0-9_-]+)', sec):
+            if pid not in papers or "winner" in label.lower() or "best" in label.lower():
+                papers[pid] = label
+    return {"note": note, "papers": papers}
+
+
 def panel(page):
     lines = text(re.sub(r"</(p|div|h\d|li)>", "\n", re.sub(r"<script.*?</script>|<style.*?</style>", "", page, flags=re.S)))
     try:
@@ -206,11 +226,12 @@ def main():
     pan = panel(fetch(f"{BASE}/program/special-panel", "_corl_panel", a.refresh))
     spons = sponsor_talks(fetch(f"{BASE}/program/diamond-sponsor-talks", "_corl_sponsors", a.refresh))
     dem = demos(fetch(f"{BASE}/program/demos", "_corl_demos", a.refresh))
-    out = {"days": days, "events": events, "speakers": spk, "panel": pan, "sponsor_talks": spons, "demos": dem}
+    aw = awards(fetch(f"{BASE}/program/awards", "_corl_awards", a.refresh))
+    out = {"days": days, "events": events, "speakers": spk, "panel": pan, "sponsor_talks": spons, "demos": dem, "awards": aw}
     (HERE / "program.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{len(events)} program items over {len(days)} days, {len(spk)} keynote speakers, "
           f"{len(pan['people'])} panelists, {len(spons)} sponsor talks, "
-          f"{sum(len(g['demos']) for g in dem['groups'])} demos -> {HERE / 'program.json'}")
+          f"{sum(len(g['demos']) for g in dem['groups'])} demos, {len(aw['papers'])} award papers -> {HERE / 'program.json'}")
 
 
 if __name__ == "__main__":
